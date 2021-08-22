@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 3 民主主義と国家 | Rを利用した社会経済データの取得</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 3 民主主義と国家 | Rを利用した社会経済データの取得" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 3 民主主義と国家 | Rを利用した社会経済データの取得" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Office Socio-Econ" />
+
+
+<meta name="date" content="2021-08-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="マクロデータ.html"/>
+
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Socio-Econ data & R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#penn-world-table-pwt9"><i class="fa fa-check"></i><b>2.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#世界銀行world-bank-wdi"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#eu統計局eurostat---eurostat"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#経済協力開発機構---oecd"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#imf---imfr"><i class="fa fa-check"></i><b>2.5.1</b> IMF - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#bis"><i class="fa fa-check"></i><b>2.5.2</b> BIS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#dbnomics"><i class="fa fa-check"></i><b>2.6</b> DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#iii-6-2-rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> III-6-2 rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義と国家.html"><a href="民主主義と国家.html"><i class="fa fa-check"></i><b>3</b> 民主主義と国家</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義と国家.html"><a href="民主主義と国家.html#民主主義を測る--varieties-of-democracies"><i class="fa fa-check"></i><b>3.1</b> 民主主義を測る- Varieties of Democracies</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義と国家.html"><a href="民主主義と国家.html#vdemdataパッケージの利用方法"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージの利用方法</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義と国家.html"><a href="民主主義と国家.html#vdemdataパッケージの利用例"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用例</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="民主主義と国家.html"><a href="民主主義と国家.html#国家の質を測る---quality-of-governemnt"><i class="fa fa-check"></i><b>3.2</b> 国家の質を測る - Quality of Governemnt</a></li>
+<li class="chapter" data-level="3.3" data-path="民主主義と国家.html"><a href="民主主義と国家.html#政治体制を測る---polity"><i class="fa fa-check"></i><b>3.3</b> 政治体制を測る - Polity</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rを利用した社会経済データの取得</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="民主主義と国家" class="section level1" number="3">
+<h1><span class="header-section-number"> 3</span> 民主主義と国家</h1>
+<div id="民主主義を測る--varieties-of-democracies" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 民主主義を測る- Varieties of Democracies</h2>
+<p>スウェーデンのイェーテボリ大学政治学科のV-Dem研究所の<a href="https://www.v-dem.net/en/data/data-version-10/">Varieties of Democracy(V-Dem)データベース</a>は大規模な社会科学データベースです。データセットの最新バージョンv10は1789年から2019年までの202カ国をカバーしています。本データベースはその名が示すとおり、民主主義をめぐるデータセットを提供しています。アンケート調査にもとづいたミクロデータが基礎となっていますが、それらのデータを合成したマクロデータが提供されています。</p>
+<p>データはcsv, Stata,Spssの３つの形式で提供されています。また、本研究所じしんがデータセットを処理するRパッケージvdemdataを公開しています。これは最新のV-Dem (Varieties of Democracy) データセット (v10) を読み込み、検索し、データセットを処理するRパッケージです。</p>
+<div id="vdemdataパッケージの利用方法" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> vdemdataパッケージの利用方法</h3>
+<p>vdemdataはGithubサイトからのインストールする必要があるため、最初に、devtoolsをインストールします。コンソール画面に次のように入力し、エンターを押してください。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="民主主義と国家.html#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(“devtools”)</span></code></pre></div>
+<p>次に、devtoolsを使ってvdemdataパッケージをインストールします。同じくコンソール画面に次のように入力し、エンターキーを押してください。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="民主主義と国家.html#cb2-1" aria-hidden="true" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;vdeminstitute/vdemdata&quot;</span>)</span></code></pre></div>
+<p>インストールを終えたら、library()で読み込ます。これでvdemdataパッケージが利用できます。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="民主主義と国家.html#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(vdemdata)</span></code></pre></div>
+<p>本パッケージが提供する基本的な関数は以下のとおりです.</p>
+<ul>
+<li>vdem():データセットを読み込む
+<ul>
+<li>これを実行すると、最新のV-Demデータセット(v.10)-27,013の観察値と4,108変数のデータフレームを返します。</li>
+</ul></li>
+<li>var_info() :コードブックで指定された特定の変数の基本情報をコンソールに表示します。</li>
+<li>コードブックで指定されているフルネーム、変数の種類、データ収集プロセス（質問、説明、回答）、規模、集計、年、およびV-Demデータセット内の変数の出典（および注）に関する情報を提供します。</li>
+<li>引数として、V-Demデータセットで使用されている変数名を指定するvar_tagを取ります。</li>
+<li>find_var():キーワードで変数を検索する
+<ul>
+<li>find_var関数は、指標のコードブック情報を持つデータフレームを返します。キーワードは変数名で検索します.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="民主主義と国家.html#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find_var</span> (キーワード)</span></code></pre></div>
+<ul>
+<li>引数のkeywordsは、変数名を検索するためのキーワードをカンマで区切られたいくつかのキーワード、もしくは複数の文字ベクトルをとります。</li>
+<li>fill_vars:選挙特有の変数を埋める
+<ul>
+<li>V-Demデータセットのいくつかの変数は、選挙年のみでコード化されています。これらの変数を国ごとの分析に含める場合この関数は，v2x_elecregで定義されているように，選挙制度が中断されていないことを条件に，次の年の選挙に特化した指標を埋めます．より具体的には、v2x_elecregがゼロにならない限り、選挙に固有のすべての変数の値を選挙の間に繰り越します。
+*plot_indicator:探索的データ分析のためのV-Dem指標をプロットします. V-Dem データセットから選択された国と指標の折れ線グラフとドットプロットを生成します.</li>
+</ul></li>
+</ul>
+</div>
+<div id="vdemdataパッケージの利用例" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> vdemdataパッケージの利用例</h3>
+<p>最初に、本パッケージを利用しマクロレベルの指標のグラフを描いてみましょう. 1912年から2000年を対象期間にとり、日本とスウェーデンについてリベラル・デモクラシー指標(v2x_libdem)を<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>プロットしたものです。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="民主主義と国家.html#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot_indicator</span>(<span class="at">indicator=</span> <span class="st">&quot;v2x_libdem&quot;</span>, <span class="at">countries =</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Sweden&quot;</span>),<span class="at">min_year =</span> <span class="dv">1912</span>, <span class="at">max_year =</span> <span class="dv">2015</span>)</span></code></pre></div>
+<p>　
+これを実行すると、？？？が[Plots]に表示されます。スェーデンと比較すると、第２次世界大戦前の日本がいかに民主主義からかけ離れていたか、また、1945年に劇的に政治体制が変化したことが分かります。</p>
+<p>plot_indicator関数の基本的な使い方は次のようになります.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="民主主義と国家.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_indicator</span>(</span>
+<span id="cb6-2"><a href="民主主義と国家.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">indicator =</span>,</span>
+<span id="cb6-3"><a href="民主主義と国家.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">countries =</span> <span class="cn">NULL</span>,</span>
+<span id="cb6-4"><a href="民主主義と国家.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_year =</span> <span class="fu">min</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
+<span id="cb6-5"><a href="民主主義と国家.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_year =</span> <span class="fu">max</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
+<span id="cb6-6"><a href="民主主義と国家.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">uncertainty =</span> T</span>
+<span id="cb6-7"><a href="民主主義と国家.html#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>plot_indicatorがとる５つの引数を説明していきましょう.
+<em>indicator = V-Demデータセットの指標名（文字列ベクトル）を指定します. 指標名についてはコードブックcodebookを参照してください.
+</em>countries= プロットされる国名（文字列ベクトル）を指定します. ただし、国名はV-Demデータのcountry_name列の国だけが指定可能です. NULLの場合、グローバルな平均がプロットされます。
+<em>min_year = プロットする期間の開始年(数値)を指定します.　なお、min(vdemdata::vdem$year)は、min()関数を使ってvdemデータセットの年の最小値を返すよう指示することになります。
+</em>max_year = プロットする期間の最終年(数値)を指定します.
+*uncertainty = TRUEもしくはFALSEの論理値をとり、TRUEを指定したとき、利用可能な場合には信頼区間がポイント推定値に追加されます.</p>
+<p>このグラフでは、リベラル・デモクラシー指標v2x_libdemをプロットしましたが、この他にどのような指標があるのか,コードブックを見てみましょう.このためにはcodebookと入力するだけです。これにより785の観察値と12変数のデータフレームが返されます。少し大きいデータフレームですが、View()を使ってみてましょう.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="民主主義と国家.html#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">View</span>(codebook)</span></code></pre></div>
+<p>これにより、name, vartype, tag, question, clarification, responses, scale, sources, notes, aggregation, years, sourceの12列（変数）が表示されます. v2x_libdemを例にとりみてみましょう。
+nameでは指標の説明“liberal democracy index”が記載されています。 vartypeはvdem特有の変数タイプを示しています。tagは”v2x_libdem”と表示されおり、これが変数名となります。questionではどのような質問項目かを示しています。v2x_libdemの場合, “To what extent is the ideal of a liberal democracy …”</p>
+<p>classification列は“the liberal principal of democracy emphasizes the ..”responses列はNAとなっていますので、データがありません。scaleはデータのスケールを表示しています。ここでは間隔スケールであり、0から1の値をとります。</p>
+</div>
+</div>
+<div id="国家の質を測る---quality-of-governemnt" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 国家の質を測る - Quality of Governemnt</h2>
+</div>
+<div id="政治体制を測る---polity" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 政治体制を測る - Polity</h2>
+
+</div>
+</div>
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>本指数はアンケート調査にもとづくデータの合成指標です。詳細はcodebook p.42を参照してください。<a href="民主主義と国家.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="マクロデータ.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

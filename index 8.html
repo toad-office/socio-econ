@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)</title>
+  <meta name="description" content="資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ@Office" />
+
+
+<meta name="date" content="2021-08-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#本資料の目的"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#社会経済データベース"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse[^1-1]</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#penn-world-table-pwt9"><i class="fa fa-check"></i><b>2.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#世界銀行world-bank-wdi"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#eu統計局eurostat---eurostat"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#経済協力開発機構---oecd"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#imf---imfr"><i class="fa fa-check"></i><b>2.5.1</b> IMF - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#bis"><i class="fa fa-check"></i><b>2.5.2</b> BIS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#オープンデータポータル---dbnomics"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 民主主義を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 政府の質を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 政治体制を測る - democracyData</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-socila-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Socila Survey – gssr</a></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19.html"><a href="covid-19.html"><i class="fa fa-check"></i><b>5</b> COVID-19</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="covid-19.html"><a href="covid-19.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="covid-19.html"><a href="covid-19.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19.html"><a href="covid-19.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covid-19.html"><a href="covid-19.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)</h1>
+<p class="author"><em><a href="mailto:Socio-Econ@Office" class="email">Socio-Econ@Office</a></em></p>
+<p class="date"><em>2021-08-22</em></p>
+</div>
+<div id="はじめに" class="section level1 unnumbered">
+<h1>はじめに</h1>
+<div id="本資料の目的" class="section level2" number="0.1">
+<h2><span class="header-section-number">0.1</span> 本資料の目的</h2>
+<p>本資料<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>はRおよびRパッケージを利用し、さまざまな研究機関の提供する社会経済データを取得する方法の説明を目的としています.</p>
+<p>実証研究においてデータの収集と編集はとても重要です．データは個人もしくは組織で一次データを収集することが望ましいことは言うまでもありません．しかし，これには時間も費用もかかりますし，マンパワーも必要となります．また，収集したデータが，かならずしも意図する分析に適したものとは言えないかもしれません．むしろ，そうしたケースが多いと言えるでしょう．データの収集と編集はじっさいの分析よりも，骨の折れる作業かもしれません．</p>
+<p><strong>R</strong>には，国際機関，研究組織の提供するデータベースからデータを取得するパッケージが多く開発されています．そうしたパッケージを利用すれば，骨の折れる作業がかなり軽減されますし，シームレスかつ再現可能な形でのデータの読み込みが可能となります．そこで本資料では，Rパッケージを使った，経済分析において頻繁に利用される国際機関のデータの取得方法と簡単な利用方法を紹介します．</p>
+<p>本資料のほとんどがデータの取得法の説明と取得したデータの可視化にあてられています.したがってRや<strong>RStudio</strong>の使い方にかんしてはそれほど多くのスペースが割かれていません.RとRStudioについては次の文献で補ってください.</p>
+<ul>
+<li><strong>1. Hadley Wickham『Rではじめるデータサイエンス』(<a href="https://sugiaki1989.gitbook.io/r-for-data-science-answers/">Web翻訳版</a>)</strong></li>
+<li><strong>2. 松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』</strong></li>
+</ul>
+<p>Rを利用したデータ処理には、現在では、<a href="https://www.tidyverse.org">tidyverse</a>が欠かせません。1はtidyverseに関するもっとも基本的な、必読文献です。2は1の日本バージョンと言えるものです。両方の著書によってR,RStudioを利用したデータ処理の基礎が身に付くことと思います</p>
+<p>本資料のいたるところでRパッケージ<a href="(https://ggplot2.tidyverse.org/index.html)">ggplot2</a>を利用して、取得したデータを可視化しています.Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます.</p>
+<ul>
+<li><strong>3. Winston Chang『Rグラフィックスクックブック 第2版―ggplot2によるグラフ作成のレシピ集』</strong></li>
+<li><strong>4. キーラン・ヒーリー<a href="https://socviz.co/index.html#preface">『実践Data Scienceシリーズ データ分析のためのデータ可視化入門』</a></strong></li>
+</ul>
+<p>3は<strong>ggplot2</strong>を利用した可視化の方法を学ぶ上で必読文献です。4ももちろんggplot2の説明に多く割かれていますが、同時に可視化についての基本的な考え方を学ぶこともできます.</p>
+<p>データをダウンロードするさい，テキストファイル，CSVファイル，Excel，SQLデータベース，独自のデータフォーマット(dta,spss)など，多くの異なるフォーマットから大規模なデータを読み込んだり，書き込んだりしなければならないことがよくあります．そうした異なるデータ形式を扱うにはRが最も適しています．つまり，Rがあれば，ほぼすべてのデータ形式を読み込むことができます．今では多くの国際機関や研究組織によってデータベースが提供されていますが，Rを利用すれば，データの分析までシームレスに―つまりRを離れることなしに―そうしたデータを読み込むことができます<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>．</p>
+</div>
+<div id="社会経済データベース" class="section level2" number="0.2">
+<h2><span class="header-section-number">0.2</span> 社会経済データベース</h2>
+<p>本資料で紹介されるデータベースとRパッケージは以下のとおりです.</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">データ提供組織・個人</th>
+<th align="left">データベース</th>
+<th align="left">Rパッケージ</th>
+<th align="left">Rパッケージ出典</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Groningen Growth and Development Centre</td>
+<td align="left">penn world table</td>
+<td align="left">pwt9</td>
+<td align="left">Feenstra RC, Inklaar R, Timmer MP (2015). “The Next Generation of the Penn World Table.” <em>American Economic Review</em>, 105(10), 3150-3182.&lt;URL: <a href="http://www.ggdc.net/pwt/" class="uri">http://www.ggdc.net/pwt/</a>&gt;</td>
+</tr>
+<tr class="even">
+<td align="left">世界銀行</td>
+<td align="left">Wordl Development Indicator</td>
+<td align="left">WDI</td>
+<td align="left">Vincent Arel-Bundock (2021). WDI: World Development Indicators and Other World Bank Data. R package version 2.7.4.https://CRAN.R-project.org/package=WDI</td>
+</tr>
+<tr class="odd">
+<td align="left">EU統計局</td>
+<td align="left">Eurostat</td>
+<td align="left">eurostat</td>
+<td align="left">(C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.Retrieval and analysis of Eurostat open data with the eurostat package. R Journal 9(1):385-392, 2017. Version 3.7.5 Package URL:<a href="http://ropengov.github.io/eurostat" class="uri">http://ropengov.github.io/eurostat</a> Manuscript. URL:<a href="https://journal.r-project.org/archive/2017/RJ-2017-019/index.html" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-019/index.html</a></td>
+</tr>
+<tr class="even">
+<td align="left">経済協力開発機構</td>
+<td align="left">OECD.Stat</td>
+<td align="left">OECD</td>
+<td align="left">Eric Persson (2019). OECD: Search and Extract Data from the OECD. Rpackage version 0.2.4.https://CRAN.R-project.org/package=OECD</td>
+</tr>
+<tr class="odd">
+<td align="left">国際通貨基金</td>
+<td align="left">IMF Data</td>
+<td align="left">imfr</td>
+<td align="left">Christopher Gandrud (2020). imfr: Download Data from the International Monetary Fund’s Data API. R package version 0.1.9.1. <a href="https://CRAN.R-project.org/package=imfr" class="uri">https://CRAN.R-project.org/package=imfr</a></td>
+</tr>
+<tr class="even">
+<td align="left">国際決済銀行</td>
+<td align="left">BIS statistics</td>
+<td align="left">BIS</td>
+<td align="left">Eric Persson (2018). BIS: Programmatic Access to Bank for International Settlements Data. R package version 0.2.1. <a href="https://CRAN.R-project.org/package=BIS" class="uri">https://CRAN.R-project.org/package=BIS</a></td>
+</tr>
+<tr class="odd">
+<td align="left">フランス数理経済計画予測研究所</td>
+<td align="left">DBnomics</td>
+<td align="left">rdbnomics</td>
+<td align="left">Thomas Brand (2020). rdbnomics: Download DBnomics Data. R package version 0.6.4. <a href="https://CRAN.R-project.org/package=rdbnomics" class="uri">https://CRAN.R-project.org/package=rdbnomics</a></td>
+</tr>
+<tr class="even">
+<td align="left">イェーテボリ大学政治学科V-Dem研究所</td>
+<td align="left">Varieties of Democracy(V-Dem)</td>
+<td align="left">vdemdata</td>
+<td align="left">Seraphine Maerz, Amanda Edgell, Sebastian Hellmeier, Nina Ilchenko.’Vdemdata - an R package to load, explore and work with the most recent V-Dem (Varieties of Democracy) and V-Party datasets’.Varieties of Democracy (V-Dem) Project. 2020.https://www.v-dem.net/en/ and <a href="https://github.com/vdeminstitute/vdemdata" class="uri">https://github.com/vdeminstitute/vdemdata</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Gothenburg大学QoG研究所</td>
+<td align="left">QoG Data</td>
+<td align="left">rqog</td>
+<td align="left">Markus Kainu (2021). rqog: Download data from the Quality of Government Institute data. R package version 0.4.2021.</td>
+</tr>
+<tr class="even">
+<td align="left">Gossen, J.</td>
+<td align="left">Covid 19 related data</td>
+<td align="left">tidycovid19</td>
+<td align="left">Joachim Gassen (2021). tidycovid19: Download, Tidy and Visualize Covid-19 Related Data. R package version 0.0.0.9000.</td>
+</tr>
+<tr class="odd">
+<td align="left">Center for Systemic Peace</td>
+<td align="left">Polity V</td>
+<td align="left">democracyData</td>
+<td align="left">Marshall, Monty G., Ted Robert Gurr. 2020. “Polity5: Political Regime Characteristics and Transitions, 1800-2018”. Dataset Users’ Manual. Center for Systemic Peace. Available at <a href="http://www.systemicpeace.org/inscr/p5manualv2018.pdf" class="uri">http://www.systemicpeace.org/inscr/p5manualv2018.pdf</a></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>本資料の作成にあたっては<strong>Rmarkdown</strong>, <strong>bookdown</strong>を利用しています. R markdownについてはとくに<a href="https://bookdown.org/yihui/rmarkdown-cookbook/">Xie, Yihui, Dervieux, Christope, and Riederer, Emily(2021) R Markdown cookbook</a>とその<a href="https://gedevan-aleksizde.github.io/rmarkdown-cookbook/">翻訳版</a>を参照しました. Bookdownについては<a href="https://bookdown.org/yihui/bookdown/">Xie, Yihui(2021) bookdown: Authoring Books and Technical Documents with R Markdown</a>を参照しました.<a href="index.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>タディ(2020)も，Rの強みを豊富なパッケージを提供するそのエコシステムと，多くのデータ形式が読み込み可能であることを評価しています.<a href="index.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
