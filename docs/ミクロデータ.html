@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 5 COVID-19 | 資料 Rで社会経済データの取得　(work in progress)</title>
-  <meta name="description" content=" 5 COVID-19 | 資料 Rで社会経済データの取得　(work in progress)" />
+  <title> 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content=" 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 5 COVID-19 | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:title" content=" 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 5 COVID-19 | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="twitter:title" content=" 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ミクロデータ.html"/>
-<link rel="next" href="snsデータ-テキスト分析-tidytext.html"/>
+<link rel="prev" href="民主主義国家データ.html"/>
+<link rel="next" href="covid-19.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -261,63 +261,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="covid-19" class="section level1" number="5">
-<h1><span class="header-section-number"> 5</span> COVID-19</h1>
-<p>COVID-19は感染症専門の研究にとどまらず、すべての研究者にとって大きな関心の的です. RコミュニティにおいてもCOVID-19の分析に資することを目的とした以下のようなパッケージが開発されています.</p>
+<div id="ミクロデータ" class="section level1" number="4">
+<h1><span class="header-section-number"> 4</span> ミクロデータ</h1>
+<p>ミクロレベルのデータベースとしてはサーベイ調査が中心になります.</p>
 <ul>
-<li><a href="https://github.com/YuLab-SMU/nCov2019">nCov2019</a><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></li>
-<li><a href="https://github.com/RamiKrispin/coronavirus">coronavirus</a></li>
-<li><a href="https://github.com/joachim-gassen/tidycovid19">tidycovid</a></li>
+<li><ol style="list-style-type: decimal">
+<li>European Social Survey: essurvey</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>General Social Survey: gasser</li>
+</ol></li>
 </ul>
-<p>なかでも応用経済学者Joachim Gassen氏によって開発されたtidycovidはcovid-19データをダウンロードし、整理し、ビジュアル化するために有益なパッケージです.これはデータパッケージですが、その優れた点はCovid-19データだけではなく、各種の政策データ、人々の移動データ,さらにすでに紹介した世界銀行のデータも提供されています。くわえてダウンロードしたさまざまなデータをマージする機能も提供されています.</p>
-<div id="tidycovidを利用する" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> tidycovidを利用する</h2>
-<div id="tidycovidのインストール" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> tidycovidのインストール</h3>
-<p>GitHub等に保存されたパッケージをインストールするためにはremotesパッケージをインストールしておく必要があります。一度、組み込むだけですので、コンソール画面で実行しても良いでしょう。</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="covid-19.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール    </span></span>
-<span id="cb304-2"><a href="covid-19.html#cb304-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.pacakages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb304-3"><a href="covid-19.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # remotesの呼び出し</span></span>
-<span id="cb304-4"><a href="covid-19.html#cb304-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(remotes)</span></code></pre></div>
-<p>続けてremotesを利用し、tidycovid19をインストールします.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="covid-19.html#cb305-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のインストール</span></span>
-<span id="cb305-2"><a href="covid-19.html#cb305-2" aria-hidden="true" tabindex="-1"></a> remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;joachim-gassen/tidycovid19&quot;</span>)</span></code></pre></div>
+<div id="general-social-survey-gssr" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> General Social Survey – gssr</h2>
+<p>General Social Survey（GSS）は、現在、アメリカで実施されている全般的な社会調査です。現代のアメリカ社会に関するデータを収集し、これによりアメリカの人々の態度、行動、属性の傾向をモニターできます。GSSは最大80年間のトレンドを追跡することができます。</p>
+<p><a href="http://gss.norc.org/About-The-GSS">GSSのウェブサイト</a>ではデータはstataおよびspssのフォーマットで提供されています。Rで利用するためにgssrが開発されています。これは、General Social Surveyの累積データ（1972-2018)と３つのWaveのパネルデータをまとめたデータパッケージです。</p>
 </div>
-<div id="tidycovidの関数概要" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> tidycovidの関数概要</h3>
-<p>具体的には、このパッケージには、データをダウンロードするための以下の関数が用意されています.</p>
-<ul>
-<li><p>download_jhu_csse_covid19_data(): ジョンズ・ホプキンス大学CSSEのGithub RepoからCovid-19データをダウンロードします.なお、データは、ウイルスの世界的な広がりを評価することに関心のある研究者や一般の人々にとって、標準的なリソースとして発展してきました。</p></li>
-<li><p>download_ecdc_covid19_data(): 欧州疾病予防管理センターが提供するCovid-19の症例データをダウンロードします.このデータは毎週更新され、週ごと、国ごとに報告された新しいCovid-19症例の数に関する最新の公開データが含まれています。</p></li>
-<li><p>download_owid_data(): <a href="https://ourworldindata.org/coronavirus-testing">Our World in Data</a>チームが収集したデータをダウンロードします。このチームは、入院、検査、予防接種に関するデータを複数の国の情報源から体系的に収集しています。</p></li>
-<li><p>download_acaps_npi_data(): Assessment Capacities Project (ACAPS)が提供するGovernment measures（政府政策）データセットをダウンロードします,これらのデータにより、研究者は医薬品以外の介入がウイルスの発生に与える影響を研究することができます.</p></li>
-<li><p>download_oxford_npi_data(): 政府の介入に関する代替データソースであるOxford Covid-19 Government Response Trackerからデータをダウンロードできます.</p></li>
-<li><p>download_apple_mtr_data(): Appleが提供するCovid-19関連のMobility Trends Reportをダウンロードします.</p></li>
-<li><p>download_google_cmr_data(): Google COVID-19 Community Mobility Reportsのデータをダウンロードします.Googleは国別、地域別のデータを含むCSVファイルを提供しています.このデータは、国、地域、米国の郡レベルで利用可能です。</p></li>
-<li><p>download_google_trends_data(): コロナウイルス」という言葉の検索数に関する Google トレンドデータをダウンロードします.このデータを使って、国ごとに、また国の中での時系列で、Covid-19に対する世間の注目度を評価することができます。このデータは、国、地域、都市レベルで利用可能ですが、Google Trendsは検索ボリュームの多い地域にのみ、より詳細なデータを提供しているため、利用可能なデータは国によって異なります。</p></li>
-<li><p>download_wbank_data(): download_wbank_data(): {wbstats}パッケージを使用し,世界銀行が提供する国レベルの情報をダウンロードします.これらのデータを使用して、マクロ経済変数とウイルスとの関連性を評価したりすることができます.</p></li>
-<li><p>download_merged_data():すべてのデータソースをダウンロードし、マージされた国別パネルを作成します.</p></li>
-</ul>
-</div>
-</div>
-<div id="imf-covid-19-recovery-index" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> IMF COVID-19 Recovery Index</h2>
+<div id="european-social-survey-essurvey" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> European Social Survey – essurvey</h2>
+<p>essurveyパッケージは、European Social Survey(ESS)データをできるだけ簡単にダウンロードできるように改発されたRパッケージです。ラウンド（異なる時点での同じ調査を表すための波）、選択された国のラウンド、どのラウンド/国が利用可能かを表示するためのいくつかのヘルパー関数を持っています。essurveyパッケージの詳細な例については、パッケージのウェブサイトにあるヴィネットやその他のドキュメントをチェックしてください。</p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="12">
-<li id="fn12"><p>Wu T, Hu E, Ge X<em>, Yu G</em>. 2021. nCov2019: an R package for studying the COVID-19 coronavirus pandemic. PeerJ 9:e11421 <a href="https://doi.org/10.7717/peerj.11421" class="uri">https://doi.org/10.7717/peerj.11421</a><a href="covid-19.html#fnref12" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="ミクロデータ.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="snsデータ-テキスト分析-tidytext.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="民主主義国家データ.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="covid-19.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
