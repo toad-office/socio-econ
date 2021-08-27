@@ -34,7 +34,7 @@
 <link rel="prev" href="covid-19.html"/>
 
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,13 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -157,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
 <li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse[^1-1]</a>
 <ul>
 <li class="chapter" data-level="1.3.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
 <li class="chapter" data-level="1.3.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
@@ -272,11 +265,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>わたしたちは常日頃,何かに対する情報を知りたいとき,インターネット検索を行っています.その意味では検索はわたしたちの関心を示していると言っても良いでしょう.インターネット検索の巨人は,言うまでもなく,Googleです.Googleは膨大な検索データを蓄積していますが,これをもとに<a href="https://trends.google.com/trends/?geo=JP">Googleトレンド</a>と呼ばれるサービスを提供しています.Googleトレンドは人々の関心を知る上で強力なツール です.トレンドの計算にあたっては検索のピーク時を100としたときの相対指数です.したがって数値の大きさは検索条件を変更すると変わってしまうことに留意する必要があります.</p>
 <p>Googleトレンドでは,地域,期間を指定し,任意の検索キーワードの相対的な人気の程度の推移を調べることができます.Rには,こうしたGoogleトレンドのデータを取得するパッケージgtrendsRやtrendyが開発されています.
 本資料ではgtrendsRを利用します.それではこのパッケージをインストールし,新型コロナウィルスに対する人々の関心を見ることにしましょう.インストールするためにはコンソール画面に次のように入力し,エンターキーを押してください.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="snsデータ-テキスト分析-tidytext.html#cb306-1" aria-hidden="true" tabindex="-1"></a>    install. <span class="fu">packages</span>(<span class="st">&quot;gtrendsR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="snsデータ-テキスト分析-tidytext.html#cb8-1" aria-hidden="true" tabindex="-1"></a>    install. <span class="fu">packages</span>(<span class="st">&quot;gtrendsR&quot;</span>)</span></code></pre></div>
 <p>次にこのパッケージを利用するために,スクリプト画面に</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="snsデータ-テキスト分析-tidytext.html#cb307-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(gtrendsR)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="snsデータ-テキスト分析-tidytext.html#cb9-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(gtrendsR)</span></code></pre></div>
 <p>と入力し,[Run]をクリックします.これでgtrendsRを利用できます.最初に,Googleトレンドページでも調べることができますが,特定のキーワードを検索し,その推移を見てみましょう.このためのgtrendsRの基本的なコードは次のようになります.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="snsデータ-テキスト分析-tidytext.html#cb308-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gtrends</span>(<span class="at">keyword=</span><span class="st">&quot;&quot;</span>, <span class="at">geo =</span><span class="st">&quot;&quot;</span>, <span class="at">time =</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="snsデータ-テキスト分析-tidytext.html#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gtrends</span>(<span class="at">keyword=</span><span class="st">&quot;&quot;</span>, <span class="at">geo =</span><span class="st">&quot;&quot;</span>, <span class="at">time =</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <ul>
 <li>keyword=“ ”には検索キーワードを入力します.複数のキーワードを入力したい場合はc( )を使い,たとえば,keywords = c(“新型コロナウィルス”,”抗原検査”)と入力します.</li>
 <li>geo= “ ”ではiso２コードを使って検索地域を指定します.デフォルトではall,つまり全世界です.複数の地域を指定したい場合は,同じくc( )を使います.たとえば,日本,アメリカ,中国を指定したい場合,geo=c(“JP”,”US”,”CN”)と入力します.</li>
@@ -290,9 +283,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>それではgtrendsRを使って,キーワードを「COVID-19」,「PCR」,「AKB」,地域を「日本」,期間を「2020年1月21日から2021年8月13日」とし,検索トレンドをみてみましょう.「AKB」は比較のために入れていますが,国民的アイドルを凌ぐ「COVID-19」と「PCR」の「相対的な人気」が分かります.スクリプト画面に次のように入力し,実行[Run]してください.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="snsデータ-テキスト分析-tidytext.html#cb309-1" aria-hidden="true" tabindex="-1"></a>    trend <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="at">keyword=</span><span class="fu">c</span>(<span class="st">&quot;COVID-19&quot;</span>,<span class="st">&quot;PCR&quot;</span>,<span class="st">&quot;AKB&quot;</span>), <span class="at">geo=</span><span class="st">&quot;JP&quot;</span>, <span class="at">time =</span> <span class="st">&quot;2020-01-21 2021-08-18&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="snsデータ-テキスト分析-tidytext.html#cb11-1" aria-hidden="true" tabindex="-1"></a>    trend <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="at">keyword=</span><span class="fu">c</span>(<span class="st">&quot;COVID-19&quot;</span>,<span class="st">&quot;PCR&quot;</span>,<span class="st">&quot;AKB&quot;</span>), <span class="at">geo=</span><span class="st">&quot;JP&quot;</span>, <span class="at">time =</span> <span class="st">&quot;2020-01-21 2021-08-18&quot;</span>)</span></code></pre></div>
 <p>この例では結果をtrendという名前をつけたオブジェクトに容れています.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="snsデータ-テキスト分析-tidytext.html#cb310-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(trend)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="snsデータ-テキスト分析-tidytext.html#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(trend)</span></code></pre></div>
 <pre><code>##                     Length Class      Mode
 ## interest_over_time  7      data.frame list
 ## interest_by_country 0      -none-     NULL
@@ -310,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>related_queriesは関連した検索語が入ったデータフレームです.</li>
 </ul>
 <p>この他,国ごとのデータ,DMAごとのデータ,関連したトピックごとのデータもありますが,ここでの例では国をJP,複数の検索ワードを指定したために,いずれもNULL（データなし）となっています.オブジェクトtrendの中のinterest_over_time（時間を通じた関心）はgtrendsRの中のplot.gtrends関数によって簡単にグラフ化できます.次のように入力してみてください.以下のようなグラフが表示されます.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="snsデータ-テキスト分析-tidytext.html#cb312-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(trend)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="snsデータ-テキスト分析-tidytext.html#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(trend)</span></code></pre></div>
 <p><img src="EconData_files/figure-html/g5-1.png" width="672" /></p>
 <p>新型コロナウィルスの拡大以前には人々の関心は,新型コロナウィルスよりも,国民的人気アイドルAKBにあったことが分かります.しかし,3月末から4月初頭にCOVID-19に対する関心は急上昇します.PCR検査はいったん2月末に大きな関心を呼びます.これはおそらくダイヤモンドプリンセス号の新型コロナウィルスの集団発生に起因すると思われます.</p>
 <p>その後,PCRに対するヒット数も低下しますが,しかし感染者数が拡大するにつれて,4月にふたたび大きく注目されています.興味深いことにPCR検査の「人気」はパンデミックの波と一致しているようです.それに対してCOVID-19の「人気」は2020年代半ばに低下し、以後、一貫して低い水準にとどまります.これは人々がCOVID-19に慣れ、関心を失って来ていることを物語っているのかもしれません.AKBの人気が大幅に伸びていくことを期待したいものです.</p>
@@ -320,11 +313,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ツイッターをつうじて,新型コロナウィルスに関する社会の声を集めることにします.Rにはツイッターからデータを収集する便利なパッケージrtweetが開発されています.他にもtwitteRというパッケージもありますが,今ではrtweetがツイッター・データにアクセするための標準的ツールとなりつつあります.</p>
 <p>ツイッター情報を取得するためには,API(Application Programming Interface)認証という面倒な事前準備が必要でしたが,rtweetを利用することで,必要なのはTwitterアカウント(ユーザー名とパスワード)だけとなりました.認証を受けるには,Rの対話型セッション中にTwitterのAPIにリクエストを送るだけです.つまり,<strong>search_tweets()</strong>,<strong>get_timeline()</strong>などのrtweetパッケージの関数を使用するだけです.自分のTwitterアカウントに代わってWebブラウザのポップアップから認証を行うことができます.これによりトークン（パスワード生成）が作成され,今後の利用のために保存されます.</p>
 <p>ツイッターデータ収集のために,rtweetは多くの関数を提供しています.たとえば,現在の日本のトレンドを知りたい場合は次のように入力します.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="snsデータ-テキスト分析-tidytext.html#cb313-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_trends</span>(<span class="st">&quot;japan&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="snsデータ-テキスト分析-tidytext.html#cb15-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_trends</span>(<span class="st">&quot;japan&quot;</span>)</span></code></pre></div>
 <p>収集されたトレンドワードをみてみましょう.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="snsデータ-テキスト分析-tidytext.html#cb314-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">get_trends</span>(<span class="st">&quot;japan&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb314-2"><a href="snsデータ-テキスト分析-tidytext.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trend) <span class="sc">%&gt;%</span> </span>
-<span id="cb314-3"><a href="snsデータ-テキスト分析-tidytext.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="snsデータ-テキスト分析-tidytext.html#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">get_trends</span>(<span class="st">&quot;japan&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="snsデータ-テキスト分析-tidytext.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trend) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="snsデータ-テキスト分析-tidytext.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 1
 ##   trend                
 ##   &lt;chr&gt;                
@@ -337,48 +330,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>これは2021-08-27時点のトレンドワードです.View() を利用すれば、すべてを見ることができます.</p>
 <p>rtweetパッケージの中でもっとも有益な関数は<strong>search_tweets()</strong>です.search_tweets()は検索語queryによって指定されたツイートデータを得ることができます.基本的なコードは以下のようになります,</p>
 <p>rtweetパッケージの中でもっとも有益な関数は<strong>search_tweets()</strong>です.search_tweets()は検索語queryによって指定されたツイートデータを得ることができます.基本的なコードは以下のようになります.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="snsデータ-テキスト分析-tidytext.html#cb316-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">seach_tweets</span>(<span class="at">q=</span><span class="st">&quot;検索語&quot;</span>,<span class="at">n =</span> 取得するツイッターの数)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="snsデータ-テキスト分析-tidytext.html#cb18-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">seach_tweets</span>(<span class="at">q=</span><span class="st">&quot;検索語&quot;</span>,<span class="at">n =</span> 取得するツイッターの数)</span></code></pre></div>
 <ul>
 <li><p>q= “corona virus”と入力すると,“corona”と“virus”の両方の検索語と含んだツイートを探します.つまり検索語の間にスペースを容れると,and検索になります.OR検索を利用する場合は,q=“corona OR virus”とします.</p></li>
 <li><p>取得できるツィート数にはAPIの制限があります.ツィーターの場合は,6～9日分の過去のツイート,1回のAPIコールで18,000ツイート,1時間に100回のリクエストに制限されています.このため特定のイベント（例えば自然災害や選挙やなど）についてデータを集めるさいには,先を考えてデータ収集を行う必要があります.</p></li>
 </ul>
 <p>それでは新型コロナウィルスに関するツイートを集めてみましょう.新型コロナウィルスに関連した検索後としては“covid-19”, “coronavirus”が考えられます.両方のいずれかを含む（つまりOR検索）ツイートを探してみましょう.上限を18,000ツイートとしておきます.さらに,リツイートは除外するために,include_rts=FALSE（リツイートを含める場合はTRUEです）を入れ,言語を英語に指定するために,引数lang=“en”と指定します.そして結果をオブジェクトtweet_covidに容れます.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="snsデータ-テキスト分析-tidytext.html#cb317-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="at">q=</span><span class="st">&quot;covid-19 OR coronavirus&quot;</span>, <span class="at">n =</span> <span class="dv">18000</span>,<span class="at">include_rts =</span> <span class="cn">FALSE</span>,<span class="at">lang =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="snsデータ-テキスト分析-tidytext.html#cb19-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="at">q=</span><span class="st">&quot;covid-19 OR coronavirus&quot;</span>, <span class="at">n =</span> <span class="dv">18000</span>,<span class="at">include_rts =</span> <span class="cn">FALSE</span>,<span class="at">lang =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
 <p>これによってtweet_covidというデータフレームが出来上がります.コンソール画面に次のように入力すれば内容が表示されます.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="snsデータ-テキスト分析-tidytext.html#cb318-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="snsデータ-テキスト分析-tidytext.html#cb20-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid</span></code></pre></div>
 <pre><code>## # A tibble: 18,000 × 90
-##    user_id status_id created_at          screen_name     text  source display_text_wi…
-##      &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
-##  1 1.05e18   1.43e18 2021-08-26 23:24:41 LINA05564177    &quot;@CD… Twitt…              138
-##  2 4.92e 8   1.43e18 2021-08-26 23:24:40 LeroyWesterling &quot;Let… Twitt…              256
-##  3 7.24e17   1.43e18 2021-08-26 23:24:39 demsdestroyUS11 &quot;The… Twitt…              294
-##  4 7.24e17   1.43e18 2021-08-26 23:23:39 demsdestroyUS11 &quot;The… Twitt…              294
-##  5 4.12e 7   1.43e18 2021-08-26 20:56:48 scottawanga     &quot;She… Twitt…              146
-##  6 4.12e 7   1.43e18 2021-08-26 23:24:37 scottawanga     &quot;You… Twitt…              116
-##  7 1.75e 8   1.43e18 2021-08-26 23:24:37 cgilmart        &quot;Whe… Twitt…              245
-##  8 1.22e18   1.43e18 2021-08-26 23:24:35 ComishWeinroth  &quot;Onl… Twitt…               83
-##  9 4.06e 7   1.43e18 2021-08-26 23:24:33 dankatzradio    &quot;Jud… Twitt…              219
-## 10 1.90e 9   1.43e18 2021-08-26 23:24:32 pressprogress   &quot;The… Twitt…              256
-## # … with 17,990 more rows, and 83 more variables: reply_to_status_id &lt;dbl&gt;,
-## #   reply_to_user_id &lt;dbl&gt;, reply_to_screen_name &lt;chr&gt;, is_quote &lt;lgl&gt;,
-## #   is_retweet &lt;lgl&gt;, favorite_count &lt;dbl&gt;, retweet_count &lt;dbl&gt;, quote_count &lt;lgl&gt;,
+##    user_id status_id created_at          screen_name     text            source 
+##      &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;           &lt;chr&gt;           &lt;chr&gt;  
+##  1 1.05e18   1.43e18 2021-08-26 23:24:41 LINA05564177    &quot;@CDCofBC Can&#39;… Twitte…
+##  2 4.92e 8   1.43e18 2021-08-26 23:24:40 LeroyWesterling &quot;Let’s be hon…  Twitte…
+##  3 7.24e17   1.43e18 2021-08-26 23:24:39 demsdestroyUS11 &quot;The entire De… Twitte…
+##  4 7.24e17   1.43e18 2021-08-26 23:23:39 demsdestroyUS11 &quot;The entire De… Twitte…
+##  5 4.12e 7   1.43e18 2021-08-26 20:56:48 scottawanga     &quot;She could hav… Twitte…
+##  6 4.12e 7   1.43e18 2021-08-26 23:24:37 scottawanga     &quot;You gotta han… Twitte…
+##  7 1.75e 8   1.43e18 2021-08-26 23:24:37 cgilmart        &quot;Where’s’THE…   Twitte…
+##  8 1.22e18   1.43e18 2021-08-26 23:24:35 ComishWeinroth  &quot;Only 7 ICU be… Twitte…
+##  9 4.06e 7   1.43e18 2021-08-26 23:24:33 dankatzradio    &quot;Judge Kathlee… Twitte…
+## 10 1.90e 9   1.43e18 2021-08-26 23:24:32 pressprogress   &quot;The US Food a… Twitte…
+## # … with 17,990 more rows, and 84 more variables: display_text_width &lt;dbl&gt;,
+## #   reply_to_status_id &lt;dbl&gt;, reply_to_user_id &lt;dbl&gt;,
+## #   reply_to_screen_name &lt;chr&gt;, is_quote &lt;lgl&gt;, is_retweet &lt;lgl&gt;,
+## #   favorite_count &lt;dbl&gt;, retweet_count &lt;dbl&gt;, quote_count &lt;lgl&gt;,
 ## #   reply_count &lt;lgl&gt;, hashtags &lt;lgl&gt;, symbols &lt;lgl&gt;, urls_url &lt;lgl&gt;,
-## #   urls_t.co &lt;lgl&gt;, urls_expanded_url &lt;lgl&gt;, media_url &lt;lgl&gt;, media_t.co &lt;lgl&gt;,
-## #   media_expanded_url &lt;lgl&gt;, media_type &lt;lgl&gt;, ext_media_url &lt;lgl&gt;,
-## #   ext_media_t.co &lt;lgl&gt;, ext_media_expanded_url &lt;lgl&gt;, ext_media_type &lt;lgl&gt;, …</code></pre>
-<p><code>A tibble: 17,985×90</code>から理解されるように、このデータフレームtweet_covidは17,985の行と90の列（変数）持ちます。しかし、hashtagsが含まれているため、変数の数が多くなっています.
+## #   urls_t.co &lt;lgl&gt;, urls_expanded_url &lt;lgl&gt;, media_url &lt;lgl&gt;,
+## #   media_t.co &lt;lgl&gt;, media_expanded_url &lt;lgl&gt;, media_type &lt;lgl&gt;, …</code></pre>
+<p><code>A tibble: 18,000×90</code>から理解されるように、このデータフレームtweet_covidは18,000の行と90の列（変数）持ちます。しかし、hashtagsが含まれているため、変数の数が多くなっています.
 そのそれぞれの行（観察値）は異なったツイートです.過去９日間（実際には,数時間のうちに18,000のツィートに達してしまいます）に,このキーワードを含むツィートがどれだけつぶやかれたのかをグラフにしてみましょう
 rtweetパッケージの中のts_plot()関数によってその頻度を簡単にみることができます.次のように入力すると次のグラフが描かれます.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="snsデータ-テキスト分析-tidytext.html#cb320-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ts_plot</span>(tweet_covid,<span class="at">by =</span> <span class="st">&quot;mins&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="snsデータ-テキスト分析-tidytext.html#cb22-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ts_plot</span>(tweet_covid,<span class="at">by =</span> <span class="st">&quot;mins&quot;</span>)</span></code></pre></div>
 <p><img src="EconData_files/figure-html/tw8-1.png" width="672" /></p>
 <p>ts_plot()関数のもっともシンプルな用法は２つの引数を指定するだけです.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="snsデータ-テキスト分析-tidytext.html#cb321-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ts_plot</span>(データフレーム名,<span class="at">by=</span><span class="st">&quot;時間間隔の指定&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="snsデータ-テキスト分析-tidytext.html#cb23-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ts_plot</span>(データフレーム名,<span class="at">by=</span><span class="st">&quot;時間間隔の指定&quot;</span>)</span></code></pre></div>
 <p>データフレーム名はこの例ではtweet_covidです.by=によって時間の間隔“mins”, “hours”, “days”, “weeks”を指定できます.たとえば3日刻みを指定する場合は,by = “3 days”とします.この例ではby = “mins”によって１分の間隔を指定しています.</p>
 </div>
 <div id="ツィッターテキストの分析---tidytext" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> ツィッターテキストの分析 - tidytext</h2>
 <p>それでは「社会」の声を聞いてみましょう.ツイッターのテキストデータの分析には,Silge,Robinsonの両氏によって開発された<a href="https://www.tidytextmining.com">tidytextパッケージ</a>を活用することになります.
-最初に,rtweetで集めたテキストデータを抜き出し,テキスト分析に利用しやすいようにデータを編集する必要があります.その上で,テキストデータを視覚的に表現することにします.おもな手順は次のとおりです.</p>
+最初に,rtweetで集めたテキストデータを抜き出し,テキスト分析に利用しやすいようにデータを編集します.その上で,テキストデータを視覚的に表現することにします.おもな手順は次のとおりです.</p>
 <ul>
 <li><ol style="list-style-type: decimal">
 <li>文書の分割 ― トークン化</li>
@@ -410,73 +403,63 @@ rtweetパッケージの中のts_plot()関数によってその頻度を簡単�
 </ul>
 <p><strong>(1) 文書を単語に分割 - unnest_tokens()</strong></p>
 <p>分析の対象はツイッターによってつぶやかれたテキスト部分です.そこで最初に,データフレームtweet_covidからつぶやかれた時間<strong>created_at</strong>とテキスト<strong>text</strong>の２つの変数を取り出しておきましょう.そしてその結果をオブジェクトtext_twに容れます.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="snsデータ-テキスト分析-tidytext.html#cb322-1" aria-hidden="true" tabindex="-1"></a>text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
-<span id="cb322-2"><a href="snsデータ-テキスト分析-tidytext.html#cb322-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">select</span>(created_at,text)        <span class="co"># select()を使って特定の変数列を抽出</span></span></code></pre></div>
-<p>View(text_tw)によってテキスト部分―text変数―をみると,たとえば,3行目に
-“Teachers continue to throng vaccination centres in the five divisions of Kampala to receive their Covid-19 #Sinovac jab in adherence to condition pre-set by <span class="citation">@GovUganda</span> for reopening of schools_SportsUg ” のように長い文書（複数の単語を連結したもの）になっています.これではテキスト分析には適しません.テキスト分析のためには,さらに,それぞれのツィート文書を単語wordに分割する必要があります.テキスト文書を,整理された形式（tidy形式）で単語に分割するために,Rパッケージ<strong>tidytext</strong>の<strong>unnest_tokens()</strong>関数を使います.
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="snsデータ-テキスト分析-tidytext.html#cb24-1" aria-hidden="true" tabindex="-1"></a>text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="snsデータ-テキスト分析-tidytext.html#cb24-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">select</span>(created_at,text)        <span class="co"># select()を使って特定の変数列を抽出</span></span></code></pre></div>
+<p>View(text_tw)によってテキスト部分―text変数―をみると,たとえば,3行目に</p>
+<blockquote>
+<p>“Teachers continue to throng vaccination centres in the five divisions of Kampala to receive their Covid-19 #Sinovac jab in adherence to condition pre-set by <span class="citation">@GovUganda</span> for reopening of schools_SportsUg ”</p>
+</blockquote>
+<p>のように長い文書（複数の単語を連結したもの）があります.これではテキスト分析には適しません.テキスト分析のためには,さらに,それぞれのツィート文書を単語wordに分割する必要があります.テキスト文書を,整理された形式（tidy形式）で単語に分割するために,Rパッケージ<strong>tidytext</strong>の<strong>unnest_tokens()</strong>関数を使います.
 この関数を利用するために,パッケージtidytextをインストールし,library()で呼び出しておきましょう.</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="snsデータ-テキスト分析-tidytext.html#cb323-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
-<span id="cb323-2"><a href="snsデータ-テキスト分析-tidytext.html#cb323-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidytext)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="snsデータ-テキスト分析-tidytext.html#cb25-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
+<span id="cb25-2"><a href="snsデータ-テキスト分析-tidytext.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidytext)</span></code></pre></div>
 <p>それぞれ実行しておいてください.<strong>unnest_tokens()</strong>関数の書き方は次のようになります.</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="snsデータ-テキスト分析-tidytext.html#cb324-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest_tokens</span>(データフレーム名, 作成される変数列名,単語に分割する変数列名)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="snsデータ-テキスト分析-tidytext.html#cb26-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest_tokens</span>(データフレーム名, 作成される変数列名,単語に分割する変数列名)</span></code></pre></div>
 <p>上述のスクリプトにパイプでunnest_tokens()の命令を付け加えることにします.この例ではパイプ（％＞％）でつなげていますので,unnest_tokens()関数の中にデータフレーム名を書く必要はありません.</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="snsデータ-テキスト分析-tidytext.html#cb325-1" aria-hidden="true" tabindex="-1"></a>  text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
-<span id="cb325-2"><a href="snsデータ-テキスト分析-tidytext.html#cb325-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(created_at,text) <span class="sc">%&gt;%</span> </span>
-<span id="cb325-3"><a href="snsデータ-テキスト分析-tidytext.html#cb325-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unnest_tokens</span>(word,text)   <span class="co"># unnest_tokens()を使ってtextをwordに分割</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="snsデータ-テキスト分析-tidytext.html#cb27-1" aria-hidden="true" tabindex="-1"></a>  text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="snsデータ-テキスト分析-tidytext.html#cb27-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(created_at,text) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="snsデータ-テキスト分析-tidytext.html#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unnest_tokens</span>(word,text)   <span class="co"># unnest_tokens()を使ってtextをwordに分割</span></span></code></pre></div>
 <p>この結果をView()やstr()でデータフレームの中をみると,以下の図のように,textが単語に分割され,word変数が作成されたことが分かります.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="snsデータ-テキスト分析-tidytext.html#cb326-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(text_tw)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="snsデータ-テキスト分析-tidytext.html#cb28-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(text_tw)</span></code></pre></div>
 <pre><code>## tibble [498,588 × 2] (S3: tbl_df/tbl/data.frame)
 ##  $ created_at: POSIXct[1:498588], format: &quot;2021-08-26 23:24:41&quot; &quot;2021-08-26 23:24:41&quot; ...
 ##  $ word      : chr [1:498588] &quot;cdcofbc&quot; &quot;can&#39;t&quot; &quot;imagine&quot; &quot;k&quot; ...</code></pre>
 <p><strong>(2)ストップワーズの除去 ― anti_join(stop_words)</strong></p>
 <p>これによって整理されたデータフレーム（tidy形式）ができあがります.しかし,この図の変数wordの列をみると,at,the,for, ofなどの– よく使われますが,重要ではない–単語も抽出されています.こうした単語はストップワーズ<strong>stop words</strong>と呼ばれます.テキスト分析にはストップワーズは不要ですので取り除くとします.</p>
 <p>tidytextの中にはストップワーズを集めたデータセット<strong>stop_words</strong>が事前に用意されています.これと<strong>anti_join()</strong>関数を使ってstop wordsを取り除きます.anti_join()関数は基本的に２つのデータフレームを結合する関数ですが,anti_から想像されるようにマッチしなかった行からなるデータフレームを作成します.書式は以下のとおりです.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="snsデータ-テキスト分析-tidytext.html#cb328-1" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="snsデータ-テキスト分析-tidytext.html#cb30-1" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(x,y)</span></code></pre></div>
 <p>このスクリプトは,データフレームxの行が,データフレームyの行とマッチしなかったすべての行を返します.それでは次にストップワーズの入ったデータフレームを読み込みます.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="snsデータ-テキスト分析-tidytext.html#cb329-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">&quot;stop_words&quot;</span>)      <span class="co"># ストップワーズのデータセットを読み込みます</span></span></code></pre></div>
-<p>データフレームstop_wordsとtext_twを結合します.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="snsデータ-テキスト分析-tidytext.html#cb330-1" aria-hidden="true" tabindex="-1"></a>  text_tw01 <span class="ot">&lt;-</span> text_tw <span class="sc">%&gt;%</span></span>
-<span id="cb330-2"><a href="snsデータ-テキスト分析-tidytext.html#cb330-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(stop_words)  <span class="co"># anti_join()を使ってstop_wordsとマッチしない行を取得</span></span></code></pre></div>
-<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="snsデータ-テキスト分析-tidytext.html#cb31-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">&quot;stop_words&quot;</span>)      <span class="co"># ストップワーズのデータセットを読み込みます</span></span></code></pre></div>
+<p>データフレームstop_wordsとtext_twを結合します.結合した結果をtext_tw01というオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="snsデータ-テキスト分析-tidytext.html#cb32-1" aria-hidden="true" tabindex="-1"></a>  text_tw01 <span class="ot">&lt;-</span> text_tw <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="snsデータ-テキスト分析-tidytext.html#cb32-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(stop_words)  <span class="co"># anti_join()を使ってstop_wordsとマッチしない行を取得</span></span></code></pre></div>
 <p>この例でもパイプを使用していますので,最初のデータフレーム名は省略されます.anti_join()によってデータフレームstop_wordsの中に入っている行と一致しない,データフレームtext_twの行を返すことになります.つまり,text_twの中にあったat,of,toといったデータを持つ行がすべて取り除かれます.</p>
-<p>しかし,text_twの中をみると,さらに,不要なword―おもにサイト名等を表現する単語―が抽出されているようです.これはfilter()関数を使って除去しておきます.最初に,不要なwordをピックアップし,まとめてno_wordsに容れます.</p>
-<p>　　　no_words &lt;- c(“t.co”, “https”, “it’s”, “1”, “2”, “20yearshuaweieurope”,
-“tech4all”, “ixqblwihjg”, “__ice9”, “sir”,“protocol”, “karachistockexchange”, 以下省略)</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="snsデータ-テキスト分析-tidytext.html#cb332-1" aria-hidden="true" tabindex="-1"></a>   text_tw <span class="ot">&lt;-</span> text_tw <span class="sc">%&gt;%</span></span>
-<span id="cb332-2"><a href="snsデータ-テキスト分析-tidytext.html#cb332-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="sc">!</span>text <span class="sc">%in%</span> no_words)  　　<span class="co"># filter()関数を使って除去.</span></span></code></pre></div>
+<p>しかし,text_twの中をみると,さらに,不要なword―おもにサイト名等を表現する単語―が抽出されているようです.これはfilter()関数を使って除去しておきます.最初に,不要なwordをピックアップし,まとめて<strong>no_words</strong>というベクトルに容れます.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="snsデータ-テキスト分析-tidytext.html#cb33-1" aria-hidden="true" tabindex="-1"></a> no_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;t.co&quot;</span>,<span class="st">&quot;https&quot;</span>, <span class="st">&quot;it&#39;s&quot;</span>, <span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>, <span class="st">&quot;20yearshuaweieurope&quot;</span>, </span>
+<span id="cb33-2"><a href="snsデータ-テキスト分析-tidytext.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;tech4all&quot;</span>,<span class="st">&quot;ixqblwihjg&quot;</span>,<span class="st">&quot;sir&quot;</span>,<span class="st">&quot;protocol&quot;</span>,<span class="st">&quot;  </span></span>
+<span id="cb33-3"><a href="snsデータ-テキスト分析-tidytext.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="st">cdcofbc&quot;</span>,<span class="st">&quot;let’s&quot;</span>,<span class="st">&quot;nx7a11n3ib&quot;</span>,<span class="st">&quot;j23qrgxpfw&quot;</span>,<span class="st">&quot;z6ogdektio&quot;</span>,<span class="st">&quot;   </span></span>
+<span id="cb33-4"><a href="snsデータ-テキスト分析-tidytext.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="st">3ivitcxnh0&quot;</span>,<span class="st">&quot;dkvvsuzqqh&quot;</span>,<span class="st">&quot;g8qp6ejsap&quot;</span>,<span class="st">&quot;where’s’the&quot;</span>,<span class="st">&quot;data.https&quot;</span>,<span class="st">&quot;fgtgaeiyer&quot;</span>,<span class="st">&quot;ge24cvhuxe&quot;</span>,<span class="st">&quot;pvj0riwana&quot;</span>,<span class="st">&quot;ymdnwkxgwk&quot;</span>,<span class="st">&quot;s8qkrgo8vr&quot;</span>,<span class="st">&quot;vqjzb1pc2h&quot;</span>,<span class="st">&quot;    </span></span>
+<span id="cb33-5"><a href="snsデータ-テキスト分析-tidytext.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="st">r45kkjqpbx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="snsデータ-テキスト分析-tidytext.html#cb34-1" aria-hidden="true" tabindex="-1"></a>   text_tw02 <span class="ot">&lt;-</span> text_tw01 <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="snsデータ-テキスト分析-tidytext.html#cb34-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> no_words)  　　<span class="co"># filter()関数を使って除去.</span></span></code></pre></div>
 <p>filter(条件)は条件にあった行を返しますが,ここでは条件の前に<strong>“!”</strong>をつけていますので,条件にあった行以外の行を返します.つまり,不要なword以外のwordを持つ行を返します.また,“x %in% y”は論理和を表現し,「xがyの中のどれかに一致する」場合を意味します.この例ではtextの中のwordが,no_wordsの中のどれかのwordに一致する,ということを意味します.</p>
-<p>これで分析に利用可能な,98行×2列のデータフレームtext_twが作成されました.次に,新型コロナウィルスに関わるツィッターにおいて「何」が—正確にはどのような単語が注目されているのかをみるかをために,wordcloudという手法を適用します.</p>
+<p>これで分析に利用可能な,259758行×2列のデータフレームtext_tw02が作成されました.次に,新型コロナウィルスに関わるツィッターにおいて「何」が—正確にはどのような単語が注目されているのかをみるかをために,wordcloudという手法を適用します.</p>
 <p><strong>(3)頻出語の可視化― wordcloud</strong>
 wordcloudとは,文章中で出現頻度の多い単語を選び出し,頻出語をその頻度に応じた大きさで雲のように描く手法です.この例で言えば,取得したツイッター文書からもっとも多く見られる単語を可視化することになります.wordcloud を使ってツイッター文書text_twの中の頻出語を可視化した結果が次の図です.
 <strong>wordcloud()</strong>関数を使って頻出語を出力するためには,<strong>tm</strong>というRパッケージも必要となります.そこで事前準備としてインストールし,呼び出しておきます.それぞれ次のように入力し,実行してください.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="snsデータ-テキスト分析-tidytext.html#cb333-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">install.package</span>(<span class="st">&quot;tm&quot;</span>)  <span class="co">#パッケージtmのインストール</span></span>
-<span id="cb333-2"><a href="snsデータ-テキスト分析-tidytext.html#cb333-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">library</span>(tm)               <span class="co"># tmの呼び出し</span></span></code></pre></div>
 <p>wordcloud()関数の基本コードは次のようになります.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="snsデータ-テキスト分析-tidytext.html#cb334-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wordcloud</span>(出力させる単語の列, 出現頻度数,<span class="at">max.words=</span>図示する最大単語数)</span></code></pre></div>
-<p>それではこの書式にしたがってツイッター文書text_twにwordcloud()を適用してみましょう.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="snsデータ-テキスト分析-tidytext.html#cb335-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wordcloud</span>(text_tw<span class="sc">$</span>word,text_tw<span class="sc">$</span>n, <span class="at">max.words =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="snsデータ-テキスト分析-tidytext.html#cb35-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wordcloud</span>(出力させる単語の列, 出現頻度数,<span class="at">max.words=</span>図示する最大単語数)</span></code></pre></div>
+<p>それではこの書式にしたがってツイッター文書text_tw02にwordcloud()を適用してみましょう.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="snsデータ-テキスト分析-tidytext.html#cb36-1" aria-hidden="true" tabindex="-1"></a>    text_tw02 <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="snsデータ-テキスト分析-tidytext.html#cb36-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">count</span>(word) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="snsデータ-テキスト分析-tidytext.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word,n, <span class="at">max.words =</span> <span class="dv">100</span>))</span></code></pre></div>
 <p>ここではデータフレーム名を明示する必要があります.つまりどのデータフレームの中のどの列を利用するかをRに教える必要があります.データフレーム名を明示するために,text_tw$を使っています.また,表示する単語数はmax.words=によって100単語としています.これを実行すると,以下の図が得られます.</p>
+<p><img src="figures/wordcloud.png" alt="Wordcloud, twitter" />
+人々がツイッターを使って新型コロナウィルス について発信するとき,おもにどのような単語が利用されているか.このwordcloudによって視覚的に捉えることができます.covidと19がもっとも多く使われています.この２つの単語もさほど意味がありませんので除外した方がよいかもしれません.次いで,vcaccine, vaccinated といった単語の出現頻度が高いということが理解されます.人々が新型コロナウィルスに対するワクチンに強い関心を寄せていることが分かります.</p>
 
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
