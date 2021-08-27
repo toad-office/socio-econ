@@ -24,7 +24,7 @@
 <meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-26" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -334,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 在任期間             
 ## 5 #総理大臣やってみた  
 ## 6 東京都内</code></pre>
-<p>これは2021-08-26時点のトレンドワードです.View() を利用すれば、すべてを見ることができます.</p>
+<p>これは2021-08-27時点のトレンドワードです.View() を利用すれば、すべてを見ることができます.</p>
 <p>rtweetパッケージの中でもっとも有益な関数は<strong>search_tweets()</strong>です.search_tweets()は検索語queryによって指定されたツイートデータを得ることができます.基本的なコードは以下のようになります,</p>
 <p>rtweetパッケージの中でもっとも有益な関数は<strong>search_tweets()</strong>です.search_tweets()は検索語queryによって指定されたツイートデータを得ることができます.基本的なコードは以下のようになります.</p>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="snsデータ-テキスト分析-tidytext.html#cb316-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">seach_tweets</span>(<span class="at">q=</span><span class="st">&quot;検索語&quot;</span>,<span class="at">n =</span> 取得するツイッターの数)</span></code></pre></div>
@@ -344,12 +344,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>それでは新型コロナウィルスに関するツイートを集めてみましょう.新型コロナウィルスに関連した検索後としては“covid-19”, “coronavirus”が考えられます.両方のいずれかを含む（つまりOR検索）ツイートを探してみましょう.上限を18,000ツイートとしておきます.さらに,リツイートは除外するために,include_rts=FALSE（リツイートを含める場合はTRUEです）を入れ,言語を英語に指定するために,引数lang=“en”と指定します.そして結果をオブジェクトtweet_covidに容れます.</p>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="snsデータ-テキスト分析-tidytext.html#cb317-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="at">q=</span><span class="st">&quot;covid-19 OR coronavirus&quot;</span>, <span class="at">n =</span> <span class="dv">18000</span>,<span class="at">include_rts =</span> <span class="cn">FALSE</span>,<span class="at">lang =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Rate limit exceeded - 88</code></pre>
-<pre><code>## Warning: Rate limit exceeded</code></pre>
-<p>これによってtweet_covidというデータフレームが出来上がります.コンソール画面に“tweet_covid”と入力すれば,内容が表示されます.そのそれぞれの行（観察値）は異なったツイートです.過去９日間（実際には,数時間のうちに18,000のツィートに達してしまいます）に,このキーワードを含むツィートがどれだけつぶやかれたのかをグラフにしてみましょう
+<p>これによってtweet_covidというデータフレームが出来上がります.コンソール画面に次のように入力すれば内容が表示されます.</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="snsデータ-テキスト分析-tidytext.html#cb318-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid</span></code></pre></div>
+<pre><code>## # A tibble: 18,000 × 90
+##    user_id status_id created_at          screen_name     text  source display_text_wi…
+##      &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;
+##  1 1.05e18   1.43e18 2021-08-26 23:24:41 LINA05564177    &quot;@CD… Twitt…              138
+##  2 4.92e 8   1.43e18 2021-08-26 23:24:40 LeroyWesterling &quot;Let… Twitt…              256
+##  3 7.24e17   1.43e18 2021-08-26 23:24:39 demsdestroyUS11 &quot;The… Twitt…              294
+##  4 7.24e17   1.43e18 2021-08-26 23:23:39 demsdestroyUS11 &quot;The… Twitt…              294
+##  5 4.12e 7   1.43e18 2021-08-26 20:56:48 scottawanga     &quot;She… Twitt…              146
+##  6 4.12e 7   1.43e18 2021-08-26 23:24:37 scottawanga     &quot;You… Twitt…              116
+##  7 1.75e 8   1.43e18 2021-08-26 23:24:37 cgilmart        &quot;Whe… Twitt…              245
+##  8 1.22e18   1.43e18 2021-08-26 23:24:35 ComishWeinroth  &quot;Onl… Twitt…               83
+##  9 4.06e 7   1.43e18 2021-08-26 23:24:33 dankatzradio    &quot;Jud… Twitt…              219
+## 10 1.90e 9   1.43e18 2021-08-26 23:24:32 pressprogress   &quot;The… Twitt…              256
+## # … with 17,990 more rows, and 83 more variables: reply_to_status_id &lt;dbl&gt;,
+## #   reply_to_user_id &lt;dbl&gt;, reply_to_screen_name &lt;chr&gt;, is_quote &lt;lgl&gt;,
+## #   is_retweet &lt;lgl&gt;, favorite_count &lt;dbl&gt;, retweet_count &lt;dbl&gt;, quote_count &lt;lgl&gt;,
+## #   reply_count &lt;lgl&gt;, hashtags &lt;lgl&gt;, symbols &lt;lgl&gt;, urls_url &lt;lgl&gt;,
+## #   urls_t.co &lt;lgl&gt;, urls_expanded_url &lt;lgl&gt;, media_url &lt;lgl&gt;, media_t.co &lt;lgl&gt;,
+## #   media_expanded_url &lt;lgl&gt;, media_type &lt;lgl&gt;, ext_media_url &lt;lgl&gt;,
+## #   ext_media_t.co &lt;lgl&gt;, ext_media_expanded_url &lt;lgl&gt;, ext_media_type &lt;lgl&gt;, …</code></pre>
+<p><code>A tibble: 17,985×90</code>から理解されるように、このデータフレームtweet_covidは17,985の行と90の列（変数）持ちます。しかし、hashtagsが含まれているため、変数の数が多くなっています.
+そのそれぞれの行（観察値）は異なったツイートです.過去９日間（実際には,数時間のうちに18,000のツィートに達してしまいます）に,このキーワードを含むツィートがどれだけつぶやかれたのかをグラフにしてみましょう
 rtweetパッケージの中のts_plot()関数によってその頻度を簡単にみることができます.次のように入力すると次のグラフが描かれます.</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="snsデータ-テキスト分析-tidytext.html#cb320-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ts_plot</span>(tweet_covid,<span class="at">by =</span> <span class="st">&quot;mins&quot;</span>)</span></code></pre></div>
-<p><img src="EconData_files/figure-html/tw5-1.png" width="672" /></p>
+<p><img src="EconData_files/figure-html/tw8-1.png" width="672" /></p>
 <p>ts_plot()関数のもっともシンプルな用法は２つの引数を指定するだけです.</p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="snsデータ-テキスト分析-tidytext.html#cb321-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ts_plot</span>(データフレーム名,<span class="at">by=</span><span class="st">&quot;時間間隔の指定&quot;</span>)</span></code></pre></div>
 <p>データフレーム名はこの例ではtweet_covidです.by=によって時間の間隔“mins”, “hours”, “days”, “weeks”を指定できます.たとえば3日刻みを指定する場合は,by = “3 days”とします.この例ではby = “mins”によって１分の間隔を指定しています.</p>
@@ -388,7 +409,53 @@ rtweetパッケージの中のts_plot()関数によってその頻度を簡単�
 </ol></li>
 </ul>
 <p><strong>(1) 文書を単語に分割 - unnest_tokens()</strong></p>
-<p>分析の対象はツイッターによってつぶやかれたテキスト部分です.そこで最初に,データフレームtweet_covidからつぶやかれた時間created_atとテキストtextの２つの変数を取り出しておきましょう.そしてその結果をオブジェクトtext_twに容れます.</p>
+<p>分析の対象はツイッターによってつぶやかれたテキスト部分です.そこで最初に,データフレームtweet_covidからつぶやかれた時間<strong>created_at</strong>とテキスト<strong>text</strong>の２つの変数を取り出しておきましょう.そしてその結果をオブジェクトtext_twに容れます.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="snsデータ-テキスト分析-tidytext.html#cb322-1" aria-hidden="true" tabindex="-1"></a>text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
+<span id="cb322-2"><a href="snsデータ-テキスト分析-tidytext.html#cb322-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">select</span>(created_at,text)        <span class="co"># select()を使って特定の変数列を抽出</span></span></code></pre></div>
+<p>View(text_tw)によってテキスト部分―text変数―をみると,たとえば,3行目に
+“Teachers continue to throng vaccination centres in the five divisions of Kampala to receive their Covid-19 #Sinovac jab in adherence to condition pre-set by <span class="citation">@GovUganda</span> for reopening of schools_SportsUg ” のように長い文書（複数の単語を連結したもの）になっています.これではテキスト分析には適しません.テキスト分析のためには,さらに,それぞれのツィート文書を単語wordに分割する必要があります.テキスト文書を,整理された形式（tidy形式）で単語に分割するために,Rパッケージ<strong>tidytext</strong>の<strong>unnest_tokens()</strong>関数を使います.
+この関数を利用するために,パッケージtidytextをインストールし,library()で呼び出しておきましょう.</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="snsデータ-テキスト分析-tidytext.html#cb323-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
+<span id="cb323-2"><a href="snsデータ-テキスト分析-tidytext.html#cb323-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidytext)</span></code></pre></div>
+<p>それぞれ実行しておいてください.<strong>unnest_tokens()</strong>関数の書き方は次のようになります.</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="snsデータ-テキスト分析-tidytext.html#cb324-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest_tokens</span>(データフレーム名, 作成される変数列名,単語に分割する変数列名)</span></code></pre></div>
+<p>上述のスクリプトにパイプでunnest_tokens()の命令を付け加えることにします.この例ではパイプ（％＞％）でつなげていますので,unnest_tokens()関数の中にデータフレーム名を書く必要はありません.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="snsデータ-テキスト分析-tidytext.html#cb325-1" aria-hidden="true" tabindex="-1"></a>  text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
+<span id="cb325-2"><a href="snsデータ-テキスト分析-tidytext.html#cb325-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(created_at,text) <span class="sc">%&gt;%</span> </span>
+<span id="cb325-3"><a href="snsデータ-テキスト分析-tidytext.html#cb325-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unnest_tokens</span>(word,text)   <span class="co"># unnest_tokens()を使ってtextをwordに分割</span></span></code></pre></div>
+<p>この結果をView()やstr()でデータフレームの中をみると,以下の図のように,textが単語に分割され,word変数が作成されたことが分かります.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="snsデータ-テキスト分析-tidytext.html#cb326-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(text_tw)</span></code></pre></div>
+<pre><code>## tibble [498,588 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ created_at: POSIXct[1:498588], format: &quot;2021-08-26 23:24:41&quot; &quot;2021-08-26 23:24:41&quot; ...
+##  $ word      : chr [1:498588] &quot;cdcofbc&quot; &quot;can&#39;t&quot; &quot;imagine&quot; &quot;k&quot; ...</code></pre>
+<p><strong>(2)ストップワーズの除去 ― anti_join(stop_words)</strong></p>
+<p>これによって整理されたデータフレーム（tidy形式）ができあがります.しかし,この図の変数wordの列をみると,at,the,for, ofなどの– よく使われますが,重要ではない–単語も抽出されています.こうした単語はストップワーズ<strong>stop words</strong>と呼ばれます.テキスト分析にはストップワーズは不要ですので取り除くとします.</p>
+<p>tidytextの中にはストップワーズを集めたデータセット<strong>stop_words</strong>が事前に用意されています.これと<strong>anti_join()</strong>関数を使ってstop wordsを取り除きます.anti_join()関数は基本的に２つのデータフレームを結合する関数ですが,anti_から想像されるようにマッチしなかった行からなるデータフレームを作成します.書式は以下のとおりです.</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="snsデータ-テキスト分析-tidytext.html#cb328-1" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(x,y)</span></code></pre></div>
+<p>このスクリプトは,データフレームxの行が,データフレームyの行とマッチしなかったすべての行を返します.それでは次にストップワーズの入ったデータフレームを読み込みます.</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="snsデータ-テキスト分析-tidytext.html#cb329-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">&quot;stop_words&quot;</span>)      <span class="co"># ストップワーズのデータセットを読み込みます</span></span></code></pre></div>
+<p>データフレームstop_wordsとtext_twを結合します.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="snsデータ-テキスト分析-tidytext.html#cb330-1" aria-hidden="true" tabindex="-1"></a>  text_tw01 <span class="ot">&lt;-</span> text_tw <span class="sc">%&gt;%</span></span>
+<span id="cb330-2"><a href="snsデータ-テキスト分析-tidytext.html#cb330-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(stop_words)  <span class="co"># anti_join()を使ってstop_wordsとマッチしない行を取得</span></span></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<p>この例でもパイプを使用していますので,最初のデータフレーム名は省略されます.anti_join()によってデータフレームstop_wordsの中に入っている行と一致しない,データフレームtext_twの行を返すことになります.つまり,text_twの中にあったat,of,toといったデータを持つ行がすべて取り除かれます.</p>
+<p>しかし,text_twの中をみると,さらに,不要なword―おもにサイト名等を表現する単語―が抽出されているようです.これはfilter()関数を使って除去しておきます.最初に,不要なwordをピックアップし,まとめてno_wordsに容れます.</p>
+<p>　　　no_words &lt;- c(“t.co”, “https”, “it’s”, “1”, “2”, “20yearshuaweieurope”,
+“tech4all”, “ixqblwihjg”, “__ice9”, “sir”,“protocol”, “karachistockexchange”, 以下省略)</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="snsデータ-テキスト分析-tidytext.html#cb332-1" aria-hidden="true" tabindex="-1"></a>   text_tw <span class="ot">&lt;-</span> text_tw <span class="sc">%&gt;%</span></span>
+<span id="cb332-2"><a href="snsデータ-テキスト分析-tidytext.html#cb332-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="sc">!</span>text <span class="sc">%in%</span> no_words)  　　<span class="co"># filter()関数を使って除去.</span></span></code></pre></div>
+<p>filter(条件)は条件にあった行を返しますが,ここでは条件の前に<strong>“!”</strong>をつけていますので,条件にあった行以外の行を返します.つまり,不要なword以外のwordを持つ行を返します.また,“x %in% y”は論理和を表現し,「xがyの中のどれかに一致する」場合を意味します.この例ではtextの中のwordが,no_wordsの中のどれかのwordに一致する,ということを意味します.</p>
+<p>これで分析に利用可能な,98行×2列のデータフレームtext_twが作成されました.次に,新型コロナウィルスに関わるツィッターにおいて「何」が—正確にはどのような単語が注目されているのかをみるかをために,wordcloudという手法を適用します.</p>
+<p><strong>(3)頻出語の可視化― wordcloud</strong>
+wordcloudとは,文章中で出現頻度の多い単語を選び出し,頻出語をその頻度に応じた大きさで雲のように描く手法です.この例で言えば,取得したツイッター文書からもっとも多く見られる単語を可視化することになります.wordcloud を使ってツイッター文書text_twの中の頻出語を可視化した結果が次の図です.
+<strong>wordcloud()</strong>関数を使って頻出語を出力するためには,<strong>tm</strong>というRパッケージも必要となります.そこで事前準備としてインストールし,呼び出しておきます.それぞれ次のように入力し,実行してください.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="snsデータ-テキスト分析-tidytext.html#cb333-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">install.package</span>(<span class="st">&quot;tm&quot;</span>)  <span class="co">#パッケージtmのインストール</span></span>
+<span id="cb333-2"><a href="snsデータ-テキスト分析-tidytext.html#cb333-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">library</span>(tm)               <span class="co"># tmの呼び出し</span></span></code></pre></div>
+<p>wordcloud()関数の基本コードは次のようになります.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="snsデータ-テキスト分析-tidytext.html#cb334-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wordcloud</span>(出力させる単語の列, 出現頻度数,<span class="at">max.words=</span>図示する最大単語数)</span></code></pre></div>
+<p>それではこの書式にしたがってツイッター文書text_twにwordcloud()を適用してみましょう.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="snsデータ-テキスト分析-tidytext.html#cb335-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wordcloud</span>(text_tw<span class="sc">$</span>word,text_tw<span class="sc">$</span>n, <span class="at">max.words =</span> <span class="dv">100</span>)</span></code></pre></div>
+<p>ここではデータフレーム名を明示する必要があります.つまりどのデータフレームの中のどの列を利用するかをRに教える必要があります.データフレーム名を明示するために,text_tw$を使っています.また,表示する単語数はmax.words=によって100単語としています.これを実行すると,以下の図が得られます.</p>
 
 </div>
 </div>
