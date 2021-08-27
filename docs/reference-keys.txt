@@ -74,8 +74,3 @@ tidycovidを利用する
 tidycovidのインストール
 tidycovidの関数概要
 imf-covid-19-recovery-index
-snsデータ-テキスト分析---tidytext
-社会の関心を知る---gtrendsr
-社会の声を集める---rtweet
-ツィッターテキストの分析---tidytext
-文書の分割とトークン化
