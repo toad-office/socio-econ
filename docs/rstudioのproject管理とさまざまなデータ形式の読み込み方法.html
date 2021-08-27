@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)</title>
-  <meta name="description" content=" 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <title> 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content=" 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)" />
+  <meta property="og:title" content=" 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 Rで社会経済データの取得　(work in progress)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)" />
+  <meta name="twitter:title" content=" 1 RStudioのProject管理とさまざまなデータ形式の読み込み方法 | 資料 Rで社会経済データの取得　(work in progress)" />
   
   
   
 
-<meta name="author" content="Socio-Econ@Office" />
+<meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-22" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
 <link rel="prev" href="index.html"/>
 <link rel="next" href="マクロデータ.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -166,19 +166,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#penn-world-table-pwt9"><i class="fa fa-check"></i><b>2.1</b> Penn World Table ― pwt9</a></li>
-<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#世界銀行world-bank-wdi"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#groningen-growth-and-development-centre"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="マクロデータ.html"><a href="マクロデータ.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.1.2" data-path="マクロデータ.html"><a href="マクロデータ.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#WD"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
 <li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
 <li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#eu統計局eurostat---eurostat"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#EC"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
 <li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#経済協力開発機構---oecd"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#OECD"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
 <li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
@@ -186,10 +190,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#imf---imfr"><i class="fa fa-check"></i><b>2.5.1</b> IMF - imfr</a></li>
-<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#bis"><i class="fa fa-check"></i><b>2.5.2</b> BIS</a></li>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - Quandl</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#オープンデータポータル---dbnomics"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
 <ul>
 <li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
 <li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
@@ -197,21 +202,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 民主主義を測る- vdemdata</a>
+<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
 <li class="chapter" data-level="3.1.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 政府の質を測る - rgog</a>
+<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
 <li class="chapter" data-level="3.2.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 政治体制を測る - democracyData</a></li>
+<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-socila-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Socila Survey – gssr</a></li>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a></li>
 <li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="covid-19.html"><a href="covid-19.html"><i class="fa fa-check"></i><b>5</b> COVID-19</a>
@@ -223,13 +232,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="covid-19.html"><a href="covid-19.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
-<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
-<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -244,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 R&amp;Rパッケージを利用した社会経済データの取得と利用方法(作成中)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
           </h1>
         </div>
 
@@ -274,21 +283,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <center>
 <img src="figures/fig4.png" title="fig:" style="width:50.0%" alt="プロジェクト作成手順4" />
 </center>
-<p><strong>[Directory name]</strong>の空欄のボックスに，新規プロジェクトを作成するディレクトリ名を入力します．ここではとりあえず<strong>Project_1</strong>という名前にしておきます．<strong>[Browse…]</strong>ボタンをクリックして，プロジェクトを置きたいディレクトリの場所を指定します．すると，新たに作ったプロジェクト用のディレクトリの下に，ディレクトリと同じ名前のプロジェクトができます．この例では“~/Project_1/”下に“Project_1.Rproj”ができます．次回の作業からは，RStudioのメニューから<strong>File &gt; Open Project…</strong>または，直接，ディレクトリを開いて，プロジェクト<strong>[Project_1.Rproj]</strong>をダブルクリックすれば，Project_1の環境が再現されます．</p>
-<p>ちなみに，Project_1.Rprojをクリックし，RStuidoを起動させた後，コンソール画面に<strong>getwd()</strong> ―get working directory（現在の作業ディレクトリを取得する）を意味します―と入力し，現在の作業ディレクトリを確認してみてください．“~/Project_1/”と表示されるはずです．</p>
+<p><strong>[Directory name]</strong>の空欄のボックスに，新規プロジェクトを作成するディレクトリ名を入力します．ここではとりあえず<strong>Project_1</strong>という名前にしておきます．<strong>[Browse…]</strong>ボタンをクリックして，プロジェクトを置きたいディレクトリの場所を指定します．すると，新たに作ったプロジェクト用のディレクトリの下に，ディレクトリと同じ名前のプロジェクトができます．この例では<strong>“~/Project_1/”</strong>下に<strong>“Project_1.Rproj”</strong>ができます．次回の作業からは，RStudioのメニューから<strong>File &gt; Open Project…</strong>または，直接，ディレクトリを開いて，プロジェクト<strong>[Project_1.Rproj]</strong>をダブルクリックすれば，Project_1の環境が再現されます．</p>
+<p>ちなみに，Project_1.Rprojをクリックし，RStuidoを起動させた後，コンソール画面に<strong>getwd()</strong> ―get working directory（現在の作業ディレクトリを取得する）を意味します―と入力し，現在の作業ディレクトリを確認してみてください．<strong>“~/Project_1/”</strong>と表示されるはずです．</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()     ＃現在の作業ディレクトリの場所を確認</span></code></pre></div>
 </div>
 <div id="多様なデータ形式の読み込み方法" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> 多様なデータ形式の読み込み方法</h2>
-<p>データを読み込む方法としては大きくは２つあります．１つは関数を利用する方法，もう１つはRStudioの[Import Dataset]プルダウンメニューを利用する方法です．</p>
+<p>データを読み込む方法としては大きくは２つあります．１つは関数を利用する方法，もう１つはRStudioの<strong>[Import Dataset]</strong>プルダウンメニューを利用する方法です．</p>
 <div id="import-datasetを利用する" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Import Datasetを利用する</h3>
-<p>最初に，後者のRStudioの[Import Dataset]を使ってデータを読み込むとしましょう．<strong>Environmentタブ</strong>のところにある<strong>import Dataset</strong>をクリックしてみてください．以下の図のようなメニューが開きます．</p>
+<p>最初に，後者のRStudioの<strong>[Import Dataset]</strong>を使ってデータを読み込むとしましょう．<strong>Environmentタブ</strong>のところにある<strong>import Dataset</strong>をクリックしてみてください．以下の図のようなメニューが開きます．</p>
 <center>
 <img src="figures/fig5.png" title="fig:" style="width:50.0%" alt="Import Datasetメニュー" />
 </center>
-<p>この図から理解されるように，RStudioのimport Datasetを使えば，csvフィアルは言うまでもなく，主なファイル形式―エクセルファイル，SPSSファイル，SASファイル，Stataファイル―を読み込むことができます．
-たとえば，今持っているファイルがStata形式だとしましょう．そのときはこのメニューから<strong>[From Stata…]</strong>を選択するだけです．<strong>[Browse]</strong>ボタンを押し，Stataファイルを選択すると，以下の図のようにデータが読み込まれます．右下の[import]をクリックすると，ファイルがRStudioに読み込まれ,View()関数によってViewウィンドウが開きます．</p>
+<p>この図から理解されるように，RStudioの<strong>import Dataset</strong>を使えば，csvフィアルは言うまでもなく，主なファイル形式―エクセルファイル，SPSSファイル，SASファイル，Stataファイル―を読み込むことができます．
+たとえば，今持っているファイルがStata形式だとしましょう．そのときはこのメニューから<strong>[From Stata…]</strong>を選択するだけです．<strong>[Browse]</strong>ボタンを押し，Stataファイルを選択すると，以下の図のようにデータが読み込まれます．右下の<strong>[import]</strong>をクリックすると，ファイルがRStudioに読み込まれ,View()関数によってViewウィンドウが開きます．この例ではTSDv4.dtaというstata形式のファイルをデスクトップに置ています.</p>
 <center>
 <img src="figures/fig6.png" title="fig:" style="width:70.0%" alt="Stata形式のファイルの読み込み" />
 </center>
@@ -305,25 +314,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>それでは次に関数を利用したデータの読み込み方法を紹介しましょう．</p>
 <div id="csvファイルの読み込み---read_csv" class="section level4" number="1.2.2.1">
 <h4><span class="header-section-number">1.2.2.1</span> csvファイルの読み込み - read_csv()</h4>
-<p>csv(comma-separated values)ファイルとはカンマ区切りで値が並べられているプレーンテキストファイルです．csv形式のファイルを読み込むためにはさまざまな関数がありますが，readrの中のread_csv()関数を利用します．readrはtidyverseがインストールされていれば，利用可能です．そこで最初にパッケージtidyverseをインストールし，library()で呼び出し，利用可能にしておきます．</p>
+<p>csv(comma-separated values)ファイルとはカンマ区切りで値が並べられているプレーンテキストファイルです．csv形式のファイルを読み込むためにはさまざまな関数がありますが，<strong>readr</strong>の中の<strong>read_csv()</strong>関数を利用します．readrはtidyverseがインストールされていれば，利用可能です．そこで最初にパッケージtidyverseをインストールし，library()で呼び出し，利用可能にしておきます．</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb3-1" aria-hidden="true" tabindex="-1"></a>　<span class="co"># tidyverseのインストール</span></span>
 <span id="cb3-2"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb3-3"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<span id="cb3-3"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tidyverseの呼び出し</span></span>
+<span id="cb3-4"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>これでreadrも利用可能となります．それではreadrのread_csv()関数を使ってcsvファイルを読み込むとしましょう．read_csvのもっともシンプルなコードは次のようになります．</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">&quot;csvファイル名&quot;</span>)</span></code></pre></div>
 <p>練習用ファイルとして<a href="http://www.yuhikaku.co.jp/books/detail/9784641053854">西山慶彦他著『計量経済学』のウェブサポート</a>で提供されているcsvファイルを利用します．サポートサイトから第４章の<strong>ch04_wage.csv</strong>ファイルをダウンロードし，作業ディレクトリ<strong>Project_1</strong>の下に保存してください．</p>
 <p>それでは練習として作業ディレクトリProject_1の下に保存した<strong>ch04_wage.csv</strong>ファイルを読み込み，それをwageというオブジェクトに容れてみましょう．</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb5-1" aria-hidden="true" tabindex="-1"></a>wage <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ch04_wage.csv&quot;</span>)</span></code></pre></div>
-<p>スクリプトに上のように入力し，スクリプト・ウィンドウの[Run]をクリックしてみてください．RStudioの右上のEnvironmentウィンドウをみると，[Data]の下に21の観察値,3変数からなるwageデータセットが出来上がったことが分かります．head(wage), str(wage)でデータ構造を確認してみてください．また小さなデータセットですからView(wage)で確認してみても良いでしょう．次に，read_csv()関数がとるいくつかの有益な引数を紹介しておきます．</p>
+<p>スクリプトに上のように入力し，スクリプト・ウィンドウの[Run]をクリックしてみてください．RStudioの右上の<strong>Environment</strong>ウィンドウをみると，<strong>[Data]</strong>の下に21の観察値,3変数からなるwageデータセットが出来上がったことが分かります．head(wage), str(wage)でデータ構造を確認してみてください．また小さなデータセットですからView(wage)で確認してみても良いでしょう．次に，read_csv()関数がとるいくつかの有益な引数を紹介しておきます．</p>
 <ul>
-<li>変数（列）タイプの指定：col_types = NULL
+<li>変数（列）タイプの指定：<strong>col_types = NULL</strong>
 これはNULLの場合（もしくはこの引数が省略された場合），すべての変数（列）のタイプが最初の1000行にもとづき指定されます．</li>
 </ul>
 <center>
 <img src="figures/fig7.png" title="fig:" style="width:50.0%" alt="read_csv()によるcsvファイルの読み込み" />
 </center>
-<p>read_csv(“ch04_wage.csv”)を実行したさいに，図のような結果がコンソール画面に表示されます．たとえば，year = col_double()は変数列yearが倍精度浮動小数点数の数値タイプであることを示しています． この表示は列が期待通りの変数タイプで読み込まれたどうかをチェックするのに有益です．</p>
-<p>「年」を表現するyear変数の型に倍精度浮動小数点数を利用することは計算資源の無駄遣いかもしれません．資源節約のため「整数」に変更するとしましょう．つまり変数yearを整数integerとして読み込むことにします．この場合，col_types=を利用します．上の図の結果をそのままコピーし，yearの部分だけをyear = col_integerに変更し，read_csv()関数の引数col_typesに次のように指定します．</p>
+<p>read_csv(“ch04_wage.csv”)を実行したさいに，図のような結果がコンソール画面に表示されます．たとえば，<strong>year = col_double()</strong>は変数列yearが倍精度浮動小数点数の数値タイプであることを示しています． この表示は列が期待通りの変数タイプで読み込まれたどうかをチェックするのに有益です．</p>
+<p>「年」を表現するyear変数の型に倍精度浮動小数点数を利用することは計算資源の無駄遣いかもしれません．資源節約のため「整数」に変更するとしましょう．つまり変数yearを整数integerとして読み込むことにします．この場合，col_types=を利用します．上の図の結果をそのままコピーし，yearの部分だけを<strong>year = col_integer</strong>に変更し，read_csv()関数の引数col_typesに次のように指定します．</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb6-1" aria-hidden="true" tabindex="-1"></a>  wage <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ch04_wage&quot;</span>,<span class="at">col_types =</span> </span>
 <span id="cb6-2"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb6-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">cols</span>(</span>
 <span id="cb6-3"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">col_integer</span>(),         <span class="co"># year変数の型を「整数」に変更</span></span>
@@ -354,17 +364,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-12"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">productivity =</span> <span class="fu">col_double</span>(),</span>
 <span id="cb8-13"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">wage =</span> <span class="fu">col_double</span>()</span>
 <span id="cb8-14"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-15"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-16"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(wage, “wage.csv”, <span class="at">append =</span> <span class="cn">FALSE</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb8-15"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-16" aria-hidden="true" tabindex="-1"></a> <span class="co"># データフレームwageをcsv形式で保存 </span></span>
+<span id="cb8-17"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(wage, “wage.csv”, <span class="at">append =</span> <span class="cn">FALSE</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="excelファイルの読み込み---read_excel" class="section level4" number="1.2.2.2">
 <h4><span class="header-section-number">1.2.2.2</span> Excelファイルの読み込み - read_excel()</h4>
 <p>エクセルファイル，つまり拡張子が.xls, xlsxのファイルを読み込むには<strong>readxl</strong>パッケージが必要となります．これもパッケージtidyverse に含まれていますのでtidyverseが組み込まれているのであれば，改めてインストールする必要はありません．</p>
-<p>.xls, xlsxのファイルを読み込むためには，readxlの中のread_excel()関数を利用します．ここでもサンプルファイルとして『計量経済学』提供の練習ファイルを利用します．第４章の<strong>data for chap 4 exercise 10.xlsx</strong>ファイルをダウンロードし，作業ディレクトリProject_1の下に保存してください．このエクセルファイルをファイルを読み込み，それをsampleというオブジェクトに容れます．</p>
+<p>.xls, xlsxのファイルを読み込むためには，readxlの中の<strong>read_excel()</strong>関数を利用します．ここでもサンプルファイルとして『計量経済学』提供の練習ファイルを利用します．第４章の<strong>data for chap 4 exercise 10.xlsx</strong>ファイルをダウンロードし，作業ディレクトリProject_1の下に保存してください．このエクセルファイルをファイルを読み込み，それをsampleというオブジェクトに容れます．</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)     <span class="co"># readxlの呼び出し</span></span>
 <span id="cb9-2"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb9-2" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data for chap 4 exercise 2.xlsx&quot;</span>)</span></code></pre></div>
 <p>このスクリプトを実行すると，Excel形式のファイルが読み込まれます．View(sample)でデータ内容を表示させると，５変数の47観察値が確認されます．</p>
-<p>これはもっともシンプルな書式です.read_excel()もread_csvと同様の引数を取りますが，いくつか違いがあります．もっとも大きな違いはエクセルファイルが複数のワークシートを持つ点にあります．このサンプルのエクセルファイルは１つのワークシートだけからなるファイルですが，エクセルファイルには複数のワークシートからなるものもあります．これを扱うためにread_excel()の引数<strong>sheet=シート番号</strong>によって特定のワークシートを指定できます．たとえば，次のように指定します．</p>
+<p>これはもっともシンプルな用法です.read_excel()もread_csvと同様の引数を取りますが，いくつか違いがあります．もっとも大きな違いはエクセルファイルが複数のワークシートを持つ点にあります．このサンプルのエクセルファイルは１つのワークシートだけからなるファイルですが，エクセルファイルには複数のワークシートからなるものもあります．これを扱うためにread_excel()の引数<strong>sheet=シート番号</strong>によって特定のワークシートを指定できます．たとえば，次のように指定します．</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb10-1" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data for chap 4 exercise 2.xlsx&quot;</span>,<span class="at">sheet=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="statasasspssファイルの読み込み---read_dta" class="section level4" number="1.2.2.3">
@@ -372,13 +383,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>SPSS，SAS，およびStataのファイルを読み込むためには，<strong>haven</strong>パッケージが必要です．事前にインストールしておく必要がありますが，これもパッケージtidyverseがインストールされていれば，havenもインストールされています．SPSS，SAS，およびStataのファイルを読み込むために，最初にhavenを呼び出します．</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span></code></pre></div>
 <p>Stataファイルを読み込むにはread_dta(),SASファイルの読み込みはread_sas(), SPSSファイルを読み込むにはread_spss()を使います．たとえば，拡張子.savもしくは.zsavを持つSPSSファイルを読むとしましょう．かりにsample.savというファイルを持っていたとします．これをRで読み込み，sampleというオブジェクトに容れることを想定しましょう．次のように入力するだけです．</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb12-1" aria-hidden="true" tabindex="-1"></a>   sample <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;sample.sav&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># spssファイルの読み込み</span></span>
+<span id="cb12-2"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb12-2" aria-hidden="true" tabindex="-1"></a>   sample <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;sample.sav&quot;</span>)</span></code></pre></div>
 <p>read_dta(),read_sas()についても同じです．</p>
 </div>
 </div>
 </div>
 <div id="tidyverse1-1" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> tidyverse<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></h2>
+<h2><span class="header-section-number">1.3</span> tidyverse<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></h2>
 <p>次の章から具体的にR,Rパッケージを利用したデータの取得方法を説明しますが、そのさい、頻繁に利用する<strong>tidyverse</strong>についてここで簡単に触れておきます.具体的な利用法は、じっさいにデータをダウンロードしたりデータ処理を行うさいに説明します.ここではtidyverseの中に収められている次の３つの基本的な関数の利用法を説明します.</p>
 <ul>
 <li>特定の行を抽出する - filter()</li>
@@ -390,13 +402,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-2"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb13-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(tidyverse)              <span class="co"># tidyverseの呼び出し</span></span></code></pre></div>
 <div id="特定の行を抽出する---filter関数" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> 特定の行を抽出する - filter()関数</h3>
-<p>以下ではtidyverseに用意されているデータフレーム<strong>population</strong>を使って説明していきます.このデータフレームの中には各国の人口の推移が収められています. <code>str(population)</code>の表示<code>tibble [4,060 × 3]</code>から理解されるように,このデータセットは4,060行と3列から構成されます.列は変数名で、country, year, populationの３変数から成ります.</p>
+<p>以下ではtidyverseに用意されているデータフレーム<strong>population</strong>を使って説明していきます.このデータフレームの中には各国の人口の推移が収められています.以下の<code>str(population)</code>の表示<code>tibble [4,060 × 3]</code>から理解されるように,このデータセットは4,060行と3列から構成されます.列は変数名で、country, year, populationの３変数から成ります.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb14-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(population)</span></code></pre></div>
 <pre><code>## tibble [4,060 × 3] (S3: tbl_df/tbl/data.frame)
 ##  $ country   : chr [1:4060] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
 ##  $ year      : int [1:4060] 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 ...
 ##  $ population: int [1:4060] 17586073 18415307 19021226 19496836 19987071 20595360 21347782 22202806 23116142 24018682 ...</code></pre>
-<p>head()関数やView()関数を使った表示の方がデータセットのイメージが使みやすいかもしれません.</p>
+<p>head()関数やView()関数を使った表示の方がデータセットのイメージがつかみやすいかもしれません.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(population)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   country      year population
@@ -459,7 +471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="処理をつなげる---パイプ演算子" class="section level3" number="1.3.3">
 <h3><span class="header-section-number">1.3.3</span> 処理をつなげる - パイプ演算子 %&gt;%</h3>
-<p>データフレームpopulationを使った一連のデータ処理を考えてみます.</p>
+<p>データフレームpopulationを使った次のような一連のデータ処理を考えてみます.</p>
 <ol style="list-style-type: decimal">
 <li>country変数のうち<code>Japan</code>だけの行を取り出す.</li>
 <li>さらにその結果から変数yearと変数populationを取り出す.</li>
@@ -494,16 +506,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 17  2011  127319206
 ## 18  2012  127249704
 ## 19  2013  127143577</code></pre>
-<p>このスクリプトの<strong>%&gt;%</strong>はパイプと呼ばれ，操作を連結するものです.日本語で言えば「そして」ということになるでしょうか<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>このスクリプトの<strong>%&gt;%</strong>はパイプと呼ばれ，操作を連結するものです.日本語で言えば「そして」ということになるでしょうか<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 
 </div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>tidyverseについてはすでに紹介したHadley Wickham『Rではじめるデータサイエンス』(<a href="https://sugiaki1989.gitbook.io/r-for-data-science-answers/">Web翻訳版</a>)、松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』を参照してください.<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>パイプ演算子のとても分かり安いイメージが<a href="https://www.jaysong.net/RBook/datahandling1.html">宋財泫 (Jaehyun Song)・矢内勇生 (Yuki Yanai)氏の「私たちのR: ベストプラクティスの探究」</a>において与えられています.またこのBookdownはとても優れたRプログラミング入門書です.<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="4">
+<li id="fn4"><p>tidyverseの用法についてはすでに紹介したHadley Wickham『Rではじめるデータサイエンス』(<a href="https://sugiaki1989.gitbook.io/r-for-data-science-answers/">Web翻訳版</a>)、松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』を参照してください.<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>パイプ演算子のとても分かり安いイメージが<a href="https://www.jaysong.net/RBook/datahandling1.html">宋財泫 (Jaehyun Song)・矢内勇生 (Yuki Yanai)氏の「私たちのR: ベストプラクティスの探究」</a>において与えられています.またこのBookdownはとても優れたRプログラミング入門書です.<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -556,10 +568,6 @@ gitbook.start({
 "text": null
 },
 "download": ["EconData.pdf", "EconData.epub"],
-"search": {
-"engine": "lunr",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }
