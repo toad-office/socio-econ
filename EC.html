@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 EU統計局Eurostat - eurostat | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content="2.3 EU統計局Eurostat - eurostat | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 EU統計局Eurostat - eurostat | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 EU統計局Eurostat - eurostat | 資料 Rで社会経済データの取得　(work in progress)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ" />
+
+
+<meta name="date" content="2021-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="WD.html"/>
+<link rel="next" href="OECD.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="本資料の目的.html"><a href="本資料の目的.html"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="社会経済データベース.html"><a href="社会経済データベース.html"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのprojectの利用.html"><a href="rstudioのprojectの利用.html"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.1.2" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="WD.html"><a href="WD.html"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="WD.html"><a href="WD.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="WD.html"><a href="WD.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="WD.html"><a href="WD.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="EC.html"><a href="EC.html"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="EC.html"><a href="EC.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="EC.html"><a href="EC.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="OECD.html"><a href="OECD.html"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="OECD.html"><a href="OECD.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="OECD.html"><a href="OECD.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="OECD.html"><a href="OECD.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="DB.html"><a href="DB.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="DB.html"><a href="DB.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html#準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 準備-ESSの認証とインストール</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="imf-covid-19-recovery-index.html"><a href="imf-covid-19-recovery-index.html"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="社会の関心を知る---gtrendsr.html"><a href="社会の関心を知る---gtrendsr.html"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="社会の声を集める---rtweet.html"><a href="社会の声を集める---rtweet.html"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="EC" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> EU統計局Eurostat - eurostat</h2>
+<p>欧州委員会の統計局である<a href="https://ec.europa.eu/eurostat">Eurostat</a>は,オープンデータサービスを通じて,欧州の人口統計,経済,健康,インフラ,交通などに関する数千ものデータセットを提供しています.Rパッケージeurostatはそうした欧州統計局のオープンデータ取得のためのパッケージです.ヨーロッパ経済を実証分析の対象とする場合,とても有益なパッケージです.</p>
+<div id="rパッケージeurostatの利用法" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Rパッケージeurostatの利用法</h3>
+<div id="パッケージeurostatのインストール" class="section level4" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> パッケージeurostatのインストール</h4>
+<p>最初に,次のようにコンソール画面に入力しエンターキーを押し,eurostatをインストールします.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="EC.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;eurostat&quot;</span>)         <span class="co"># eurostatのインストール</span></span></code></pre></div>
+<p>さらに,library()でパッケージeurostatを呼び出し,利用できるようにしておきます.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="EC.html#cb63-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(eurostat)                 <span class="co"># eurostatの呼び出し</span></span></code></pre></div>
+</div>
+<div id="データを探すget_eurostat_toc-search_eurostat" class="section level4" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> データを探す―get_eurostat_toc(), search_eurostat()</h4>
+<p><strong>get_eurostat_toc()</strong>
+　関数get_eurostat_toc()は,eurostatのデータセットの目次をダウンロードする関数です.最初に,この関数を使って目次をダウンロードしてみましょう.ここではダウンロードした目次をオブジェクト―euという名前にしています―に容れます.
+　</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="EC.html#cb64-1" aria-hidden="true" tabindex="-1"></a>eu <span class="ot">&lt;-</span> <span class="fu">get_eurostat_toc</span>()  <span class="co"># eurostatの目次取得し,オブジェクトeuに格納</span></span></code></pre></div>
+<p>スクリプト画面にView(eu)と入力し,[Run]をクリックすると,euの内容が表示されます.これは10,004行×8列のデータフレームです.１列目のtitleはデータセット名,２列目codeはデータセットのコード番号です.このcode列の値は,選択されたデータセットをダウンロードするために使用されます.次のtype列はデータセットかフォルダかどうかを示しています.last update of data列はデータの最新の更新日,last table structure changeはテーブル構造の最新の変更時点,そして次の2つの列はデータの開始時期と終了時期を示しています.</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_1.png" alt="" />
+<p class="caption">Eurostatの目次一覧</p>
+</div>
+<p><strong>search_eurostat()</strong></p>
+<p>特定の検索ワードを指定し,データを探すためにはsearch_eurostat()関数を使用します.たとえば,search_eurostat()関数の引数に “unemployment “と入力し,失業に関連したデータセットを探してみましょう.ここではその結果をパイプ(%&gt;%)でView()関数につなげてViewウィンドウで表示させています.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="EC.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">search_eurostat</span>(<span class="st">&quot;unemployment&quot;</span>) <span class="sc">%&gt;%</span>  <span class="co"># &quot;unemployment&quot;の検索</span></span>
+<span id="cb65-2"><a href="EC.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()                             <span class="co"># View()で検索結果を表示</span></span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_2.png" alt="" />
+<p class="caption">search_eurostat(“キーワード”)検索結果の出力</p>
+</div>
+<p>search_eurostat()関数の基本的な書き方は以下のとおりです.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="EC.html#cb66-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">search_eurostat</span>(<span class="at">pattern=</span><span class="st">&quot;検索語&quot;</span>, <span class="at">type =</span> <span class="st">&quot;dataset&quot;</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>このように引数にpattern,type,fixedの３つをとります.</p>
+<ul>
+<li>pattern="“,”"の部分に探したいデータに関連したキーワードを入力します.これにより,type=引数で指定した内容に応じて,データセットやテーブルが返されます.</li>
+<li>type=""には,dataset, folder, table, もしくは以上のすべてを指定するallのいずれかを入力します.これにより対応したEurostatのテーブルが出力されます.デフォルトではdatasetです.</li>
+<li>fixedにはTRUE, FALSEの論理値をとります.TRUEの場合,patternはマッチされる文字列となります.より複雑なregexマッチングが必要とされる場合,FALSEをとります.</li>
+</ul>
+</div>
+<div id="データをダウンロードするget_eurostat" class="section level4" number="2.3.1.3">
+<h4><span class="header-section-number">2.3.1.3</span> データをダウンロードする―get_eurostat()</h4>
+<p>データをダウンロードするには,get_eurostat()を使います.もっとも基本的な書式は次のようになります.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="EC.html#cb67-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">get_eurostat</span>(id, <span class="at">time_format =</span> <span class="st">&quot;&quot;</span>, <span class="at">filters =</span> <span class="st">&quot;&quot;</span>, <span class="at">type =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>この関数はおもな引数として次のものをとります.</p>
+<ul>
+<li>id="“:”"にデータセットのコード名を指定します.</li>
+<li>time_format= "“: eurostatフォーマットの時間列をどのタイプに変換するかを指定します.”date“（既定値）と入力した場合,期間の最初のデータによって日付フォーマットDateへと変換されます.”num"を指定すると,数値へと変換されます.テーブルが年次データの場合,デフォルトの日付フォーマットDateを使用するよりも,数値numの時間変数を使用した方が便利です.</li>
+<li>filters = "“:”none"を指定した場合,データセット全体が取得されます.一部分を取得したい場合,ここにリストを入れます（以下の例を参照してください）.</li>
+<li>type= "“: 変数のタイプを指定します.具体的には”code“（デフォルト）もしくは”label"となります.これは変数の値を知りたいときに便利です（以下の例を参照してください）.</li>
+</ul>
+<p>それでは具体的な例を使ってデータをダウンロードしてみましょう.ここでは EUの「住宅価格」データを探すことにします.最初に,上で説明した<strong>search_eurostat()</strong>関数を使って取得するデータのidを確認します.その上で,<strong>get_eurostat()</strong>関数を利用し,イギリス,フランス,スペインの「住宅価格」データを取得してみましょう.</p>
+<p>検索結果をオブジェクトhouseに容れます.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="EC.html#cb68-1" aria-hidden="true" tabindex="-1"></a>    house <span class="ot">&lt;-</span> <span class="fu">search_eurostat</span>(<span class="st">&quot;House&quot;</span>,<span class="at">type=</span> <span class="st">&quot;table&quot;</span>) </span></code></pre></div>
+<p>View(house)の結果をみると,13行めに<strong>House price index - annual data</strong>（住宅価格指数,年次データ）が表示されています.これをダウンロードします.</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_3.png" alt="" />
+<p class="caption">キーワード“House”の検索結果</p>
+</div>
+<p>ここではダウンロードしたデータをhouse_priceと名前をつけたオブジェクトに容れます.get_eurostat()の引数id = "“には、検索結果の<strong>code変数のtipsho20</strong> を利用します.引数time_format=”num"では数値を指定しています.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="EC.html#cb69-1" aria-hidden="true" tabindex="-1"></a>  house_price<span class="ot">&lt;-</span><span class="fu">get_eurostat</span>(<span class="at">id=</span><span class="st">&quot;tipsho20&quot;</span>,<span class="at">time_format =</span> <span class="st">&quot;num&quot;</span>,<span class="at">type =</span> <span class="st">&quot;code&quot;</span>)</span></code></pre></div>
+<p>これにより,４つの変数,1,483の観察値がダウンロードされます.結果をstr()で表示してみます.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="EC.html#cb70-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">str</span>(house_price)</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_4.png" alt="" />
+<p class="caption">house_priceのデータ構造</p>
+</div>
+<p>最初の変数unit（単位）,２番目の変数geoは地理情報,３番目の変数timeは年,最後の変数valuesが住宅価格指数を示しています.しかし,実はこれだけではそれぞれの変数がとる値が何を意味しているかは分かりません,少なくとも分かりづらい表示になっています.とりわけ,<strong>unit変数</strong>がコード名で表記されているため, <strong>“INX_A_AVG”</strong>等がわかりません.ダウロードするさいの引数<strong>type = “label”</strong>とした方が良いでしょう.デフォルトではコード名で表示されます（引数type = “code”）.変数の値の意味を知るには変数のラベルを表示させた方が,コード名よりも便利です.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="EC.html#cb71-1" aria-hidden="true" tabindex="-1"></a>  house_price <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="at">id=</span><span class="st">&quot;tipsho20&quot;</span>,</span>
+<span id="cb71-2"><a href="EC.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_format =</span> <span class="st">&quot;num&quot;</span>,</span>
+<span id="cb71-3"><a href="EC.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;label&quot;</span>)</span></code></pre></div>
+<p>type = “label”でダウンロードした上で,次に,以下のように入力し,変数unitがどのような値を持つか確認してみて下さい.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="EC.html#cb72-1" aria-hidden="true" tabindex="-1"></a>   house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="EC.html#cb72-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">distinct</span>(unit)</span></code></pre></div>
+<p><strong>distinct()</strong>関数はデータフレームから,()内に指定した変数のうちユニークな,異なった値（行）だけを選択します.つまり,unit変数は1,403行から形成されますが,すべて異なった値をとるわけではありません.ユニークな値は―以下のdistinct()関数の結果をみると―３種類だけです.</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_5.png" style="width:50.0%" alt="" />
+<p class="caption">distinct()関数の出力結果</p>
+</div>
+<p>以下の例でunit変数の値を抽出条件とすることによって特定の行を抽出します.</p>
+</div>
+<div id="住宅価格上昇率のグラフを描く" class="section level4" number="2.3.1.4">
+<h4><span class="header-section-number">2.3.1.4</span> 住宅価格上昇率のグラフを描く</h4>
+<p>いくつかのヨーロッパ経済をピックアップし,住宅価格（年平均変化率）の推移と１時点における住宅価格変化率をみてみましょう.このために次のような作業を行います.</p>
+<ol style="list-style-type: decimal">
+<li>複数の国を指定し,住宅データをダウンロードする.</li>
+<li>unit変数にもとづき年平均変化率を示す値（行）を抽出する.</li>
+<li>ggplot2を利用し,ダウンロードしたデータの時系列グラフを作成する.</li>
+<li>地理情報を利用し,ヨーロッパ地図上に2018年の住宅価格（年平均変化率）を表示させる.</li>
+</ol>
+<p><strong>1.複数の国を指定し,住宅データをダウンロードする</strong></p>
+<p>最初に,国コードを容れたベクトルを作成しておきます―isoという名前にします.直接get_eurostat()関数において指定しても良いのですがスクリプトが見づらくなりますので,事前に,この作業を行っておきます.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="EC.html#cb73-1" aria-hidden="true" tabindex="-1"></a>    iso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FR&quot;</span>,<span class="st">&quot;DE&quot;</span>,<span class="st">&quot;ES&quot;</span>,<span class="st">&quot;IT&quot;</span>,<span class="st">&quot;SE&quot;</span>)</span></code></pre></div>
+<p><strong>2. unit変数にもとづき年平均変化率を示す値（行）およびサンプル国を抽出する</strong></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="EC.html#cb74-1" aria-hidden="true" tabindex="-1"></a>  house_price_eu <span class="ot">&lt;-</span> house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb74-2"><a href="EC.html#cb74-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(unit <span class="sc">==</span> <span class="st">&quot;RCH_A_AVG&quot;</span>, geo <span class="sc">%in%</span> iso)</span></code></pre></div>
+<p>変数unitのとる値のうち年平均変化率を表現するラベルは“RCH_A_AVG”ですのでfilter()関数の中の抽出条件の１つに<strong>unit == “RCH_A_AVG”</strong>を指定しています.また,国を示す変数はgeoですが,このうちベクトルisoに容れた複数の国を選択することになりますので<strong>geo %in% iso</strong>を利用しています.この表記が意味しているのは,「geo変数がisoベクトルの中のいずれかに等しい国コードをとる行を選択しなさい」ということを意味しています.これによりgeo変数のうちisoベクトルの中の国のいずれかに等しい行だけが選択されます.</p>
+<p>これで行の抽出条件にマッチする行だけが選択され,house_price_euというオブジェクトに格納されます.View(house_price_eu)やstr(house_price_eu)を利用し,house_price_euの内容を確認してみてください.</p>
+<p><strong>3. ggplot2を利用し,ダウンロードしたデータの時系列グラフを作成する </strong></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="EC.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> house_price_eu, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> values))<span class="sc">+</span>    </span>
+<span id="cb75-2"><a href="EC.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">shape =</span> geo))<span class="sc">+</span> </span>
+<span id="cb75-3"><a href="EC.html#cb75-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 点の形状で国別を示すためにaes()の中でshpae = geoと指定</span></span>
+<span id="cb75-4"><a href="EC.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">lty=</span>geo))<span class="sc">+</span>             </span>
+<span id="cb75-5"><a href="EC.html#cb75-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># さらにgeom_line()で線を重ねる.</span></span>
+<span id="cb75-6"><a href="EC.html#cb75-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 線の種類で国別表示するため,aes()の中でlyt=geoと指定.</span></span>
+<span id="cb75-7"><a href="EC.html#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Housing price&quot;</span>,       </span>
+<span id="cb75-8"><a href="EC.html#cb75-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">&quot;Housing price (Annual average rate of change %)&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb75-9"><a href="EC.html#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()  </span></code></pre></div>
+<p>このスクリプトを実行すると,以下のようなグラフが出力されます.</p>
+<center>
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_6hp.png" title="fig:" alt="ヨーロッパ主要経済の住宅価格の推移,2001~2019" />
+</center>
+<p><strong>4. 地理情報を利用し,ヨーロッパ地図上に2015年の住宅価格（年平均変化率）を表示させる</strong></p>
+<p>上のグラフでは各国の住宅価格上昇率の時間的推移を比較しましたが,今度は2015年の１時点をとり各国を比較してみましょう.このためにeurostatの提供する地理空間情報を利用し,2015年の住宅価格をヨーロッパの地図上に描きます.最初に出力されるグラフを示しておきましょう.地理情報の使い方の詳細については2.3.2を参照してください.</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_7.png" alt="" />
+<p class="caption">ヨーロッパ経済の住宅価格上昇率,2015年</p>
+</div>
+<p>出力される結果は上のようになります.この図を描くための詳しい説明は2.3.2に譲り,ここではスクリプトだけ示しておきます.手順は４つです.</p>
+<ul>
+<li>手順① ヨーロッパの地図データの取得</li>
+<li>手順② 住宅価格データから特定の国と2015年のデータを抽出</li>
+<li>手順③ ２つのデータフレームの結合</li>
+<li>手順④ geom_sf()の利用</li>
+</ul>
+<p><strong>①ヨーロッパの地図データを取得し,そのデータをshp_0という名前をつけたオブジェクトに容れます.</strong></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="EC.html#cb76-1" aria-hidden="true" tabindex="-1"></a>  shp_0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">0</span>, <span class="at">year =</span> <span class="dv">2016</span>)</span></code></pre></div>
+<p><strong>②上で取得した住宅価格データからヨーロッパ諸国と2015年のデータを抽出します.</strong></p>
+<p>そしてその結果をhousing2015というオブジェクトに容れます.最初に,isoの内容は事前に上記のisoベクトルを,次のように書き換え,サンプル国を拡充しておきます.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="EC.html#cb77-1" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;BE&quot;</span>, <span class="st">&quot;CY&quot;</span>,<span class="st">&quot;CZ&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;DK&quot;</span>, <span class="st">&quot;EL&quot;</span>, <span class="st">&quot;ES&quot;</span>, <span class="st">&quot;FI&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;HR&quot;</span>, <span class="st">&quot;IE&quot;</span>, <span class="st">&quot;IT&quot;</span>, <span class="st">&quot;LT&quot;</span>,<span class="st">&quot;LU&quot;</span>, </span>
+<span id="cb77-2"><a href="EC.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;LV&quot;</span>, <span class="st">&quot;MT&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;PT&quot;</span>, <span class="st">&quot;SE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="EC.html#cb78-1" aria-hidden="true" tabindex="-1"></a>housing2015 <span class="ot">&lt;-</span> house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb78-2"><a href="EC.html#cb78-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span> (unit <span class="sc">==</span> <span class="st">&quot;RCH_A_AVG&quot;</span>, geo <span class="sc">%in%</span> iso, time <span class="sc">==</span> <span class="dv">2015</span>)</span></code></pre></div>
+<p><strong>③そして,オブジェクトshp_0とhousing2015を結合します.</strong></p>
+<p>マージしたデータは地理データと住宅価格データを持つことになります.マージしたデータにはmap_housingというオブジェクト名を与えています.２つのオブジェクトの結合には<strong>inner_join()関数</strong>を使っています.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="EC.html#cb79-1" aria-hidden="true" tabindex="-1"></a> map_housing <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_0,housing2015, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>)</span></code></pre></div>
+<p><strong>④最後に,ggplot2―geom_sf()―を利用し,ヨーロッパ地図上に,住宅価格上昇率を描きます.</strong></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="EC.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> map_housing) <span class="sc">+</span></span>
+<span id="cb80-2"><a href="EC.html#cb80-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb80-3"><a href="EC.html#cb80-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb80-4"><a href="EC.html#cb80-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">70</span>))<span class="sc">+</span></span>
+<span id="cb80-5"><a href="EC.html#cb80-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb80-6"><a href="EC.html#cb80-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span> (<span class="at">subtitle =</span> <span class="st">&quot;Housing price (Annual average rate of change), 2015&quot;</span>,</span>
+<span id="cb80-7"><a href="EC.html#cb80-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;% Annual average</span><span class="sc">\n</span><span class="st">rate of change&quot;</span>) <span class="sc">+</span></span>
+<span id="cb80-8"><a href="EC.html#cb80-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>全体のスクリプトをまとめると,次のようになります.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="EC.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ヨーロッパの地理空間データをダウンロード</span></span>
+<span id="cb81-2"><a href="EC.html#cb81-2" aria-hidden="true" tabindex="-1"></a>shp_0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">resolution =</span> <span class="dv">10</span>,<span class="at">nuts_level =</span> <span class="dv">0</span>,<span class="at">year =</span> <span class="dv">2016</span>)</span>
+<span id="cb81-3"><a href="EC.html#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="EC.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="co"># サンプル国を指定.</span></span>
+<span id="cb81-5"><a href="EC.html#cb81-5" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;BE&quot;</span>, <span class="st">&quot;CY&quot;</span>,<span class="st">&quot;CZ&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;DK&quot;</span>, <span class="st">&quot;EL&quot;</span>, <span class="st">&quot;ES&quot;</span>, <span class="st">&quot;FI&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;HR&quot;</span>, <span class="st">&quot;IE&quot;</span>,<span class="st">&quot;IT&quot;</span>, <span class="st">&quot;LT&quot;</span>,<span class="st">&quot;LU&quot;</span>, <span class="st">&quot;LV&quot;</span>, <span class="st">&quot;MT&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;PT&quot;</span>, <span class="st">&quot;SE&quot;</span>)</span>
+<span id="cb81-6"><a href="EC.html#cb81-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-7"><a href="EC.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="co"># サンプル国の住宅価格（年平均変化率）データを取得. </span></span>
+<span id="cb81-8"><a href="EC.html#cb81-8" aria-hidden="true" tabindex="-1"></a>housing2015 <span class="ot">&lt;-</span> house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb81-9"><a href="EC.html#cb81-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span> (unit <span class="sc">==</span> <span class="st">&quot;RCH_A_AVG&quot;</span>, geo <span class="sc">%in%</span> iso),time <span class="sc">==</span> <span class="dv">2015</span><span class="er">)</span></span>
+<span id="cb81-10"><a href="EC.html#cb81-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-11"><a href="EC.html#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 地理空間データと住宅価格データを結合.</span></span>
+<span id="cb81-12"><a href="EC.html#cb81-12" aria-hidden="true" tabindex="-1"></a>map_housing <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_0,housing2015, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>) </span>
+<span id="cb81-13"><a href="EC.html#cb81-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-14"><a href="EC.html#cb81-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  ヨーロッパの地図上に住宅価格を表示.</span></span>
+<span id="cb81-15"><a href="EC.html#cb81-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> map_housing) <span class="sc">+</span></span>
+<span id="cb81-16"><a href="EC.html#cb81-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb81-17"><a href="EC.html#cb81-17" aria-hidden="true" tabindex="-1"></a>     <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb81-18"><a href="EC.html#cb81-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">70</span>))<span class="sc">+</span></span>
+<span id="cb81-19"><a href="EC.html#cb81-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb81-20"><a href="EC.html#cb81-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Housing price (Annual average rate of change), 2015&quot;</span>,</span>
+<span id="cb81-21"><a href="EC.html#cb81-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;% Annual average</span><span class="sc">\n</span><span class="st">rate of change&quot;</span>) <span class="sc">+</span></span>
+<span id="cb81-22"><a href="EC.html#cb81-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>このようにRパッケージeurostatを利用することで,わずか10数行のスクリプトを書くだけで上のグラフを描くことができます.</p>
+</div>
+</div>
+<div id="応用例-地理空間情報の利用" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 応用例 ― 地理空間情報の利用</h3>
+<p>北欧諸国はミステリー小説の多くの傑作を生み出しています.そうした背景には社会経済的要因はもちろんのこと犯罪を身近なものと受け止める社会不安があるのかもしれません.そこで欧州委員会統計局Eurostatが提供する犯罪や暴力に対する不安度を示す指標によって,そうした社会的不安を代理させ観察することにします.そして同指標を視覚的に示すためにEurostatの提供する地理空間情報と結合し,ヨーロッパ地図上に表示します.主な手順は次のようになります,</p>
+<ol style="list-style-type: decimal">
+<li>地理空間情報(シェイプ・ファイル)をダウンロードし,ヨーロッパ地図を描く.</li>
+<li>犯罪・暴力・破壊行為に対する不安度を示す指標をダンロードする.</li>
+<li>1と2のファイルを結合し,不安度指標を表示した北欧地図を描く.</li>
+</ol>
+<p><strong>1 地理空間情報のダウンロードとggplot2による描画―sfパッケージ</strong></p>
+<p>地理空間データ分析用のRパッケージとしてsfパッケージがあります.sfパッケージは,simple featuresというGIS(geographic information system)データ規格をRで扱うためのパッケージです.Eurostatの提供する地理空間情報データを扱うために,最初に,このパッケージをインストールしておきます.　コンソール画面に次のように入力し,エンターキーを押してください.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="EC.html#cb82-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># sfパッケージのインストール</span></span>
+<span id="cb82-2"><a href="EC.html#cb82-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</span></code></pre></div>
+<p>インストールを終えたら,スクリプト画面に次のように入力し,実行します.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="EC.html#cb83-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># sfパッケージの呼び出し</span></span>
+<span id="cb83-2"><a href="EC.html#cb83-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(sf)</span></code></pre></div>
+<p>このパッケージを利用することによって地理空間データのさまざまな処理が可能となります.</p>
+<p>すでに幾度も登場しているggplot2も,バージョン3.0.0以後sfクラスのデータを扱えるようになりました.sfクラスのオブジェクトのプロットには,<strong>geom_sf()</strong>という関数を使います.</p>
+<p>Eurostatの地理空間情報は,国レベルにとどまらず,それ以上に詳細な行政単位レベルの情報も提供しています.1970年代初頭,Eurostatは,欧州連合（EU）の地域統計を作成するために,EUの領土を分割するための統一された,一貫したシステムとしてNUTS (Nomenclature of territorial units)分類 を設定しました.イタリアを例にとれば,NUTSレベル0はイタリアという国そのものの,NUTSレベル１はNord-Ovest（北西部）, Sud（南部）といった地域,さらにNUTSレベル２はPiemonte（ピエモンテ）, Liguria（リグーリア）, Lombardia（ロンバルディア）といった州, もっとも細かいレベルのNUTSレベル３はTorino（トリノ）, Genova（ジェノバ）, Milano（ミラノ）等の都市空間を示します.これにより,たとえば,個人世帯の可処分所得の地理的分布を調べたいとき,NUTSレベル2すなわち各国の州レベルまで調べること（グラフ表示）も可能です.</p>
+<p>それでは最初に,NUTSレベル１と２のヨーロッパ地図を描いてみましょう.地図を描くためにはシェイプファイルshapefileという図形情報と属性情報を入れたファイルをダウンロードする必要があります.RパッケージeurostatはGISGOからヨーロッパの地理情報を取得する関数<strong>get_eurostat_geospatial()</strong>を用意しています.この関数の基本的な用法は次のようになります.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="EC.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_eurostat_geospatial</span>(</span>
+<span id="cb84-2"><a href="EC.html#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_class =</span> <span class="st">&quot;sf&quot;</span>,</span>
+<span id="cb84-3"><a href="EC.html#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resolution =</span> ,</span>
+<span id="cb84-4"><a href="EC.html#cb84-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nuts_level =</span> ,</span>
+<span id="cb84-5"><a href="EC.html#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2016</span></span>
+<span id="cb84-6"><a href="EC.html#cb84-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>以下はこの関数がとる引数の概要です.</p>
+<ul>
+<li>output_class　= "“:”“に sf, df,もしくはspdfのいずれかの文字列を指定することで返されるオブジェクトのクラスを選択します.sfはsimple features,dfは data_frame, spdfはSpatialPolygonDataFrameを表現します.デフォルトは”sf"です.</li>
+<li>resolution = : 地理空間データの解像度を指定します.利用可能な解像度は60（1:6,000万）,20（1:2,000万）,10（1:1,000万）,03（1:3,000万）,01（1:1,000万）のいずれかです.</li>
+<li>nuts_level = : NUTS分類のレベルをしていします.0,1, 2, 3, allのいずれかをとります.</li>
+<li>year = : NUTSのリリース年を指定します.具体的には,2003, 2006, 2010, 2013, 2016 のいずれかを入力します.</li>
+</ul>
+<p>それでは地理空間情報をダウンロードしてみましょう.ここではNUTSレベルの異なる２つのオブジェクトを作成します.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="EC.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># NUTS分類のレベル0で地図情報を取得し,オブジェクトshp0に容れる</span></span>
+<span id="cb85-2"><a href="EC.html#cb85-2" aria-hidden="true" tabindex="-1"></a>shp0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">output_class =</span> <span class="st">&quot;sf&quot;</span>, <span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">0</span>, <span class="at">year =</span> <span class="dv">2016</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="EC.html#cb86-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># NUTS分類のレベル2で地図情報を取得し,オブジェクトshp2に容れる</span></span>
+<span id="cb86-2"><a href="EC.html#cb86-2" aria-hidden="true" tabindex="-1"></a>shp2 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">output_class =</span> <span class="st">&quot;sf&quot;</span>, <span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">2</span>, <span class="at">year =</span> <span class="dv">2016</span>)</span></code></pre></div>
+<p>オブジェクト―shp0, shp2―は,引数output_class=“sf”で指定していますのでsfクラスです. geom_sf()はsfクラスのオブジェクトを扱いますから, この指定が必要となります（ただし,デフォルトでもsfクラスですから,指定しなくとも結果はsfクラスのオブジェクトとなります）.</p>
+<p>NUTSレベル0は国単位を意味します.NUTSレベル２は,上述のように,イタリアで言えばロンバルディアといった州レベルの行政単位まで描かれます.
+ヨーロッパの地図情報が取得できましたので,ggplot2を利用しヨーロッパ地図を描いてみましょう.ggplot2にはsfクラスのオブジェクトを描くためにgeom_sf()が開発されています.グラフの作成はこれまで紹介したggplot2の利用方法に同じです.基本は<strong>ggplot(オブジェクト名)+geom_sf()</strong>です.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="EC.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shp0)<span class="sc">+</span>       <span class="co"># オブジェクト名を入力</span></span>
+<span id="cb87-2"><a href="EC.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()         <span class="co"># sfクラスのオブジェクトを指定</span></span></code></pre></div>
+<p>これだけでヨーロッパ地図がプロット画面に出力されます.しかし,かなり広いヨーロッパ地域が表示されてしまいます.そこでx軸,y軸の範囲を限定し,わたしたちが通常目にするヨーロッパを描くとしましょう.そのためにはxlim()を利用し,x軸の範囲を決定します.xlim（c（西に-10度, 東に37度））のように東西の経度を入力します.y軸の範囲も同様に,ylim(c(,))を利用し,緯度を入力します.あるいはggplot2のcoord_map()という関数を使っても良いでしょう.引数xlim=()で経度,ylim=()で緯度の範囲を指定できます.たとえば,coord_map(xlim = c(-30, 45), ylim = c(30, 75))と入力することによってヨーロッパ地域を指定することができます.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="EC.html#cb88-1" aria-hidden="true" tabindex="-1"></a>nuts0 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(shp0) <span class="sc">+</span></span>
+<span id="cb88-2"><a href="EC.html#cb88-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">geom_sf</span>()<span class="sc">+</span></span>
+<span id="cb88-3"><a href="EC.html#cb88-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb88-4"><a href="EC.html#cb88-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">65</span>))</span></code></pre></div>
+<p>わずか数行の入力で以下のグラフのようなヨーロッパ地図を描くことができます.あわせてNUTレベル2の地図も描いてみましょう.上述のグラフ作成との違いはggplot()にsfオブジェクト名shp2を指定するだけです.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="EC.html#cb89-1" aria-hidden="true" tabindex="-1"></a>nuts2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(shp2) <span class="sc">+</span></span>
+<span id="cb89-2"><a href="EC.html#cb89-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">geom_sf</span>()<span class="sc">+</span></span>
+<span id="cb89-3"><a href="EC.html#cb89-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb89-4"><a href="EC.html#cb89-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">65</span>))</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_8.png" alt="" />
+<p class="caption">異なったNUTSレベルの地理情報</p>
+</div>
+<p>北欧地域だけを描く場合には,x軸範囲とy軸の範囲を以下のように限定すれば,北欧地域だけの地図を描くことができます.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="EC.html#cb90-1" aria-hidden="true" tabindex="-1"></a>n_euro <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(shp0)<span class="sc">+</span></span>
+<span id="cb90-2"><a href="EC.html#cb90-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>()<span class="sc">+</span></span>
+<span id="cb90-3"><a href="EC.html#cb90-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">32</span>))<span class="sc">+</span>      <span class="co">#　北欧地域の範囲を経度で指定</span></span>
+<span id="cb90-4"><a href="EC.html#cb90-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">70</span>))<span class="sc">+</span>     <span class="co">#　北欧地域の範囲を緯度で指定</span></span></code></pre></div>
+<p><strong>2 犯罪・暴力・破壊行為に対する不安度データのダウンロード</strong></p>
+<p>次に,犯罪や暴力に対する不安度データを地図上に表示するために,犯罪に関連するデータを探します.これはすでに紹介したsearch_eurostat()関数を利用します. “crime（犯罪）”をキーワードにデータを探してみましょう.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="EC.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">search_eurostat</span>(<span class="st">&quot;crime&quot;</span>,<span class="at">type=</span><span class="st">&quot;table&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a href="EC.html#cb91-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">View</span>()</span></code></pre></div>
+<p>上のスクリプトを実行すると,search_eurostat()の結果をView()関数に渡しているため,crimeに関連した検索結果が表示されます.関連するデータテーブルは１つだけで<strong>sdg_16_20</strong>というファイルです.このデータは地域における犯罪・暴力・破壊行為を報告した人の比率を示しています.そうした点では人々の犯罪や暴力に対する不安度を代理する指標として良いでしょう.</p>
+<p>次に,データ・テーブルsdg_16_20をダウンロードし,結果をcrimeというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="EC.html#cb92-1" aria-hidden="true" tabindex="-1"></a>   crime<span class="ot">&lt;-</span><span class="fu">get_eurostat</span>(<span class="at">id=</span><span class="st">&quot;sdg_16_20&quot;</span>,<span class="at">time_format =</span> <span class="st">&quot;num&quot;</span>)</span></code></pre></div>
+<p>これによりヨーロッパ諸国の犯罪・暴力・破壊行為の報告者比率データを取得できます.ここから第１に,北欧４カ国とバルト３国の７ヵ国だけを抽出します.このために変数のgeoの値が“DK”,“SE”,“NO”,“FI”,“LV”,“EE”,“LT”のどれかをとる行を抽出します.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="EC.html#cb93-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(geo <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;DK&quot;</span>,<span class="st">&quot;SE&quot;</span>,<span class="st">&quot;NO&quot;</span>,<span class="st">&quot;FI&quot;</span>,<span class="st">&quot;LV&quot;</span>,<span class="st">&quot;EE&quot;</span>,<span class="st">&quot;LT&quot;</span>))</span></code></pre></div>
+<p>ここで“geo %in% c()”は「geo変数がc（国コード）の中のいずれかに等しい国コードをとる行を選択しなさい」を意味しています.また,このデータは,incgrpという変数を持っていますが,これはincome group（所得グループ）を示し,所得階層別情報を提供しています.しかし,ここでは所得階層別情報は使いませんのでincgrp変数のうち値がTOTALの行だけを抽出します.そこで上の抽出条件にくわえて,次の抽出条件も入力します.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="EC.html#cb94-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(incgrp <span class="sc">==</span> <span class="st">&quot;TOTAL&quot;</span>)</span></code></pre></div>
+<p>２つの抽出条件をあわせると,次のようになります.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="EC.html#cb95-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(geo <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;DK&quot;</span>,<span class="st">&quot;SE&quot;</span>,<span class="st">&quot;NO&quot;</span>,<span class="st">&quot;FI&quot;</span>,<span class="st">&quot;LV&quot;</span>,<span class="st">&quot;EE&quot;</span>,<span class="st">&quot;LT&quot;</span>), incgrp <span class="sc">==</span> <span class="st">&quot;TOTAL”)</span></span></code></pre></div>
+<p>さらに,時間も2017年に指定し ― time == 2017 ―,最終的に次のように入力します.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="EC.html#cb96-1" aria-hidden="true" tabindex="-1"></a>  ne_crime <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span> </span>
+<span id="cb96-2"><a href="EC.html#cb96-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">2017</span>, geo <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;DK&quot;</span>,<span class="st">&quot;SE&quot;</span>,<span class="st">&quot;NO&quot;</span>,<span class="st">&quot;FI&quot;</span>,<span class="st">&quot;LV&quot;</span>,<span class="st">&quot;EE&quot;</span>,<span class="st">&quot;LT&quot;</span>), incgrp <span class="sc">==</span> <span class="st">&quot;TOTAL&quot;</span>)</span></code></pre></div>
+<p>filter()の基本コードはfilter(データフレーム名,抽出条件)ですが,ここではパイプ(%&gt;%)を利用し,データフレームcrimeを関数filter()に渡していますのでデータフレーム名が省略されています. 最終的に,ne_crimeというオブジェクトに容れます.</p>
+<p>以上で,北欧地域の犯罪や暴力に対する不安度を示す指標が取得できました.これを地図上に表示させるために,地図情報の入ったshp0と結合します.</p>
+<p><strong>3 シェイプファイルshp0と犯罪データファイルne_crimeの結合</strong></p>
+<p>ここではヨーロッパの地図情報の入った“shp0”ファイルと,北欧地域の犯罪不安度情報の入った“ne_crime”ファイルを結合します.データフレームの結合にあたっては<strong>inner_join()</strong>関数を使います.ジョイン_join()は２つのデータテーブルの変数を結合します.inner_join()はby= “キー変数”にしたがって,キーの値が等しい観察値が結合されます.したがってキー変数にマッチしない観察値は除外されます.</p>
+<p>inner_join()のもっとも簡単な書き方は次のようになります.２つのデータフレームa,bがある場合,</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="EC.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(データフレームa,データフレームb, <span class="at">by =</span> <span class="st">&quot;キー変数&quot;</span>)</span></code></pre></div>
+<p>それではinner_join()を利用し,shp0とne_crimeを,両データフレームに共通のgeo変数を基準に結合します.その上でshp_neというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="EC.html#cb98-1" aria-hidden="true" tabindex="-1"></a>  shp_ne <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_0, ne_crime, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>) </span></code></pre></div>
+<p>これで不安度指標と地理空間情報の入った,74行×17列のデータフレームが作成されました.残りの作業はggplot2を使って,不安度指標を色の濃淡で示した北欧地図を描くだけです.</p>
+<p>shp_neはsfクラスのオブジェクトです.このため描画にあたってはgeom_sf()関数に渡すだけです.この場合,何よって色分けするかをaes() で指定します.この例では,犯罪・暴力・破壊行為の報告者比率を示すvalues変数の値の大きさで色分けします.このために <strong>fill = values</strong>とします.</p>
+<p>具体的には,まず最初に,ggplot()にデータフレーム名を指定します.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="EC.html#cb99-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(shp_ne) <span class="sc">+</span></span></code></pre></div>
+<p>次に,geom_sf()関数を使ってデータを地図に描きますが,変数valuesを地図上の色の濃淡で表現するために,aes(fiill = )で指定します.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="EC.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span></code></pre></div>
+<p>values変数は犯罪・暴力・破壊行為の報告者比率です.さらに,color = “”でボーダー（国境）をwhite(白)で描き,その線の太さをsize = で指定しています.これで基本的な作業は終わりです.実行すると,犯罪・暴力・破壊行為の報告者比率がデフォルトの色の濃淡によって描かれた北欧地図が出力されます.
+この例ではさらに,<strong>scale_fill_continuous_tableau()</strong>を使って犯罪・暴力・破壊行為の報告者比率を描く色の濃淡をグレイに変更します.この関数によって連続したカラースケールを指定することができます.引数palett = “”部分に “Blue”, “Red”のように入力します.ここでは白黒印刷にあわせ,グレイの色を採用しています.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="EC.html#cb101-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span></code></pre></div>
+<p>次に,labs()を使ってタイトルをつけます.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="EC.html#cb102-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;The share of the population who reported </span><span class="sc">\n</span><span class="st">that they face the problem of crime, violence or vandalism, 2017&quot;</span>,　<span class="at">fill =</span> <span class="st">&quot;% the respondent </span><span class="sc">\n</span><span class="st">feels crime&quot;</span>) <span class="sc">+</span></span></code></pre></div>
+<p>英文タイトルの中のthatの前に<code>"\n"</code>が挿入されていることに気づいたと思います.これはその部分で文書の改行を命令する記号です.また,fill = “”によって色の濃淡を表示するバーのタイトルを指定しています.
+最後に,背景のテーマを設定します.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="EC.html#cb103-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>以上のスクリプトをまとめると,つぎのようになります,</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="EC.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shp_ne) <span class="sc">+</span></span>
+<span id="cb104-2"><a href="EC.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb104-3"><a href="EC.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb104-4"><a href="EC.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;The share of the population who reported </span><span class="sc">\n</span><span class="st">that they face the problem of crime, violence or vandalism, 2017&quot;</span>,　<span class="at">fill =</span> <span class="st">&quot;% the respondent </span><span class="sc">\n</span><span class="st">feels crime&quot;</span>) <span class="sc">+</span></span>
+<span id="cb104-5"><a href="EC.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>これを実行すると,次のようなグラフが描かれます.</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_9.png" style="width:50.0%" alt="" />
+<p class="caption">犯罪や暴力,破壊行為の問題に直面していると回答した人の割合（％）</p>
+</div>
+<p>見られるように,サンプル経済の中では編集者ミカエル<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> の活躍するスウエーデンがもっとも高く,これにリガの犬<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> が蠢くラトビア等のバルト３国が続きます.バルト海を挟む諸国において犯罪や暴力,破壊行為の問題に直面している人々が多そうです.こうした社会的不安が犯罪小説の創造に寄与しているのかもしれません.</p>
+<p><strong>4 地理空間情報― NUTSレベル3の利用</strong></p>
+<p>さらに,スウェーデンに注目し,こうした犯罪の背景―犯罪や暴力,破壊行為―を地域レベルでみてみましょう.これまで地理空間をNUTSレベル０としてきました.つまり国単位で情報を扱っていました.次に,北欧社会の中でも,犯罪や暴力,破壊行為の問題にもっとも強く直面しているスウェーデンに注目し,NUTSレベルを3までブレークダウンし,より詳細な犯罪情報を地図上に描いてみます.</p>
+<p>上で利用したデータはNUTSレベル２の情報を提供していませんが,犯罪に関連したNUTSレベル２,3のデータとしては<strong>「犯罪記録件数」(Crimes recorded by the police by NUTS 3 regions)</strong>があります.このデータをget_eurostat()を利用し,ダウンロードします.これをcrimeという名前をつけたオブジェクトに容れます.本データの<strong>id</strong>は<strong>crim_gen_reg</strong>です.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="EC.html#cb105-1" aria-hidden="true" tabindex="-1"></a>  crime <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="at">id =</span> <span class="st">&quot;crim_gen_reg&quot;</span>)</span></code></pre></div>
+<p>最初に,スウェーデンをピックアップします.このためgeo変数にfilter()をかけますが,抽出条件をgeo == “SE”とすると,スウェーデンの国内の行政単位のデータ―たとえば,SE1,SE2という記号で表示―は抽出条件に合致しないため,削除されてしまいます.そこで最初に,<strong>str.detect()</strong>関数を使って“SE”という文字列を持つgeo変数の行を探します.そしてそれと一致したgeo変数の行を抽出します.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="EC.html#cb106-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str.detect</span>(geo,<span class="st">&quot;SE&quot;</span>))</span></code></pre></div>
+<p>str.detect(geo, “SE”)はgeo変数が “SE”という文字列を含む場合,真TRUEを返します.これにfilter()を適用することによって,str.detect()関数がTRUEを返す行を抽出します.
+データは2009年と2010年のみですが,ここでは2010年を採用します.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="EC.html#cb107-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">&quot;2010-01-01&quot;</span>)</span></code></pre></div>
+<p>以上,必要な行の抽出が終わりです.これまでのスクリプトをまとめると,以下のようになります.抽出結果をcrime_sweという名前をつけたオブジェクトに容れてあります.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="EC.html#cb108-1" aria-hidden="true" tabindex="-1"></a>crime_swe <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span> </span>
+<span id="cb108-2"><a href="EC.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(geo, <span class="st">&quot;SE&quot;</span>), time <span class="sc">==</span> <span class="st">&quot;2009-01-01&quot;</span>) </span></code></pre></div>
+<p>次に,NUTSレベル３のデータをダウンロードし,shp3という名前のオブジェクトに容れます</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="EC.html#cb109-1" aria-hidden="true" tabindex="-1"></a>shp3 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">3</span>, <span class="at">year =</span> <span class="dv">2016</span>) </span>
+<span id="cb109-2"><a href="EC.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NUTS分類のレベル3で地図情報を取得し,オブジェクトshp3に容れる</span></span></code></pre></div>
+<p>それでは,crime_sweとNUTSレベル3のシェイプファイルをinner_join()関数を使って結合します.そして結合したファイルをshp3_crime_sweという名前のオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="EC.html#cb110-1" aria-hidden="true" tabindex="-1"></a>shp3_crime_swe <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp3,crime_swe, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;NUTS_ID&quot;</span><span class="ot">=</span><span class="st">&quot;geo&quot;</span>)) </span></code></pre></div>
+<p>by = “キー変数”の部分がこれまでと異なります.２つのファイルを結合するさいに,異なる変数を利用する場合,上述のように<strong>by = c(“NUTS_ID”=“geo”)</strong>とします.NUTS_IDはshp_2の中の変数,geoはcrime_sweの中の変数です.</p>
+<p>これで地図を作成するデータが出来上がりました.あとはggplot２を利用するだけです.スクリプトは次のようになります.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="EC.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shp3_crime_swe) <span class="sc">+</span></span>
+<span id="cb111-2"><a href="EC.html#cb111-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb111-3"><a href="EC.html#cb111-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb111-4"><a href="EC.html#cb111-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb111-5"><a href="EC.html#cb111-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Crimes recorded by the police,2010&quot;</span>,</span>
+<span id="cb111-6"><a href="EC.html#cb111-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;% the number of </span><span class="sc">\n</span><span class="st">crimes recorded by the police&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb111-7"><a href="EC.html#cb111-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig3_10.png" style="width:70.0%" alt="" />
+<p class="caption">スウェーデンにおける犯罪記録件数, 2010</p>
+</div>
+<p>ここでは単純に犯罪件数を表示させているだけですから,スウェーデンの中でも大都市圏―Stockholms県,Västra Götalands県やSkåne県等―で犯罪件数が多いことが理解されます.またグラフから理解されるように,犯罪件数には地理的な関連があるかもしれません.犯罪が多発する県の隣接する県でも多そうです.これは空間的なデータが相関していることを示唆しており,空間情報を分析するさいに注意を要する点です.</p>
+<p><strong>参考文献</strong>
+Chris Brunsdon, Lex Comber著(湯谷啓明・工藤和奏・市川太祐訳)『Rによる地理空間データ解析入門』共立出版, 2018年.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>スティーグ・ラーソン著『ミレニアム』（早川文庫）シリーズの主人公.<a href="EC.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>ヴァルランダーシリーズ,ヘニング・マンケル著『リガの犬たち』（創元社）.<a href="EC.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="WD.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="OECD.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

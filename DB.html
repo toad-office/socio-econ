@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.6 オープンデータポータル - DBnomics | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content="2.6 オープンデータポータル - DBnomics | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.6 オープンデータポータル - DBnomics | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.6 オープンデータポータル - DBnomics | 資料 Rで社会経済データの取得　(work in progress)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ" />
+
+
+<meta name="date" content="2021-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="金融データを取得する-imf-bis.html"/>
+<link rel="next" href="民主主義国家データ.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="本資料の目的.html"><a href="本資料の目的.html"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="社会経済データベース.html"><a href="社会経済データベース.html"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのprojectの利用.html"><a href="rstudioのprojectの利用.html"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.1.2" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="WD.html"><a href="WD.html"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="WD.html"><a href="WD.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="WD.html"><a href="WD.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="WD.html"><a href="WD.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="EC.html"><a href="EC.html"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="EC.html"><a href="EC.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="EC.html"><a href="EC.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="OECD.html"><a href="OECD.html"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="OECD.html"><a href="OECD.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="OECD.html"><a href="OECD.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="OECD.html"><a href="OECD.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="DB.html"><a href="DB.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="DB.html"><a href="DB.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html#準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 準備-ESSの認証とインストール</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="imf-covid-19-recovery-index.html"><a href="imf-covid-19-recovery-index.html"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="社会の関心を知る---gtrendsr.html"><a href="社会の関心を知る---gtrendsr.html"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="社会の声を集める---rtweet.html"><a href="社会の声を集める---rtweet.html"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="DB" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> オープンデータポータル - DBnomics</h2>
+<p><strong>フランスの数理経済計画予測研究所(CEPREMAP)</strong>のマクロ経済分析チーム「マクロ経済観測所」に所属するCEPREMAPモデリングチームは、広範囲な経済モデルを扱うためのソフトウェアDynareの開発と同時に、国内外の公開された経済データを集約した<a href="https://db.nomics.world">オープンデータポータルDBnomics</a>を運営しています.</p>
+<p>DBnomicsは世界の経済データを一箇所に集め、しかも無料で一般に公開することを目的としたオープンソースプロジェクトです.具体的には、国内機関や国際機関 ― Eurostat, World Bank, IMF, ECB等、87のデータ提供組織・機関 ― から収集された何百万ものデータ系列が提供されています.すでにこれまでに紹介したEurostat, OECD, IMF, BISおよびPenn World Tableも提供されています.</p>
+<p>たとえば、2-5でダウンロードしたデータはDBnomicsにおいても取得できます.imfrを使って得た実行為替レートは次のように入力することで得ることできます.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="DB.html#cb224-1" aria-hidden="true" tabindex="-1"></a>exch_rate_3c <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">&quot;IMF/IFS/A.CN.ENEER_IX&quot;</span>,<span class="st">&quot;IMF/IFS/A.JP.ENEER_IX&quot;</span>,<span class="st">&quot;IMF/IFS/A.US.ENEER_IX&quot;</span>))</span></code></pre></div>
+<p>BISによって取得した長期政策利子率を取得するためには次のように入力します.</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="DB.html#cb225-1" aria-hidden="true" tabindex="-1"></a>policyrate3c <span class="ot">&lt;-</span><span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(“BIS<span class="sc">/</span>cbpol<span class="sc">/</span>M.JP”, “BIS<span class="sc">/</span>cbpol<span class="sc">/</span>M.SE”, “BIS<span class="sc">/</span>cbpol<span class="sc">/</span>M.US”))</span></code></pre></div>
+<div id="rパッケージ---rdbnomics" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Rパッケージ - rdbnomics</h3>
+<p>このデータの利用を容易にするために<code>rdbnomics</code>と呼ばれるRパッケージが開発されています.rdbnomicsパッケージは、DBnomics データシリーズへのアクセスを提供します.
+ダウンロードするデータ系列の指定にあたっては統一的な方法が採用されています.後で示すように、データの取得にあたってはrdb()関数の<code>idb =</code> 引数で指定しますが、そのさい、データ提供組織名/データセット名/データ系列名という形で指定します.たとえば、<code>rdb = WHO/WHS6/WHS6_102.DEU.A</code>は、データを提供する組織がWHO, データセット名がWHS６、データ系列名はWHS6_102.DEU.Aです.また系列名の末尾のDEUはドイツを示す３文字の国コード、Aは年次データであることを示しています.</p>
+<div id="rdbnomicsのインストール" class="section level4" number="2.6.1.1">
+<h4><span class="header-section-number">2.6.1.1</span> rdbnomicsのインストール</h4>
+<p>RパッケージDBnomicsをインストールするには他のRパッケージと同様に次のように入力します。</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="DB.html#cb226-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;rdbnomics&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="DB.html#cb227-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(rdbnomics)</span></code></pre></div>
+<pre><code>## Visit &lt;https://db.nomics.world&gt;.</code></pre>
+</div>
+</div>
+<div id="rdbnomicsの利用方法" class="section level3" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> rdbnomicsの利用方法</h3>
+<div id="rdb関数を利用したデータ系列の取得" class="section level4" number="2.6.2.1">
+<h4><span class="header-section-number">2.6.2.1</span> rdb()関数を利用したデータ系列の取得</h4>
+<p>データをダウンロードするためには、<code>rdb()</code>関数を利用します。この関数の利用にあたっては３つの情報が必要となります.</p>
+<ul>
+<li><p>データの提供機関のコードprovider_code</p></li>
+<li><p>データセット・コードdataset_code</p></li>
+<li><p>データ系列コードseries_code</p>
+<p>この３つの情報を<code>rdb()</code>関数の引数<code>ids =</code> において指定します.ids引数の書き方は次のようになります.</p></li>
+</ul>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="DB.html#cb229-1" aria-hidden="true" tabindex="-1"></a>    ids <span class="ot">=</span> 提供機関コード<span class="sc">/</span>データセット・コード<span class="sc">/</span>データ系列コード</span></code></pre></div>
+<p>実際に世界保健機構WHOが提供するドイツの「病床数（人口１万人あたり）」データを取得してみましょう.このためには上の３つの情報が必要となります.データ提供機関コードはWHO, データセット・コードはWHS6, データ系列コードはWHS6_102.DEU.Aです.取得したドイツ病床数データをbeds_deuというオブジェクトに容れるとすると、次のようなスクリプトでダウンロードすることができます.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="DB.html#cb230-1" aria-hidden="true" tabindex="-1"></a>  beds_deu <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="st">&quot;WHO/WHS6/WHS6_102.DEU.A&quot;</span>)</span></code></pre></div>
+<p>結果を<code>str()</code>関数を使い、beds_deuの変数を確認してみましょう。</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="DB.html#cb231-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(beds_deu)</span></code></pre></div>
+<p>21の変数（列）がbeds_deuに格納されていることが分かります.<code>ids()</code>関数を利用し、データを取得すると、少なくとも次の10の変数を得ることができます.</p>
+<ul>
+<li>dataset_code</li>
+<li>provider_code</li>
+<li>dataset_name</li>
+<li>series_code</li>
+<li>original_period</li>
+<li>period</li>
+<li>original_value</li>
+<li>value</li>
+<li><span class="citation">@frequency</span></li>
+</ul>
+<p>データベースごとに異なりますが、上記以外に単位unit、地理情報geo、年次、四半期別等の情報freqを取得することもできます.</p>
+<p>以下のグラフはデータフレームbeds_deuのデータををもとggplotを利用し、ドイツの病床の時系列変化のグラフを描いたものです.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="DB.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> beds_deu, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> period,<span class="at">y =</span> value))<span class="sc">+</span></span>
+<span id="cb232-2"><a href="DB.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb232-3"><a href="DB.html#cb232-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb232-4"><a href="DB.html#cb232-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;per 10000 pupulation&quot;</span>,</span>
+<span id="cb232-5"><a href="DB.html#cb232-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Hospital beds (per 10 000 population) in German&quot;</span>)<span class="sc">+</span></span>
+<span id="cb232-6"><a href="DB.html#cb232-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/bedsDEU.png" alt="" />
+<p class="caption">ドイツにおける病床数</p>
+</div>
+<p>繰り返しになりますが、上述のように、データ系列を取得するためは３つの情報が必要となります.そこで３つの情報を取得するための方法を順番に紹介して行きましょう.</p>
+<ol style="list-style-type: decimal">
+<li>データを提供する機関のコード名</li>
+<li>その機関の提供するデータセットのコード名</li>
+<li>データ系列のコード名</li>
+</ol>
+<p><strong>1. 機関のコード名の取得</strong></p>
+<p>機関コード名はrdb_providers()関数を利用することで取得できます.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="DB.html#cb233-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rdb_providers</span>(<span class="at">code =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><code>code =</code> 引数はTRUEかFALSEの論理値をとり、既定値はFALSEです.上のように、<code>code = TRUE</code>とした場合、提供機関のコード名が表示されます.既定値FALSEにした場合、機関コード名の他に機関名nama、カバー地域region、ホームページアドレスweb site等が表示されます.</p>
+<p><strong>2. データセットコードの取得</strong></p>
+<p>このコードの取得のためには<code>rdb_datasets()</code>関数を使います.この関数では特定の機関を指定せずに、すべてのデータセットのリストをダウンロードすることもできますが、<code>rdb_providers()</code>で取得した機関コード指定した方が効率的です.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="DB.html#cb234-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rdb_datasets</span>(<span class="at">provider_code =</span> <span class="st">&quot;IMF&quot;</span>)</span></code></pre></div>
+<p>これでIMFの提供するデータセット一覧を取得できます.</p>
+<p><strong>3. データ系列リストの取得</strong></p>
+<p>次に、提供機関IMFのデータセットIFSに、どのようなデータ系列が保存されているかをみます.このためには<code>rdb_series()</code>関数を利用します.</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="DB.html#cb235-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rdb_series</span>(<span class="at">provider_code =</span> <span class="st">&quot;IMF&quot;</span>, <span class="at">dataset_code =</span> <span class="st">&quot;IFS&quot;</span>)</span></code></pre></div>
+<p>以上の手順1 ~3は<a href="https://db.nomics.world">DBnomicsのホームページ</a>においても行うことができます.ホームページにおいて下の方にスクロールすると、[DBnomics providers]一覧が掲載されています.[IMF]International Monetary Fund選択すると、データセットの一覧を見ることができます.さらに、ここでデータセットInternational Financial statistics (IFS) [IMF/IFS]を選択すると、IFSが有するデータ系列を選択し、ダウンロードすることができるようになっています.</p>
+<p>以上でDBnomicsの基本的な利用法の説明は終了です.続けていくつかの利用パタンを紹介しましょう。</p>
+</div>
+<div id="同一のデータセットから複数のデータ系列を取得する" class="section level4" number="2.6.2.2">
+<h4><span class="header-section-number">2.6.2.2</span> 同一のデータセットから複数のデータ系列を取得する</h4>
+<p>次に、複数のデータ系列をダウンロードする方法を紹介しましょう.これは<code>c( )</code>を使い、その中にデータ系列名を並べて書くことで簡単にダウンロードできます.以下のスクリプトがその例です.ダウンロードした結果は、beds3cというオブジェクトに格納されています.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="DB.html#cb236-1" aria-hidden="true" tabindex="-1"></a>  beds3c <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">&quot;WHO/WHS6/WHS6_102.DEU.A&quot;</span>, <span class="st">&quot;WHO/WHS6/WHS6_102.JPN.A&quot;</span>, <span class="st">&quot;WHO/WHS6/WHS6_102.USA.A&quot;</span>))</span></code></pre></div>
+<p>ここでは、WHOのWorld Health Statistics[WHS6]からドイツ、日本およびアメリカの病床データ -―WHS6_102.DEU.A、WHS6_102.JPN.A、WHS6_102.USA.A ―-をダウンロードし、オブジェクトbeds3cに容れています.</p>
+<p>beds3cのデータをもとに３カ国のプロットを描くと、ドイツの病床の水準は日本とアメリカの中間にあるようです.一般的に言われているように、日本の病床数は多く、アメリカの病床数は低い水準にあることが分かります.また、いずれの国も傾向的には病床数は減少しているようです.</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/beds_JPDEUUSA.png" alt="" />
+<p class="caption">ドイツ,日本およびUSAにおける病床数</p>
+</div>
+<p>このグラフは次のスクリプトによって描くことができます.</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="DB.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> beds3c, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> value))<span class="sc">+</span></span>
+<span id="cb237-2"><a href="DB.html#cb237-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb237-3"><a href="DB.html#cb237-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Country)<span class="sc">+</span></span>
+<span id="cb237-4"><a href="DB.html#cb237-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">9</span>)<span class="sc">+</span></span>
+<span id="cb237-5"><a href="DB.html#cb237-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p>このスクリプトでも、facet_wrap()関数を利用し、国別の複数のグラフを作成しています.facet_wrap()は使い方は次のようになります.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="DB.html#cb238-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(分類する基準となる変数))</span></code></pre></div>
+<p>また、テーマはtheme_minimal()を利用し、シンプルなテーマを選択しています.表示文字のサイズはbase_size = を利用し、９ポイントに指定しています.</p>
+<p>この例ではWHOのWorld Health Statistics[WHS6]というデータセットを利用しました.この他にWHOからは次の４つのデータセットが提供されています.International Health Regulations (2005) monitoring network, Sustainable development goals, Health workforceおよびRoad Safetyです。</p>
+</div>
+<div id="異なったデータセットから異なったデータ系列の取得" class="section level4" number="2.6.2.3">
+<h4><span class="header-section-number">2.6.2.3</span> 異なったデータセットから異なったデータ系列の取得</h4>
+<p>次に異なったデータセットから異なったデータ系列をダンロードしてみましょう.同じWHOの中にHealth workforce[WHO/HWV]というデータセットがあり、その中に「医師数（人口１万人あたり）」のデータが提供されています.病床数と一緒に、このデータも取得してみましょう.いずれも日本のデータです.この例では結果をbed_mdというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="DB.html#cb239-1" aria-hidden="true" tabindex="-1"></a>  beds_md <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">&quot;WHO/WHS6/WHS6_102.JPN.A&quot;</span>,<span class="st">&quot;WHO/HWF/HWF_0001.JPN.A&quot;</span>))</span></code></pre></div>
+<p>names()関数を利用し、beds_mdが持つ変数一覧を表示させてみましょう.</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="DB.html#cb240-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(beds_md)</span></code></pre></div>
+<pre><code>##  [1] &quot;@frequency&quot;              &quot;Country&quot;                
+##  [3] &quot;COUNTRY&quot;                 &quot;dataset_code&quot;           
+##  [5] &quot;dataset_name&quot;            &quot;FREQ&quot;                   
+##  [7] &quot;Frequency&quot;               &quot;indexed_at&quot;             
+##  [9] &quot;Indicator&quot;               &quot;INDICATOR&quot;              
+## [11] &quot;original_period&quot;         &quot;original_value&quot;         
+## [13] &quot;period&quot;                  &quot;provider_code&quot;          
+## [15] &quot;REGION&quot;                  &quot;series_code&quot;            
+## [17] &quot;series_name&quot;             &quot;Sex&quot;                    
+## [19] &quot;SEX&quot;                     &quot;UN Region&quot;              
+## [21] &quot;UNREGION&quot;                &quot;value&quot;                  
+## [23] &quot;WHO region&quot;              &quot;World Bank income group&quot;
+## [25] &quot;WORLDBANKINCOMEGROUP&quot;</code></pre>
+<p>データフレームbeds_mdが25変数（列）を持っていることが分かります.変数（列）はDBnomicsでは統一されています、つまり病床数データと医師数データは同一の変数の中にあります（異なる場合、変数列が追加されます）.このため病床数データの行が終了すると、医師数データの行が追加されてます.</p>
+<p>このためデータを処理するさい、INDICATORもしくはseries_code変数によって識別する必要があります.</p>
+<p><strong>データフレーム名$変数名</strong>を使ってデータフレームの変数を指定し、INDICATORを表示させると、19行めまではWHS6_102ですが、20行めからはHWF_0001であることが分かります.つまり19行めまではベッド数データ、20行めからは医師数のデータであることが分かります.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="DB.html#cb242-1" aria-hidden="true" tabindex="-1"></a>  beds_md<span class="sc">$</span>INDICATOR</span></code></pre></div>
+<pre><code>##  [1] &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot;
+##  [7] &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot;
+## [13] &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot; &quot;WHS6_102&quot;
+## [19] &quot;WHS6_102&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot;
+## [25] &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot;
+## [31] &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot;
+## [37] &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot;
+## [43] &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot; &quot;HWF_0001&quot;</code></pre>
+<p>次に、このデータを使って医師数とベッド数の推移のグラフを描いていみましょう.</p>
+<p>最初に、このINDICATORをもとにベッド数と医師数データをそれぞれ別のデータフレーム―beds_jpn, doctor_jpn―に容れます.</p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="DB.html#cb244-1" aria-hidden="true" tabindex="-1"></a>  beds_jpn <span class="ot">&lt;-</span> beds_md <span class="sc">%&gt;%</span> <span class="fu">filter</span>(INDICATOR <span class="sc">==</span> <span class="st">&quot;WHS6_102&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="DB.html#cb245-1" aria-hidden="true" tabindex="-1"></a>  doctor_jpn <span class="ot">&lt;-</span> beds_md <span class="sc">%&gt;%</span> <span class="fu">filter</span>(INDICATOR <span class="sc">==</span> <span class="st">&quot;HWF_0001&quot;</span>)</span></code></pre></div>
+<p>いずれもfilter()関数を使ってベッド数のデータの入っている行（もしくは医師数のデータの入っている行）を抽出しています.なお、filter()関数の書き方は</p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="DB.html#cb246-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(データフレーム名、抽出条件)</span></code></pre></div>
+<p>です.ただし、この例ではパイプ%&gt;%で連結していますので、データフレーム名は省略しています。抽出条件は<code>INDICATOR == "WHS6_102"</code>です。これはINDICATOR変数が文字列“WHS6_102”に等しい行だけを抽出しなさいということを意味します。</p>
+<p>最後に、抽出した結果つまりデータフレームを<code>ggplot()</code>に渡します。そしてggplot2を使って描いたグラフをオブジェクトbeds_figに容れます。</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="DB.html#cb247-1" aria-hidden="true" tabindex="-1"></a>beds_fig <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> beds_jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value, <span class="at">group =</span> INDICATOR)) <span class="sc">+</span></span>
+<span id="cb247-2"><a href="DB.html#cb247-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb247-3"><a href="DB.html#cb247-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb247-4"><a href="DB.html#cb247-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Hospital beds (per 10 000 population)&quot;</span>,</span>
+<span id="cb247-5"><a href="DB.html#cb247-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb247-6"><a href="DB.html#cb247-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb247-7"><a href="DB.html#cb247-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2019</span>,<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb247-8"><a href="DB.html#cb247-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb247-9"><a href="DB.html#cb247-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">12</span>, <span class="at">y =</span> <span class="dv">145</span>, <span class="at">label =</span> <span class="st">&quot;DBnomics is a database of</span><span class="sc">\n</span><span class="st"> macro-economic data aggregated </span><span class="sc">\n</span><span class="st">from a great number of world-wide providers&quot;</span>)</span></code></pre></div>
+<p>beds_figの作成にあたっては<strong>scale_x_discrete()</strong>を利用し、x軸のラベルを変更しています.x軸の変数’orignal_period’は見た目では連続変数ですが、じっさいには文字列変数です.データフレームbeds_jpnの中のoriginal_period変数にclass()を適用すると、</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="DB.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(beds_jpn<span class="sc">$</span>original_period)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>’orignal_period’変数が文字列であることが分かります。変数の型を変換しても良いのですが、ここではそのまま文字列として扱い、x軸のラベルを変更します。このためにscale_x_discrete()を利用します. discreteは離散変数を意味し、x軸を離散変数として扱うことを示しています. 引数<strong>breaks =</strong>によってラベルの表示範囲を指定します. <strong>seq(2000, 2019, 5)</strong>は開始年を2000年とし、最後の年を2019とし、5年おきにラベルをつけるということを指示しています.</p>
+<p>さらに、<strong>annotate()</strong>関数を使い、注釈をグラフに入れてあります.annotate(“text”, x = 12, y = 145, label = "“)が示しているように、annotate()関数を使ってテキスト注釈を挿入する場合は、”text",そしてテキストの位置をx軸とy軸の座標で指定します。その上で挿入する注釈を<code>label = ""</code>に記入します。</p>
+<p>同様に、医師数データを表示するスクリプトは次のようになります</p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="DB.html#cb250-1" aria-hidden="true" tabindex="-1"></a>  doctor_fig <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> doctor_jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value, <span class="at">group =</span> INDICATOR))<span class="sc">+</span></span>
+<span id="cb250-2"><a href="DB.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb250-3"><a href="DB.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb250-4"><a href="DB.html#cb250-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Medical doctors (per 10,000)&quot;</span>,</span>
+<span id="cb250-5"><a href="DB.html#cb250-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb250-6"><a href="DB.html#cb250-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb250-7"><a href="DB.html#cb250-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2019</span>, <span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb250-8"><a href="DB.html#cb250-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p>以上の2つのグラフ – beds_figとdoctor_fig – を表示させますが、そのさい、グラフのレイアウトを調整するRパッケージ’patchwork’を使い、2つのグラフを縦に並べています.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="DB.html#cb251-1" aria-hidden="true" tabindex="-1"></a> beds_fig<span class="sc">/</span>doctor_fig</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/beds_doctors.png" alt="" />
+<p class="caption">日本における病床数と医師数</p>
+</div>
+</div>
+<div id="異なったデータ提供機関および異なったデータセットからデータ系列を取得する" class="section level4" number="2.6.2.4">
+<h4><span class="header-section-number">2.6.2.4</span> 異なったデータ提供機関および異なったデータセットからデータ系列を取得する</h4>
+<p>これまではWHOという同一の機関からデータを取得してきましたが、最後に、異なった機関からのデータを取得する方法を紹介しておきましょう.</p>
+<p>たとえば、アメリカにおける2000年台以降の失業率と自殺率の関連を知りたいとします.このためにWDIからは自殺率、ILOから失業率をダウンロードするとします.各種の機関・組織からデータを収集しているDBnomicsではデータベース横断的なデータの取得がとても簡単です.上で紹介した方法と同様に、<code>rdb()</code>関数を利用し、引数<code>ids =</code>にWDIとILOのデータを指定するだけです.</p>
+<p>WDIの提供するアメリカの自殺率データのDBnomics形式の指標名は次のとおりです.ここでは性別の２種類のデータが指定されています.<strong>“WB/WDI/SH.STA.SUIC.MA.P5-US”</strong>と<strong>“WB/WDI/SH.STA.SUIC.FE.P5-US”</strong>です.</p>
+<p>ダウンロードには上述のように<code>rdb(ids = "")</code>を利用します.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="DB.html#cb252-1" aria-hidden="true" tabindex="-1"></a>suicide <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">&quot;WB/WDI/SH.STA.SUIC.MA.P5-US&quot;</span>,<span class="st">&quot;WB/WDI/SH.STA.SUIC.FE.P5-US&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="DB.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> suicide, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(original_period), <span class="at">y =</span> value,<span class="at">group =</span> series_name ))<span class="sc">+</span></span>
+<span id="cb253-2"><a href="DB.html#cb253-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> series_name))<span class="sc">+</span></span>
+<span id="cb253-3"><a href="DB.html#cb253-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb253-4"><a href="DB.html#cb253-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Suicide mortality rate (per 100,000 female population)&quot;</span>,</span>
+<span id="cb253-5"><a href="DB.html#cb253-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb253-6"><a href="DB.html#cb253-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb253-7"><a href="DB.html#cb253-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))<span class="sc">+</span></span>
+<span id="cb253-8"><a href="DB.html#cb253-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span> (<span class="dv">2000</span>,<span class="dv">2020</span>)<span class="sc">+</span></span>
+<span id="cb253-9"><a href="DB.html#cb253-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/db27-1.png" width="672" /></p>
+<p>このグラフは自殺率データをもとに描いたグラフです.グラフのx軸にはoriginal_period変数が利用されています.この変数original_periodは文字列型です.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="DB.html#cb254-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">class</span>(suicide<span class="sc">$</span>original_period)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>グラフのx軸にするにはこのデータ型は扱いづらいのでグラフ作成にあたっては<em>as.integer()</em>関数によって整数型に変化しています.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="DB.html#cb256-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">class</span>(<span class="fu">as.integer</span>(suicide<span class="sc">$</span>original_period))</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>ケース・ディートン著『絶望死のアメリカ―資本主義がめざすべきもの』は、おもにアメリカ疾病予防管理センター（CDC）のデータをもとに1990年台から低学歴白人アメリカ人中年男性の自殺率だけが急増している事実を報告しています.グラフは学歴別ではありませんが、男性の自殺率が、女性に比べ、高い水準にあり、とりわけリーマンショック後に急増していることが伺えます.</p>
+<p>また、失業率データは45-54歳年齢の男性データを利用します.これは学歴別の失業率データです.</p>
+<ul>
+<li>“ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_3.SEX_M.A”</li>
+<li>“ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_6.SEX_M.A”</li>
+</ul>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="DB.html#cb258-1" aria-hidden="true" tabindex="-1"></a>  unemp <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span><span class="fu">c</span>( <span class="st">&quot;ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_3.SEX_M.A&quot;</span>,<span class="st">&quot;ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_6.SEX_M.A&quot;</span>))</span></code></pre></div>
+<p>学歴別の中年(45-54歳)男性の失業率の推移を見てみましょう.期待どおりですが、低学歴グループが高い失業率を示しています.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="DB.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> unemp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value,<span class="at">group =</span> classif2))<span class="sc">+</span></span>
+<span id="cb259-2"><a href="DB.html#cb259-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> classif2))<span class="sc">+</span></span>
+<span id="cb259-3"><a href="DB.html#cb259-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb259-4"><a href="DB.html#cb259-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Male unemployment rate, by education level&quot;</span>,</span>
+<span id="cb259-5"><a href="DB.html#cb259-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb259-6"><a href="DB.html#cb259-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb259-7"><a href="DB.html#cb259-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_hue</span>(<span class="at">name =</span> <span class="st">&quot;&quot;</span>,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Upper secondary </span><span class="sc">\n</span><span class="st">education&quot;</span>, <span class="st">&quot;Bachelor&#39;s </span><span class="sc">\n</span><span class="st">or equivalent level&quot;</span>))<span class="sc">+</span></span>
+<span id="cb259-8"><a href="DB.html#cb259-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2019</span>,<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb259-9"><a href="DB.html#cb259-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/unemp_by_ed.png" alt="" />
+<p class="caption">学歴別失業率</p>
+</div>
+<p>グラフから理解されるように、あきらかに低学歴グループの失業率が、学士卒のグループよりも高いことが分かります.つまり、このデータは労働市場のショックが不均等に低学歴グループに影響を与えることを示しています.</p>
+<p>最後に、こうした低学歴失業率と自殺率の単純な相関を観察してみます.このために次の4つの手順を踏みます.</p>
+<ol style="list-style-type: decimal">
+<li>自殺率データから男性の自殺率だけを抽出する</li>
+<li>失業率のデータから低学歴男性の失業率を抽出する</li>
+<li>上の２つのデータを結合する</li>
+<li>必要な変数のみ取り出し、ggplot2によって散布図を描く</li>
+</ol>
+<p><strong>1. 自殺率データから男性の自殺率だけを抽出する</strong></p>
+<p>データフレームsuicideにfilter()関数を適用し、series_code が “WB/WDI/SH.STA.SUIC.MA.P5-US” に一致する行を取り出します.そしてその結果をsuicide_maleという名前のオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="DB.html#cb260-1" aria-hidden="true" tabindex="-1"></a>suicide_male <span class="ot">&lt;-</span> suicide <span class="sc">%&gt;%</span> </span>
+<span id="cb260-2"><a href="DB.html#cb260-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(series_code <span class="sc">==</span> <span class="st">&quot;WB/WDI/SH.STA.SUIC.MA.P5-US&quot;</span> )</span></code></pre></div>
+<p><strong>2. 失業率のデータから低学歴男性の失業率を抽出する</strong></p>
+<p>　　同様に、filter()関数を使い、データフレームsuicideから低学歴中年男性の失業率を抽出します.具体的には、classif2が“EDU_ISCED11_3”に一致する行を取り出します.ここでは抽出された結果はunemp_low_edというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="DB.html#cb261-1" aria-hidden="true" tabindex="-1"></a>   unemp_low_ed <span class="ot">&lt;-</span> unemp <span class="sc">%&gt;%</span> </span>
+<span id="cb261-2"><a href="DB.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( classif2 <span class="sc">==</span> <span class="st">&quot;EDU_ISCED11_3&quot;</span>)</span></code></pre></div>
+<p><strong>3. 上の２つのデータを結合する</strong></p>
+<p>　上で抽出した２つのデータフレームを結合します.このためにはinner_join()関数を利用します.たとえば、A,Bという２つのデータフレームを結合するとします.この場合、inner_join()は次のように書きます.
+　</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="DB.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(データフレームA、データフレームB, <span class="at">by =</span> <span class="st">&quot;結合の基準となる変数名&quot;</span>)</span></code></pre></div>
+<p>それではこの関数を使い、２つのデータフレーム — suicide_maleとunemp_low_ed — を結合します.結合にあたっての共通の変数は<strong>original_period</strong>になります.結合されたデータフレームは<strong>suicide_unemployment</strong>というオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="DB.html#cb263-1" aria-hidden="true" tabindex="-1"></a>suicide_unemployment <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(suicide_male,unemp_low_ed,<span class="at">by =</span> <span class="st">&quot;original_period&quot;</span>)</span></code></pre></div>
+<p><strong>4　必要な変数のみ取り出し、ggplot2によって散布図を描く</strong></p>
+<p>次に、select()関数を利用し、必要な変数を取り出します.その際、変数名も変更しておきます.select()関数は引数に抽出する変数名を入力するだけですが、変数名を変更する場合は<code>新しい変数名 = 古い変数名</code>と入力します.</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="DB.html#cb264-1" aria-hidden="true" tabindex="-1"></a>su <span class="ot">&lt;-</span> suicide_unemployment <span class="sc">%&gt;%</span> </span>
+<span id="cb264-2"><a href="DB.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(original_period,<span class="at">suicide_rate =</span> value.x, <span class="at">unemp_rate =</span> value.y)</span></code></pre></div>
+<p>この例では結果を<code>su</code>というオブジェクトに格納しています.このデータフレームを利用し、最後に、ggplot2で自殺率と失業率の散布図を描くとします.</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="DB.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> su, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> unemp_rate, <span class="at">y =</span> suicide_rate))<span class="sc">+</span></span>
+<span id="cb265-2"><a href="DB.html#cb265-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb265-3"><a href="DB.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> su, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> unemp_rate, <span class="at">y =</span> suicide_rate))<span class="sc">+</span></span>
+<span id="cb265-4"><a href="DB.html#cb265-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb265-5"><a href="DB.html#cb265-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>,<span class="at">size =</span> <span class="dv">1</span>,<span class="at">color =</span> <span class="st">&quot;gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb265-6"><a href="DB.html#cb265-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb265-7"><a href="DB.html#cb265-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>))<span class="sc">+</span></span>
+<span id="cb265-8"><a href="DB.html#cb265-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb265-9"><a href="DB.html#cb265-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>))<span class="sc">+</span></span>
+<span id="cb265-10"><a href="DB.html#cb265-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb265-11"><a href="DB.html#cb265-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Male unemployment rate (45-54), </span><span class="sc">\n</span><span class="st">upper secondary education &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Male suicide mortality rate </span><span class="sc">\n</span><span class="st">(per 100,000)&quot;</span></span>
+<span id="cb265-12"><a href="DB.html#cb265-12" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb265-13"><a href="DB.html#cb265-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>))</span></code></pre></div>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/suicide_unemp.png" alt="" />
+<p class="caption">男性自殺率vs.低学歴中年労働者失業率</p>
+</div>
+<p>グラフ作成にあたって利用されたデータがそれほど適切なものではないため、とくに男性失業率の年齢階層別データを利用していないために、失業率と自殺率の間に何らかの関連を見出すことはできませんでした。</p>
+
+</div>
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="金融データを取得する-imf-bis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="民主主義国家データ.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 世界銀行World Bank ― WDI | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content="2.2 世界銀行World Bank ― WDI | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 世界銀行World Bank ― WDI | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 世界銀行World Bank ― WDI | 資料 Rで社会経済データの取得　(work in progress)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ" />
+
+
+<meta name="date" content="2021-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="groningen-growth-and-development-centre.html"/>
+<link rel="next" href="EC.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="本資料の目的.html"><a href="本資料の目的.html"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="社会経済データベース.html"><a href="社会経済データベース.html"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのprojectの利用.html"><a href="rstudioのprojectの利用.html"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.1.2" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="WD.html"><a href="WD.html"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="WD.html"><a href="WD.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="WD.html"><a href="WD.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="WD.html"><a href="WD.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="EC.html"><a href="EC.html"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="EC.html"><a href="EC.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="EC.html"><a href="EC.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="OECD.html"><a href="OECD.html"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="OECD.html"><a href="OECD.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="OECD.html"><a href="OECD.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="OECD.html"><a href="OECD.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="DB.html"><a href="DB.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="DB.html"><a href="DB.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html#準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 準備-ESSの認証とインストール</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="imf-covid-19-recovery-index.html"><a href="imf-covid-19-recovery-index.html"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="社会の関心を知る---gtrendsr.html"><a href="社会の関心を知る---gtrendsr.html"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="社会の声を集める---rtweet.html"><a href="社会の声を集める---rtweet.html"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="WD" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 世界銀行World Bank ― WDI</h2>
+<p>世界銀行が提供する<strong>世界開発指標WDI（World Development Indicators）</strong>は,グローバルな開発状況と貧困について国際的に比較可能な統計をまとめたものです．このデータベースには，217の経済と40以上の国グループの1,600の時系列指標が収録されています．またその多くの指標のデータは50年以上前までさかのぼることができます.</p>
+<p>WDIデータは，さまざまな方法で取得できるようにされています．詳しくは<a href="http://datatopics.worldbank.org/world-development-indicators/">世銀ホームページ</a>を参照してください．ファイルが大きいためダウンロードに多少時間がかかりますが，すべてのデータ（ExcelおよびCSV形式ファイル）をまとめてダウンロードすることも可能です．</p>
+<p>このWDIデータを利用するためのRパッケージWDIが開発されています .これ以外にも<a href="https://github.com/gshs-ornl/wbstats">wbstats</a>というパッケージもありますが，ここではWDIを紹介します．
+RパッケージWDIは，世界銀行によって運営される40以上のデータベースからデータを検索・ダウンロードすることを可能にしています．そうしたデータベースには世界開発指標(WDI）はもちろんのこと，国際債務統計，Doing Business,人的資本指数，サブナショナルな貧困指標も含まれます．</p>
+<div id="インストール方法" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> インストール方法</h3>
+<p>RパッケージWDIはCRAN上で公開されていますのでインストールにはinstall.packages()を利用します．コンソール画面に次のように入力し，エンターキーを押してください．</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="WD.html#cb53-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># WDIのインストール</span></span>
+<span id="cb53-2"><a href="WD.html#cb53-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;WDI&quot;</span>)</span></code></pre></div>
+<p>WDIを利用するために，スクリプト画面にlibrary(WDI)と入力し，実行しておきます．</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="WD.html#cb54-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># WDIのロード</span></span>
+<span id="cb54-2"><a href="WD.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(WDI)</span></code></pre></div>
+</div>
+<div id="データを探す--wdisearch" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> データを探す- WDISearch()</h3>
+<p>データを探すためにはWDIパッケージに用意されたWDIsearch()関数を使います．この関数は利用可能なWDIデータ系列のコード名，名前，説明，およびデータソースからなる行列を返します．基本的な書式は以下の通りです．</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="WD.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;検索語&quot;</span>, <span class="at">field =</span> <span class="st">&quot;name&quot;</span>, <span class="at">short =</span> <span class="cn">TRUE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p>それぞれの引数を説明しましょう．</p>
+<ul>
+<li>string = "“:”“に検索語（文字列）を入力します．WDIsearchは文字列マッチング関数grepを使い，”検索語”を探します．また，caseを無視します（igunore.case=TRUE）ので，正規表現―簡単に言えば，通常の文字―が利用可能です．</li>
+<li>field = "“:”“に検索するフィールドを指定します．利用可能なフィールドは”indicator“,”name“,”description“,”sourceDatabase“,”sourceOrganization“です．たとえば”name" と入力すれば，データのnameの中を検索します．</li>
+<li>short = : 既定値はshort=TRUEです．この場合，指標コードと名前だけを返します．short=FALSEの場合，指標コード，名前，説明およびデータソースを返します．</li>
+<li>cache: WDIcache関数によって作成されるデータリストを返します．省略された場合（あるいはNULLの場合），WDIseachはデータ系列のローカルリストを探します．</li>
+</ul>
+<p>たとえば，GDPに関するデータを探すとしましょう．この例では検索文字列を“gdp”とし，探すフィールドを“name”にしています．また，詳しい説明を得るためにshort=FALSEと設定しています．検索結果はオブジェクトgdpに格納します．</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="WD.html#cb56-1" aria-hidden="true" tabindex="-1"></a>  gdp <span class="ot">&lt;-</span> <span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;gdp&quot;</span>,<span class="at">field =</span> <span class="st">&quot;name&quot;</span>,<span class="at">short =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p>この結果をView(gdp)でみると，539×5の行列が返されます．ここで重要なのは<strong>indicator変数</strong>です．これは指標コードであり，ダウンロードのさいに利用されます．</p>
+<div class="figure">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/fig10.png" alt="" />
+<p class="caption">WDIsearch()の検索結果</p>
+</div>
+<p>絞り込みが不十分なため，539行のデータ系列が表示されてしまっていますが，スクロールダウンして行くと，448行めにGDP(constant 2010 US$)が見つかります．そのindicator名は<strong>NY.GDP.MKTP.KD</strong>です.以下の例においては，これをダウンロードします．</p>
+</div>
+<div id="データをダウンロードする--wdi" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> データをダウンロードする- WDI()</h3>
+<p>データをダウンロードするためにはWDI()関数を利用しますが，利用方法は次のようになります.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="WD.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">WDI</span>(</span>
+<span id="cb57-2"><a href="WD.html#cb57-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">country =</span> <span class="st">&quot;all&quot;</span>,</span>
+<span id="cb57-3"><a href="WD.html#cb57-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">indicator =</span> <span class="st">&quot;NY.GDP.MKTP.KD&quot;</span>,</span>
+<span id="cb57-4"><a href="WD.html#cb57-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">start =</span> <span class="dv">1960</span>, <span class="at">end =</span> <span class="dv">2020</span>, <span class="at">extra =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">NULL</span></span>
+<span id="cb57-5"><a href="WD.html#cb57-5" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p>この関数は６つの引数をとります．それぞれを簡単に説明しましょう.</p>
+<ul>
+<li>country = "“:”“の中に，ダウンロード対象の国名（ISO-2文字コードで表現された国名）を入力します．たとえば，”US“,”CA“,”JP“です．複数の国を指定したい場合，c()を利用します. country = c(”US“,”CA“,”JP“) と入力します．なお，”all"と入力すると，すべての利用な国のデータがダウンロードされます．</li>
+<li>indicator = : 指標のコード名を入力します．これは上の表のindicator列に表示されているものになります．</li>
+<li>start = :データの開始年です．通常整数フォーマットの年です（ただし，1960以上）．</li>
+<li>end = :データの終了年です．言うまでもなく，start引数に指定した値より大きくなければなりません.</li>
+<li>extra = : TRUEの場合，地域，iso3コード，所得水準といった追加的な変数を返します．</li>
+<li>WDIcache()によって作成されるリストで，extra = TRUEのとき利用されます．</li>
+</ul>
+<p>それではWDI()関数を使って，アメリカ経済のGDP(constant 2010 US$)をダウンロードしてみます．このGDPデータのindicatorコードは，上述のとおり，<strong>NY.GDP.MKTP.KD</strong>です．ダウンロードしたデータはgdp_usという名前をつけたオブジェクトに格納します．</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="WD.html#cb58-1" aria-hidden="true" tabindex="-1"></a> gdp_us <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;US&quot;</span>, <span class="at">indicator =</span> <span class="st">&quot;NY.GDP.MKTP.KD&quot;</span>, <span class="at">start =</span> <span class="dv">1990</span>, <span class="at">end =</span> <span class="dv">2019</span>, <span class="at">extra =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>) </span></code></pre></div>
+<p>head()やView()関数を使ってダウンロードしたデータを確認してみてください．</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="WD.html#cb59-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(gdp_us)</span></code></pre></div>
+<pre><code>##   iso2c       country NY.GDP.MKTP.KD year
+## 1    US United States   1.834911e+13 2019
+## 2    US United States   1.796094e+13 2018
+## 3    US United States   1.743841e+13 2017
+## 4    US United States   1.704090e+13 2016
+## 5    US United States   1.675416e+13 2015
+## 6    US United States   1.625426e+13 2014</code></pre>
+<p>最後に，ダウンロードしたGDPデータをggplot2を使ってグラフにしてみましょう．</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="WD.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gdp_us)<span class="sc">+</span></span>
+<span id="cb61-2"><a href="WD.html#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> NY.GDP.MKTP.KD))<span class="sc">+</span></span>
+<span id="cb61-3"><a href="WD.html#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb61-4"><a href="WD.html#cb61-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;USA GDP, constant 2010 US$&quot;</span>,</span>
+<span id="cb61-5"><a href="WD.html#cb61-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">&quot;GDP&quot;</span></span>
+<span id="cb61-6"><a href="WD.html#cb61-6" aria-hidden="true" tabindex="-1"></a> )<span class="sc">+</span></span>
+<span id="cb61-7"><a href="WD.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/gdp_plot-1.png" width="60%" /></p>
+<p>これを実行すると，[Plots]ウィンドウに上のグラフが表示されます.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="groningen-growth-and-development-centre.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="EC.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

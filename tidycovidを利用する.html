@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 tidycovidを利用する | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content="5.1 tidycovidを利用する | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 tidycovidを利用する | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 tidycovidを利用する | 資料 Rで社会経済データの取得　(work in progress)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ" />
+
+
+<meta name="date" content="2021-08-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="covid-19と政策対応.html"/>
+<link rel="next" href="imf-covid-19-recovery-index.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="本資料の目的.html"><a href="本資料の目的.html"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="社会経済データベース.html"><a href="社会経済データベース.html"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのprojectの利用.html"><a href="rstudioのprojectの利用.html"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="多様なデータ形式の読み込み方法.html"><a href="多様なデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="tidyverse1-1.html"><a href="tidyverse1-1.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.1.2" data-path="groningen-growth-and-development-centre.html"><a href="groningen-growth-and-development-centre.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="WD.html"><a href="WD.html"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="WD.html"><a href="WD.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="WD.html"><a href="WD.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="WD.html"><a href="WD.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="EC.html"><a href="EC.html"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="EC.html"><a href="EC.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="EC.html"><a href="EC.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="OECD.html"><a href="OECD.html"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="OECD.html"><a href="OECD.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="OECD.html"><a href="OECD.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="OECD.html"><a href="OECD.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="金融データを取得する-imf-bis.html"><a href="金融データを取得する-imf-bis.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="DB.html"><a href="DB.html"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="DB.html"><a href="DB.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="DB.html"><a href="DB.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義を測る--vdemdata.html"><a href="民主主義を測る--vdemdata.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="政府の質を測る---rgog.html"><a href="政府の質を測る---rgog.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="政治体制を測る---democracydata.html"><a href="政治体制を測る---democracydata.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="general-social-survey-gssr.html"><a href="general-social-survey-gssr.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="european-social-survey-essurvey.html"><a href="european-social-survey-essurvey.html#準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 準備-ESSの認証とインストール</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="tidycovidを利用する.html"><a href="tidycovidを利用する.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="imf-covid-19-recovery-index.html"><a href="imf-covid-19-recovery-index.html"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="社会の関心を知る---gtrendsr.html"><a href="社会の関心を知る---gtrendsr.html"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="社会の声を集める---rtweet.html"><a href="社会の声を集める---rtweet.html"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ツィッターテキストの分析---tidytext.html"><a href="ツィッターテキストの分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidycovidを利用する" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> tidycovidを利用する</h2>
+<div id="tidycovidのインストール" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> tidycovidのインストール</h3>
+<p>GitHub等に保存されたパッケージをインストールするためにはremotesパッケージをインストールしておく必要があります。一度、組み込むだけですので、コンソール画面で実行しても良いでしょう。</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="tidycovidを利用する.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール    </span></span>
+<span id="cb318-2"><a href="tidycovidを利用する.html#cb318-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.pacakages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb318-3"><a href="tidycovidを利用する.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # remotesの呼び出し</span></span>
+<span id="cb318-4"><a href="tidycovidを利用する.html#cb318-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(remotes)</span></code></pre></div>
+<p>続けてremotesを利用し、tidycovid19をインストールします.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="tidycovidを利用する.html#cb319-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のインストール</span></span>
+<span id="cb319-2"><a href="tidycovidを利用する.html#cb319-2" aria-hidden="true" tabindex="-1"></a> remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;joachim-gassen/tidycovid19&quot;</span>)</span>
+<span id="cb319-3"><a href="tidycovidを利用する.html#cb319-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-4"><a href="tidycovidを利用する.html#cb319-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のの呼び出し</span></span>
+<span id="cb319-5"><a href="tidycovidを利用する.html#cb319-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(tidycovid19)</span></code></pre></div>
+</div>
+<div id="tidycovidの関数概要" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> tidycovidの関数概要</h3>
+<p>具体的には、このパッケージには、データをダウンロードするための以下の関数が用意されています.</p>
+<ul>
+<li>download_jhu_csse_covid19_data(): ジョンズ・ホプキンス大学CSSEのGithub RepoからCovid-19データをダウンロードします.同データは、新型コロナウイルスの世界的な広がりを評価することに関心のある研究者やメディアにとって標準的なリソースです.</li>
+<li>download_ecdc_covid19_data(): 欧州疾病予防管理センターが提供するCovid-19の症例データをダウンロードします.このデータは毎週更新され、週ごと、国ごとに報告された新しいCovid-19症例の数に関する最新の公開データが含まれています。</li>
+<li>download_owid_data(): <a href="https://ourworldindata.org/coronavirus-testing">Our World in Data</a>チームが収集したデータをダウンロードします。このチームは、入院、検査、予防接種に関するデータを複数の国の情報源から体系的に収集しています。</li>
+<li>download_acaps_npi_data(): Assessment Capacities Project (ACAPS)が提供するGovernment measures（政府政策）データセットをダウンロードします,これらのデータにより研究者は医薬品以外の介入が新型コロナウイルスの発生に与える影響を研究することができます.</li>
+<li>download_oxford_npi_data(): 政府の介入に関する代替データソースであるOxford Covid-19 Government Response Trackerからデータをダウンロードできます.</li>
+<li>download_apple_mtr_data(): Appleが提供するCovid-19関連のMobility Trends Reportをダウンロードします.</li>
+<li>download_google_cmr_data(): Google COVID-19 Community Mobility Reportsのデータをダウンロードします.Googleは国別、地域別のデータを含むCSVファイルを提供しています.このデータは、国、地域、米国の郡レベルで利用可能です。</li>
+<li>download_google_trends_data(): コロナウイルス」という言葉の検索数に関する Google トレンドデータをダウンロードします.このデータを使って国ごとに、また国の中での時系列でCovid-19に対する世間の注目度を評価することができます.このデータは国、地域、都市レベルで利用可能ですが、Google Trendsは検索ボリュームの多い地域にのみ、より詳細なデータを提供しているため、利用可能なデータは国によって異なります。</li>
+<li>download_wbank_data(): download_wbank_data(): <code>wbstats</code>パッケージを使用し,世界銀行が提供する国レベルの情報をダウンロードします.これらのデータを使用して、マクロ経済変数と新型コロナウイルスとの関連性を評価することができます.</li>
+<li>download_merged_data():Covid-19関連に関連したデータを含むすべてのデータソースをダウンロードし、マージされた国別データフレームを作成します.</li>
+</ul>
+<p>すべての利用可能な、結合されたデータセットが<strong>download_merged_data()</strong>関数によって取得できます.</p>
+<p><code>download_merged_data()</code>の使い方は以下のようになります.</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="tidycovidを利用する.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_merged_data</span>(</span>
+<span id="cb320-2"><a href="tidycovidを利用する.html#cb320-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_vars =</span> ,</span>
+<span id="cb320-3"><a href="tidycovidを利用する.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_labels =</span> ,</span>
+<span id="cb320-4"><a href="tidycovidを利用する.html#cb320-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
+<span id="cb320-5"><a href="tidycovidを利用する.html#cb320-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb320-6"><a href="tidycovidを利用する.html#cb320-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">FALSE</span></span>
+<span id="cb320-7"><a href="tidycovidを利用する.html#cb320-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>関数<code>download_merged_data()</code>がとる引数は以下のようになります.</p>
+<ul>
+<li>wbank_vars = : 取得しようとする世界銀行データの変数名、つまり<a href="WD.html#WD">2.2</a>で紹介した世界銀行のindicator名を入力します.</li>
+<li>wbank_labels = :世界銀行の変数名により詳しい名前を与えます.</li>
+<li>search_term = : Google Trendsの検索語を指定.デフォルトは“coronavirus”に設定されています.</li>
+<li>silent = : コンソールにステータスメッセージを表示するかどうかを指定.ダウンロードには時間がかかるとき,メッセージ情報は有用であるかもしれません.したがってデフォルトではTRUEに設定されています</li>
+<li>cached = : オリジナルなソースからデータを取得するのではなく、tidycovid19のGithubリポジトリからキャッシュ版をダウンロードするかどうかを指定します.キャッシュされたバージョンをダウンロードする方が高速ですし、キャッシュは毎日更新されます.デフォルトはFALSEです.</li>
+</ul>
+<p>それではこの関数を使ってCovid-19データと関連数データをダウンロードしてみましょう.ここでは結果をmergedDataと名前を付けたオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="tidycovidを利用する.html#cb321-1" aria-hidden="true" tabindex="-1"></a>  mergedData <span class="ot">&lt;-</span> <span class="fu">download_merged_data</span>(</span>
+<span id="cb321-2"><a href="tidycovidを利用する.html#cb321-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_vars =</span> <span class="fu">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;AG.LND.TOTL.K2&quot;</span>, <span class="st">&quot;EN.POP.DNST&quot;</span>, <span class="st">&quot;EN.URB.LCTY&quot;</span>,</span>
+<span id="cb321-3"><a href="tidycovidを利用する.html#cb321-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;SP.DYN.LE00.IN&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>),</span>
+<span id="cb321-4"><a href="tidycovidを利用する.html#cb321-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_labels =</span> <span class="fu">c</span>(<span class="st">&quot;population&quot;</span>, <span class="st">&quot;land_area_skm&quot;</span>, <span class="st">&quot;pop_density&quot;</span>, <span class="st">&quot;pop_largest_city&quot;</span>,</span>
+<span id="cb321-5"><a href="tidycovidを利用する.html#cb321-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;life_expectancy&quot;</span>, <span class="st">&quot;gdp_capita&quot;</span>),</span>
+<span id="cb321-6"><a href="tidycovidを利用する.html#cb321-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
+<span id="cb321-7"><a href="tidycovidを利用する.html#cb321-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb321-8"><a href="tidycovidを利用する.html#cb321-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">TRUE</span></span></code></pre></div>
+<p>このデータフレームは123,586行の観察値と40の変数を持ちます.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="tidycovidを利用する.html#cb322-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(mergedData)</span></code></pre></div>
+<p>それぞれの変数はこの簡易ラベルでも理解できるかもしれませんが、正確に理解するのは難しいと思います.データフレームtidycovid19_variable_defintions は、download_merged_data()でマージされたデータフレームに含まれる各変数の変数定義を含んでいます.</p>
+<p>データフレームtidycovid19_variable_defintionsは</p>
+<ul>
+<li>var_name 変数名</li>
+<li>var_source 変数の出所</li>
+<li>var_def 変数の定義</li>
+</ul>
+<p>の３つ含んでいます.var_nameとvar_defを表示させましょう.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+var_name
+</th>
+<th style="text-align:left;">
+var_def
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+iso3c
+</td>
+<td style="text-align:left;">
+ISO3c country code as defined by ISO 3166-1 alpha-3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+country
+</td>
+<td style="text-align:left;">
+Country name
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+date
+</td>
+<td style="text-align:left;">
+Calendar date
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+confirmed
+</td>
+<td style="text-align:left;">
+Confirmed Covid-19 cases as reported by JHU CSSE (accumulated)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+deaths
+</td>
+<td style="text-align:left;">
+Covid-19-related deaths as reported by JHU CSSE (accumulated)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+recovered
+</td>
+<td style="text-align:left;">
+Covid-19 recoveries as reported by JHU CSSE (accumulated)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ecdc_cases
+</td>
+<td style="text-align:left;">
+Covid-19 cases as reported by ECDC (accumulated, weekly post 2020-12-14)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ecdc_deaths
+</td>
+<td style="text-align:left;">
+Covid-19-related deaths as reported by ECDC (accumulated, weekly post 2020-12-14)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_tests
+</td>
+<td style="text-align:left;">
+Accumulated test counts as reported by Our World in Data
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tests_units
+</td>
+<td style="text-align:left;">
+Definition of what constitutes a ‘test’
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+positive_rate
+</td>
+<td style="text-align:left;">
+The share of COVID-19 tests that are positive, given as a rolling 7-day average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hosp_patients
+</td>
+<td style="text-align:left;">
+Number of COVID-19 patients in hospital on a given day
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+icu_patients
+</td>
+<td style="text-align:left;">
+Number of COVID-19 patients in intensive care units (ICUs) on a given day
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_vaccinations
+</td>
+<td style="text-align:left;">
+Total number of COVID-19 vaccination doses administered
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+soc_dist
+</td>
+<td style="text-align:left;">
+Number of social distancing measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mov_rest
+</td>
+<td style="text-align:left;">
+Number of movement restrictions reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pub_health
+</td>
+<td style="text-align:left;">
+Number of public health measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gov_soc_econ
+</td>
+<td style="text-align:left;">
+Number of social and economic measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lockdown
+</td>
+<td style="text-align:left;">
+Number of lockdown measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apple_mtr_driving
+</td>
+<td style="text-align:left;">
+Apple Maps usage for driving directions, as percentage*100 relative to the baseline of Jan 13, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apple_mtr_walking
+</td>
+<td style="text-align:left;">
+Apple Maps usage for walking directions, as percentage*100 relative to the baseline of Jan 13, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apple_mtr_transit
+</td>
+<td style="text-align:left;">
+Apple Maps usage for public transit directions, as percentage*100 relative to the baseline of Jan 13, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gcmr_retail_recreation
+</td>
+<td style="text-align:left;">
+Google Community Mobility Reports data for the frequency that people visit retail and recreation places expressed as a percentage*100 change relative to the baseline period Jan 3 - Feb 6, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gcmr_grocery_pharmacy
+</td>
+<td style="text-align:left;">
+Google Community Mobility Reports data for the frequency that people visit grocery stores and pharmacies expressed as a percentage*100 change relative to the baseline period Jan 3 - Feb 6, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gcmr_parks
+</td>
+<td style="text-align:left;">
+Google Community Mobility Reports data for the frequency that people visit parks expressed as a percentage*100 change relative to the baseline period Jan 3 - Feb 6, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gcmr_transit_stations
+</td>
+<td style="text-align:left;">
+Google Community Mobility Reports data for the frequency that people visit transit stations expressed as a percentage*100 change relative to the baseline period Jan 3 - Feb 6, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gcmr_workplaces
+</td>
+<td style="text-align:left;">
+Google Community Mobility Reports data for the frequency that people visit workplaces expressed as a percentage*100 change relative to the baseline period Jan 3 - Feb 6, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gcmr_residential
+</td>
+<td style="text-align:left;">
+Google Community Mobility Reports data for the frequency that people visit residential places expressed as a percentage*100 change relative to the baseline period Jan 3 - Feb 6, 2020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gtrends_score
+</td>
+<td style="text-align:left;">
+Google search volume for the term ‘coronavirus’, relative across time with the country maximum scaled to 100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gtrends_country_score
+</td>
+<td style="text-align:left;">
+Country-level Google search volume for the term ‘coronavirus’ over a period starting Jan 1, 2020, relative across countries with the country having the highest search volume scaled to 100 (time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+region
+</td>
+<td style="text-align:left;">
+Country region as classified by the World Bank (time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+income
+</td>
+<td style="text-align:left;">
+Country income group as classified by the World Bank (time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+population
+</td>
+<td style="text-align:left;">
+Country population as reported by the World Bank (original identifier ‘SP.POP.TOTL’, time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+land_area_skm
+</td>
+<td style="text-align:left;">
+Country land mass in square kilometers as reported by the World Bank (original identifier ‘AG.LND.TOTL.K2’, time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop_density
+</td>
+<td style="text-align:left;">
+Country population density as reported by the World Bank (original identifier ‘EN.POP.DNST’, time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop_largest_city
+</td>
+<td style="text-align:left;">
+Population in the largest metropolian area of the country as reported by the World Bank (original identifier ‘EN.URB.LCTY’, time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+life_expectancy
+</td>
+<td style="text-align:left;">
+Average life expectancy at birth of country citizens in years as reported by the World Bank (original identifier ‘SP.DYN.LE00.IN’, time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gdp_capita
+</td>
+<td style="text-align:left;">
+Country gross domestic product per capita, measured in 2010 US-$ as reported by the World Bank (original identifier ‘NY.GDP.PCAP.KD’, time-stable)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+timestamp
+</td>
+<td style="text-align:left;">
+Date and time where data has been collected from authoritative sources
+</td>
+</tr>
+</tbody>
+</table>
+<p>この一覧表によって download_merged_data()によってダウンロードした変数の定義が分かります.</p>
+<p>この関数を使ってダウンロードしたデータmergedDataをもとに新型コロナウィルスの4つのグラフを描き、感染状況を観察してみましょう.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>新規感染者の推移</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>政府の政策措置後の感染者推移</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>死者数の拡大の可視化</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>アジア諸国の感染者数のマップ</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="tidycovidを利用する.html#cb323-1" aria-hidden="true" tabindex="-1"></a>mergedData_jpn <span class="ot">&lt;-</span> mergedData <span class="sc">%&gt;%</span> </span>
+<span id="cb323-2"><a href="tidycovidを利用する.html#cb323-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(iso3c <span class="sc">==</span> <span class="st">&quot;JPN&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb323-3"><a href="tidycovidを利用する.html#cb323-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb323-4"><a href="tidycovidを利用する.html#cb323-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">new_cases =</span> confirmed <span class="sc">-</span> <span class="fu">lag</span>(confirmed),</span>
+<span id="cb323-5"><a href="tidycovidを利用する.html#cb323-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ave_new_cases =</span> <span class="fu">rollmean</span>(new_cases, <span class="dv">7</span>, <span class="at">na.pad=</span><span class="cn">TRUE</span>, <span class="at">align=</span><span class="st">&quot;right&quot;</span>)</span>
+<span id="cb323-6"><a href="tidycovidを利用する.html#cb323-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb323-7"><a href="tidycovidを利用する.html#cb323-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_cases), <span class="sc">!</span><span class="fu">is.na</span>(ave_new_cases)) </span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="covid-19と政策対応.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="imf-covid-19-recovery-index.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
