@@ -68,11 +68,15 @@ democracydataのインストール
 polity-vのダウンロード
 ミクロデータ
 general-social-survey-gssr
+データの読み込み
 european-social-survey-essurvey
-covid-19
+事前準備-essの認証とインストール
+essの認証
+essurveyのインストール
+covid-19と政策対応
 tidycovidを利用する
 tidycovidのインストール
-tidycovidの関数概要
+tidycovidの関数とデータのダウンロード方法
 imf-covid-19-recovery-index
 snsデータ-テキスト分析---tidytext
 社会の関心を知る---gtrendsr

@@ -24,7 +24,7 @@
 <meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,6 +60,8 @@
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -192,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
 <li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
-<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - Quandl</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
 <ul>
@@ -220,17 +222,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a></li>
-<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="covid-19.html"><a href="covid-19.html"><i class="fa fa-check"></i><b>5</b> COVID-19</a>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="covid-19.html"><a href="covid-19.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="covid-19.html"><a href="covid-19.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
-<li class="chapter" data-level="5.1.2" data-path="covid-19.html"><a href="covid-19.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
+<li class="chapter" data-level="4.1.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="covid-19.html"><a href="covid-19.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#事前準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 事前準備-ESSの認証とインストール</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数とデータのダウンロード方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
 <ul>
