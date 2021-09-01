@@ -24,7 +24,7 @@
 <meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -279,12 +279,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="vdemdataパッケージのインストール" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> vdemdataパッケージのインストール</h3>
 <p>Rパッケージ<strong>vdemdata</strong>パッケージは開発版であるため,vdemdataは<a href="https://github.com/vdeminstitute">同研究所のGithubサイト</a>からインストールする必要があります。このため、最初に、devtoolsをインストールします。</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="民主主義国家データ.html#cb265-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb265-2"><a href="民主主義国家データ.html#cb265-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(devtools)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="民主主義国家データ.html#cb262-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb262-2"><a href="民主主義国家データ.html#cb262-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(devtools)</span></code></pre></div>
 <p>次に、devtoolsを使ってvdemdataパッケージをインストールします。コンソール画面に次のように入力し、エンターキーを押してください。</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="民主主義国家データ.html#cb266-1" aria-hidden="true" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;vdeminstitute/vdemdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="民主主義国家データ.html#cb263-1" aria-hidden="true" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;vdeminstitute/vdemdata&quot;</span>)</span></code></pre></div>
 <p>インストールを終えたら、library()で読み込ます。これでvdemdataパッケージが利用できます。</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="民主主義国家データ.html#cb267-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(vdemdata)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="民主主義国家データ.html#cb264-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(vdemdata)</span></code></pre></div>
 <p>本パッケージが提供する基本的な関数は以下のとおりです.使い方については後で説明します.</p>
 <ul>
 <li>vdem:データセットを読み込みます.</li>
@@ -303,9 +303,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="データを読み込む---vdem" class="section level4" number="3.1.2.1">
 <h4><span class="header-section-number">3.1.2.1</span> データを読み込む - vdem</h4>
 <p>V-Demデータセットの読み込むためには<code>vdem</code>関数を使います.ここでは読み込んだデータセットをv_dataという名前をつけたオブジェクトに容れます.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="民主主義国家データ.html#cb268-1" aria-hidden="true" tabindex="-1"></a>  v_data <span class="ot">&lt;-</span> vdem</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="民主主義国家データ.html#cb265-1" aria-hidden="true" tabindex="-1"></a>  v_data <span class="ot">&lt;-</span> vdem</span></code></pre></div>
 <p>str()関数を使ってデータ構造をみるとV-Demデータセットは非常に大きく、27,192の観察値、4,176の変数を持つことがわかります.ここからデータを探すことは大変です.最初に, vdemdataの<strong>codebook</strong>を利用した方法を紹介しましょう.</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="民主主義国家データ.html#cb269-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">str</span>(v_data)</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="民主主義国家データ.html#cb266-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">str</span>(v_data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    27192 obs. of  4176 variables:
 ##  $ country_name                   : chr  &quot;Mexico&quot; &quot;Mexico&quot; &quot;Mexico&quot; &quot;Mexico&quot; ...
 ##  $ country_text_id                : chr  &quot;MEX&quot; &quot;MEX&quot; &quot;MEX&quot; &quot;MEX&quot; ...
@@ -409,13 +409,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   [list output truncated]</code></pre>
 <p>データフレームv_dataは4,176の変数を有します.str(v_data)の表示から理解されるように、ほとんどの変数名がV-Dem特有の変数名です。たとえば<strong>v2x_polyarchy</strong>という変数がありますが、これが何を表現しているかは分かりません。そうした情報はcodebookから得られます.</p>
 <p>Vdemdataには、変数の情報を提供する簡易版codebookがついています。codebookじたい1,017の観察値、17の変数から構成されるデータフレームです。View()関数を使ってデータフレームcodebookの変数名を一覧表示してみてください.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="民主主義国家データ.html#cb271-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">View</span>(codebook)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="民主主義国家データ.html#cb268-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">View</span>(codebook)</span></code></pre></div>
 <p>データフレームcodebookの変数tagの中に<code>v2x_polyarchy</code>があります。これに対応する変数nameを見ると、<code>Electoral democracy index</code>と記載されています.さらに変数quesitonをみると“To what extent is the ideal of electoral democracy in its fullest sense achieved?”という質問に対する回答をベースにしていることも分かります。</p>
 <p>このように変数の意味を理解するためには、vdemdata付属のcodebookでも十分ですが、<a href="https://www.v-dem.net/en/data/reference-material-v11/">pdf版のフルバージョン</a>もあります.</p>
 <p>また変数の情報はvar_info()関数を使っても得ることができます.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="民主主義国家データ.html#cb272-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_info</span>(<span class="st">&quot;変数タグtag名&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="民主主義国家データ.html#cb269-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_info</span>(<span class="st">&quot;変数タグtag名&quot;</span>)</span></code></pre></div>
 <p>“変数タグtag名”にはV-demデータセットの変数名もしくはcodebookのtag名を入力します.この例では<code>v2x_polyarchy</code>です.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="民主主義国家データ.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var_info</span>(<span class="st">&quot;v2x_polyarchy&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="民主主義国家データ.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var_info</span>(<span class="st">&quot;v2x_polyarchy&quot;</span>)</span></code></pre></div>
 <pre><code>## $name
 ## [1] &quot;Electoral democracy index&quot;
 ## 
@@ -470,10 +470,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="データを探す---find_var" class="section level4" number="3.1.2.2">
 <h4><span class="header-section-number">3.1.2.2</span> データを探す - find_var()</h4>
 <p>codebookをベースにデータを探す方法の他に、find_var()関数を利用した検索方法もあります.むしろ,この方法の方が便利です.find_()の使い方は次のようになります.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="民主主義国家データ.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="st">&quot;検索キーワード&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="民主主義国家データ.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="st">&quot;検索キーワード&quot;</span>)</span></code></pre></div>
 <p>たとえば「市民社会」“civil society”をキーワードにデータを探してみましょう.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="民主主義国家データ.html#cb276-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">find_var</span>(<span class="st">&quot;civil society&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb276-2"><a href="民主主義国家データ.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="民主主義国家データ.html#cb273-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">find_var</span>(<span class="st">&quot;civil society&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb273-2"><a href="民主主義国家データ.html#cb273-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    7 obs. of  17 variables:
 ##  $ name            : chr  &quot;Civil society participation index ordinal&quot; &quot;Women civil society participation index ordinal&quot; &quot;Core civil society index ordinal&quot; &quot;Civil society comments&quot; ...
 ##  $ vartype         : chr  &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;C&quot; ...
@@ -494,24 +494,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ source          : chr  &quot;v2pscnslnl v2cscnsult v2csprtcpt v2csgender&quot; &quot;v2cldiscw v2csgender v2mefemjrn&quot; &quot;v2cseeorgs v2csreprss v2csprtcpt&quot; NA ...</code></pre>
 <p>ここでは”civil society”をキーワードに検索した結果をパイプ(%&gt;%)でstr()関数に渡しています. 結果をみると、17行×17変数のデータフレームが得られます.1列めの変数が<code>$name</code>、2列目の変数が<code>$vartype</code>,３列目の変数が <code>$tag</code>と続きます.</p>
 <p>少し見づらいのでView()関数を使い、同じ内容を表示させてみます.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="民主主義国家データ.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="st">&quot;civil society&quot;</span>) </span>
-<span id="cb278-2"><a href="民主主義国家データ.html#cb278-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="民主主義国家データ.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="st">&quot;civil society&quot;</span>) </span>
+<span id="cb275-2"><a href="民主主義国家データ.html#cb275-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
 <p>name変数をみると、7行目に<strong>“Core civil society index”</strong>というデータがあることが分かります。じっさいにデータをダウンロードするためには変数tagの値が必要となります. この変数に対応するtag名は<strong>v2xcs_ccsi</strong>
 です. また変数questionをみると、このデータが<strong>“How robust is civil society?”</strong>に対する回答にもとづいていることが分かります。さらに変数scaleからは0から1の値を取る間隔データでることも分かります。</p>
 <p>それではこのCore civil society indexデータを取得してみましょう。じっさいにはvdemによってすでにV-demのデータセットをダウンロードしています。したがってこのデータセットを格納したデータフレームv_dataからCore civil society indexデータを抽出することになります. Core civil society index はv_dataではtag名すなわち<code>v2xcs_ccsi</code>で表現されています。そこで実際の作業としてはこの変数列を抽出することになります。変数列を選択し、抽出するためにはselect()関数を利用します. あわせて国名country_name、国コードcountry_text_id、年yearといった一連の変数も選択・抽出します.</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="民主主義国家データ.html#cb279-1" aria-hidden="true" tabindex="-1"></a> civil_society <span class="ot">&lt;-</span> v_data <span class="sc">%&gt;%</span> </span>
-<span id="cb279-2"><a href="民主主義国家データ.html#cb279-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;v2xcs_ccsi&quot;</span>, <span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_text_id&quot;</span>, <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="民主主義国家データ.html#cb276-1" aria-hidden="true" tabindex="-1"></a> civil_society <span class="ot">&lt;-</span> v_data <span class="sc">%&gt;%</span> </span>
+<span id="cb276-2"><a href="民主主義国家データ.html#cb276-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;v2xcs_ccsi&quot;</span>, <span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_text_id&quot;</span>, <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
 <p>これでV-demの提供する市民社会指標core civil society indexが取得できました.つぎに市民社会指標の推移をグラフに描いてみましょう.</p>
 </div>
 <div id="民主主義データの可視化" class="section level4" number="3.1.2.3">
 <h4><span class="header-section-number">3.1.2.3</span> 民主主義データの可視化</h4>
 <p><strong>市民社会</strong></p>
 <p>さらにcountry_name変数を利用し、日本とスウェーデンだけを取り出してみましょう. このためにfilter()関数を利用します.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="民主主義国家データ.html#cb280-1" aria-hidden="true" tabindex="-1"></a> civil_society <span class="ot">&lt;-</span> v_data <span class="sc">%&gt;%</span> </span>
-<span id="cb280-2"><a href="民主主義国家データ.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;v2xcs_ccsi&quot;</span>, <span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_text_id&quot;</span>, <span class="st">&quot;year&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb280-3"><a href="民主主義国家データ.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>,<span class="st">&quot;Sweden&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="民主主義国家データ.html#cb277-1" aria-hidden="true" tabindex="-1"></a> civil_society <span class="ot">&lt;-</span> v_data <span class="sc">%&gt;%</span> </span>
+<span id="cb277-2"><a href="民主主義国家データ.html#cb277-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;v2xcs_ccsi&quot;</span>, <span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_text_id&quot;</span>, <span class="st">&quot;year&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb277-3"><a href="民主主義国家データ.html#cb277-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>,<span class="st">&quot;Sweden&quot;</span>))</span></code></pre></div>
 <p>結果をhead() 関数で表示します.</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="民主主義国家データ.html#cb281-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(civil_society)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="民主主義国家データ.html#cb278-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(civil_society)</span></code></pre></div>
 <pre><code>##   v2xcs_ccsi country_name country_text_id year
 ## 1      0.047       Sweden             SWE 1789
 ## 2      0.047       Sweden             SWE 1791
@@ -520,25 +520,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5      0.047       Sweden             SWE 1797
 ## 6      0.047       Sweden             SWE 1799</code></pre>
 <p>ggplot2を利用し、日本とスウェーデンの市民社会指標Core civil society indexの推移を比較してみましょう。</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="民主主義国家データ.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> civil_society, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> v2xcs_ccsi,<span class="at">group =</span> country_name))<span class="sc">+</span></span>
-<span id="cb283-2"><a href="民主主義国家データ.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> country_name))<span class="sc">+</span></span>
-<span id="cb283-3"><a href="民主主義国家データ.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb283-4"><a href="民主主義国家データ.html#cb283-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Core civil society index&quot;</span>,</span>
-<span id="cb283-5"><a href="民主主義国家データ.html#cb283-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb283-6"><a href="民主主義国家データ.html#cb283-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
-<span id="cb283-7"><a href="民主主義国家データ.html#cb283-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<span id="cb283-8"><a href="民主主義国家データ.html#cb283-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="民主主義国家データ.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> civil_society, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> v2xcs_ccsi,<span class="at">group =</span> country_name))<span class="sc">+</span></span>
+<span id="cb280-2"><a href="民主主義国家データ.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> country_name))<span class="sc">+</span></span>
+<span id="cb280-3"><a href="民主主義国家データ.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb280-4"><a href="民主主義国家データ.html#cb280-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Core civil society index&quot;</span>,</span>
+<span id="cb280-5"><a href="民主主義国家データ.html#cb280-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb280-6"><a href="民主主義国家データ.html#cb280-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb280-7"><a href="民主主義国家データ.html#cb280-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb280-8"><a href="民主主義国家データ.html#cb280-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="EconData_files/figure-html/vdem15-1.png" width="672" /></p>
 <p>容易に想像がつくことですが、明治維新から第２次以前の期間においてはスウェーデンと日本は大きく異なっています.第２次世界大戦後にようやくスウェーデンに近づいていきます.</p>
 <p><strong>リベラル・デモクラシー</strong></p>
 <p>同じグラフはvdemdataパッケージの<strong>plot_indicator()</strong>関数でも描くことができます.plot_indicator()関数の基本的な使い方は次のようになります.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="民主主義国家データ.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_indicator</span>(</span>
-<span id="cb284-2"><a href="民主主義国家データ.html#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">indicator =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb284-3"><a href="民主主義国家データ.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">countries =</span> <span class="cn">NULL</span>,</span>
-<span id="cb284-4"><a href="民主主義国家データ.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_year =</span> <span class="fu">min</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
-<span id="cb284-5"><a href="民主主義国家データ.html#cb284-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_year =</span> <span class="fu">max</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
-<span id="cb284-6"><a href="民主主義国家データ.html#cb284-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">uncertainty =</span> <span class="cn">TRUE</span></span>
-<span id="cb284-7"><a href="民主主義国家データ.html#cb284-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="民主主義国家データ.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_indicator</span>(</span>
+<span id="cb281-2"><a href="民主主義国家データ.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">indicator =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb281-3"><a href="民主主義国家データ.html#cb281-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">countries =</span> <span class="cn">NULL</span>,</span>
+<span id="cb281-4"><a href="民主主義国家データ.html#cb281-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_year =</span> <span class="fu">min</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
+<span id="cb281-5"><a href="民主主義国家データ.html#cb281-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_year =</span> <span class="fu">max</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
+<span id="cb281-6"><a href="民主主義国家データ.html#cb281-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">uncertainty =</span> <span class="cn">TRUE</span></span>
+<span id="cb281-7"><a href="民主主義国家データ.html#cb281-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>plot_indicator()がとる５つの引数を説明しておきましょう.</p>
 <ul>
 <li>indicator = "“:”"にV-Demデータセットのtag名（文字列ベクトル）を入力します.tag名についてはcodebookを参照してください.</li>
@@ -548,7 +548,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>uncertainty = TRUEもしくはFALSEの論理値をとり、TRUEを指定したとき、利用可能な場合には信頼区間がポイント推定値に追加されます.</li>
 </ul>
 <p>plot_indictor()によるグラフ作成ではリベラル・デモクラシー指標<strong>v2x_libdem</strong>を利用します.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="民主主義国家データ.html#cb285-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot_indicator</span>(<span class="at">indicator=</span> <span class="st">&quot;v2x_libdem&quot;</span>, <span class="at">countries =</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Sweden&quot;</span>),<span class="at">min_year =</span> <span class="dv">1912</span>, <span class="at">max_year =</span> <span class="dv">2015</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="民主主義国家データ.html#cb282-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot_indicator</span>(<span class="at">indicator=</span> <span class="st">&quot;v2x_libdem&quot;</span>, <span class="at">countries =</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Sweden&quot;</span>),<span class="at">min_year =</span> <span class="dv">1912</span>, <span class="at">max_year =</span> <span class="dv">2015</span>)</span></code></pre></div>
 <p><img src="EconData_files/figure-html/vdem17-1.png" width="672" /></p>
 <p>　
 スェーデンと比較すると、第２次世界大戦以前の日本がいかにリベラル・デモクラシーからかけ離れていたか、また、1945年に劇的に政治体制が変化したか、ということを理解できます.</p>
@@ -568,25 +568,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>オープン政府データと関連トピックに関するRパッケージ開発者のコミュニティ<a href="http://ropengov.org">rOpengove</a>によって、QoGのデータを取得するためのRパッケージ<strong>rqog</strong>が開発されています.<strong>rqog</strong>は、<strong>read_qog()</strong>関数によりBasic、Standard、OECDデータセットへのアクセスを提供しています.Standardデータには、Basicデータと同じ指標（367変数）に加え、約1600の指標が追加されています。Basicデータ、Standardデータともに、194の国がカバーされています.rqogは、デフォルトでは、大部分の指標と国の様々な期間の時系列を持つ縦断的データセットを利用します.</p>
 <p><strong>rqog</strong>は<a href="http://ropengov.org">rOpengove</a>の<a href="http://ropengov.github.io/rqog/">Githubサイト</a>からインストールします.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="民主主義国家データ.html#cb286-1" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropengov/rqog&quot;</span>)  <span class="co"># rqogのインストール</span></span>
-<span id="cb286-2"><a href="民主主義国家データ.html#cb286-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(rqog)             <span class="co"># rqogの呼び出し</span></span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="民主主義国家データ.html#cb283-1" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropengov/rqog&quot;</span>)  <span class="co"># rqogのインストール</span></span>
+<span id="cb283-2"><a href="民主主義国家データ.html#cb283-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(rqog)             <span class="co"># rqogの呼び出し</span></span></code></pre></div>
 <p>なお、<code>devtools</code>がインストールされていなければ、事前にインストールしておく必要があります.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="民主主義国家データ.html#cb287-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb287-2"><a href="民主主義国家データ.html#cb287-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(devtools)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="民主主義国家データ.html#cb284-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb284-2"><a href="民主主義国家データ.html#cb284-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(devtools)</span></code></pre></div>
 <div id="データをダウンロードする---read_qog" class="section level3" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> データをダウンロードする - read_qog()</h3>
 <p>最初にQuality of Governmenデータの提供するQoG標準データ(Standard Data)をダウンロードしてみましょう.ダウンロードにはread_qog()関数を使います.ここでの例ではダウンロードしたデータをqog_dataと名前をつかたオブジェクトに容れます.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="民主主義国家データ.html#cb288-1" aria-hidden="true" tabindex="-1"></a>   qog_data <span class="ot">&lt;-</span> <span class="fu">read_qog</span>(<span class="at">which_data =</span> <span class="st">&quot;standard&quot;</span>, <span class="at">data_type =</span> <span class="st">&quot;time-series&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="民主主義国家データ.html#cb285-1" aria-hidden="true" tabindex="-1"></a>   qog_data <span class="ot">&lt;-</span> <span class="fu">read_qog</span>(<span class="at">which_data =</span> <span class="st">&quot;standard&quot;</span>, <span class="at">data_type =</span> <span class="st">&quot;time-series&quot;</span>)</span></code></pre></div>
 <p>これを実行すると、15,825の観察値と1,864の変数から成るデータフレームが取得できます.read_qog()関数の使い方は以下のようになります.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="民主主義国家データ.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_qog</span>(</span>
-<span id="cb289-2"><a href="民主主義国家データ.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">which_data =</span> <span class="st">&quot;basic&quot;</span>,</span>
-<span id="cb289-3"><a href="民主主義国家データ.html#cb289-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;time-series&quot;</span>,</span>
-<span id="cb289-4"><a href="民主主義国家データ.html#cb289-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2021</span>,</span>
-<span id="cb289-5"><a href="民主主義国家データ.html#cb289-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_dir =</span> <span class="cn">NULL</span>,</span>
-<span id="cb289-6"><a href="民主主義国家データ.html#cb289-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_format =</span> <span class="st">&quot;csv&quot;</span>,</span>
-<span id="cb289-7"><a href="民主主義国家データ.html#cb289-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">download_only =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb289-8"><a href="民主主義国家データ.html#cb289-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb289-9"><a href="民主主義国家データ.html#cb289-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">update_cache =</span> <span class="cn">FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="民主主義国家データ.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_qog</span>(</span>
+<span id="cb286-2"><a href="民主主義国家データ.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">which_data =</span> <span class="st">&quot;basic&quot;</span>,</span>
+<span id="cb286-3"><a href="民主主義国家データ.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;time-series&quot;</span>,</span>
+<span id="cb286-4"><a href="民主主義国家データ.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb286-5"><a href="民主主義国家データ.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_dir =</span> <span class="cn">NULL</span>,</span>
+<span id="cb286-6"><a href="民主主義国家データ.html#cb286-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_format =</span> <span class="st">&quot;csv&quot;</span>,</span>
+<span id="cb286-7"><a href="民主主義国家データ.html#cb286-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">download_only =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb286-8"><a href="民主主義国家データ.html#cb286-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb286-9"><a href="民主主義国家データ.html#cb286-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">update_cache =</span> <span class="cn">FALSE</span></span></code></pre></div>
 <p>read_qog()関数は8つの引数をとります.</p>
 <ul>
 <li>which_data = : ダウンロードするQoGデータセットの名前を指定します. 現在利用可能なものは“basic”,“standard”,“oecd”,“social_policy”ですので、このいずれかを入力します.</li>
@@ -615,17 +615,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>次に, filter()関数を使ってこの指標の期間を1990年から2020年に指定します.</li>
 <li>抽出結果をeconPowerというオブジェクトに容れます.</li>
 </ul>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="民主主義国家データ.html#cb290-1" aria-hidden="true" tabindex="-1"></a>  econPower <span class="ot">&lt;-</span> qog_data <span class="sc">%&gt;%</span> </span>
-<span id="cb290-2"><a href="民主主義国家データ.html#cb290-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(year, cname,bti_epg) <span class="sc">%&gt;%</span> </span>
-<span id="cb290-3"><a href="民主主義国家データ.html#cb290-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(cname <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;China&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Russia&quot;</span>), year <span class="sc">%in%</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2020</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="民主主義国家データ.html#cb287-1" aria-hidden="true" tabindex="-1"></a>  econPower <span class="ot">&lt;-</span> qog_data <span class="sc">%&gt;%</span> </span>
+<span id="cb287-2"><a href="民主主義国家データ.html#cb287-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(year, cname,bti_epg) <span class="sc">%&gt;%</span> </span>
+<span id="cb287-3"><a href="民主主義国家データ.html#cb287-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(cname <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;China&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Russia&quot;</span>), year <span class="sc">%in%</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2020</span>)</span></code></pre></div>
 <p>select()関数によって選択された変数year, cname,bti_eppの３変数です. cnameは国名の変数, bti_epgが<code>Effective Power to Govern</code>です.</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="民主主義国家データ.html#cb291-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> econPower, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y=</span> bti_epg))<span class="sc">+</span></span>
-<span id="cb291-2"><a href="民主主義国家データ.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cname))<span class="sc">+</span></span>
-<span id="cb291-3"><a href="民主主義国家データ.html#cb291-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb291-4"><a href="民主主義国家データ.html#cb291-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb291-5"><a href="民主主義国家データ.html#cb291-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Effective Power to Govern&quot;</span></span>
-<span id="cb291-6"><a href="民主主義国家データ.html#cb291-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<span id="cb291-7"><a href="民主主義国家データ.html#cb291-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="民主主義国家データ.html#cb288-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> econPower, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y=</span> bti_epg))<span class="sc">+</span></span>
+<span id="cb288-2"><a href="民主主義国家データ.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cname))<span class="sc">+</span></span>
+<span id="cb288-3"><a href="民主主義国家データ.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb288-4"><a href="民主主義国家データ.html#cb288-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb288-5"><a href="民主主義国家データ.html#cb288-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Effective Power to Govern&quot;</span></span>
+<span id="cb288-6"><a href="民主主義国家データ.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb288-7"><a href="民主主義国家データ.html#cb288-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="EconData_files/figure-html/qog6-1.png" width="672" /></p>
 </div>
 <div id="metaデータを利用する" class="section level4" number="3.2.2.2">
@@ -647,7 +647,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>class : 指標のクラスです.つまり数値、ファクターもしくは文字です.</li>
 </ul>
 <p>たとえばhead()関数を使って<code>meta_basic_cs_2016</code>の冒頭を表示してみましょう.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="民主主義国家データ.html#cb292-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(meta_basic_cs_2016)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="民主主義国家データ.html#cb289-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(meta_basic_cs_2016)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   code     name                    value label class    
 ##   &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    
@@ -659,57 +659,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 version  Version of the Dataset     NA &lt;NA&gt;  character</code></pre>
 <p>１列めがcode変数であり、この変数の中には<code>ccode</code>,<code>caname</code>といったデータがあります.2列めはname変数であり、<code>Country Code Numeric</code>,
 <code>Country Name</code>といったデータを見ることができます.この中で<strong>name</strong>変数が変数の内容の説明になります.しかし、このデータセットは438行の観察値を持つ、膨大なものです. View()関数を使って一覧表示させ、<strong>name</strong>変数の内容をチェックしてもよいでしょうが、ここではこの変数にキーワード検索をかけることにより、データを探すことにします. nameの下に記載されている<strong><chr></strong>から理解されるように、これは文字列です.すなわちデータフレームmata_basic_cs_2016の中のname変数 - <strong>mata_basic_cs_2016$name</strong> - は複数の文字列を持つベクトルです.この複数文字列ベクトル中から特定のキーワードを探すためにstringrパッケージのstr_detect()関数を利用します<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="民主主義国家データ.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stringrのインストール</span></span>
-<span id="cb294-2"><a href="民主主義国家データ.html#cb294-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
-<span id="cb294-3"><a href="民主主義国家データ.html#cb294-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-4"><a href="民主主義国家データ.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="co"># パッケージstingrを呼び出す</span></span>
-<span id="cb294-5"><a href="民主主義国家データ.html#cb294-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(stringr)</span>
-<span id="cb294-6"><a href="民主主義国家データ.html#cb294-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-7"><a href="民主主義国家データ.html#cb294-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># str_detectの用法</span></span>
-<span id="cb294-8"><a href="民主主義国家データ.html#cb294-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">str_detect</span>(文字列ベクトル,<span class="st">&quot;検索文字列&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="民主主義国家データ.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stringrのインストール</span></span>
+<span id="cb291-2"><a href="民主主義国家データ.html#cb291-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
+<span id="cb291-3"><a href="民主主義国家データ.html#cb291-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-4"><a href="民主主義国家データ.html#cb291-4" aria-hidden="true" tabindex="-1"></a><span class="co"># パッケージstingrを呼び出す</span></span>
+<span id="cb291-5"><a href="民主主義国家データ.html#cb291-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(stringr)</span>
+<span id="cb291-6"><a href="民主主義国家データ.html#cb291-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-7"><a href="民主主義国家データ.html#cb291-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># str_detectの用法</span></span>
+<span id="cb291-8"><a href="民主主義国家データ.html#cb291-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">str_detect</span>(文字列ベクトル,<span class="st">&quot;検索文字列&quot;</span>)</span></code></pre></div>
 <p>str_detect()は文字列ベクトルから検索文字列と一致するものにTRUE,それ以外をFALSEで返します.具体的に<strong>mata_basic_cs_2016$name</strong>という文字列ベクトル中から<strong>Governemnt</strong>を含む文字列を検索してみます.これを実行すると次のようにTRUE, FALSEが返されます.</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="民主主義国家データ.html#cb295-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(meta_basic_cs_2016<span class="sc">$</span>name, <span class="st">&quot;Government&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb295-2"><a href="民主主義国家データ.html#cb295-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="民主主義国家データ.html#cb292-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(meta_basic_cs_2016<span class="sc">$</span>name, <span class="st">&quot;Government&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb292-2"><a href="民主主義国家データ.html#cb292-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <p>次に、これを利用し<strong>mata_basic_cs_2016</strong>の<strong>name</strong>変数から<strong>文字列Government</strong>を含む行を抽出します.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="民主主義国家データ.html#cb297-1" aria-hidden="true" tabindex="-1"></a>   meta_basic_cs_2016 <span class="sc">%&gt;%</span> </span>
-<span id="cb297-2"><a href="民主主義国家データ.html#cb297-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(meta_basic_cs_2016<span class="sc">$</span>name,<span class="st">&quot;Government&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="民主主義国家データ.html#cb294-1" aria-hidden="true" tabindex="-1"></a>   meta_basic_cs_2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb294-2"><a href="民主主義国家データ.html#cb294-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(meta_basic_cs_2016<span class="sc">$</span>name,<span class="st">&quot;Government&quot;</span>)) </span></code></pre></div>
 <pre><code>## # A tibble: 20 × 5
-##    code        name                                  value label               class 
-##    &lt;chr&gt;       &lt;chr&gt;                                 &lt;dbl&gt; &lt;chr&gt;               &lt;chr&gt; 
-##  1 cpds_govsup Government support (seat share of al…    NA &lt;NA&gt;                numer…
-##  2 cpds_tg     Type of Government                        1 Single-party major… factor
-##  3 cpds_tg     Type of Government                        2 Minimal winning co… factor
-##  4 cpds_tg     Type of Government                        3 Surplus coalition   factor
-##  5 cpds_tg     Type of Government                        4 Single-party minor… factor
-##  6 cpds_tg     Type of Government                        5 Multi-party minori… factor
-##  7 cpds_tg     Type of Government                        6 Caretaker governme… factor
-##  8 cpds_tg     Type of Government                        7 Technocratic gover… factor
-##  9 dpi_gf      Government Fractionalization Index     -999 NA                  factor
-## 10 dpi_gvs     Vote Share of Government Parties         NA &lt;NA&gt;                numer…
-## 11 fh_fog      Functioning of Government                NA &lt;NA&gt;                numer…
-## 12 icrg_qog    ICRG Indicator of Quality of Governm…    NA &lt;NA&gt;                numer…
-## 13 une_eep     Government expenditure on primary ed…    NA &lt;NA&gt;                numer…
-## 14 une_eepp    Government expenditure on pre-primar…    NA &lt;NA&gt;                numer…
-## 15 une_ees     Government expenditure on secondary …    NA &lt;NA&gt;                numer…
-## 16 une_eet     Government expenditure on tertiary e…    NA &lt;NA&gt;                numer…
-## 17 une_pee     Government expenditure on education …    NA &lt;NA&gt;                numer…
-## 18 vi_rsg      Right to Strike, Government Sector       NA &lt;NA&gt;                numer…
-## 19 wbgi_gee    Government Effectiveness                 NA &lt;NA&gt;                numer…
-## 20 wvs_confgov Confidence in Government                 NA &lt;NA&gt;                numer…</code></pre>
+##    code        name                          value label             class
+##    &lt;chr&gt;       &lt;chr&gt;                         &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;
+##  1 cpds_govsup Government support (seat sha…    NA &lt;NA&gt;              nume…
+##  2 cpds_tg     Type of Government                1 Single-party maj… fact…
+##  3 cpds_tg     Type of Government                2 Minimal winning … fact…
+##  4 cpds_tg     Type of Government                3 Surplus coalition fact…
+##  5 cpds_tg     Type of Government                4 Single-party min… fact…
+##  6 cpds_tg     Type of Government                5 Multi-party mino… fact…
+##  7 cpds_tg     Type of Government                6 Caretaker govern… fact…
+##  8 cpds_tg     Type of Government                7 Technocratic gov… fact…
+##  9 dpi_gf      Government Fractionalization…  -999 NA                fact…
+## 10 dpi_gvs     Vote Share of Government Par…    NA &lt;NA&gt;              nume…
+## 11 fh_fog      Functioning of Government        NA &lt;NA&gt;              nume…
+## 12 icrg_qog    ICRG Indicator of Quality of…    NA &lt;NA&gt;              nume…
+## 13 une_eep     Government expenditure on pr…    NA &lt;NA&gt;              nume…
+## 14 une_eepp    Government expenditure on pr…    NA &lt;NA&gt;              nume…
+## 15 une_ees     Government expenditure on se…    NA &lt;NA&gt;              nume…
+## 16 une_eet     Government expenditure on te…    NA &lt;NA&gt;              nume…
+## 17 une_pee     Government expenditure on ed…    NA &lt;NA&gt;              nume…
+## 18 vi_rsg      Right to Strike, Government …    NA &lt;NA&gt;              nume…
+## 19 wbgi_gee    Government Effectiveness         NA &lt;NA&gt;              nume…
+## 20 wvs_confgov Confidence in Government         NA &lt;NA&gt;              nume…</code></pre>
 <p>抽出結果は20行のデータセットとなります.これで政府Governmentというキーワードを持つ変数名codeを得ることができました。ここでは例として最後の<strong>Confidence in Government</strong>のデータを抽出してみましょう.重要なのは<strong>code</strong>名<strong>wvs_confgov</strong>です。このcodeがすでにダウンロードした<strong>qog_data</strong>の変数名となります.</p>
 <p>データフレーム<strong>qog_data</strong>から<strong>Confidence in Government</strong>のデータを取り出すには、select()関数を使います.また国名, データの年も必要なのでこれもあわせて取り出します.次にサンプル国として中国、ロシア、インドおよびスウェーデンを取り出します.データは1990年以降しかありませんので、yearも1990以上を取り出します.このためにfilter()関数を利用します.この一連の作業をパイプ%&gt;%で連結し、最終的な結果をgov_confidenceというオブジェクトに容れるとします.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="民主主義国家データ.html#cb299-1" aria-hidden="true" tabindex="-1"></a> gov_confidence <span class="ot">&lt;-</span>  qog_data <span class="sc">%&gt;%</span> </span>
-<span id="cb299-2"><a href="民主主義国家データ.html#cb299-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cname, year,wvs_confgov) <span class="sc">%&gt;%</span> </span>
-<span id="cb299-3"><a href="民主主義国家データ.html#cb299-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cname <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;China&quot;</span>,<span class="st">&quot;Russia&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Sweden&quot;</span>), year <span class="sc">&gt;=</span> <span class="dv">1990</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="民主主義国家データ.html#cb296-1" aria-hidden="true" tabindex="-1"></a> gov_confidence <span class="ot">&lt;-</span>  qog_data <span class="sc">%&gt;%</span> </span>
+<span id="cb296-2"><a href="民主主義国家データ.html#cb296-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cname, year,wvs_confgov) <span class="sc">%&gt;%</span> </span>
+<span id="cb296-3"><a href="民主主義国家データ.html#cb296-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cname <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;China&quot;</span>,<span class="st">&quot;Russia&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Sweden&quot;</span>), year <span class="sc">&gt;=</span> <span class="dv">1990</span>)</span></code></pre></div>
 <p>これで中国、ロシア、インドおよびスウェーデンの<strong>Confidence in Government</strong>データだけを含むデータセットが出来上がりました.最後に、これを使ってグラフを描き、各国の政府への信頼度を可視化してみましょう.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="民主主義国家データ.html#cb300-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> gov_confidence, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> wvs_confgov,<span class="at">color =</span> cname, <span class="at">group =</span> cname))<span class="sc">+</span></span>
-<span id="cb300-2"><a href="民主主義国家データ.html#cb300-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> cname))<span class="sc">+</span></span>
-<span id="cb300-3"><a href="民主主義国家データ.html#cb300-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb300-4"><a href="民主主義国家データ.html#cb300-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb300-5"><a href="民主主義国家データ.html#cb300-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Confidence in Government&quot;</span></span>
-<span id="cb300-6"><a href="民主主義国家データ.html#cb300-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<span id="cb300-7"><a href="民主主義国家データ.html#cb300-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="民主主義国家データ.html#cb297-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> gov_confidence, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> wvs_confgov,<span class="at">color =</span> cname, <span class="at">group =</span> cname))<span class="sc">+</span></span>
+<span id="cb297-2"><a href="民主主義国家データ.html#cb297-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> cname))<span class="sc">+</span></span>
+<span id="cb297-3"><a href="民主主義国家データ.html#cb297-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb297-4"><a href="民主主義国家データ.html#cb297-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb297-5"><a href="民主主義国家データ.html#cb297-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Confidence in Government&quot;</span></span>
+<span id="cb297-6"><a href="民主主義国家データ.html#cb297-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb297-7"><a href="民主主義国家データ.html#cb297-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="EconData_files/figure-html/gov12-1.png" width="672" /></p>
 </div>
 </div>
@@ -722,14 +722,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="democracydataのインストール" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> democracyDataのインストール</h3>
 <p>このパッケージのcran版はなく、開発者のgithubサイトからインストールする必要があります.このため最初にremotesをインストールしておく必要があります.されていない場合は<code>install.packages("remotes")</code>でインストールし、library(remotes)を実行し利用可能にしてください.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="民主主義国家データ.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール</span></span>
-<span id="cb301-2"><a href="民主主義国家データ.html#cb301-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb301-3"><a href="民主主義国家データ.html#cb301-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># remotesのロード</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="民主主義国家データ.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール</span></span>
+<span id="cb298-2"><a href="民主主義国家データ.html#cb298-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb298-3"><a href="民主主義国家データ.html#cb298-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># remotesのロード</span></span></code></pre></div>
 <p>次にremotesを使って<strong>democracyData</strong>をインストールし、呼び出します.以下のように入力してください.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="民主主義国家データ.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># democracyDataのインストール</span></span>
-<span id="cb302-2"><a href="民主主義国家データ.html#cb302-2" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;xmarquez/democracyData&quot;</span>) </span>
-<span id="cb302-3"><a href="民主主義国家データ.html#cb302-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># democracyDataの呼び出し</span></span>
-<span id="cb302-4"><a href="民主主義国家データ.html#cb302-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(democracyData)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="民主主義国家データ.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># democracyDataのインストール</span></span>
+<span id="cb299-2"><a href="民主主義国家データ.html#cb299-2" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;xmarquez/democracyData&quot;</span>) </span>
+<span id="cb299-3"><a href="民主主義国家データ.html#cb299-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># democracyDataの呼び出し</span></span>
+<span id="cb299-4"><a href="民主主義国家データ.html#cb299-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(democracyData)</span></code></pre></div>
 <p>このRパッケージ<strong>democracyData</strong>においては民主主義に関連するデータをダウンロードするために次のような関数が開発されています.</p>
 <table>
 <colgroup>
@@ -774,7 +774,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="polity-vのダウンロード" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Polity Vのダウンロード</h3>
 <p><code>download_polity_annual()</code>を利用し、2020年に更新されたPolity 5データセットをダウンロードしてみましょう.ここではダウンロードした結果をpol_Vというオブジェクトに容れます.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="民主主義国家データ.html#cb303-1" aria-hidden="true" tabindex="-1"></a> pol_V <span class="ot">&lt;-</span> <span class="fu">download_polity_annual</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="民主主義国家データ.html#cb300-1" aria-hidden="true" tabindex="-1"></a> pol_V <span class="ot">&lt;-</span> <span class="fu">download_polity_annual</span>()</span></code></pre></div>
 <pre><code>## 
 ## 
 ## |country       | ccode|extended_country_name           | GWn| cown| min_date| max_date|  n|
@@ -840,7 +840,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## |Yemen South           |   680|Yemen, People&#39;s Republic of             | 680|  680|     1967|     1990|  24|
 ## |Zimbabwe              |   552|Zimbabwe (Rhodesia)                     | 552|  552|     1980|     2018|  39|</code></pre>
 <p>これによって17,574行（観察値）と41列（変数）のデータセットがダウンロードできます.ここで変数名を見てみましょう.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="民主主義国家データ.html#cb305-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(pol_V)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="民主主義国家データ.html#cb302-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(pol_V)</span></code></pre></div>
 <pre><code>##  [1] &quot;p5&quot;                    &quot;cyear&quot;                 &quot;polity_annual_ccode&quot;  
 ##  [4] &quot;scode&quot;                 &quot;polity_annual_country&quot; &quot;year&quot;                 
 ##  [7] &quot;flag&quot;                  &quot;fragment&quot;              &quot;democ&quot;                
@@ -903,19 +903,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>たとえば、東ヨーロッパの政治体制の評価するために、修正された複合ポリティスコアPOLITY2のグラフ描いてみましょう.最初にselect()関数を使ってデータフレームpol_Vから必要な変数を抽出し、filter()関数を使ってサンプル国を取り出しておきます.また、長期的な推移をみるために1945年以降のデータを取り出します.そしてその結果をpolV_5cというオブジェクトに容れます.</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="民主主義国家データ.html#cb307-1" aria-hidden="true" tabindex="-1"></a>  polV_5c <span class="ot">&lt;-</span> pol_V <span class="sc">%&gt;%</span> </span>
-<span id="cb307-2"><a href="民主主義国家データ.html#cb307-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(year, scode, polity2) <span class="sc">%&gt;%</span> </span>
-<span id="cb307-3"><a href="民主主義国家データ.html#cb307-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(scode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BLR&quot;</span>,<span class="st">&quot;BGR&quot;</span>,<span class="st">&quot;HUN&quot;</span>,<span class="st">&quot;CZE&quot;</span>,<span class="st">&quot;POL&quot;</span>),year <span class="sc">&gt;=</span> <span class="dv">1945</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="民主主義国家データ.html#cb304-1" aria-hidden="true" tabindex="-1"></a>  polV_5c <span class="ot">&lt;-</span> pol_V <span class="sc">%&gt;%</span> </span>
+<span id="cb304-2"><a href="民主主義国家データ.html#cb304-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(year, scode, polity2) <span class="sc">%&gt;%</span> </span>
+<span id="cb304-3"><a href="民主主義国家データ.html#cb304-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(scode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BLR&quot;</span>,<span class="st">&quot;BGR&quot;</span>,<span class="st">&quot;HUN&quot;</span>,<span class="st">&quot;CZE&quot;</span>,<span class="st">&quot;POL&quot;</span>),year <span class="sc">&gt;=</span> <span class="dv">1945</span>)</span></code></pre></div>
 <p>次にggplot2を使って東欧5カ国-ブルガリア、ベラルーシ、ハンガリー、チェコ、およびポーランド-のポリティスコアの推移を描きます。</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="民主主義国家データ.html#cb308-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> polV_5c, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polity2, <span class="at">group =</span> scode))<span class="sc">+</span></span>
-<span id="cb308-2"><a href="民主主義国家データ.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> scode))<span class="sc">+</span></span>
-<span id="cb308-3"><a href="民主主義国家データ.html#cb308-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> scode,<span class="at">shape =</span> scode))<span class="sc">+</span></span>
-<span id="cb308-4"><a href="民主主義国家データ.html#cb308-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb308-5"><a href="民主主義国家データ.html#cb308-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Polity2: +10(strongly democratic), -10(strongly autocratic)&quot;</span>,</span>
-<span id="cb308-6"><a href="民主主義国家データ.html#cb308-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb308-7"><a href="民主主義国家データ.html#cb308-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
-<span id="cb308-8"><a href="民主主義国家データ.html#cb308-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<span id="cb308-9"><a href="民主主義国家データ.html#cb308-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="民主主義国家データ.html#cb305-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> polV_5c, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polity2, <span class="at">group =</span> scode))<span class="sc">+</span></span>
+<span id="cb305-2"><a href="民主主義国家データ.html#cb305-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> scode))<span class="sc">+</span></span>
+<span id="cb305-3"><a href="民主主義国家データ.html#cb305-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> scode,<span class="at">shape =</span> scode))<span class="sc">+</span></span>
+<span id="cb305-4"><a href="民主主義国家データ.html#cb305-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb305-5"><a href="民主主義国家データ.html#cb305-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Polity2: +10(strongly democratic), -10(strongly autocratic)&quot;</span>,</span>
+<span id="cb305-6"><a href="民主主義国家データ.html#cb305-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb305-7"><a href="民主主義国家データ.html#cb305-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb305-8"><a href="民主主義国家データ.html#cb305-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb305-9"><a href="民主主義国家データ.html#cb305-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="EconData_files/figure-html/pol5-1.png" width="672" /></p>
 <p>容易に理解されるように、戦後長くこの東欧５カ国は独裁的な体制にありましたが、当時のソビエト連邦書記長ゴルバチョフの新ベオグラード宣言、ソビエト連邦の崩壊とともに1990年頃に民主主義的体制へと劇的に変化します.しかし、ベラルーシだけは1994年のルカシェンコ政権の成立とともに独裁的な体制へとふたたび転換しています.</p>
 

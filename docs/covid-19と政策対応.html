@@ -24,7 +24,7 @@
 <meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,16 +288,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tidycovidのインストール" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> tidycovidのインストール</h3>
 <p>GitHub等に保存されたパッケージをインストールするためにはremotesパッケージをインストールしておく必要があります。一度、組み込むだけですので、コンソール画面で実行しても良いでしょう。</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="covid-19と政策対応.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール    </span></span>
-<span id="cb316-2"><a href="covid-19と政策対応.html#cb316-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.pacakages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb316-3"><a href="covid-19と政策対応.html#cb316-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # remotesの呼び出し</span></span>
-<span id="cb316-4"><a href="covid-19と政策対応.html#cb316-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(remotes)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="covid-19と政策対応.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール    </span></span>
+<span id="cb313-2"><a href="covid-19と政策対応.html#cb313-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.pacakages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb313-3"><a href="covid-19と政策対応.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="co"># # remotesの呼び出し</span></span>
+<span id="cb313-4"><a href="covid-19と政策対応.html#cb313-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(remotes)</span></code></pre></div>
 <p>続けてremotesを利用し、tidycovid19をインストールします.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="covid-19と政策対応.html#cb317-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のインストール</span></span>
-<span id="cb317-2"><a href="covid-19と政策対応.html#cb317-2" aria-hidden="true" tabindex="-1"></a> remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;joachim-gassen/tidycovid19&quot;</span>)</span>
-<span id="cb317-3"><a href="covid-19と政策対応.html#cb317-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb317-4"><a href="covid-19と政策対応.html#cb317-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のの呼び出し</span></span>
-<span id="cb317-5"><a href="covid-19と政策対応.html#cb317-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(tidycovid19)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="covid-19と政策対応.html#cb314-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のインストール</span></span>
+<span id="cb314-2"><a href="covid-19と政策対応.html#cb314-2" aria-hidden="true" tabindex="-1"></a> remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;joachim-gassen/tidycovid19&quot;</span>)</span>
+<span id="cb314-3"><a href="covid-19と政策対応.html#cb314-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-4"><a href="covid-19と政策対応.html#cb314-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># tidtcovid19のの呼び出し</span></span>
+<span id="cb314-5"><a href="covid-19と政策対応.html#cb314-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(tidycovid19)</span></code></pre></div>
 </div>
 <div id="tidycovidの関数とデータのダウンロード方法" class="section level3" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> tidycovidの関数とデータのダウンロード方法</h3>
@@ -346,13 +346,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>すべての利用可能な、結合されたデータセットが<strong>download_merged_data()</strong>関数によって取得できます.</p>
 <p><code>download_merged_data()</code>の使い方は以下のようになります.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="covid-19と政策対応.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_merged_data</span>(</span>
-<span id="cb318-2"><a href="covid-19と政策対応.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_vars =</span> ,</span>
-<span id="cb318-3"><a href="covid-19と政策対応.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_labels =</span> ,</span>
-<span id="cb318-4"><a href="covid-19と政策対応.html#cb318-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
-<span id="cb318-5"><a href="covid-19と政策対応.html#cb318-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb318-6"><a href="covid-19と政策対応.html#cb318-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">FALSE</span></span>
-<span id="cb318-7"><a href="covid-19と政策対応.html#cb318-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="covid-19と政策対応.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download_merged_data</span>(</span>
+<span id="cb315-2"><a href="covid-19と政策対応.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_vars =</span> ,</span>
+<span id="cb315-3"><a href="covid-19と政策対応.html#cb315-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_labels =</span> ,</span>
+<span id="cb315-4"><a href="covid-19と政策対応.html#cb315-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
+<span id="cb315-5"><a href="covid-19と政策対応.html#cb315-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb315-6"><a href="covid-19と政策対応.html#cb315-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">FALSE</span></span>
+<span id="cb315-7"><a href="covid-19と政策対応.html#cb315-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p>関数<code>download_merged_data()</code>がとる引数は以下のようになります.</p>
 <ul>
 <li>wbank_vars = : 取得しようとする世界銀行データの変数名、つまり<a href="マクロデータ.html#WD">2.2</a>で紹介した世界銀行のindicator名を入力します.</li>
@@ -362,43 +362,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>cached = : オリジナルなソースからデータを取得するのではなく、tidycovid19のGithubリポジトリからキャッシュ版をダウンロードするかどうかを指定します.キャッシュされたバージョンをダウンロードする方が高速ですし、キャッシュは毎日更新されます.デフォルトはFALSEです.</li>
 </ul>
 <p>それではこの関数を使ってCovid-19データと関連数データをダウンロードしてみましょう.ここでは結果をmergedDataと名前を付けたオブジェクトに容れます.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="covid-19と政策対応.html#cb319-1" aria-hidden="true" tabindex="-1"></a>  mergedData <span class="ot">&lt;-</span> <span class="fu">download_merged_data</span>(</span>
-<span id="cb319-2"><a href="covid-19と政策対応.html#cb319-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_vars =</span> <span class="fu">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;AG.LND.TOTL.K2&quot;</span>, <span class="st">&quot;EN.POP.DNST&quot;</span>, <span class="st">&quot;EN.URB.LCTY&quot;</span>,</span>
-<span id="cb319-3"><a href="covid-19と政策対応.html#cb319-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;SP.DYN.LE00.IN&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>),</span>
-<span id="cb319-4"><a href="covid-19と政策対応.html#cb319-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_labels =</span> <span class="fu">c</span>(<span class="st">&quot;population&quot;</span>, <span class="st">&quot;land_area_skm&quot;</span>, <span class="st">&quot;pop_density&quot;</span>, <span class="st">&quot;pop_largest_city&quot;</span>,</span>
-<span id="cb319-5"><a href="covid-19と政策対応.html#cb319-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;life_expectancy&quot;</span>, <span class="st">&quot;gdp_capita&quot;</span>),</span>
-<span id="cb319-6"><a href="covid-19と政策対応.html#cb319-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
-<span id="cb319-7"><a href="covid-19と政策対応.html#cb319-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb319-8"><a href="covid-19と政策対応.html#cb319-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Downloading cached version of merged data...done. Timestamp is 2021-08-29 11:11:01
-## 
-## Data Info:
-## 
-## This data frame contains Covid-19 related data from multiple sources in
-## a country-day structure. Data sources are JHU CSSE data on confirmed
-## cases, deaths and recoveries
-## (https://github.com/CSSEGISandData/COVID-19), &#39;Our World in Data&#39; data
-## (https://github.com/owid/covid-19-data/tree/master/public/data), ACAPS
-## data on governmental measures
-## (https://www.acaps.org/covid19-government-measures-dataset), Apple&#39;s
-## Mobility Trend Reports on Apple Map usage
-## (https://www.apple.com/covid19/mobility), Google&#39;s Community Mobility
-## Reports on individual movement trends
-## (https://www.google.com/covid19/mobility/), Google Trends data on
-## relative Google search volumes for the term &#39;coronavirus&#39;
-## (https://trends.google.com/) and country-level World Bank data on
-## population (density), life expectancy and national income
-## (https://data.worldbank.org). The data frame
-## &#39;tidycovid19_variable_definitions&#39; holds definitions for each variable
-## in this data frame. The data frame &#39;tidycovid19_data_sources&#39; contains
-## more information on the data sources included in this package. The
-## column &#39;timestamp&#39; reports the time the data was downloaded from its
-## authoritative source.
-## 
-## For further information refer to:
-## https://github.com/joachim-gassen/tidycovid19.</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="covid-19と政策対応.html#cb316-1" aria-hidden="true" tabindex="-1"></a>  mergedData <span class="ot">&lt;-</span> <span class="fu">download_merged_data</span>(</span>
+<span id="cb316-2"><a href="covid-19と政策対応.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_vars =</span> <span class="fu">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;AG.LND.TOTL.K2&quot;</span>, <span class="st">&quot;EN.POP.DNST&quot;</span>, <span class="st">&quot;EN.URB.LCTY&quot;</span>,</span>
+<span id="cb316-3"><a href="covid-19と政策対応.html#cb316-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;SP.DYN.LE00.IN&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>),</span>
+<span id="cb316-4"><a href="covid-19と政策対応.html#cb316-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">wbank_labels =</span> <span class="fu">c</span>(<span class="st">&quot;population&quot;</span>, <span class="st">&quot;land_area_skm&quot;</span>, <span class="st">&quot;pop_density&quot;</span>, <span class="st">&quot;pop_largest_city&quot;</span>,</span>
+<span id="cb316-5"><a href="covid-19と政策対応.html#cb316-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;life_expectancy&quot;</span>, <span class="st">&quot;gdp_capita&quot;</span>),</span>
+<span id="cb316-6"><a href="covid-19と政策対応.html#cb316-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
+<span id="cb316-7"><a href="covid-19と政策対応.html#cb316-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb316-8"><a href="covid-19と政策対応.html#cb316-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>このデータフレームは123,396行の観察値と40の変数を持ちます.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="covid-19と政策対応.html#cb321-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(mergedData)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="covid-19と政策対応.html#cb317-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(mergedData)</span></code></pre></div>
 <p>それぞれの変数はこの簡易ラベルでも理解できるかもしれませんが、正確に理解するのは難しいと思います.データフレームtidycovid19_variable_defintions は、download_merged_data()でマージされたデータフレームに含まれる各変数の定義を含んでいます.</p>
 <p>データフレームtidycovid19_variable_defintionsは</p>
 <ul>
@@ -733,7 +706,13 @@ Date and time where data has been collected from authoritative sources
 </tr>
 </tbody>
 </table>
-<p>この一覧表によって download_merged_data()によってダウンロードした変数の定義が分かります.</p>
+<p>この一覧表によって download_merged_data()によってダウンロードした変数の定義が分かります.以下で利用するいくつかの変数に注目すると</p>
+<p>|変数名|変数の説明|
+|: — :|: —|
+|confirmed|Confirmed Covid-19 cases (accumulated)|
+|deaths|Covid-19-related deaths(accumulated)|
+|lockdown|Number of lockdown measures|</p>
+<p>、confirmedは<code>Confirmed Covid-19 cases as reported by JHU CSSE (accumulated)</code>から理解されるように、確認感染者数（累積数）でることが分かります.</p>
 <p>具体例としてこの関数を使ってダウンロードしたデータmergedDataをもとに新型コロナウィルスの4つのグラフを描き、感染状況を観察してみましょう.</p>
 <ul>
 <li><ol style="list-style-type: decimal">
@@ -749,13 +728,13 @@ Date and time where data has been collected from authoritative sources
 <li>アジア諸国の感染者数のマップ</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="covid-19と政策対応.html#cb322-1" aria-hidden="true" tabindex="-1"></a>mergedData_jpn <span class="ot">&lt;-</span> mergedData <span class="sc">%&gt;%</span> </span>
-<span id="cb322-2"><a href="covid-19と政策対応.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(iso3c <span class="sc">==</span> <span class="st">&quot;JPN&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb322-3"><a href="covid-19と政策対応.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb322-4"><a href="covid-19と政策対応.html#cb322-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">new_cases =</span> confirmed <span class="sc">-</span> <span class="fu">lag</span>(confirmed),</span>
-<span id="cb322-5"><a href="covid-19と政策対応.html#cb322-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ave_new_cases =</span> <span class="fu">rollmean</span>(new_cases, <span class="dv">7</span>, <span class="at">na.pad=</span><span class="cn">TRUE</span>, <span class="at">align=</span><span class="st">&quot;right&quot;</span>)</span>
-<span id="cb322-6"><a href="covid-19と政策対応.html#cb322-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb322-7"><a href="covid-19と政策対応.html#cb322-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_cases), <span class="sc">!</span><span class="fu">is.na</span>(ave_new_cases)) </span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="covid-19と政策対応.html#cb318-1" aria-hidden="true" tabindex="-1"></a>mergedData_jpn <span class="ot">&lt;-</span> mergedData <span class="sc">%&gt;%</span> </span>
+<span id="cb318-2"><a href="covid-19と政策対応.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(iso3c <span class="sc">==</span> <span class="st">&quot;JPN&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb318-3"><a href="covid-19と政策対応.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb318-4"><a href="covid-19と政策対応.html#cb318-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">new_cases =</span> confirmed <span class="sc">-</span> <span class="fu">lag</span>(confirmed),</span>
+<span id="cb318-5"><a href="covid-19と政策対応.html#cb318-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ave_new_cases =</span> <span class="fu">rollmean</span>(new_cases, <span class="dv">7</span>, <span class="at">na.pad=</span><span class="cn">TRUE</span>, <span class="at">align=</span><span class="st">&quot;right&quot;</span>)</span>
+<span id="cb318-6"><a href="covid-19と政策対応.html#cb318-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb318-7"><a href="covid-19と政策対応.html#cb318-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_cases), <span class="sc">!</span><span class="fu">is.na</span>(ave_new_cases)) </span></code></pre></div>
 </div>
 </div>
 <div id="imf-covid-19-recovery-index" class="section level2" number="5.2">

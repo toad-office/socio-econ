@@ -24,7 +24,7 @@
 <meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -285,15 +285,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="http://gss.norc.org">General Social Survey（GSS）</a>は、現在、アメリカで実施されている全般的な社会調査です。現代のアメリカ社会に関するデータを収集し、これによりアメリカの人々の態度、行動、属性の傾向をモニターできます。GSSは最大80年間のトレンドを追跡することができます。</p>
 <p><a href="http://gss.norc.org/get-the-data">GSSのGet the Data</a>ではデータはstataおよびspssのフォーマットで提供されています。このためRで利用するためにgssrが開発されています。これは、General Social Surveyの累積データ（1972-2018)と３つのWaveのパネルデータをまとめたデータパッケージです。</p>
 <p>gssrは，複数のデータセットを便利な形式にまとめたデータパッケージです．パッケージ内のデータが比較的大きいため、開発者のGithubサイトから直接インストールします.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="ミクロデータ.html#cb309-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;kjhealy/gssr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="ミクロデータ.html#cb310-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(gssr)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="ミクロデータ.html#cb306-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;kjhealy/gssr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="ミクロデータ.html#cb307-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(gssr)</span></code></pre></div>
 <div id="データの読み込み" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> データの読み込み</h3>
 <p>GSS累積データファイルはサイズが大きいため、パッケージを起動したときにデフォルトでは読み込まれません.データセットの1つを読み込むには、まずライブラリを読み込み、次にdata()を使ってデータを利用可能にします。例えば、累積GSSファイルを次のように読み込みます.</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="ミクロデータ.html#cb311-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data</span>(<span class="st">&quot;gss_all&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="ミクロデータ.html#cb308-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data</span>(<span class="st">&quot;gss_all&quot;</span>)</span></code></pre></div>
 <p>RStudioの<strong>[Environment]</strong>の<strong>[Data]</strong>をみると、64,814の観察値と6,108の変数を有するデータセット<strong>gss_all</strong>が読み込まれたことが分かります.</p>
 <p>変数は膨大であり、これを理解するには簡単ではありません.そのためデータの変数の情報を含んだデータフレーム<strong>gss_doc</strong>を読みこましょう.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="ミクロデータ.html#cb312-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">data</span>(<span class="st">&quot;gss_doc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="ミクロデータ.html#cb309-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">data</span>(<span class="st">&quot;gss_doc&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="european-social-survey-essurvey" class="section level2" number="4.2">
@@ -556,12 +556,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="essurveyのインストール" class="section level4" number="4.2.1.2">
 <h4><span class="header-section-number">4.2.1.2</span> essurveyのインストール</h4>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="ミクロデータ.html#cb313-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.packages</span>(<span class="st">&quot;essurvey&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="ミクロデータ.html#cb310-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">install.packages</span>(<span class="st">&quot;essurvey&quot;</span>)</span></code></pre></div>
 <p>ESSのデータをダウンロードするには、データをダウンロードするたびにEメールを認証する必要があります。Eメールを環境変数として設定するには、set_emailを使用します.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="ミクロデータ.html#cb314-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_email</span>(<span class="st">&quot;自分のメールアドレス&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="ミクロデータ.html#cb311-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_email</span>(<span class="st">&quot;自分のメールアドレス&quot;</span>)</span></code></pre></div>
 <p>一度これを実行すると,前の行を削除できます.たとえば<code>import_*</code>を呼び出した場合、環境変数として保存された電子メールを自動的に探します.</p>
 <p>ESSで利用可能な国やラウンドがわからないとします.そうした場合<code>show_*</code> 関数群が役に立ちます.どの国が参加しているかを調べるには、<code>show_countries()</code>を使います。</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="ミクロデータ.html#cb315-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_countries</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="ミクロデータ.html#cb312-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_countries</span>()</span></code></pre></div>
 
 </div>
 </div>
