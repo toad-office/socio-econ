@@ -73,6 +73,7 @@ european-social-survey-essurvey
 事前準備-essの認証とインストール
 essの認証
 essurveyのインストール
+pew-research-center-pewmethods
 covid-19と政策対応
 tidycovidを利用する
 tidycovidのインストール
