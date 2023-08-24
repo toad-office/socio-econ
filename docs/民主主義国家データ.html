@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 3 民主主義・国家データ | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content=" 3 民主主義・国家データ | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 3 民主主義・国家データ | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 3 民主主義・国家データ | 資料 Rで社会経済データの取得　(work in progress)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ" />
+
+
+<meta name="date" content="2021-10-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="マクロデータ.html"/>
+<link rel="next" href="ミクロデータ.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#本資料の目的"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#社会経済データベース"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#groningen-growth-and-development-centre"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="マクロデータ.html"><a href="マクロデータ.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt10</a></li>
+<li class="chapter" data-level="2.1.2" data-path="マクロデータ.html"><a href="マクロデータ.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#WD"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#EC"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#OECD"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#事前準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 事前準備-ESSの認証とインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="ミクロデータ.html"><a href="ミクロデータ.html#pew-research-center-pewmethods"><i class="fa fa-check"></i><b>4.3</b> Pew Research Center: pewmethods</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数とデータのダウンロード方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="民主主義国家データ" class="section level1" number="3">
+<h1><span class="header-section-number"> 3</span> 民主主義・国家データ</h1>
+<p>中国をはじめとする新興経済の台頭とともに国家（政府）の役割がふたたび注目されつつあります. 他方で権威主義的な国家の台頭は民主主義の優位性が失われつつある、という論調もみられるようになりました<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>.こうした問題を考える上でも「国家」や「民主主義」を測る指標が必要となります.そこで本項ではそうしたデータを提供するデータベースをいくつか紹介します.</p>
+<div id="民主主義を測る--vdemdata" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> 「民主主義」を測る- vdemdata</h2>
+<p>スウェーデンのイェーテボリ大学政治学科のV-Dem研究所の<a href="https://www.v-dem.net/en/data/data-version-10/">Varieties of Democracy(V-Dem)データベース</a>は大規模な社会科学データベースです。データセットの最新バージョンv10は1789年から2019年までの202カ国をカバーしています。本データベースはその名が示すとおり、民主主義をめぐるデータセットを提供しています。アンケート調査にもとづいたミクロデータが基礎となっていますが、それらのデータから作成されたマクロデータが提供されています。</p>
+<p>データはcsv, Stata,Spssの３つの形式で提供されています。また、本研究所じしんがデータセットRパッケージ<strong>vdemdata</strong>を公開しています。これは最新のV-Dem (Varieties of Democracy) とV-partyのデータパッケージです。くわえて検索、グラフ作成機能も提供しています.</p>
+<div id="vdemdataパッケージのインストール" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> vdemdataパッケージのインストール</h3>
+<p>Rパッケージ<strong>vdemdata</strong>パッケージは開発版であるため,vdemdataは<a href="https://github.com/vdeminstitute">同研究所のGithubサイト</a>からインストールする必要があります。このため、最初に、devtoolsをインストールします。</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="民主主義国家データ.html#cb264-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb264-2"><a href="民主主義国家データ.html#cb264-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(devtools)</span></code></pre></div>
+<p>次に、devtoolsを使ってvdemdataパッケージをインストールします。コンソール画面に次のように入力し、エンターキーを押してください。</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="民主主義国家データ.html#cb265-1" aria-hidden="true" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;vdeminstitute/vdemdata&quot;</span>)</span></code></pre></div>
+<p>インストールを終えたら、library()で読み込ます。これでvdemdataパッケージが利用できます。</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="民主主義国家データ.html#cb266-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(vdemdata)</span></code></pre></div>
+<p>本パッケージが提供する基本的な関数は以下のとおりです.使い方については後で説明します.</p>
+<ul>
+<li>vdem:データセットを読み込みます.</li>
+<li>vparty: V-Partyデータセットを読み込みます.</li>
+<li>var_info :コードブックで指定された特定の変数の基本情報をコンソールに表示します.</li>
+<li>find_var:キーワードで変数を検索します.</li>
+<li>fill_vars: 特定の選挙の変数をしまします.</li>
+</ul>
+<p>グラフ作成機能も提供されています.</p>
+<ul>
+<li>plot_indicator: V-Dem指標のグラフを描きます.</li>
+</ul>
+</div>
+<div id="vdemdataパッケージの利用法" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> vdemdataパッケージの利用法</h3>
+<div id="データを読み込む---vdem" class="section level4" number="3.1.2.1">
+<h4><span class="header-section-number">3.1.2.1</span> データを読み込む - vdem</h4>
+<p>V-Demデータセットの読み込むためには<code>vdem</code>関数を使います.ここでは読み込んだデータセットをv_dataという名前をつけたオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="民主主義国家データ.html#cb267-1" aria-hidden="true" tabindex="-1"></a>  v_data <span class="ot">&lt;-</span> vdem</span></code></pre></div>
+<p>str()関数を使ってデータ構造をみるとV-Demデータセットは非常に大きく、27,192の観察値、4,176の変数を持つことがわかります.ここからデータを探すことは大変です.最初に, vdemdataの<strong>codebook</strong>を利用した方法を紹介しましょう.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="民主主義国家データ.html#cb268-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">str</span>(v_data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    27192 obs. of  4176 variables:
+##  $ country_name                   : chr  &quot;Mexico&quot; &quot;Mexico&quot; &quot;Mexico&quot; &quot;Mexico&quot; ...
+##  $ country_text_id                : chr  &quot;MEX&quot; &quot;MEX&quot; &quot;MEX&quot; &quot;MEX&quot; ...
+##  $ country_id                     : num  3 3 3 3 3 3 3 3 3 3 ...
+##  $ year                           : num  1789 1790 1791 1792 1793 ...
+##  $ historical_date                : Date, format: &quot;1789-12-31&quot; &quot;1790-12-31&quot; ...
+##  $ project                        : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ historical                     : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ histname                       : chr  &quot;Viceroyalty of New Spain&quot; &quot;Viceroyalty of New Spain&quot; &quot;Viceroyalty of New Spain&quot; &quot;Viceroyalty of New Spain&quot; ...
+##  $ codingstart                    : num  1789 1789 1789 1789 1789 ...
+##  $ codingend                      : num  2020 2020 2020 2020 2020 2020 2020 2020 2020 2020 ...
+##  $ codingstart_contemp            : num  1900 1900 1900 1900 1900 1900 1900 1900 1900 1900 ...
+##  $ codingend_contemp              : num  2020 2020 2020 2020 2020 2020 2020 2020 2020 2020 ...
+##  $ codingstart_hist               : num  1789 1789 1789 1789 1789 ...
+##  $ codingend_hist                 : num  1920 1920 1920 1920 1920 1920 1920 1920 1920 1920 ...
+##  $ gapstart1                      : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ gapstart2                      : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ gapstart3                      : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ gapend1                        : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ gapend2                        : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ gapend3                        : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ gap_index                      : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ COWcode                        : num  70 70 70 70 70 70 70 70 70 70 ...
+##  $ v2x_polyarchy                  : num  0.026 0.026 0.026 0.026 0.026 0.026 0.026 0.026 0.026 0.026 ...
+##  $ v2x_polyarchy_codelow          : num  0.016 0.016 0.016 0.016 0.016 0.016 0.016 0.016 0.016 0.016 ...
+##  $ v2x_polyarchy_codehigh         : num  0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 0.036 ...
+##  $ v2x_polyarchy_sd               : num  0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 ...
+##  $ v2x_libdem                     : num  0.041 0.041 0.041 0.041 0.041 0.041 0.041 0.041 0.041 0.041 ...
+##  $ v2x_libdem_codelow             : num  0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 0.025 ...
+##  $ v2x_libdem_codehigh            : num  0.053 0.053 0.053 0.053 0.053 0.053 0.053 0.053 0.053 0.053 ...
+##  $ v2x_libdem_sd                  : num  0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.014 0.014 ...
+##  $ v2x_partipdem                  : num  0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 ...
+##  $ v2x_partipdem_codelow          : num  0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 ...
+##  $ v2x_partipdem_codehigh         : num  0.011 0.011 0.011 0.011 0.011 0.011 0.011 0.011 0.011 0.011 ...
+##  $ v2x_partipdem_sd               : num  0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 0.007 ...
+##  $ v2x_delibdem                   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_delibdem_codelow           : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_delibdem_codehigh          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_delibdem_sd                : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_egaldem                    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_egaldem_codelow            : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_egaldem_codehigh           : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_egaldem_sd                 : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2x_api                        : num  0.053 0.053 0.053 0.053 0.053 0.053 0.053 0.053 0.053 0.053 ...
+##  $ v2x_api_codelow                : num  0.033 0.033 0.033 0.033 0.033 0.033 0.033 0.033 0.033 0.033 ...
+##  $ v2x_api_codehigh               : num  0.071 0.071 0.071 0.071 0.071 0.071 0.071 0.071 0.071 0.071 ...
+##  $ v2x_api_sd                     : num  0.021 0.021 0.021 0.021 0.021 0.021 0.021 0.021 0.021 0.021 ...
+##  $ v2x_mpi                        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2x_mpi_codelow                : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2x_mpi_codehigh               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2x_mpi_sd                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2x_freexp_altinf              : num  0.161 0.161 0.161 0.161 0.161 0.161 0.161 0.161 0.161 0.161 ...
+##  $ v2x_freexp_altinf_codelow      : num  0.093 0.093 0.093 0.093 0.093 0.093 0.093 0.093 0.093 0.093 ...
+##  $ v2x_freexp_altinf_codehigh     : num  0.24 0.24 0.24 0.24 0.24 0.24 0.24 0.24 0.24 0.24 ...
+##  $ v2x_freexp_altinf_sd           : num  0.621 0.621 0.621 0.621 0.621 0.621 0.621 0.621 0.621 0.621 ...
+##  $ v2x_frassoc_thick              : num  0.04 0.04 0.04 0.04 0.04 0.04 0.04 0.04 0.04 0.04 ...
+##  $ v2x_frassoc_thick_codelow      : num  0.019 0.019 0.019 0.019 0.019 0.019 0.019 0.019 0.019 0.019 ...
+##  $ v2x_frassoc_thick_codehigh     : num  0.077 0.077 0.077 0.077 0.077 0.077 0.077 0.077 0.077 0.077 ...
+##  $ v2x_frassoc_thick_sd           : num  0.628 0.628 0.628 0.628 0.628 0.628 0.628 0.628 0.628 0.628 ...
+##  $ v2x_suffr                      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_frefair                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_frefair_codelow          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_frefair_codehigh         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_frefair_sd               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2x_elecoff                    : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2x_liberal                    : num  0.159 0.159 0.159 0.159 0.159 0.159 0.159 0.159 0.159 0.159 ...
+##  $ v2x_liberal_codelow            : num  0.096 0.096 0.096 0.096 0.096 0.096 0.096 0.096 0.096 0.096 ...
+##  $ v2x_liberal_codehigh           : num  0.208 0.208 0.208 0.208 0.208 0.208 0.208 0.208 0.208 0.208 ...
+##  $ v2x_liberal_sd                 : num  0.057 0.057 0.057 0.057 0.057 0.057 0.057 0.057 0.057 0.057 ...
+##  $ v2xcl_rol                      : num  0.189 0.189 0.189 0.189 0.189 0.189 0.189 0.189 0.189 0.189 ...
+##  $ v2xcl_rol_codelow              : num  0.127 0.127 0.127 0.127 0.127 0.127 0.127 0.127 0.127 0.127 ...
+##  $ v2xcl_rol_codehigh             : num  0.294 0.294 0.294 0.294 0.294 0.294 0.294 0.294 0.294 0.294 ...
+##  $ v2xcl_rol_sd                   : num  0.62 0.62 0.62 0.62 0.62 0.62 0.62 0.62 0.62 0.62 ...
+##  $ v2x_jucon                      : num  0.27 0.27 0.27 0.27 0.27 0.27 0.27 0.27 0.27 0.27 ...
+##  $ v2x_jucon_codelow              : num  0.145 0.145 0.145 0.145 0.145 0.145 0.145 0.145 0.145 0.145 ...
+##  $ v2x_jucon_codehigh             : num  0.451 0.451 0.451 0.451 0.451 0.451 0.451 0.451 0.451 0.451 ...
+##  $ v2x_jucon_sd                   : num  0.68 0.68 0.68 0.68 0.68 0.68 0.68 0.68 0.68 0.68 ...
+##  $ v2xlg_legcon                   : num  0.054 0.054 0.054 0.054 0.054 0.054 0.054 0.054 0.054 0.054 ...
+##  $ v2xlg_legcon_codelow           : num  0.015 0.015 0.015 0.015 0.015 0.015 0.015 0.015 0.015 0.015 ...
+##  $ v2xlg_legcon_codehigh          : num  0.178 0.178 0.178 0.178 0.178 0.178 0.178 0.178 0.178 0.178 ...
+##  $ v2xlg_legcon_sd                : num  0.735 0.735 0.735 0.735 0.735 0.735 0.735 0.735 0.735 0.735 ...
+##  $ v2x_partip                     : num  0.024 0.024 0.024 0.024 0.024 0.024 0.024 0.024 0.024 0.024 ...
+##  $ v2x_partip_codelow             : num  0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 ...
+##  $ v2x_partip_codehigh            : num  0.037 0.037 0.037 0.037 0.037 0.037 0.037 0.037 0.037 0.037 ...
+##  $ v2x_partip_sd                  : num  0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 0.027 ...
+##  $ v2x_cspart                     : num  0.039 0.039 0.039 0.039 0.039 0.039 0.039 0.039 0.039 0.039 ...
+##  $ v2x_cspart_codelow             : num  0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 ...
+##  $ v2x_cspart_codehigh            : num  0.113 0.113 0.113 0.113 0.113 0.113 0.113 0.113 0.113 0.113 ...
+##  $ v2x_cspart_sd                  : num  0.716 0.716 0.716 0.716 0.716 0.716 0.716 0.716 0.716 0.716 ...
+##  $ v2xdd_dd                       : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2xel_locelec                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_locelec_codelow          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_locelec_codehigh         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_locelec_sd               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_regelec                  : num  0.013 0.013 0.013 0.013 0.013 0.013 0.013 0.013 0.013 0.013 ...
+##  $ v2xel_regelec_codelow          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ v2xel_regelec_codehigh         : num  0.028 0.028 0.028 0.028 0.028 0.028 0.028 0.028 0.028 0.028 ...
+##  $ v2xel_regelec_sd               : num  0.046 0.046 0.046 0.046 0.046 0.046 0.046 0.046 0.046 0.046 ...
+##  $ v2xdl_delib                    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ v2xdl_delib_codelow            : num  NA NA NA NA NA NA NA NA NA NA ...
+##   [list output truncated]</code></pre>
+<p>データフレームv_dataは4,176の変数を有します.str(v_data)の表示から理解されるように、ほとんどの変数名がV-Dem特有の変数名です。たとえば<strong>v2x_polyarchy</strong>という変数がありますが、これが何を表現しているかは分かりません。そうした情報はcodebookから得られます.</p>
+<p>Vdemdataには、変数の情報を提供する簡易版codebookがついています。codebookじたい1,017の観察値、17の変数から構成されるデータフレームです。View()関数を使ってデータフレームcodebookの変数名を一覧表示してみてください.</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="民主主義国家データ.html#cb270-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">View</span>(codebook)</span></code></pre></div>
+<p>データフレームcodebookの変数tagの中に<code>v2x_polyarchy</code>があります。これに対応する変数nameを見ると、<code>Electoral democracy index</code>と記載されています.さらに変数quesitonをみると“To what extent is the ideal of electoral democracy in its fullest sense achieved?”という質問に対する回答をベースにしていることも分かります。</p>
+<p>このように変数の意味を理解するためには、vdemdata付属のcodebookでも十分ですが、<a href="https://www.v-dem.net/en/data/reference-material-v11/">pdf版のフルバージョン</a>もあります.</p>
+<p>また変数の情報はvar_info()関数を使っても得ることができます.</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="民主主義国家データ.html#cb271-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var_info</span>(<span class="st">&quot;変数タグtag名&quot;</span>)</span></code></pre></div>
+<p>“変数タグtag名”にはV-demデータセットの変数名もしくはcodebookのtag名を入力します.この例では<code>v2x_polyarchy</code>です.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="民主主義国家データ.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var_info</span>(<span class="st">&quot;v2x_polyarchy&quot;</span>)</span></code></pre></div>
+<pre><code>## $name
+## [1] &quot;Electoral democracy index&quot;
+## 
+## $vartype
+## [1] &quot;D&quot;
+## 
+## $tag
+## [1] &quot;v2x_polyarchy&quot;
+## 
+## $projectmanager
+## [1] &quot;Jan Teorell&quot;
+## 
+## $question
+## [1] &quot;To what extent is the ideal of electoral democracy in its fullest sense achieved?&quot;
+## 
+## $clarification
+## [1] &quot;The electoral principle of democracy seeks to embody the core value of making rulers responsive to citizens, achieved through electoral competition for the electorate&#39;s approval under circumstances when suffrage is extensive; political and civil society organizations can operate freely; elections are clean and not marred by fraud or systematic irregularities; and elections affect the composition of the chief executive of the country. In between elections, there is freedom of expression and an independent media capable of presenting alternative views on matters of political relevance. In the V-Dem conceptual scheme, electoral democracy is understood as an essential element of any other conception of representative democracy --- liberal, participatory, deliberative, egalitarian, or some other.&quot;
+## 
+## $responses
+## [1] NA
+## 
+## $scale
+## [1] &quot;Interval, from low to high (0-1).&quot;
+## 
+## $sources
+## [1] &quot;v2x\\_freexp\\_altinf v2x\\_frassoc\\_thick v2x\\_suffr v2xel\\_frefair v2x\\_elecoff&quot;
+## 
+## $notes
+## [1] NA
+## 
+## $aggregation
+## [1] &quot;The index is formed by taking the average of, on the one hand, the weighted average of the indices measuring freedom of association thick (v2x_frassoc_thick), clean elections (v2xel_frefair), freedom of expression (v2x_freexp_altinf), elected officials (v2x_elecoff), and suffrage (v2x_suffr) and, on the other, the five-way multiplicative interaction between those indices. This is half way between a straight average and strict multiplication, meaning the average of the two. It is thus a compromise between the two most well known aggregation formulas in the literature, both allowing partial \&quot;compensation\&quot; in one sub-component for lack of polyarchy in the others, but also punishing countries not strong in one sub-component according to the \&quot;weakest link\&quot; argument. The aggregation is done at the level of Dahl&#39;s sub-components with the one exception of the non-electoral component. The index is aggregated using this formula: beginequation*beginalignedv2x_polyarchy =  &amp; .5 * MPI + .5 * API  = .5 * (v2x_elecoff * v2xel_frefair *  v2x_frassoc_thick *  v2x_suffr *  v2x_freexp_altinf)  + .5 * ((1/8) * v2x_elecoff + (1/4) *  v2xel_frefair   + (1/4) * v2x_frassoc_thick + (1/8) * v2x_suffr  + (1/4) * v2x_freexp_altinf)endalignedendequation*&quot;
+## 
+## $years
+## [1] &quot;1789-2019&quot;
+## 
+## $overlap_use_hist
+## [1] FALSE
+## 
+## $is_party
+## [1] FALSE
+## 
+## $cb_section_type
+## [1] &quot;subsubsection&quot;
+## 
+## $defaultdate
+## [1] NA
+## 
+## $source
+## [1] &quot;v2x_freexp_altinf v2x_frassoc_thick v2x_suffr v2xel_frefair v2x_elecoff&quot;</code></pre>
+</div>
+<div id="データを探す---find_var" class="section level4" number="3.1.2.2">
+<h4><span class="header-section-number">3.1.2.2</span> データを探す - find_var()</h4>
+<p>codebookをベースにデータを探す方法の他に、find_var()関数を利用した検索方法もあります.むしろ,この方法の方が便利です.find_()の使い方は次のようになります.</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="民主主義国家データ.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="st">&quot;検索キーワード&quot;</span>)</span></code></pre></div>
+<p>たとえば「市民社会」“civil society”をキーワードにデータを探してみましょう.</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="民主主義国家データ.html#cb275-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">find_var</span>(<span class="st">&quot;civil society&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb275-2"><a href="民主主義国家データ.html#cb275-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    7 obs. of  17 variables:
+##  $ name            : chr  &quot;Civil society participation index ordinal&quot; &quot;Women civil society participation index ordinal&quot; &quot;Core civil society index ordinal&quot; &quot;Civil society comments&quot; ...
+##  $ vartype         : chr  &quot;D&quot; &quot;D&quot; &quot;D&quot; &quot;C&quot; ...
+##  $ tag             : chr  &quot;e_v2x_cspart_3C, _4C, _5C&quot; &quot;e_v2x_gencs_3C, _4C, _5C&quot; &quot;e_v2xcs_ccsi_3C, _4C, _5C&quot; &quot;v2cscommnt&quot; ...
+##  $ projectmanager  : chr  NA NA NA &quot;Michael Bernhard, Michael Coppedge&quot; ...
+##  $ question        : chr  &quot;Are major CSOs routinely consulted by policymaker; how large is the involvement of people in CSOs; are women pr&quot;| __truncated__ &quot;Do women have the ability to express themselves and to form and participate in groups?&quot; &quot;How robust is civil society?&quot; &quot;Add here any comments you have about any of the previous questions on civil society. NOTE: Please do not includ&quot;| __truncated__ ...
+##  $ clarification   : chr  &quot;These are ordinalized versions of the V-Dem civil society participation index. The original index ranges from 0&quot;| __truncated__ &quot;These are ordinalized versions of the V-Dem women civil society participation index. The original index ranges &quot;| __truncated__ &quot;These are ordinalized versions of the V-Dem core civil society index. The original index ranges from 0 to 1. Th&quot;| __truncated__ NA ...
+##  $ responses       : chr  NA NA NA &quot;Text.&quot; ...
+##  $ scale           : chr  &quot;Ordinal.&quot; &quot;Ordinal.&quot; &quot;Ordinal.&quot; NA ...
+##  $ sources         : chr  &quot;v2pscnslnl v2cscnsult v2csprtcpt v2csgender&quot; &quot;v2cldiscw v2csgender v2mefemjrn&quot; &quot;v2cseeorgs v2csreprss v2csprtcpt&quot; NA ...
+##  $ notes           : chr  NA NA NA NA ...
+##  $ aggregation     : chr  &quot;Same transformation rule as for \&quot;v2x_libdem_3C/_4C/_5C\&quot;.&quot; &quot;Same transformation rule as for \&quot;v2x_libdem_3C/_4C/_5C\&quot;.&quot; &quot;Same transformation rule as for \&quot;v2x_libdem_3C/_4C/_5C\&quot;.&quot; NA ...
+##  $ years           : chr  NA NA NA NA ...
+##  $ overlap_use_hist: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ is_party        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ cb_section_type : chr  &quot;subsubsection&quot; &quot;subsubsection&quot; &quot;subsubsection&quot; &quot;subsubsection&quot; ...
+##  $ defaultdate     : chr  NA NA NA NA ...
+##  $ source          : chr  &quot;v2pscnslnl v2cscnsult v2csprtcpt v2csgender&quot; &quot;v2cldiscw v2csgender v2mefemjrn&quot; &quot;v2cseeorgs v2csreprss v2csprtcpt&quot; NA ...</code></pre>
+<p>ここでは”civil society”をキーワードに検索した結果をパイプ(%&gt;%)でstr()関数に渡しています. 結果をみると、17行×17変数のデータフレームが得られます.1列めの変数が<code>$name</code>、2列目の変数が<code>$vartype</code>,３列目の変数が <code>$tag</code>と続きます.</p>
+<p>少し見づらいのでView()関数を使い、同じ内容を表示させてみます.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="民主主義国家データ.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find_var</span>(<span class="st">&quot;civil society&quot;</span>) </span>
+<span id="cb277-2"><a href="民主主義国家データ.html#cb277-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
+<p>name変数をみると、7行目に<strong>“Core civil society index”</strong>というデータがあることが分かります。じっさいにデータをダウンロードするためには変数tagの値が必要となります. この変数に対応するtag名は<strong>v2xcs_ccsi</strong>
+です. また変数questionをみると、このデータが<strong>“How robust is civil society?”</strong>に対する回答にもとづいていることが分かります。さらに変数scaleからは0から1の値を取る間隔データでることも分かります。</p>
+<p>それではこのCore civil society indexデータを取得してみましょう。じっさいにはvdemによってすでにV-demのデータセットをダウンロードしています。したがってこのデータセットを格納したデータフレームv_dataからCore civil society indexデータを抽出することになります. Core civil society index はv_dataではtag名すなわち<code>v2xcs_ccsi</code>で表現されています。そこで実際の作業としてはこの変数列を抽出することになります。変数列を選択し、抽出するためにはselect()関数を利用します. あわせて国名country_name、国コードcountry_text_id、年yearといった一連の変数も選択・抽出します.</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="民主主義国家データ.html#cb278-1" aria-hidden="true" tabindex="-1"></a> civil_society <span class="ot">&lt;-</span> v_data <span class="sc">%&gt;%</span> </span>
+<span id="cb278-2"><a href="民主主義国家データ.html#cb278-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;v2xcs_ccsi&quot;</span>, <span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_text_id&quot;</span>, <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
+<p>これでV-demの提供する市民社会指標core civil society indexが取得できました.つぎに市民社会指標の推移をグラフに描いてみましょう.</p>
+</div>
+<div id="民主主義データの可視化" class="section level4" number="3.1.2.3">
+<h4><span class="header-section-number">3.1.2.3</span> 民主主義データの可視化</h4>
+<p><strong>市民社会</strong></p>
+<p>さらにcountry_name変数を利用し、日本とスウェーデンだけを取り出してみましょう. このためにfilter()関数を利用します.</p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="民主主義国家データ.html#cb279-1" aria-hidden="true" tabindex="-1"></a> civil_society <span class="ot">&lt;-</span> v_data <span class="sc">%&gt;%</span> </span>
+<span id="cb279-2"><a href="民主主義国家データ.html#cb279-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;v2xcs_ccsi&quot;</span>, <span class="st">&quot;country_name&quot;</span>, <span class="st">&quot;country_text_id&quot;</span>, <span class="st">&quot;year&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb279-3"><a href="民主主義国家データ.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>,<span class="st">&quot;Sweden&quot;</span>))</span></code></pre></div>
+<p>結果をhead() 関数で表示します.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="民主主義国家データ.html#cb280-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(civil_society)</span></code></pre></div>
+<pre><code>##   v2xcs_ccsi country_name country_text_id year
+## 1      0.047       Sweden             SWE 1789
+## 2      0.047       Sweden             SWE 1791
+## 3      0.047       Sweden             SWE 1793
+## 4      0.047       Sweden             SWE 1795
+## 5      0.047       Sweden             SWE 1797
+## 6      0.047       Sweden             SWE 1799</code></pre>
+<p>ggplot2を利用し、日本とスウェーデンの市民社会指標Core civil society indexの推移を比較してみましょう。</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="民主主義国家データ.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> civil_society, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> v2xcs_ccsi,<span class="at">group =</span> country_name))<span class="sc">+</span></span>
+<span id="cb282-2"><a href="民主主義国家データ.html#cb282-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> country_name))<span class="sc">+</span></span>
+<span id="cb282-3"><a href="民主主義国家データ.html#cb282-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb282-4"><a href="民主主義国家データ.html#cb282-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Core civil society index&quot;</span>,</span>
+<span id="cb282-5"><a href="民主主義国家データ.html#cb282-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb282-6"><a href="民主主義国家データ.html#cb282-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb282-7"><a href="民主主義国家データ.html#cb282-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb282-8"><a href="民主主義国家データ.html#cb282-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/vdem15-1.png" width="672" /></p>
+<p>容易に想像がつくことですが、明治維新から第２次以前の期間においてはスウェーデンと日本は大きく異なっています.第２次世界大戦後にようやくスウェーデンに近づいていきます.</p>
+<p><strong>リベラル・デモクラシー</strong></p>
+<p>同じグラフはvdemdataパッケージの<strong>plot_indicator()</strong>関数でも描くことができます.plot_indicator()関数の基本的な使い方は次のようになります.</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="民主主義国家データ.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_indicator</span>(</span>
+<span id="cb283-2"><a href="民主主義国家データ.html#cb283-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">indicator =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb283-3"><a href="民主主義国家データ.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">countries =</span> <span class="cn">NULL</span>,</span>
+<span id="cb283-4"><a href="民主主義国家データ.html#cb283-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_year =</span> <span class="fu">min</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
+<span id="cb283-5"><a href="民主主義国家データ.html#cb283-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_year =</span> <span class="fu">max</span>(vdemdata<span class="sc">::</span>vdem<span class="sc">$</span>year),</span>
+<span id="cb283-6"><a href="民主主義国家データ.html#cb283-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">uncertainty =</span> <span class="cn">TRUE</span></span>
+<span id="cb283-7"><a href="民主主義国家データ.html#cb283-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>plot_indicator()がとる５つの引数を説明しておきましょう.</p>
+<ul>
+<li>indicator = "“:”"にV-Demデータセットのtag名（文字列ベクトル）を入力します.tag名についてはcodebookを参照してください.</li>
+<li>countries= プロットされる国名（文字列ベクトル）を指定します. ただし、国名はV-Demデータの<code>country_name</code>列の国だけが指定可能です. NULLの場合、グローバルな平均がプロットされます。</li>
+<li>min_year = プロットする期間の開始年(数値)を指定します.　なお、min(vdemdata::vdem$year)は、min()関数を使ってvdemデータセットの年の最小値を返すよう指示することになります。</li>
+<li>max_year = プロットする期間の最終年(数値)を指定します.</li>
+<li>uncertainty = TRUEもしくはFALSEの論理値をとり、TRUEを指定したとき、利用可能な場合には信頼区間がポイント推定値に追加されます.</li>
+</ul>
+<p>plot_indictor()によるグラフ作成ではリベラル・デモクラシー指標<strong>v2x_libdem</strong>を利用します.</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="民主主義国家データ.html#cb284-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot_indicator</span>(<span class="at">indicator=</span> <span class="st">&quot;v2x_libdem&quot;</span>, <span class="at">countries =</span> <span class="fu">c</span>(<span class="st">&quot;Japan&quot;</span>, <span class="st">&quot;Sweden&quot;</span>),<span class="at">min_year =</span> <span class="dv">1912</span>, <span class="at">max_year =</span> <span class="dv">2015</span>)</span></code></pre></div>
+<p><img src="EconData_files/figure-html/vdem17-1.png" width="672" /></p>
+<p>　
+スェーデンと比較すると、第２次世界大戦以前の日本がいかにリベラル・デモクラシーからかけ離れていたか、また、1945年に劇的に政治体制が変化したか、ということを理解できます.</p>
+</div>
+</div>
+</div>
+<div id="政府の質を測る---rgog" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> 「政府の質」を測る - rgog</h2>
+<p>2004年にBo Rothstein教授とSören Holmberg教授によって設立された<a href="https://www.gu.se/en/quality-government">Quality of Government(QoG)研究所</a>は優れた政府<strong>Good Governance</strong>と政府の質<strong>Quality of Governance</strong>の原因、結果、性質に関するデータを提供しています.</p>
+<p>QoG研究所が提供するデータセットは次の5つです.</p>
+<ul>
+<li>QoG基本データ(Basic Data)</li>
+<li>QoG標準データ(Standard Data)</li>
+<li>QoG OECDデータ(OECD Data)</li>
+<li>QoG 専門家サーベイ・データ(Expert Survey Data)</li>
+<li>QoG EU 地域データ(Eu Regional Data)</li>
+</ul>
+<p>オープン政府データと関連トピックに関するRパッケージ開発者のコミュニティ<a href="http://ropengov.org">rOpengove</a>によって、QoGのデータを取得するためのRパッケージ<strong>rqog</strong>が開発されています.<strong>rqog</strong>は、<strong>read_qog()</strong>関数によりBasic、Standard、OECDデータセットへのアクセスを提供しています.Standardデータには、Basicデータと同じ指標（367変数）に加え、約1600の指標が追加されています。Basicデータ、Standardデータともに、194の国がカバーされています.rqogは、デフォルトでは、大部分の指標と国の様々な期間の時系列を持つ縦断的データセットを利用します.</p>
+<p><strong>rqog</strong>は<a href="http://ropengov.org">rOpengove</a>の<a href="http://ropengov.github.io/rqog/">Githubサイト</a>からインストールします.</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="民主主義国家データ.html#cb285-1" aria-hidden="true" tabindex="-1"></a> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropengov/rqog&quot;</span>)  <span class="co"># rqogのインストール</span></span>
+<span id="cb285-2"><a href="民主主義国家データ.html#cb285-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(rqog)             <span class="co"># rqogの呼び出し</span></span></code></pre></div>
+<p>なお、<code>devtools</code>がインストールされていなければ、事前にインストールしておく必要があります.</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="民主主義国家データ.html#cb286-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb286-2"><a href="民主主義国家データ.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(devtools)</span></code></pre></div>
+<div id="データをダウンロードする---read_qog" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> データをダウンロードする - read_qog()</h3>
+<p>最初にQuality of Governmenデータの提供するQoG標準データ(Standard Data)をダウンロードしてみましょう.ダウンロードにはread_qog()関数を使います.ここでの例ではダウンロードしたデータをqog_dataと名前をつかたオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="民主主義国家データ.html#cb287-1" aria-hidden="true" tabindex="-1"></a>   qog_data <span class="ot">&lt;-</span> <span class="fu">read_qog</span>(<span class="at">which_data =</span> <span class="st">&quot;standard&quot;</span>, <span class="at">data_type =</span> <span class="st">&quot;time-series&quot;</span>)</span></code></pre></div>
+<p>これを実行すると、15,825の観察値と1,864の変数から成るデータフレームが取得できます.read_qog()関数の使い方は以下のようになります.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="民主主義国家データ.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_qog</span>(</span>
+<span id="cb288-2"><a href="民主主義国家データ.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">which_data =</span> <span class="st">&quot;basic&quot;</span>,</span>
+<span id="cb288-3"><a href="民主主義国家データ.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_type =</span> <span class="st">&quot;time-series&quot;</span>,</span>
+<span id="cb288-4"><a href="民主主義国家データ.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2021</span>,</span>
+<span id="cb288-5"><a href="民主主義国家データ.html#cb288-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_dir =</span> <span class="cn">NULL</span>,</span>
+<span id="cb288-6"><a href="民主主義国家データ.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_format =</span> <span class="st">&quot;csv&quot;</span>,</span>
+<span id="cb288-7"><a href="民主主義国家データ.html#cb288-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">download_only =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb288-8"><a href="民主主義国家データ.html#cb288-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">cache =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb288-9"><a href="民主主義国家データ.html#cb288-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">update_cache =</span> <span class="cn">FALSE</span></span></code></pre></div>
+<p>read_qog()関数は8つの引数をとります.</p>
+<ul>
+<li>which_data = : ダウンロードするQoGデータセットの名前を指定します. 現在利用可能なものは“basic”,“standard”,“oecd”,“social_policy”ですので、このいずれかを入力します.</li>
+<li>data_type = : QoGの時系列データセットかクロスセクションデータかを指定します.現在利用できるのは“cross-sectional”か“time-series”です.</li>
+<li>year = : データセットの年を指定します.yearはデータセットの公表年であり,特定のデータポイントの年ではありません.デフォルトは2019です.</li>
+<li>data_dir = : キャッシュディレクトリへのパスです.NULL(デフォルト)は’rqog’というディレクトリを作成し、利用します.</li>
+<li>file_format = :フィアルの形式を指定します.利用可能な形式は“csv”,“dta”,“sav”,“xlsx”です.</li>
+<li>download_only =TRUEもしくはFALSEを指定します.データセットのダウンロードと保存のみを行い、Rでのインポートを省略するかどうかを指定します.デフォルトはFALSEです.</li>
+<li>cache = : 論理値TRUEかFALSEによって,キャッシングを行うかどうかを指定します.デフォルトはTRUEです.</li>
+<li>update_cache = : 論理値TRUEかFALSEによって,キャッシュを更新するかどうかを指定します.デフォルトはFALSEです.</li>
+</ul>
+</div>
+<div id="データを探す" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> データを探す</h3>
+<p>　
+　上述のように、データはread_qog()関数を使って簡単にダウンロードできますが、15,825の観察値と1,864の変数から成るとても大きなデータセットです.この中から特定のデータを探すことは大変です.特定の変数（データ）を探すには２つの方法があります.1つはcodebookを利用する方法、もう１つはrqog付属のmetaデータを利用する方法です.</p>
+<div id="codebookを利用する" class="section level4" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Codebookを利用する</h4>
+<p>いささか面倒ですが、<a href="https://www.gu.se/en/quality-government">The QoG Instituteサイト</a>に入り、
+<a href="https://www.gu.se/en/quality-government/qog-data/data-downloads">Data Download</a>ページに移り、たとえば標準データStandard Datasetの場合は、さらに<a href="https://www.gu.se/en/quality-government/qog-data/data-downloads/standard-dataset">Go to Standard Dataset</a>へと移動し、そのページに掲載されている<strong>Codebook</strong>をクリックします。これで<strong>QoG Standard Dataset Codebook version Jan21</strong>がダウンロードできます.</p>
+<p>codebookには2章において変数のリスト<strong>List Variables by Categories</strong>が掲載されています.そこで変数の簡単な説明と変数名を得ることができます.たとえば、一番最初に<code>Accountability sub-index (aii_acc)</code>が掲載されていますが、変数名は<strong>aii_acc</strong>であり、<strong>Accountability sub-index</strong>がその説明です。より詳細な説明は該当するページに掲載されています.</p>
+<p>例として中国、インドおよびロシアの<strong>Effective Power to Govern (bti_epg)</strong>をグラフにしてみましょう.すでにこの標準データセットはダンロードし、<strong>qog_data</strong>というオブジェクトに容れてあります.したがって残る作業は次のようになります.</p>
+<ul>
+<li>このデータフレームからselect()関数を使ってグラフ化に必要な変数だけを取り出します.</li>
+<li>さらにfilter()関数を使って変数cnameのうち値（つまり行）が“China”,“India”,“Russia”のいずれかに等しい値（行）を取り出します.</li>
+<li>次に, filter()関数を使ってこの指標の期間を1990年から2020年に指定します.</li>
+<li>抽出結果をeconPowerというオブジェクトに容れます.</li>
+</ul>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="民主主義国家データ.html#cb289-1" aria-hidden="true" tabindex="-1"></a>  econPower <span class="ot">&lt;-</span> qog_data <span class="sc">%&gt;%</span> </span>
+<span id="cb289-2"><a href="民主主義国家データ.html#cb289-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(year, cname,bti_epg) <span class="sc">%&gt;%</span> </span>
+<span id="cb289-3"><a href="民主主義国家データ.html#cb289-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(cname <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;China&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Russia&quot;</span>), year <span class="sc">%in%</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2020</span>)</span></code></pre></div>
+<p>select()関数によって選択された変数year, cname,bti_eppの３変数です. cnameは国名の変数, bti_epgが<code>Effective Power to Govern</code>です.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="民主主義国家データ.html#cb290-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> econPower, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y=</span> bti_epg))<span class="sc">+</span></span>
+<span id="cb290-2"><a href="民主主義国家データ.html#cb290-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cname))<span class="sc">+</span></span>
+<span id="cb290-3"><a href="民主主義国家データ.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb290-4"><a href="民主主義国家データ.html#cb290-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb290-5"><a href="民主主義国家データ.html#cb290-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Effective Power to Govern&quot;</span></span>
+<span id="cb290-6"><a href="民主主義国家データ.html#cb290-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb290-7"><a href="民主主義国家データ.html#cb290-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/qog6-1.png" width="672" /></p>
+</div>
+<div id="metaデータを利用する" class="section level4" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> metaデータを利用する</h4>
+<p>ダウンロードして理解されるようにQoGデータは膨大なデータセットです.メタデータを使ってデータを探すこともできます.</p>
+<p>rqogパッケージにはメタデータが同梱されています.各年（2016年～2020年）について基本データ(Basic Data), 標準データ(Standard Data)
+,OECDデータ(OECD Data)のメタデータが提供されています.たとえば、</p>
+<ul>
+<li>meta_basic_cs_2016:基本データ（クロスセクショナル）の2016年のメタデータ</li>
+<li>meta_oecd_cs_2016 :OECDデータ（クロスセクショナル）の2016年のメタデータ</li>
+<li>meta_std_cs_2016 : 標準データ（クロスセクショナル）の2016年のメタデータ</li>
+</ul>
+<p>どのメータも形式はデータフレームであり、次の４つの変数が与えられています.</p>
+<ul>
+<li>code : 指標コードです.</li>
+<li>name : 指標の名前です.</li>
+<li>value : ファクター指標の指標数値です.</li>
+<li>label : ファクター指標の値のラベルです.</li>
+<li>class : 指標のクラスです.つまり数値、ファクターもしくは文字です.</li>
+</ul>
+<p>たとえばhead()関数を使って<code>meta_basic_cs_2016</code>の冒頭を表示してみましょう.</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="民主主義国家データ.html#cb291-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(meta_basic_cs_2016)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   code     name                    value label class    
+##   &lt;chr&gt;    &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    
+## 1 ccode    Country Code Numeric       NA &lt;NA&gt;  numeric  
+## 2 cname    Country Name               NA &lt;NA&gt;  character
+## 3 ccodealp 3-letter Country Code      NA &lt;NA&gt;  character
+## 4 ccodecow CCode                      NA &lt;NA&gt;  numeric  
+## 5 ccodewb  Country Code World Bank    NA &lt;NA&gt;  numeric  
+## 6 version  Version of the Dataset     NA &lt;NA&gt;  character</code></pre>
+<p>１列めがcode変数であり、この変数の中には<code>ccode</code>,<code>caname</code>といったデータがあります.2列めはname変数であり、<code>Country Code Numeric</code>,
+<code>Country Name</code>といったデータを見ることができます.この中で<strong>name</strong>変数が変数の内容の説明になります.しかし、このデータセットは438行の観察値を持つ、膨大なものです. View()関数を使って一覧表示させ、<strong>name</strong>変数の内容をチェックしてもよいでしょうが、ここではこの変数にキーワード検索をかけることにより、データを探すことにします. nameの下に記載されている<strong><chr></strong>から理解されるように、これは文字列です.すなわちデータフレームmata_basic_cs_2016の中のname変数 - <strong>mata_basic_cs_2016$name</strong> - は複数の文字列を持つベクトルです.この複数文字列ベクトル中から特定のキーワードを探すためにstringrパッケージのstr_detect()関数を利用します<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="民主主義国家データ.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># stringrのインストール</span></span>
+<span id="cb293-2"><a href="民主主義国家データ.html#cb293-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span>
+<span id="cb293-3"><a href="民主主義国家データ.html#cb293-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-4"><a href="民主主義国家データ.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="co"># パッケージstingrを呼び出す</span></span>
+<span id="cb293-5"><a href="民主主義国家データ.html#cb293-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(stringr)</span>
+<span id="cb293-6"><a href="民主主義国家データ.html#cb293-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb293-7"><a href="民主主義国家データ.html#cb293-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># str_detectの用法</span></span>
+<span id="cb293-8"><a href="民主主義国家データ.html#cb293-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">str_detect</span>(文字列ベクトル,<span class="st">&quot;検索文字列&quot;</span>)</span></code></pre></div>
+<p>str_detect()は文字列ベクトルから検索文字列と一致するものにTRUE,それ以外をFALSEで返します.具体的に<strong>mata_basic_cs_2016$name</strong>という文字列ベクトル中から<strong>Governemnt</strong>を含む文字列を検索してみます.これを実行すると次のようにTRUE, FALSEが返されます.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="民主主義国家データ.html#cb294-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(meta_basic_cs_2016<span class="sc">$</span>name, <span class="st">&quot;Government&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb294-2"><a href="民主主義国家データ.html#cb294-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>次に、これを利用し<strong>mata_basic_cs_2016</strong>の<strong>name</strong>変数から<strong>文字列Government</strong>を含む行を抽出します.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="民主主義国家データ.html#cb296-1" aria-hidden="true" tabindex="-1"></a>   meta_basic_cs_2016 <span class="sc">%&gt;%</span> </span>
+<span id="cb296-2"><a href="民主主義国家データ.html#cb296-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(meta_basic_cs_2016<span class="sc">$</span>name,<span class="st">&quot;Government&quot;</span>)) </span></code></pre></div>
+<pre><code>## # A tibble: 20 × 5
+##    code        name                                value label              class 
+##    &lt;chr&gt;       &lt;chr&gt;                               &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt; 
+##  1 cpds_govsup Government support (seat share of …    NA &lt;NA&gt;               numer…
+##  2 cpds_tg     Type of Government                      1 Single-party majo… factor
+##  3 cpds_tg     Type of Government                      2 Minimal winning c… factor
+##  4 cpds_tg     Type of Government                      3 Surplus coalition  factor
+##  5 cpds_tg     Type of Government                      4 Single-party mino… factor
+##  6 cpds_tg     Type of Government                      5 Multi-party minor… factor
+##  7 cpds_tg     Type of Government                      6 Caretaker governm… factor
+##  8 cpds_tg     Type of Government                      7 Technocratic gove… factor
+##  9 dpi_gf      Government Fractionalization Index   -999 NA                 factor
+## 10 dpi_gvs     Vote Share of Government Parties       NA &lt;NA&gt;               numer…
+## 11 fh_fog      Functioning of Government              NA &lt;NA&gt;               numer…
+## 12 icrg_qog    ICRG Indicator of Quality of Gover…    NA &lt;NA&gt;               numer…
+## 13 une_eep     Government expenditure on primary …    NA &lt;NA&gt;               numer…
+## 14 une_eepp    Government expenditure on pre-prim…    NA &lt;NA&gt;               numer…
+## 15 une_ees     Government expenditure on secondar…    NA &lt;NA&gt;               numer…
+## 16 une_eet     Government expenditure on tertiary…    NA &lt;NA&gt;               numer…
+## 17 une_pee     Government expenditure on educatio…    NA &lt;NA&gt;               numer…
+## 18 vi_rsg      Right to Strike, Government Sector     NA &lt;NA&gt;               numer…
+## 19 wbgi_gee    Government Effectiveness               NA &lt;NA&gt;               numer…
+## 20 wvs_confgov Confidence in Government               NA &lt;NA&gt;               numer…</code></pre>
+<p>抽出結果は20行のデータセットとなります.これで政府Governmentというキーワードを持つ変数名codeを得ることができました。ここでは例として最後の<strong>Confidence in Government</strong>のデータを抽出してみましょう.重要なのは<strong>code</strong>名<strong>wvs_confgov</strong>です。このcodeがすでにダウンロードした<strong>qog_data</strong>の変数名となります.</p>
+<p>データフレーム<strong>qog_data</strong>から<strong>Confidence in Government</strong>のデータを取り出すには、select()関数を使います.また国名, データの年も必要なのでこれもあわせて取り出します.次にサンプル国として中国、ロシア、インドおよびスウェーデンを取り出します.データは1990年以降しかありませんので、yearも1990以上を取り出します.このためにfilter()関数を利用します.この一連の作業をパイプ%&gt;%で連結し、最終的な結果をgov_confidenceというオブジェクトに容れるとします.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="民主主義国家データ.html#cb298-1" aria-hidden="true" tabindex="-1"></a> gov_confidence <span class="ot">&lt;-</span>  qog_data <span class="sc">%&gt;%</span> </span>
+<span id="cb298-2"><a href="民主主義国家データ.html#cb298-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(cname, year,wvs_confgov) <span class="sc">%&gt;%</span> </span>
+<span id="cb298-3"><a href="民主主義国家データ.html#cb298-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cname <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;China&quot;</span>,<span class="st">&quot;Russia&quot;</span>,<span class="st">&quot;India&quot;</span>,<span class="st">&quot;Sweden&quot;</span>), year <span class="sc">&gt;=</span> <span class="dv">1990</span>)</span></code></pre></div>
+<p>これで中国、ロシア、インドおよびスウェーデンの<strong>Confidence in Government</strong>データだけを含むデータセットが出来上がりました.最後に、これを使ってグラフを描き、各国の政府への信頼度を可視化してみましょう.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="民主主義国家データ.html#cb299-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> gov_confidence, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> wvs_confgov,<span class="at">color =</span> cname, <span class="at">group =</span> cname))<span class="sc">+</span></span>
+<span id="cb299-2"><a href="民主主義国家データ.html#cb299-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> cname))<span class="sc">+</span></span>
+<span id="cb299-3"><a href="民主主義国家データ.html#cb299-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb299-4"><a href="民主主義国家データ.html#cb299-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb299-5"><a href="民主主義国家データ.html#cb299-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Confidence in Government&quot;</span></span>
+<span id="cb299-6"><a href="民主主義国家データ.html#cb299-6" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb299-7"><a href="民主主義国家データ.html#cb299-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/gov12-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="政治体制を測る---democracydata" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> 「政治体制」を測る - democracyData</h2>
+<p>1997年に設立された<a href="http://www.systemicpeace.org/index.html">Center for Systemic Peace (CSP)</a>は世界の主要国（2014年は167カ国）の政治的行動を継続的に監視し、政治的暴力や「国家の失敗」の問題に関する新たな問題や持続的な状況について報告しています.その１つのプロジェクトにPolityプロジェクトがあります.Polityスキームは、当初、独裁的な政権が支配する世界において、独裁的な政権の権威のパターンから、より民主的な権威のパターンへの移行を追跡するために企画されました。</p>
+<p>現在では、グローバル化時代の研究ニーズに応えるべく、Polityプロジェクトは<strong>Polity5</strong>フェーズへとアップグレードされています.Polity5プロジェクトは，比較,定量的な分析という目的のために国家の権威主義的特性をコード化するという当初のPolity研究の伝統を引き継ぎ、政治体制に関わる多くのデータ - 政治レジームの特徴やレジーム移行等に関するデータ-を提供しています.このデータにアクセスするためには<strong>democracyData</strong>が開発されています.このパッケージを利用することによってCSPのPolity Vデータに簡単にアクセスできます.</p>
+<p>このRパッケージ<strong>democracyData</strong>ではPolityだけではなく、次のようなデータセットへのアクセス・ダウンロードも可能です. <a href="https://freedomhouse.org">Freedom House</a>, <a href="https://sites.psu.edu/dictators/">Autocratic regimes dataset</a>, <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/29106">the Lexical Index of Electoral Democracy</a>, <a href="https://sites.google.com/site/joseantoniocheibub/datasets/democracy-and-dictatorship-revisited">the Democracy and Dictorship</a>も含まれています.</p>
+<div id="democracydataのインストール" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> democracyDataのインストール</h3>
+<p>このパッケージのcran版はなく、開発者のgithubサイトからインストールする必要があります.このため最初にremotesをインストールしておく必要があります.されていない場合は<code>install.packages("remotes")</code>でインストールし、library(remotes)を実行し利用可能にしてください.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="民主主義国家データ.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotesのインストール</span></span>
+<span id="cb300-2"><a href="民主主義国家データ.html#cb300-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb300-3"><a href="民主主義国家データ.html#cb300-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># remotesのロード</span></span></code></pre></div>
+<p>次にremotesを使って<strong>democracyData</strong>をインストールし、呼び出します.以下のように入力してください.</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="民主主義国家データ.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># democracyDataのインストール</span></span>
+<span id="cb301-2"><a href="民主主義国家データ.html#cb301-2" aria-hidden="true" tabindex="-1"></a>    remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;xmarquez/democracyData&quot;</span>) </span>
+<span id="cb301-3"><a href="民主主義国家データ.html#cb301-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># democracyDataの呼び出し</span></span>
+<span id="cb301-4"><a href="民主主義国家データ.html#cb301-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(democracyData)</span></code></pre></div>
+<p>このRパッケージ<strong>democracyData</strong>においては民主主義に関連するデータをダウンロードするために次のような関数が開発されています.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">関数名</th>
+<th align="left">機能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">download_fh()</td>
+<td align="left">フリーダムハウスの「Freedom in the World」データの2021年版アップデートをダウンロードし、country_year_coderを用いて処理</td>
+</tr>
+<tr class="even">
+<td align="left">download_fh_electoral()</td>
+<td align="left">Freedom House Electoral Democraciesリストの2020年のアップデートをダウンロードし、country_year_coderを使用して処理</td>
+</tr>
+<tr class="odd">
+<td align="left">download_fh_full()</td>
+<td align="left">Freedom House Freedom in the World All Data 2013-2021ファイルの2021年更新版をダウンロードし、country_year_coderを用いて処理</td>
+</tr>
+<tr class="even">
+<td align="left">download_polity_annual()</td>
+<td align="left">Polity 5データセット（年次時系列）の2020年アップデート版をダウンロードし、country_year_coderを使って処理</td>
+</tr>
+<tr class="odd">
+<td align="left">download_reign()</td>
+<td align="left">統治主体,選挙,不規則なガバナンスデータセット（レジームデータ）</td>
+</tr>
+<tr class="even">
+<td align="left">download_wgi_voice_and_accountability()</td>
+<td align="left">World Governance IndicatorsからDemocracy, Voice, and Accountability指標の最新版（2019年までのデータ）をダウンロードし、country_year_coderを用いて処理</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Polity</strong>のダウンロードのためには<code>download_polity_annual()</code>を利用します.</p>
+</div>
+<div id="polity-vのダウンロード" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Polity Vのダウンロード</h3>
+<p><code>download_polity_annual()</code>を利用し、2020年に更新されたPolity 5データセットをダウンロードしてみましょう.ここではダウンロードした結果をpol_Vというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="民主主義国家データ.html#cb302-1" aria-hidden="true" tabindex="-1"></a> pol_V <span class="ot">&lt;-</span> <span class="fu">download_polity_annual</span>()</span></code></pre></div>
+<pre><code>## 
+## 
+## |country       | ccode|extended_country_name           | GWn| cown| min_date| max_date|  n|
+## |:-------------|-----:|:-------------------------------|---:|----:|--------:|--------:|--:|
+## |Ethiopia      |   529|Ethiopia                        | 530|  530|     1993|     1993|  1|
+## |Ethiopia      |   530|Ethiopia                        | 530|  530|     1993|     1993|  1|
+## |Italy         |   325|Italy/Sardinia                  | 325|  325|     1861|     1861|  1|
+## |Russia        |   365|Russia (Soviet Union)           | 365|  365|     1922|     1922|  1|
+## |Sardinia      |   324|Italy/Sardinia                  | 325|  325|     1861|     1861|  1|
+## |Sudan         |   625|Sudan                           | 625|  625|     2011|     2011|  1|
+## |Sudan-North   |   626|Sudan                           | 625|  625|     2011|     2011|  1|
+## |USSR          |   364|Russia (Soviet Union)           | 365|  365|     1922|     1922|  1|
+## |Vietnam       |   818|Vietnam, Democratic Republic of | 816|  816|     1976|     1976|  1|
+## |Vietnam North |   816|Vietnam, Democratic Republic of | 816|  816|     1976|     1976|  1|
+## |Yugoslavia    |   345|Yugoslavia                      | 345|  345|     1991|     1991|  1|
+## |Yugoslavia    |   347|Yugoslavia                      | 345|  345|     1991|     1991|  1|
+## 
+## 
+## |country               | ccode|extended_country_name                   | GWn| cown| min_date| max_date|   n|
+## |:---------------------|-----:|:---------------------------------------|---:|----:|--------:|--------:|---:|
+## |Belarus               |   370|Belarus (Byelorussia)                   | 370|  370|     1991|     2018|  28|
+## |Bosnia                |   346|Bosnia-Herzegovina                      | 346|  346|     1992|     2018|  27|
+## |Burkina Faso          |   439|Burkina Faso (Upper Volta)              | 439|  439|     1960|     2018|  59|
+## |Cambodia              |   811|Cambodia (Kampuchea)                    | 811|  811|     1953|     2018|  66|
+## |Congo Brazzaville     |   484|Congo                                   | 484|  484|     2005|     2018|  14|
+## |Congo Kinshasa        |   490|Congo, Democratic Republic of (Zaire)   | 490|  490|     1960|     2018|  59|
+## |Congo-Brazzaville     |   484|Congo                                   | 484|  484|     1960|     2004|  45|
+## |Germany               |   255|German Federal Republic                 | 260|  255|     1945|     2018|  30|
+## |Germany               |   255|Germany (Prussia)                       | 255|  255|     1868|     1944|  77|
+## |Germany East          |   265|German Democratic Republic              | 265|  265|     1945|     1990|  46|
+## |Germany West          |   260|German Federal Republic                 | 260|  260|     1945|     1990|  46|
+## |Gran Colombia         |    99|Great Colombia                          |  99|   NA|     1821|     1832|  12|
+## |Iran                  |   630|Iran (Persia)                           | 630|  630|     1800|     2018| 219|
+## |Italy                 |   325|Italy/Sardinia                          | 325|  325|     1861|     2018| 158|
+## |Ivory Coast           |   437|Cote D&#39;Ivoire                           | 437|  437|     2014|     2015|   2|
+## |Korea North           |   731|Korea, People&#39;s Republic of             | 731|  731|     1948|     2018|  71|
+## |Korea South           |   732|Korea, Republic of                      | 732|  732|     1948|     2018|  71|
+## |Kyrgyzstan            |   703|Kyrgyz Republic                         | 703|  703|     1991|     2018|  28|
+## |Macedonia             |   343|Macedonia (Former Yugoslav Republic of) | 343|  343|     1991|     2018|  28|
+## |Madagascar            |   580|Madagascar (Malagasy)                   | 580|  580|     1960|     2018|  59|
+## |Prussia               |   255|Germany (Prussia)                       | 255|  255|     1800|     1867|  68|
+## |Russia                |   365|Russia (Soviet Union)                   | 365|  365|     1800|     2018| 150|
+## |Sardinia              |   324|Italy/Sardinia                          | 325|  325|     1815|     1861|  47|
+## |Serbia and Montenegro |   347|Yugoslavia                              | 345|  345|     2003|     2006|   4|
+## |Slovak Republic       |   317|Slovakia                                | 317|  317|     1993|     2018|  26|
+## |South Vietnam         |   817|Vietnam, Republic of                    | 817|  817|     1955|     1975|  21|
+## |Sri Lanka             |   780|Sri Lanka (Ceylon)                      | 780|  780|     1948|     2018|  71|
+## |Sudan-North           |   626|Sudan                                   | 625|  625|     2011|     2018|   8|
+## |Suriname              |   115|Surinam                                 | 115|  115|     1975|     2018|  44|
+## |Tanzania              |   510|Tanzania/Tanganyika                     | 510|  510|     1961|     2018|  58|
+## |Timor Leste           |   860|East Timor                              | 860|  860|     2002|     2018|  17|
+## |Turkey                |   640|Turkey (Ottoman Empire)                 | 640|  640|     1800|     2018| 219|
+## |Two Sicilies          |   329|Sicily (Two Sicilies)                   | 329|  329|     1816|     1860|  45|
+## |UAE                   |   696|United Arab Emirates                    | 696|  696|     1971|     2018|  48|
+## |United Province CA    |    89|United Provinces of Central America     |  89|   NA|     1824|     1838|  15|
+## |United States         |     2|United States of America                |   2|    2|     1776|     2020| 245|
+## |USSR                  |   364|Russia (Soviet Union)                   | 365|  365|     1922|     1991|  70|
+## |Vietnam               |   818|Vietnam, Democratic Republic of         | 816|  816|     1976|     2018|  43|
+## |Vietnam North         |   816|Vietnam, Democratic Republic of         | 816|  816|     1954|     1976|  23|
+## |Wuerttemburg          |   271|Wurttemberg                             | 271|  271|     1800|     1871|  72|
+## |Yemen                 |   679|Yemen (Arab Republic of Yemen)          | 678|  679|     1990|     2018|  29|
+## |Yemen North           |   678|Yemen (Arab Republic of Yemen)          | 678|  678|     1918|     1990|  73|
+## |Yemen South           |   680|Yemen, People&#39;s Republic of             | 680|  680|     1967|     1990|  24|
+## |Zimbabwe              |   552|Zimbabwe (Rhodesia)                     | 552|  552|     1980|     2018|  39|</code></pre>
+<p>これによって17,574行（観察値）と41列（変数）のデータセットがダウンロードできます.ここで変数名を見てみましょう.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="民主主義国家データ.html#cb304-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(pol_V)</span></code></pre></div>
+<pre><code>##  [1] &quot;p5&quot;                    &quot;cyear&quot;                 &quot;polity_annual_ccode&quot;  
+##  [4] &quot;scode&quot;                 &quot;polity_annual_country&quot; &quot;year&quot;                 
+##  [7] &quot;flag&quot;                  &quot;fragment&quot;              &quot;democ&quot;                
+## [10] &quot;autoc&quot;                 &quot;polity&quot;                &quot;polity2&quot;              
+## [13] &quot;durable&quot;               &quot;xrreg&quot;                 &quot;xrcomp&quot;               
+## [16] &quot;xropen&quot;                &quot;xconst&quot;                &quot;parreg&quot;               
+## [19] &quot;parcomp&quot;               &quot;exrec&quot;                 &quot;exconst&quot;              
+## [22] &quot;polcomp&quot;               &quot;prior&quot;                 &quot;emonth&quot;               
+## [25] &quot;eday&quot;                  &quot;eyear&quot;                 &quot;eprec&quot;                
+## [28] &quot;interim&quot;               &quot;bmonth&quot;                &quot;bday&quot;                 
+## [31] &quot;byear&quot;                 &quot;bprec&quot;                 &quot;post&quot;                 
+## [34] &quot;change&quot;                &quot;d5&quot;                    &quot;sf&quot;                   
+## [37] &quot;regtrans&quot;              &quot;extended_country_name&quot; &quot;GWn&quot;                  
+## [40] &quot;cown&quot;                  &quot;in_GW_system&quot;</code></pre>
+<p>こうした変数名が何を表現するのかは変数名をみただけでは分かりません.そこで<a href="http://www.systemicpeace.org/inscr/p5manualv2018.pdf">POLITY5:Dataset Users’ Manual</a>にあたり、確認してみます.マニュアルにおいて、たとえば、Indicators of Democracy and Autocracy（合成指標）の章をみると、この項目の下に５つの指標を見つけることができます.</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">変数</th>
+<th align="left">変数名</th>
+<th align="left">概要</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">DEMOC</td>
+<td align="left">制度化されたデモクラシー</td>
+<td align="left">民主主義は、3つの要素として考えられている.1つは、市民が代替の政策や指導者について効果的な希望を表明できる制度や手続きの存在.2つ目は、行政機関による権力の行使を制度的に制限するものの存在.3つ目はすべての市民が日常生活や政治参加において市民的自由を保障されていること.</td>
+</tr>
+<tr class="even">
+<td align="left">AUTOC</td>
+<td align="left">制度化された独裁政治</td>
+<td align="left">成熟した形態では、独裁国家Autocraciesは競争的な政治参加を厳しく制限し、抑制する.最高執行者は、政治エリートの中で規則的に選ばれ、いったん就任すると、ほとんど制度的な制約を受けることなく権力を行使する.</td>
+</tr>
+<tr class="odd">
+<td align="left">POLITY</td>
+<td align="left">複合ポリティスコア</td>
+<td align="left">POLITYスコアは、DEMOCスコアからAUTOCスコアを引いたもので、+10（強い民主主義）から-10（強い独裁主義）の範囲で統一されている.</td>
+</tr>
+<tr class="even">
+<td align="left">POLITY2</td>
+<td align="left">修正された複合ポリティスコア</td>
+<td align="left">この変数は、時系列分析でPOLITYレジーム指標の使用を容易にするために、POLITY変数を修正して追加したもの.</td>
+</tr>
+<tr class="odd">
+<td align="left">DURABLE</td>
+<td align="left">レジームの耐久性</td>
+<td align="left">直近のレジームの変化（3年以内にPOLITYスコアが3ポイント変化することで定義）、または安定した政治制度の欠如によって定義される移行期間の終了（標準化された権威スコアで示される）からの年.</td>
+</tr>
+<tr class="even">
+<td align="left">PERSIST</td>
+<td align="left">ポリティの持続性</td>
+<td align="left">6つのPolityを構成する変数のいずれの値にも変化が記録されることなく、Polityが持続した年数.</td>
+</tr>
+</tbody>
+</table>
+<p>たとえば、東ヨーロッパの政治体制の評価するために、修正された複合ポリティスコアPOLITY2のグラフ描いてみましょう.最初にselect()関数を使ってデータフレームpol_Vから必要な変数を抽出し、filter()関数を使ってサンプル国を取り出しておきます.また、長期的な推移をみるために1945年以降のデータを取り出します.そしてその結果をpolV_5cというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="民主主義国家データ.html#cb306-1" aria-hidden="true" tabindex="-1"></a>  polV_5c <span class="ot">&lt;-</span> pol_V <span class="sc">%&gt;%</span> </span>
+<span id="cb306-2"><a href="民主主義国家データ.html#cb306-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(year, scode, polity2) <span class="sc">%&gt;%</span> </span>
+<span id="cb306-3"><a href="民主主義国家データ.html#cb306-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(scode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BLR&quot;</span>,<span class="st">&quot;BGR&quot;</span>,<span class="st">&quot;HUN&quot;</span>,<span class="st">&quot;CZE&quot;</span>,<span class="st">&quot;POL&quot;</span>),year <span class="sc">&gt;=</span> <span class="dv">1945</span>)</span></code></pre></div>
+<p>次にggplot2を使って東欧5カ国-ブルガリア、ベラルーシ、ハンガリー、チェコ、およびポーランド-のポリティスコアの推移を描きます。</p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="民主主義国家データ.html#cb307-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> polV_5c, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> polity2, <span class="at">group =</span> scode))<span class="sc">+</span></span>
+<span id="cb307-2"><a href="民主主義国家データ.html#cb307-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> scode))<span class="sc">+</span></span>
+<span id="cb307-3"><a href="民主主義国家データ.html#cb307-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> scode,<span class="at">shape =</span> scode))<span class="sc">+</span></span>
+<span id="cb307-4"><a href="民主主義国家データ.html#cb307-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb307-5"><a href="民主主義国家データ.html#cb307-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Polity2: +10(strongly democratic), -10(strongly autocratic)&quot;</span>,</span>
+<span id="cb307-6"><a href="民主主義国家データ.html#cb307-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb307-7"><a href="民主主義国家データ.html#cb307-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb307-8"><a href="民主主義国家データ.html#cb307-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb307-9"><a href="民主主義国家データ.html#cb307-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/pol5-1.png" width="672" /></p>
+<p>容易に理解されるように、戦後長くこの東欧５カ国は独裁的な体制にありましたが、当時のソビエト連邦書記長ゴルバチョフの新ベオグラード宣言、ソビエト連邦の崩壊とともに1990年頃に民主主義的体制へと劇的に変化します.しかし、ベラルーシだけは1994年のルカシェンコ政権の成立とともに独裁的な体制へとふたたび転換しています.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>成田悠輔「民主主義の未来(上) 優位性後退、崩壊の瀬戸際に」『日本経済新聞』2021年8月21日付.<a href="民主主義国家データ.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>grepでも同じことができますが、ここではstringrのstr_detect()関数を利用します.<a href="民主主義国家データ.html#fnref11" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="マクロデータ.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ミクロデータ.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

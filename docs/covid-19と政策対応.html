@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 5 COVID-19と政策対応 | chap5</title>
+  <meta name="description" content=" 5 COVID-19と政策対応 | chap5" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 5 COVID-19と政策対応 | chap5" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 5 COVID-19と政策対応 | chap5" />
+  
+  
+  
+
+<meta name="author" content="econ" />
+
+
+<meta name="date" content="2023-08-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ミクロデータ.html"/>
+<link rel="next" href="snsデータ-テキスト分析---tidytext.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#本資料の目的"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#社会経済データベース"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse[^1-1]</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#groningen-growth-and-development-centre"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="マクロデータ.html"><a href="マクロデータ.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt10</a></li>
+<li class="chapter" data-level="2.1.2" data-path="マクロデータ.html"><a href="マクロデータ.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#WD"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#EC"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#OECD"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#事前準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 事前準備-ESSの認証とインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="ミクロデータ.html"><a href="ミクロデータ.html#pew-research-center-pewmethods"><i class="fa fa-check"></i><b>4.3</b> Pew Research Center: pewmethods</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数とデータのダウンロード方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html"><i class="fa fa-check"></i><b>7</b> 産業レベルデータ</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#欧州委員会の産業rd投資iriスコアボードirir"><i class="fa fa-check"></i><b>7.1</b> 欧州委員会の産業R&amp;D投資(IRI)スコアボード－iriR</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#国コードを取得する"><i class="fa fa-check"></i><b>7.1.1</b> 国コードを取得する</a></li>
+<li class="chapter" data-level="7.1.2" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#指標コードを取得する"><i class="fa fa-check"></i><b>7.1.2</b> 指標コードを取得する</a></li>
+<li class="chapter" data-level="7.1.3" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#企業名を取得する"><i class="fa fa-check"></i><b>7.1.3</b> 企業名を取得する</a></li>
+<li class="chapter" data-level="7.1.4" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#産業名を取得する"><i class="fa fa-check"></i><b>7.1.4</b> 産業名を取得する</a></li>
+<li class="chapter" data-level="7.1.5" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#データを取得する"><i class="fa fa-check"></i><b>7.1.5</b> データを取得する</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"><a href="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"><i class="fa fa-check"></i><b>8</b> AMECO(annual macro-economic database of the European Commission’s Directorate General for Economic and Financial Affairs)</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"><a href="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html#including-plots"><i class="fa fa-check"></i><b>8.1</b> Including Plots</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">chap5</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="covid-19と政策対応" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number"> 5</span> COVID-19と政策対応<a href="covid-19と政策対応.html#covid-19と政策対応" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>COVID-19は感染症専門の研究者にとどまらず、すべての研究者にとって大きな関心の的です. COVID-19に対するデータソースとしては次の２つがよく知られています.1はCOVID-19の感染者数,入院者数,死亡者数等の基本的な情報を提供しています.2はくわえて各国の政策対応に関する情報も提供しています.現在はいずれのサイトも両方の情報を統合したデータを提供しています.</p>
+<ul>
+<li>1.<a href="https://github.com/CSSEGISandData">ジョンホプキンス大学The Center for Systems Science and Engineering (CSSE)</a></li>
+<li>2.<a href="https://ourworldindata.org/coronavirus">Our World in Data</a></li>
+</ul>
+<p>RコミュニティにおいてもCOVID-19の分析に資することを目的とした以下のようなパッケージが開発されています.</p>
+<ul>
+<li><a href="https://github.com/YuLab-SMU/nCov2019">nCov2019</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li><a href="https://github.com/RamiKrispin/coronavirus">coronavirus</a></li>
+<li><a href="https://github.com/joachim-gassen/tidycovid19">tidycovid</a></li>
+</ul>
+<p>なかでも応用経済学者Joachim Gassen氏によって開発されたtidycovidはcovid-19データをダウンロードし、整理し、ビジュアル化するための有益なパッケージです.これはデータパッケージですが、その優れた点はCovid-19データだけではなく、各種の政策データ、人々の移動データ,さらにすでに紹介した世界銀行のデータも提供されています。くわえてダウンロードしたさまざまなデータをマージする機能も提供されています.</p>
+<div id="tidycovidを利用する" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> tidycovidを利用する<a href="covid-19と政策対応.html#tidycovidを利用する" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tidycovidのインストール" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> tidycovidのインストール<a href="covid-19と政策対応.html#tidycovidのインストール" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>GitHub等に保存されたパッケージをインストールするためにはremotesパッケージをインストールしておく必要があります。一度、組み込むだけですので、コンソール画面で実行しても良いでしょう。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="covid-19と政策対応.html#cb1-1" tabindex="-1"></a><span class="co"># remotesのインストール    </span></span>
+<span id="cb1-2"><a href="covid-19と政策対応.html#cb1-2" tabindex="-1"></a>   <span class="fu">install.pacakages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-3"><a href="covid-19と政策対応.html#cb1-3" tabindex="-1"></a><span class="co"># # remotesの呼び出し</span></span>
+<span id="cb1-4"><a href="covid-19と政策対応.html#cb1-4" tabindex="-1"></a>   <span class="fu">library</span>(remotes)</span></code></pre></div>
+<p>続けてremotesを利用し、tidycovid19をインストールします.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="covid-19と政策対応.html#cb2-1" tabindex="-1"></a> <span class="co"># tidtcovid19のインストール</span></span>
+<span id="cb2-2"><a href="covid-19と政策対応.html#cb2-2" tabindex="-1"></a> remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;joachim-gassen/tidycovid19&quot;</span>)</span>
+<span id="cb2-3"><a href="covid-19と政策対応.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="covid-19と政策対応.html#cb2-4" tabindex="-1"></a> <span class="co"># tidtcovid19のの呼び出し</span></span>
+<span id="cb2-5"><a href="covid-19と政策対応.html#cb2-5" tabindex="-1"></a> <span class="fu">library</span>(tidycovid19)</span></code></pre></div>
+</div>
+<div id="tidycovidの関数とデータのダウンロード方法" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> tidycovidの関数とデータのダウンロード方法<a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>具体的には、このパッケージには、データをダウンロードするための以下の関数が用意されています.</p>
+<ul>
+<li>download_jhu_csse_covid19_data():
+<ul>
+<li>ジョンズ・ホプキンス大学CSSEのGithub RepoからCovid-19データをダウンロードします.同データは、新型コロナウイルスの世界的な広がりを評価することに関心のある研究者やメディアにとって標準的なリソースです.</li>
+</ul></li>
+<li>download_ecdc_covid19_data():
+<ul>
+<li>欧州疾病予防管理センターが提供するCovid-19の症例データをダウンロードします.このデータは毎週更新され、週ごと、国ごとに報告された新しいCovid-19症例数に関する最新の公開データが含まれています。</li>
+</ul></li>
+<li>download_owid_data():
+<ul>
+<li><a href="https://ourworldindata.org/coronavirus-testing">Our World in Data</a>チームが収集したデータをダウンロードします。このチームは、入院、検査、予防接種に関するデータを複数の国の情報源から体系的に収集しています。</li>
+</ul></li>
+<li>download_acaps_npi_data():
+<ul>
+<li>Assessment Capacities Project (ACAPS)が提供するGovernment measures（政府政策）データセットをダウンロードします,これらのデータにより研究者は医薬品以外の介入が新型コロナウイルスの発生に与える影響を研究することができます.</li>
+</ul></li>
+<li>download_oxford_npi_data():
+<ul>
+<li>政府の介入に関する代替データソースであるOxford Covid-19 Government Response Trackerからデータをダウンロードできます.</li>
+</ul></li>
+<li>download_apple_mtr_data():
+<ul>
+<li>Appleが提供するCovid-19関連のMobility Trends Reportをダウンロードします.</li>
+</ul></li>
+<li>download_google_cmr_data():
+<ul>
+<li>Google COVID-19 Community Mobility Reportsのデータをダウンロードします.Googleは国別、地域別のデータを含むCSVファイルを提供しています.このデータは、国、地域、米国の郡レベルで利用可能です。</li>
+</ul></li>
+<li>download_google_trends_data():
+<ul>
+<li>コロナウイルス」という言葉の検索数に関する Google トレンドデータをダウンロードします.このデータを使って国ごとに、また国の中での時系列でCovid-19に対する世間の注目度を評価することができます.このデータは国、地域、都市レベルで利用可能ですが、Google Trendsは検索ボリュームの多い地域にのみ、より詳細なデータを提供しているため、利用可能なデータは国によって異なります。</li>
+</ul></li>
+<li>download_wbank_data(): download_wbank_data():
+<ul>
+<li><code>wbstats</code>パッケージを使用し,世界銀行が提供する国レベルの情報をダウンロードします.これらのデータを使用して、マクロ経済変数と新型コロナウイルスとの関連性を評価することができます.</li>
+</ul></li>
+<li>download_merged_data():
+<ul>
+<li>Covid-19関連に関連したデータを含むすべてのデータソースをダウンロードし、マージされた国別データフレームを作成します.</li>
+</ul></li>
+</ul>
+<p>すべての利用可能な、結合されたデータセットが<strong>download_merged_data()</strong>関数によって取得できます.</p>
+<p><code>download_merged_data()</code>の使い方は以下のようになります.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="covid-19と政策対応.html#cb3-1" tabindex="-1"></a><span class="fu">download_merged_data</span>(</span>
+<span id="cb3-2"><a href="covid-19と政策対応.html#cb3-2" tabindex="-1"></a>  <span class="at">wbank_vars =</span> ,</span>
+<span id="cb3-3"><a href="covid-19と政策対応.html#cb3-3" tabindex="-1"></a>  <span class="at">wbank_labels =</span> ,</span>
+<span id="cb3-4"><a href="covid-19と政策対応.html#cb3-4" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
+<span id="cb3-5"><a href="covid-19と政策対応.html#cb3-5" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-6"><a href="covid-19と政策対応.html#cb3-6" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">FALSE</span></span>
+<span id="cb3-7"><a href="covid-19と政策対応.html#cb3-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>関数<code>download_merged_data()</code>がとる引数は以下のようになります.</p>
+<ul>
+<li>wbank_vars = : 取得しようとする世界銀行データの変数名、つまり<a href="マクロデータ.html#WD">2.2</a>で紹介した世界銀行のindicator名を入力します.</li>
+<li>wbank_labels = :世界銀行の変数名により詳しい名前を与えます.</li>
+<li>search_term = : Google Trendsの検索語を指定.デフォルトは”coronavirus”に設定されています.</li>
+<li>silent = : コンソールにステータスメッセージを表示するかどうかを指定.ダウンロードには時間がかかるとき,メッセージ情報は有用であるかもしれません.したがってデフォルトではTRUEに設定されています</li>
+<li>cached = : オリジナルなソースからデータを取得するのではなく、tidycovid19のGithubリポジトリからキャッシュ版をダウンロードするかどうかを指定します.キャッシュされたバージョンをダウンロードする方が高速ですし、キャッシュは毎日更新されます.デフォルトはFALSEです.</li>
+</ul>
+<p>それではこの関数を使ってCovid-19データと関連数データをダウンロードしてみましょう.ここでは結果をmergedDataと名前を付けたオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="covid-19と政策対応.html#cb4-1" tabindex="-1"></a>  mergedData <span class="ot">&lt;-</span> <span class="fu">download_merged_data</span>(</span>
+<span id="cb4-2"><a href="covid-19と政策対応.html#cb4-2" tabindex="-1"></a>  <span class="at">wbank_vars =</span> <span class="fu">c</span>(<span class="st">&quot;SP.POP.TOTL&quot;</span>, <span class="st">&quot;AG.LND.TOTL.K2&quot;</span>, <span class="st">&quot;EN.POP.DNST&quot;</span>, <span class="st">&quot;EN.URB.LCTY&quot;</span>,</span>
+<span id="cb4-3"><a href="covid-19と政策対応.html#cb4-3" tabindex="-1"></a>    <span class="st">&quot;SP.DYN.LE00.IN&quot;</span>, <span class="st">&quot;NY.GDP.PCAP.KD&quot;</span>),</span>
+<span id="cb4-4"><a href="covid-19と政策対応.html#cb4-4" tabindex="-1"></a>  <span class="at">wbank_labels =</span> <span class="fu">c</span>(<span class="st">&quot;population&quot;</span>, <span class="st">&quot;land_area_skm&quot;</span>, <span class="st">&quot;pop_density&quot;</span>, <span class="st">&quot;pop_largest_city&quot;</span>,</span>
+<span id="cb4-5"><a href="covid-19と政策対応.html#cb4-5" tabindex="-1"></a>    <span class="st">&quot;life_expectancy&quot;</span>, <span class="st">&quot;gdp_capita&quot;</span>),</span>
+<span id="cb4-6"><a href="covid-19と政策対応.html#cb4-6" tabindex="-1"></a>  <span class="at">search_term =</span> <span class="st">&quot;coronavirus&quot;</span>,</span>
+<span id="cb4-7"><a href="covid-19と政策対応.html#cb4-7" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb4-8"><a href="covid-19と政策対応.html#cb4-8" tabindex="-1"></a>  <span class="at">cached =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>このデータフレームは123,396行の観察値と40の変数を持ちます.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="covid-19と政策対応.html#cb5-1" tabindex="-1"></a>  <span class="fu">str</span>(mergedData)</span></code></pre></div>
+<p>それぞれの変数はこの簡易ラベルでも理解できるかもしれませんが、正確に理解するのは難しいと思います.データフレームtidycovid19_variable_defintions は、download_merged_data()でマージされたデータフレームに含まれる各変数の定義を含んでいます.</p>
+<p>データフレームtidycovid19_variable_defintionsは</p>
+<ul>
+<li>var_name 変数名</li>
+<li>var_source 変数の出所</li>
+<li>var_def 変数の定義</li>
+</ul>
+<p>の３つ含んでいます.var_nameとvar_defを表示させてみましょう.これによってそれぞれの変数の意味を理解することができます.</p>
+<p>この一覧表によって download_merged_data()によってダウンロードした変数の定義が分かります.以下で利用するいくつかの変数に注目すると</p>
+<p>|変数名|変数の説明|
+|: — :|: —|
+|confirmed|Confirmed Covid-19 cases (accumulated)|
+|deaths|Covid-19-related deaths(accumulated)|
+|lockdown|Number of lockdown measures|</p>
+<p>、confirmedは<code>Confirmed Covid-19 cases as reported by JHU CSSE (accumulated)</code>から理解されるように、確認感染者数（累積数）でることが分かります.</p>
+<p>具体例としてこの関数を使ってダウンロードしたデータmergedDataをもとに新型コロナウィルスの4つのグラフを描き、日本の感染状況を観察してみましょう.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>新規感染者の推移</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>政府の政策措置後の感染者推移</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>死者数の拡大の可視化</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>アジア諸国の感染者数のマップ</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="covid-19と政策対応.html#cb6-1" tabindex="-1"></a>jpn <span class="ot">&lt;-</span> mergedData <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="covid-19と政策対応.html#cb6-2" tabindex="-1"></a>  <span class="fu">filter</span>(iso3c <span class="sc">==</span> <span class="st">&quot;JPN&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="covid-19と政策対応.html#cb6-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-4"><a href="covid-19と政策対応.html#cb6-4" tabindex="-1"></a>    <span class="at">new_cases =</span> confirmed <span class="sc">-</span> <span class="fu">lag</span>(confirmed),</span>
+<span id="cb6-5"><a href="covid-19と政策対応.html#cb6-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="covid-19と政策対応.html#cb6-6" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_cases), <span class="sc">!</span><span class="fu">is.na</span>(ave_new_cases)) </span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="covid-19と政策対応.html#cb7-1" tabindex="-1"></a> <span class="fu">ggplot</span>(<span class="at">data =</span> jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> date))<span class="sc">+</span></span>
+<span id="cb7-2"><a href="covid-19と政策対応.html#cb7-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> new_cases), <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)<span class="sc">+</span></span>
+<span id="cb7-3"><a href="covid-19と政策対応.html#cb7-3" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-4"><a href="covid-19と政策対応.html#cb7-4" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb7-5"><a href="covid-19と政策対応.html#cb7-5" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb7-6"><a href="covid-19と政策対応.html#cb7-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<center>
+<div class="float">
+<img src="/Users/office1/Library/Mobile%20Documents/com~apple~CloudDocs/3_Ongoing/EconData/EconData/figures/newCases.png" style="width:60.0%" alt="日本の新規感染者数" />
+<div class="figcaption">日本の新規感染者数</div>
+</div>
+</div>
+</div>
+<div id="imf-covid-19-recovery-index" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> IMF COVID-19 Recovery Index<a href="covid-19と政策対応.html#imf-covid-19-recovery-index" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Wu T, Hu E, Ge X<em>, Yu G</em>. 2021. nCov2019: an R package for studying the COVID-19 coronavirus pandemic. PeerJ 9:e11421 <a href="https://doi.org/10.7717/peerj.11421" class="uri">https://doi.org/10.7717/peerj.11421</a><a href="covid-19と政策対応.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ミクロデータ.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="snsデータ-テキスト分析---tidytext.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

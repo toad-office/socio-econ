@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 2 マクロデータの取得 | Rを利用した社会経済データの取得</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 2 マクロデータの取得 | Rを利用した社会経済データの取得" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 2 マクロデータの取得 | Rを利用した社会経済データの取得" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Office Socio-Econ" />
+
+
+<meta name="date" content="2021-08-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"/>
+<link rel="next" href="ミクロデータ.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Socio-Econ data & R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html"><i class="fa fa-check"></i><b>2</b> マクロデータの取得</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#penn-world-table-pwt9"><i class="fa fa-check"></i><b>2.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#世界銀行world-bank-wdi"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#eu統計局eurostat---eurostat"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#経済協力開発機構oecd"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#応用例長期失業者の推移を可視化する"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者の推移を可視化する</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータの取得.html"><a href="マクロデータの取得.html#dbnomics"><i class="fa fa-check"></i><b>2.6</b> DBnomics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>3</b> ミクロデータ</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rを利用した社会経済データの取得</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="マクロデータの取得" class="section level1" number="2">
+<h1><span class="header-section-number"> 2</span> マクロデータの取得</h1>
+<p>今では国際機関，研究組織によって多くのデータが提供されています．そうしたデータを取得するには，その機関・組織にアクセスし，csv,EXCEL等のファイルをダウンロードすることももちろん可能です．しかし，すでに述べたように，Rには，国際機関，研究組織の提供するデータベースからデータを取得するパッケージが多く開発されています．そうしたパッケージを利用すれば，シームレスかつ再現可能な形でのデータの読み込みが可能となります．そこで本資料では，Rパッケージを使った国際機関のデータの取得方法と簡単な利用方法を紹介します．
+本資料では最初に，たとえば，penn world table, Word Development Indicatorsのようなマクロ経済統計データベースをとりあげます．</p>
+<div id="penn-world-table-pwt9" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Penn World Table ― pwt9</h2>
+<p>Penn World Tableは所得，産出高，投入および生産性に関する情報を提供するデータベースです．これは1950年から2017年の182ヵ国をカバーしています（基準年は2011年）<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. pwt9はデータパッケージです．country（国名），isocode（3桁の国コード）, year（年）, currency（各国の通貨単位）の変数の他に，rgdpe（支出面の実質GDP），rgdpo（生産面の実質GDP）,hc(1人あたり人的資本指数)などを含む48の時系列データが提供されています．それではinstall.packages()を使ってRにインストールしましょう．</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="マクロデータの取得.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pwt9&quot;</span>)</span></code></pre></div>
+<p>Rパッケージptw9はデータだけのパッケージですので，data()関数で読み込みます．スクリプトに次のように入力し，[Run]をクリックしてください．</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="マクロデータの取得.html#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(pwt9)</span></code></pre></div>
+<p>データ自体は更新され，現在，バージョン9.1となっています．これを実行することにより，12,376の観察値×52の変数のデータフレームが取得されます．
+データセットの最終数行を表示させるを使ってこのデータセットの最後の部分を見てみましょう．ちなみにtail()関数と反対の結果を出力するのがhead()関数です。head()関数はデータフレームの冒頭部分を表示させます.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="マクロデータの取得.html#cb6-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">tail</span>(pwt9<span class="fl">.1</span>)</span></code></pre></div>
+<div class="figure">
+<img src="figures/fig8.png" alt="" />
+<p class="caption">図8 Penn Wordl Table, pwt9.1</p>
+</div>
+<p>ここでpwt9.1データを使ってジンバブエ経済を観察してみましょう．そのためにジンバブエ経済だけ取り出し，zweというオブジェクトに容れます．</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="マクロデータの取得.html#cb7-1" aria-hidden="true" tabindex="-1"></a>zwe <span class="ot">&lt;-</span> pwt9<span class="fl">.1</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="マクロデータの取得.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(isocode <span class="sc">==</span> <span class="st">&quot;ZWE&quot;</span>)</span></code></pre></div>
+<p>ここではジンバブエのマクロ状態―GDP，雇用，価格の成長率・上昇率―をグラフにし観察してみましょう．それぞれの変数名はrgdpe（実質GDP）,emp（就業者数）,pl_c（家計消費の価格水準）です．
+グラフ作成までの手順は次のようになります．</p>
+<ul>
+<li>手順1.３つの変数の時系列的推移を描くために，zweからこの３つの変数とyear変数を抽出します．</li>
+<li>手順2. ３つの変数を成長率に変換します．</li>
+<li>手順3. 最後に，３つの変数を表示するグラフを作成します．</li>
+</ul>
+<p><strong><em>手順1：特定の変数の取出し – select()関数</em></strong></p>
+<p>select()関数を使ってyearと３つの変数―rgdpe（実質GDP）,emp（就業者数）,pl_c（家計消費の価格水準）―を抽出します．</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="マクロデータの取得.html#cb8-1" aria-hidden="true" tabindex="-1"></a>zwe <span class="ot">&lt;-</span> zwe <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="マクロデータの取得.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, rgdpe, emp, pl_c)  </span></code></pre></div>
+<p><strong><em>手順2：成長率の計算</em></strong></p>
+<p>成長率の計算にあたっては対数差分を利用します．変数を対数に変換するにはlog()を使います．たとえば，log(rgdpe)と入力し，実行すれば（[Run]をクリックすると），Rはrgdpeの対数を返します．さらに，１期前の対数の値との差をとる必要があります.１期前に変換するためにlag()関数 を利用します<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>．lag(rgdpe)で１期前の実質GDPの値を指定できます．以上を利用すると，対数差分の計算式は以下のように表現されます．</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="マクロデータの取得.html#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(rgdpe) <span class="sc">-</span> <span class="fu">log</span>(<span class="fu">lag</span>(rgdpe))  <span class="co"># 成長率（対数差分）の計算</span></span></code></pre></div>
+<p>この計算式を利用し，mutate()関数を使って成長率変数を作成します．mutate()は既存の変数（列）に関数を適用し，新たな変数を作成する関数です．新たな変数の名前は，この例では既存の変数の冒頭にg_をつけたものにしています．</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="マクロデータの取得.html#cb10-1" aria-hidden="true" tabindex="-1"></a> zwe <span class="ot">&lt;-</span> zwe <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="マクロデータの取得.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-3"><a href="マクロデータの取得.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">g_rgdpe =</span> <span class="fu">log</span>(rgdpe) <span class="sc">-</span><span class="fu">log</span>(<span class="fu">lag</span>(rgdpe)),</span>
+<span id="cb10-4"><a href="マクロデータの取得.html#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">g_emp =</span> <span class="fu">log</span>(emp) <span class="sc">-</span><span class="fu">log</span>(<span class="fu">lag</span>(emp)),</span>
+<span id="cb10-5"><a href="マクロデータの取得.html#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">g_pl_c =</span>  <span class="fu">log</span>(pl_c) <span class="sc">-</span><span class="fu">log</span>(<span class="fu">lag</span>(pl_c))</span>
+<span id="cb10-6"><a href="マクロデータの取得.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>以上をまとめてスクリプトに書くとつぎのようになります．</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="マクロデータの取得.html#cb11-1" aria-hidden="true" tabindex="-1"></a>zwe <span class="ot">&lt;-</span> pwt9<span class="fl">.1</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="マクロデータの取得.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(isocode <span class="sc">==</span> <span class="st">&quot;ZWE&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="マクロデータの取得.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, rgdpe, emp, pl_c)  <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="マクロデータの取得.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-5"><a href="マクロデータの取得.html#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">g_rgdpe =</span> <span class="fu">log</span>(rgdpe) <span class="sc">-</span><span class="fu">log</span>(<span class="fu">lag</span>(rgdpe)),</span>
+<span id="cb11-6"><a href="マクロデータの取得.html#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">g_emp =</span> <span class="fu">log</span>(emp) <span class="sc">-</span><span class="fu">log</span>(<span class="fu">lag</span>(emp)),</span>
+<span id="cb11-7"><a href="マクロデータの取得.html#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">g_pl_c =</span>  <span class="fu">log</span>(pl_c) <span class="sc">-</span><span class="fu">log</span>(<span class="fu">lag</span>(pl_c))</span>
+<span id="cb11-8"><a href="マクロデータの取得.html#cb11-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>これを実行する([Run]をクリックする)と，３つの変数とその成長率変数をもつジンバブエデータが作成されます．View(zwe)関数で確認してみてください．</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="マクロデータの取得.html#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>(zwe)</span></code></pre></div>
+<p><strong><em>手順3：グラフの作成</em></strong>
+グラフの作成にはggplot2パッケージを利用します．</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="マクロデータの取得.html#cb13-1" aria-hidden="true" tabindex="-1"></a>zwe_growth <span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data =</span> zwe) <span class="sc">+</span>           <span class="co"># GDP成長率のグラフ作成</span></span>
+<span id="cb13-2"><a href="マクロデータの取得.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span>year, <span class="at">y =</span> g_rgdpe))<span class="sc">+</span></span>
+<span id="cb13-3"><a href="マクロデータの取得.html#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> g_rgdpe))<span class="sc">+</span></span>
+<span id="cb13-4"><a href="マクロデータの取得.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>,<span class="at">slope =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb13-5"><a href="マクロデータの取得.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;year&quot;</span>, <span class="at">y=</span> <span class="st">&quot;Growth rate&quot;</span>)<span class="sc">+</span></span>
+<span id="cb13-6"><a href="マクロデータの取得.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="マクロデータの取得.html#cb14-1" aria-hidden="true" tabindex="-1"></a>zwe_inflation <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> zwe) <span class="sc">+</span>　      <span class="co"># インフレ（価格上昇率）のグラフ作成</span></span>
+<span id="cb14-2"><a href="マクロデータの取得.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> g_pl_c))<span class="sc">+</span></span>
+<span id="cb14-3"><a href="マクロデータの取得.html#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> g_pl_c))<span class="sc">+</span></span>
+<span id="cb14-4"><a href="マクロデータの取得.html#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>,<span class="at">slope =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb14-5"><a href="マクロデータの取得.html#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;year&quot;</span>,<span class="at">y=</span><span class="st">&quot;Inflation&quot;</span>)<span class="sc">+</span></span>
+<span id="cb14-6"><a href="マクロデータの取得.html#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="マクロデータの取得.html#cb15-1" aria-hidden="true" tabindex="-1"></a>zwe_emp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> zwe) <span class="sc">+</span>         <span class="co"># 雇用成長率のグラフ作成</span></span>
+<span id="cb15-2"><a href="マクロデータの取得.html#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> g_emp))<span class="sc">+</span></span>
+<span id="cb15-3"><a href="マクロデータの取得.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> g_emp),<span class="at">lty=</span><span class="st">&quot;dashed&quot;</span>)<span class="sc">+</span></span>
+<span id="cb15-4"><a href="マクロデータの取得.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;year&quot;</span>,<span class="at">y=</span><span class="st">&quot;Employment&quot;</span>)<span class="sc">+</span></span>
+<span id="cb15-5"><a href="マクロデータの取得.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>,<span class="at">slope =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p>グラフの作成にあたってはggplot2を利用していますが，このパッケージはtidyverseをインストールすることによってインストールされます．すべてのグラフが同じ構成要素―データセット，座標システムおよびデータ点を表す描画の印― で作成されます．使い方は構成要素を“＋”で重ねることが基本です．</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="マクロデータの取得.html#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> データフレーム名)<span class="sc">+</span></span>
+<span id="cb16-2"><a href="マクロデータの取得.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x軸変数,<span class="at">y =</span> y軸変数))<span class="sc">+</span>   <span class="co"># データを点で表現します.</span></span>
+<span id="cb16-3"><a href="マクロデータの取得.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">papping =</span> <span class="fu">aes</span>(<span class="at">x =</span> x軸変数,<span class="at">y =</span> y軸変数))<span class="sc">+</span>      <span class="co"># データを線で結びつけます.</span></span></code></pre></div>
+<p>この例ではlabs()を使ってx軸とy軸のタイトルを追加しています．labs()の書式は以下のとおりです．</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="マクロデータの取得.html#cb17-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;x軸タイトル&quot;</span>, <span class="at">y =</span> <span class="st">&quot;y軸タイトル&quot;</span>)</span></code></pre></div>
+<p>さらに，geom_abline()を使って成長率ゼロの水準に直線を追加しています．geom_abline()の使用法は次のとおりです.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="マクロデータの取得.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="st">&quot;直線の切片の位置&quot;</span>,<span class="at">slope =</span><span class="st">&quot;直線の傾き&quot;</span>)</span></code></pre></div>
+<p>最後に，テーマを指定するtheme_でtheme_bw()を選択し，白黒のテーマを選んでいます．それぞれ３つのグラフを描きますが，ここではRパッケージpachwork を使ってグラフのレイアウトを操作します．</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="マクロデータの取得.html#cb19-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;patchwork&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="マクロデータの取得.html#cb20-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(patchwork)</span></code></pre></div>
+<p>patchworkパッケージは操作対象の図を足し算記号（＋）や割り算記号（/）等を使って配置します。詳細について<a href="https://cran.r-project.org/web/packages/patchwork/vignettes/patchwork.html">同パッケージサイト</a>を参照してください．<code>library(patchwork)</code>で呼び出したのちに，次のように入力することでグラフを縦に配置します．</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="マクロデータの取得.html#cb21-1" aria-hidden="true" tabindex="-1"></a>  zwe_growth<span class="sc">/</span>zwe_inflation<span class="sc">/</span>zwe_emp</span></code></pre></div>
+<p><img src="EconData_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="世界銀行world-bank-wdi" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> 世界銀行World Bank ― WDI</h2>
+<p>世界銀行が提供する世界開発指標WDI（World Development Indicators）は,グローバルな開発状況と貧困について国際的に比較可能な統計をまとめたものです．このデータベースには，217の経済と40以上の国グループの1,600の時系列指標が収録されています．またその多くの指標のデータは50年以上前までさかのぼることができます.</p>
+<p>WDIデータは，さまざまな方法で取得できるようにされています．詳しくは<a href="http://datatopics.worldbank.org/world-development-indicators/">世銀ホームページ</a>を参照してください．多少時間がかかりますが，すべてのデータ（ExcelおよびCSV形式ファイル）をまとめてダウンロードすることも可能です．</p>
+<p>このWDIデータを利用するためのRパッケージが開発されています .これ以外にもwbstatsというパッケージもありますが，ここではWDIを紹介します．
+RパッケージWDIは，世界銀行によって運営される40以上のデータベースからデータを検索・ダウンロードすることを可能にしています．そうしたデータベースには世界開発指標(WDI）はもちろんのこと，国際債務統計，Doing Business,人的資本指数，サブナショナルな貧困指標も含まれます．</p>
+<div id="インストール方法" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> インストール方法</h3>
+<p>RパッケージWDIはCRAN上で公開されていますのでインストールにはinstall.packages()を利用します．コンソール画面に次のように入力し，エンターキーを押してください．</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="マクロデータの取得.html#cb22-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;WDI&quot;</span>)</span></code></pre></div>
+<p>WDIを利用するために，スクリプト画面にlibrary(WDI)と入力し，実行[Run]しておきます．</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="マクロデータの取得.html#cb23-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(WDI)</span></code></pre></div>
+</div>
+<div id="データを探す--wdisearch" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> データを探す- WDISearch()</h3>
+<p>データを探すためにはWDIパッケージに用意されたWDIsearch()関数を使います．この関数は利用可能なWDIデータ系列のコード名，名前，説明，およびデータソースから成る行列を返します．基本的な書式は以下の通りです．</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="マクロデータの取得.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;検索語&quot;</span>, <span class="at">field =</span> <span class="st">&quot;name&quot;</span>, <span class="at">short =</span> <span class="cn">TRUE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p>それぞれの引数を説明しましょう．</p>
+<ul>
+<li>string = "“:”“に検索語（文字列）を入力します．WDIsearchは文字列マッチング関数grepを使い，”検索語”を探します．また，caseを無視します（igunore.case=TRUE）ので，正規表現―簡単に言えば，通常の文字―が利用可能です．</li>
+<li>field = "“:”“に検索するフィールドを指定します．利用可能なフィールドは”indicator“,”name“,”description“,”sourceDatabase“,”sourceOrganization“です．たとえば”name" と入力すれば，データのnameの中を検索します．</li>
+<li>short = : 既定値はshort=TRUEです．この場合，指標コードと名前だけを返します．short=FALSEの場合，指標コード，名前，説明およびデータソースを返します．</li>
+<li>cache: WDIcache関数によって作成されるデータリストを返します．省略された場合（あるいはNULLの場合），WDIseachはデータ系列のローカルリストを探します．</li>
+</ul>
+<p>たとえば，GDPに関するデータを探すとしましょう．この例では検索文字列を“gdp”とし，探すフィールドを“name”にしています．また，詳しい説明を得るためにshort=FALSEと設定しています．検索結果はオブジェクトgdpに格納されます．</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="マクロデータの取得.html#cb25-1" aria-hidden="true" tabindex="-1"></a>  gdp <span class="ot">&lt;-</span> <span class="fu">WDIsearch</span>(<span class="at">string =</span> <span class="st">&quot;gdp&quot;</span>,<span class="at">field =</span> <span class="st">&quot;name&quot;</span>,<span class="at">short =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p>この結果をView(gdp)でみると，図10のような，539×5の行列が返されます．ここで重要なのはindicatorです．これは指標コードであり，ダウンロードのさいに利用されます．</p>
+<div class="figure">
+<img src="figures/fig10.png" alt="" />
+<p class="caption">図10 WDIsearch()の検索結果</p>
+</div>
+<p>絞り込みが不十分なため，539行のデータ系列が表示されてしまっていますが，スクロールダウンして行くと，448行めにGDP(constant 2010 US$)が見つかります．以下の例においては，これをダウンロードします．</p>
+</div>
+<div id="データをダウンロードする--wdi" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> データをダウンロードする- WDI()</h3>
+<p>データをダウンロードするためにはWDI()関数を利用しますが，利用方法は次のようになります.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="マクロデータの取得.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">WDI</span>(</span>
+<span id="cb26-2"><a href="マクロデータの取得.html#cb26-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">country =</span> <span class="st">&quot;all&quot;</span>,</span>
+<span id="cb26-3"><a href="マクロデータの取得.html#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">indicator =</span> <span class="st">&quot;NY.GDP.MKTP.KD&quot;</span>,</span>
+<span id="cb26-4"><a href="マクロデータの取得.html#cb26-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">start =</span> <span class="dv">1960</span>, <span class="at">end =</span> <span class="dv">2020</span>, <span class="at">extra =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">NULL</span></span>
+<span id="cb26-5"><a href="マクロデータの取得.html#cb26-5" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p>この関数は６つの引数をとります．それぞれを簡単に説明していきましょう.</p>
+<ul>
+<li>country = "“:”“の中に，ダウンロード対象の国名（ISO-2文字コードで表現された国名）を入力します．たとえば，”US“,”CA“,”JP“です．複数の国を指定したい場合，c()を利用します. country = c(”US“,”CA“,”JP“) と入力します．なお，”all"と入力すると，すべての利用な国のデータがダウンロードされます．</li>
+<li>indicator = : 指標のコード名を入力します．これは図10のindicator列に表示されているものになります．</li>
+<li>start = :データの開始年です．通常整数フォーマットの年です（ただし，1960以上）．</li>
+<li>end = :データの終了年です．言うまでもなく，start引数に指定した値より大きくなければなりません.</li>
+<li>extra = : TRUEの場合，地域，iso3コード，所得水準といった追加的な変数を返します．</li>
+<li>WDIcache()によって作成されるリストで，extra = TRUEのとき利用されます．</li>
+</ul>
+<p>それではWDI()関数を使って，アメリカ経済のGDP(constant 2010 US$)をダウンロードしてみます．このGDPデータのindicatorコードは，上述のとおり，NY.GDP.MKTP.KDです．ダウンロードしたデータはgdp_usという名前をつけたオブジェクトに格納されます．</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="マクロデータの取得.html#cb27-1" aria-hidden="true" tabindex="-1"></a> gdp_us <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">country =</span> <span class="st">&quot;US&quot;</span>, <span class="at">indicator =</span> <span class="st">&quot;NY.GDP.MKTP.KD&quot;</span>, <span class="at">start =</span> <span class="dv">1990</span>, <span class="at">end =</span> <span class="dv">2019</span>, <span class="at">extra =</span> <span class="cn">FALSE</span>, <span class="at">cache =</span> <span class="cn">NULL</span>) </span></code></pre></div>
+<p>head()やView()関数を使ってダウンロードしたデータを確認してみてください．最後に，ダウンロードしたGDPデータをggplot2を使ってグラフにしてみましょう．</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="マクロデータの取得.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gdp_us)<span class="sc">+</span></span>
+<span id="cb28-2"><a href="マクロデータの取得.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> NY.GDP.MKTP.KD))<span class="sc">+</span></span>
+<span id="cb28-3"><a href="マクロデータの取得.html#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
+<span id="cb28-4"><a href="マクロデータの取得.html#cb28-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;USA GDP, constant 2010 US$&quot;</span>,</span>
+<span id="cb28-5"><a href="マクロデータの取得.html#cb28-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="st">&quot;GDP&quot;</span></span>
+<span id="cb28-6"><a href="マクロデータの取得.html#cb28-6" aria-hidden="true" tabindex="-1"></a> )<span class="sc">+</span></span>
+<span id="cb28-7"><a href="マクロデータの取得.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>これを実行[Run]すると，[Plots]ウィンドウに上の図が表示されます.</p>
+</div>
+</div>
+<div id="eu統計局eurostat---eurostat" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> EU統計局Eurostat - eurostat</h2>
+<p>欧州連合の統計局であるEurostatは,オープンデータサービスを通じて,欧州の人口統計,経済,健康,インフラ,交通などに関する数千ものデータセットを提供しています.Rパッケージeurostatはそうした欧州統計局のオープンデータ取得のためのパッケージです.ヨーロッパ経済を実証分析の対象とする場合,とても有益なパッケージです.</p>
+<div id="rパッケージeurostatの利用法" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Rパッケージeurostatの利用法</h3>
+<div id="パッケージeurostatのインストール" class="section level4" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> パッケージeurostatのインストール</h4>
+<p>最初に,次のようにコンソール画面に入力しエンターキーを押し,eurostatをインストールします.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="マクロデータの取得.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;eurostat&quot;</span>)         <span class="co"># eurostatのインストール</span></span></code></pre></div>
+<p>さらに,library()でパッケージeurostatを呼び出し,利用できるようにしておきます.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="マクロデータの取得.html#cb30-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(eurostat)                 <span class="co"># eurostatの呼び出し</span></span></code></pre></div>
+</div>
+<div id="データを探すget_eurostat_toc-search_eurostat" class="section level4" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> データを探す―get_eurostat_toc(), search_eurostat()</h4>
+<p>　関数get_eurostat_toc()は,eurostatのデータセットの目次をダウンロードする関数です.それでこの関数を使って目次をダウンロードしてみましょう.ここではダウンロードした目次をオブジェクト―euという名前にしています―に容れます.
+　</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="マクロデータの取得.html#cb31-1" aria-hidden="true" tabindex="-1"></a>eu <span class="ot">&lt;-</span> <span class="fu">get_eurostat_toc</span>()  <span class="co"># eurostatの目次取得し,オブジェクトeuに格納</span></span></code></pre></div>
+<p>スクリプト画面にView(eu)と入力し,実行[Run]し,euの内容を表示させると,図のような,10,004行×8列のデータフレームが表示されます.１列目のtitleはデータセット名,２列目codeはデータセットのコード番号です.このcode列の値は,選択されたデータセットをダウンロードするために使用されます.次のtype列はデータセットかフォルダかどうかを示しています.last update of data列はデータの最新の更新日,last table structure changeはテーブル構造の最新の変更時点,そして次の2つの列はデータの開始時期と終了時期を示しています.</p>
+<div class="figure">
+<img src="figures/fig3_1.png" alt="" />
+<p class="caption">図 eurostat データ一覧</p>
+</div>
+<p>特定の検索ワードを指定し,データを探すためにはsearch_eurostat()関数を使用します.たとえば,search_eurostat()関数の引数に “unemployment “と入力し,失業に関連したデータセットを探してみましょう.ここではその結果をパイプ(%&gt;%)でView()関数につなげてViewウィンドウで表示させています.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="マクロデータの取得.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">search_eurostat</span>(<span class="st">&quot;unemployment&quot;</span>) <span class="sc">%&gt;%</span>  <span class="co"># &quot;unemployment&quot;の検索</span></span>
+<span id="cb32-2"><a href="マクロデータの取得.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()                             <span class="co"># View()で検索結果を表示</span></span></code></pre></div>
+<p><img src="figures/fig3_2.png" alt="図 search_eurostat(“キーワード”)検索結果の出力" />
+search_eurostat()関数の基本的な書き方は以下のとおりです.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="マクロデータの取得.html#cb33-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">search_eurostat</span>(<span class="at">pattern=</span><span class="st">&quot;検索語&quot;</span>, <span class="at">type =</span> <span class="st">&quot;dataset&quot;</span>, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>このように引数にpattern,type,fixedの３つをとります.</p>
+<ul>
+<li>pattern="“,”"の部分に探したいデータに関連したキーワードを入力します.これにより,type=引数で指定した内容に応じて,データセットやテーブルが返されます.</li>
+<li>type=""には,dataset, folder, table, もしくは以上のすべてを指定するallのいずれかを入力します.これにより対応したEurostatのテーブルが出力されます.デフォルトではdatasetです.</li>
+<li>fixedにはTRUE, FALSEの論理値をとります.TRUEの場合,patternはマッチされる文字列となります.より複雑なregexマッチングが必要とされる場合,FALSEをとります.</li>
+</ul>
+</div>
+<div id="eurostatでデータをダウンロードするget_eurostat" class="section level4" number="2.3.1.3">
+<h4><span class="header-section-number">2.3.1.3</span> eurostatでデータをダウンロードする―get_eurostat()</h4>
+<p>データtableをダウンロードするには,get_eurostat()を使います.もっとも基本的な書式は次のようになります.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="マクロデータの取得.html#cb34-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">get_eurostat</span>(id, <span class="at">time_format =</span> <span class="st">&quot;&quot;</span>, <span class="at">filters =</span> <span class="st">&quot;&quot;</span>, <span class="at">type =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>この関数はおもな引数として次のものをとります.</p>
+<ul>
+<li>id="“:”"にデータセットのコード名を指定します.</li>
+<li>time_format= "“: eurostatフォーマットの時間列をどのタイプに変換するかを指定します.”date“（既定値）と入力した場合,期間の最初のデータによって日付フォーマットDateへと変換されます.”num"を指定すると,数値へと変換されます.テーブルが年次データの場合,デフォルトの日付フォーマットDateを使用するよりも,数値numの時間変数を使用した方が便利です.</li>
+<li>filters = "“:”none"を指定した場合,データセット全体が取得されます.一部分を取得したい場合,ここにリストを入れます（以下の例を参照してください）.</li>
+<li>type= "“: 変数のタイプを指定します.具体的には”code“（デフォルト）もしくは”label"となります.これは変数の値を知りたいときに便利です（以下の例を参照してください）.</li>
+</ul>
+<p>それでは具体的な例を使ってデータをダウンロードしてみましょう.ここでは EUの「住宅価格」データを探すことにします.最初に,上で説明したsearch_eurostat()関数を使って取得するデータのidを確認します.その上で,get_eurostat()関数を利用し,イギリス,フランス,スペインの「住宅価格」データを取得してみましょう.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="マクロデータの取得.html#cb35-1" aria-hidden="true" tabindex="-1"></a>    house <span class="ot">&lt;-</span> <span class="fu">search_eurostat</span>(<span class="st">&quot;House&quot;</span>,<span class="at">type=</span>“table”) </span></code></pre></div>
+<p>View(house)の結果をみると,13行めにHouse price index - annual data（住宅価格指数,年次データ）が表示されています.これをダウンロードします.</p>
+<div class="figure">
+<img src="figures/fig3_3.png" alt="" />
+<p class="caption">図 キーワード“House”の検索結果</p>
+</div>
+<p>こではダウンロードしたデータをhouse_priceと名前をつけたオブジェクトに容れます.引数time_format= “num”で数値を指定しています.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="マクロデータの取得.html#cb36-1" aria-hidden="true" tabindex="-1"></a>  house_price<span class="ot">&lt;-</span><span class="fu">get_eurostat</span>(<span class="at">id=</span><span class="st">&quot;tipsho20&quot;</span>,<span class="at">time_format =</span> <span class="st">&quot;num&quot;</span>,<span class="at">type =</span> <span class="st">&quot;code&quot;</span>)</span></code></pre></div>
+<p>これにより,４つの変数,1,459の観察値がダウンロードされます.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="マクロデータの取得.html#cb37-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">str</span>(house_price)</span></code></pre></div>
+<p><img src="figures/fig3_4.png" alt="house_priceのデータ構造" />
+最初の変数unit（単位）,２番目の変数geoは地理情報,３番目の変数timeは年,最後の変数valuesが住宅価格指数を示しています.しかし,実はこれだけではそれぞれの変数がとる値が何を意味しているかは分かりません,少なくとも分かりづらい表示になっています.とりわけ,unit変数がコード名で表記されているため, “INX_A_AVG”等がわかりません.ダウロードするさいの引数type = “label”としておいた方が良いでしょう.デフォルトではコード名で表示されます（引数type = “code”）.変数の値の意味を知るには変数のラベルを表示させた方が,コード名よりも便利です.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="マクロデータの取得.html#cb38-1" aria-hidden="true" tabindex="-1"></a>  house_price <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="at">id=</span><span class="st">&quot;tipsho20&quot;</span>,</span>
+<span id="cb38-2"><a href="マクロデータの取得.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">time_format =</span> <span class="st">&quot;num&quot;</span>,</span>
+<span id="cb38-3"><a href="マクロデータの取得.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;label&quot;</span>)</span></code></pre></div>
+<p>type = “label”でダウンロードした上で,次に,以下のように入力し,変数unitがどのような値を持つか確認してみて下さい.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="マクロデータの取得.html#cb39-1" aria-hidden="true" tabindex="-1"></a>   house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="マクロデータの取得.html#cb39-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">distinct</span>(unit)</span></code></pre></div>
+<p>distinct()関数はデータフレームから,()内に指定した変数のうちユニークな,異なった値（行）だけを選択します.つまり,unit変数は1,403行から形成されますが,すべて異なった値をとるわけではありません.ユニークな値は―以下のdistinct()関数の結果をみると―３種類だけです.</p>
+<div class="figure">
+<img src="figures/fig3_5.png" alt="" />
+<p class="caption">distinct()関数の出力結果</p>
+</div>
+</div>
+<div id="住宅価格上昇率のグラフを描く" class="section level4" number="2.3.1.4">
+<h4><span class="header-section-number">2.3.1.4</span> 住宅価格上昇率のグラフを描く</h4>
+<p>いくつかのヨーロッパ経済をピックアップし,住宅価格（年平均変化率）の推移と１時点における住宅価格変化率をみてみましょう.このために次のような作業を行います.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>複数の国を指定し,住宅データをダウンロードする.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>unit変数にもとづき年平均変化率を示す値（行）を抽出する.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>ggplot2を利用し,ダウンロードしたデータの時系列グラフを作成する.</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>地理情報を利用し,ヨーロッパ地図上に2018年の住宅価格（年平均変化率）を表示させる.</li>
+</ol></li>
+</ul>
+<p><strong>1.複数の国を指定し,住宅データをダウンロードする</strong></p>
+<p>最初に,国コードを容れたベクトルを作成しておきます―isoという名前にします.直接get_eurostat()関数で指定しても良いのですがスクリプトが見づらくなりますので,事前に,この作業を行っておきます.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="マクロデータの取得.html#cb40-1" aria-hidden="true" tabindex="-1"></a>    iso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FR&quot;</span>,<span class="st">&quot;DE&quot;</span>,<span class="st">&quot;ES&quot;</span>,<span class="st">&quot;IT&quot;</span>,<span class="st">&quot;SE&quot;</span>)</span></code></pre></div>
+<p><strong>2. unit変数にもとづき年平均変化率を示す値（行）およびサンプル国を抽出する</strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="マクロデータの取得.html#cb41-1" aria-hidden="true" tabindex="-1"></a>  house_price_eu <span class="ot">&lt;-</span> house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="マクロデータの取得.html#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(unit <span class="sc">==</span> <span class="st">&quot;RCH_A_AVG&quot;</span>, geo <span class="sc">%in%</span> iso)</span></code></pre></div>
+<p>変数unitのとる値のうち年平均変化率を表現するラベルは“RCH_A_AVG”ですのでfilter()関数の中の抽出条件の１つにunit == “RCH_A_AVG”を指定しています.また,国を示す変数はgeoですが,このうちベクトルisoに容れた複数の国を選択することになりますのでgeo %in% isoを利用しています.この表記が意味しているのは,「geo変数がisoベクトルの中のいずれかに等しい国コードをとる行を選択しなさい」ということを意味しています.これによりgeo変数のうちisoベクトルの中の国のいずれかに等しい行だけが選択されます.</p>
+<p>これで２つの行の抽出条件にマッチする行だけが選択され,house_price_euというオブジェクトに格納されます.View(house_price_eu)やstr(house_price_eu)を利用し,house_price_euの内容を確認してみてください.</p>
+<p><strong>3. ggplot2を利用し,ダウンロードしたデータの時系列グラフを作成する </strong></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="マクロデータの取得.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> house_price_eu, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> values))<span class="sc">+</span>    </span>
+<span id="cb42-2"><a href="マクロデータの取得.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">shape =</span> geo))<span class="sc">+</span> </span>
+<span id="cb42-3"><a href="マクロデータの取得.html#cb42-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 点の形状で国別を示すためにaes()の中でshpae = geoと指定</span></span>
+<span id="cb42-4"><a href="マクロデータの取得.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">lty=</span>geo))<span class="sc">+</span>             </span>
+<span id="cb42-5"><a href="マクロデータの取得.html#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># さらにgeom_line()で線を重ねる.</span></span>
+<span id="cb42-6"><a href="マクロデータの取得.html#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 線の種類で国別表示するため,aes()の中でlyt=geoと指定.</span></span>
+<span id="cb42-7"><a href="マクロデータの取得.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Housing price&quot;</span>,       </span>
+<span id="cb42-8"><a href="マクロデータの取得.html#cb42-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">subtitle =</span> <span class="st">&quot;Housing price (Annual average rate of change %)&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb42-9"><a href="マクロデータの取得.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_bw</span>()  </span></code></pre></div>
+<p>このスクリプトを実行[Run]すると,以下の図3-6が出力されます.</p>
+<div class="figure">
+<img src="figures/fig3_6hp.png" alt="" />
+<p class="caption">ヨーロッパ主要経済の住宅価格の推移,2001~2019</p>
+</div>
+<p><strong>4. 地理情報を利用し,ヨーロッパ地図上に2015年の住宅価格（年平均変化率）を表示させる</strong></p>
+<p>各国の住宅価格上昇率の推移を比較しましたが,今度は2015年の１時点をとり各国を比較してみましょう.このためにeurostatの提供する地理空間情報を利用し,2015年の住宅価格をヨーロッパの地図上に描きます</p>
+<div class="figure">
+<img src="figures/fig3_7.png" alt="" />
+<p class="caption">ヨーロッパ経済の住宅価格上昇率,2015年</p>
+</div>
+<p>出力される結果はのようになります.この図を描くための詳しい説明はⅢ-4-3に譲り,ここではスクリプトだけ示しておきます.手順は４つです.</p>
+<p><strong>①ヨーロッパの地図データを取得し,そのデータをshp_0という名前をつけたオブジェクトに容れます.</strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="マクロデータの取得.html#cb43-1" aria-hidden="true" tabindex="-1"></a>  shp_0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">0</span>, <span class="at">year =</span> <span class="dv">2016</span>)</span></code></pre></div>
+<p><strong>②次に,上で取得した住宅価格データからヨーロッパ諸国と2015年のデータを抽出します.</strong></p>
+<p>そしてその結果をhousing2015というオブジェクトに容れます.最初に,isoの内容は事前に上記のisoベクトルを,次のように書き換え,サンプル国を拡充しておきます.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="マクロデータの取得.html#cb44-1" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;BE&quot;</span>, <span class="st">&quot;CY&quot;</span>,<span class="st">&quot;CZ&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;DK&quot;</span>, <span class="st">&quot;EL&quot;</span>, <span class="st">&quot;ES&quot;</span>, <span class="st">&quot;FI&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;HR&quot;</span>, <span class="st">&quot;IE&quot;</span>, <span class="st">&quot;IT&quot;</span>, <span class="st">&quot;LT&quot;</span>,<span class="st">&quot;LU&quot;</span>, </span>
+<span id="cb44-2"><a href="マクロデータの取得.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;LV&quot;</span>, <span class="st">&quot;MT&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;PT&quot;</span>, <span class="st">&quot;SE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="マクロデータの取得.html#cb45-1" aria-hidden="true" tabindex="-1"></a>housing2015 <span class="ot">&lt;-</span> house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb45-2"><a href="マクロデータの取得.html#cb45-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span> (unit <span class="sc">==</span> <span class="st">&quot;RCH_A_AVG&quot;</span>, geo <span class="sc">%in%</span> iso, time <span class="sc">==</span> <span class="dv">2015</span>)</span></code></pre></div>
+<p><strong>③そして次に,オブジェクトshp_0とhousing2015を結合します.</strong></p>
+<p>マージしたデータは地理データと住宅価格データを持つことになります.マージしたデータはmap_housingというオブジェクト名を与えています.２つのオブジェクトの結合には<strong>inner_join()関数</strong>を使っています.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="マクロデータの取得.html#cb46-1" aria-hidden="true" tabindex="-1"></a> map_housing <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_0,housing2015, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>)</span></code></pre></div>
+<p><strong>④最後に,ggplot2―geom_sf()―を利用し,ヨーロッパ地図上に,住宅価格上昇率を示します.</strong></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="マクロデータの取得.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> map_housing) <span class="sc">+</span></span>
+<span id="cb47-2"><a href="マクロデータの取得.html#cb47-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_sf</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb47-3"><a href="マクロデータの取得.html#cb47-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb47-4"><a href="マクロデータの取得.html#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">70</span>))<span class="sc">+</span></span>
+<span id="cb47-5"><a href="マクロデータの取得.html#cb47-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb47-6"><a href="マクロデータの取得.html#cb47-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span> (<span class="at">subtitle =</span> <span class="st">&quot;Housing price (Annual average rate of change), 2015&quot;</span>,</span>
+<span id="cb47-7"><a href="マクロデータの取得.html#cb47-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;% Annual average</span><span class="sc">\n</span><span class="st">rate of change&quot;</span>) <span class="sc">+</span></span>
+<span id="cb47-8"><a href="マクロデータの取得.html#cb47-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>全体のスクリプトをまとめると,次のようになります.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="マクロデータの取得.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ヨーロッパの地理空間データをダウンロード</span></span>
+<span id="cb48-2"><a href="マクロデータの取得.html#cb48-2" aria-hidden="true" tabindex="-1"></a>shp_0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">resolution =</span> <span class="dv">10</span>,<span class="at">nuts_level =</span> <span class="dv">0</span>,<span class="at">year =</span> <span class="dv">2016</span>)</span>
+<span id="cb48-3"><a href="マクロデータの取得.html#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="マクロデータの取得.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># サンプル国を指定.</span></span>
+<span id="cb48-5"><a href="マクロデータの取得.html#cb48-5" aria-hidden="true" tabindex="-1"></a>iso <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AT&quot;</span>, <span class="st">&quot;BE&quot;</span>, <span class="st">&quot;CY&quot;</span>,<span class="st">&quot;CZ&quot;</span>, <span class="st">&quot;DE&quot;</span>, <span class="st">&quot;DK&quot;</span>, <span class="st">&quot;EL&quot;</span>, <span class="st">&quot;ES&quot;</span>, <span class="st">&quot;FI&quot;</span>, <span class="st">&quot;FR&quot;</span>, <span class="st">&quot;HR&quot;</span>, <span class="st">&quot;IE&quot;</span>,<span class="st">&quot;IT&quot;</span>, <span class="st">&quot;LT&quot;</span>,<span class="st">&quot;LU&quot;</span>, <span class="st">&quot;LV&quot;</span>, <span class="st">&quot;MT&quot;</span>, <span class="st">&quot;NL&quot;</span>, <span class="st">&quot;PT&quot;</span>, <span class="st">&quot;SE&quot;</span>)</span>
+<span id="cb48-6"><a href="マクロデータの取得.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="マクロデータの取得.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># サンプル国の住宅価格（年平均変化率）データを取得. </span></span>
+<span id="cb48-8"><a href="マクロデータの取得.html#cb48-8" aria-hidden="true" tabindex="-1"></a>housing2015 <span class="ot">&lt;-</span> house_price <span class="sc">%&gt;%</span> </span>
+<span id="cb48-9"><a href="マクロデータの取得.html#cb48-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span> (unit <span class="sc">==</span> <span class="st">&quot;RCH_A_AVG&quot;</span>, geo <span class="sc">%in%</span> iso),time <span class="sc">==</span> <span class="dv">2015</span><span class="er">)</span></span>
+<span id="cb48-10"><a href="マクロデータの取得.html#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="マクロデータの取得.html#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 地理空間データと住宅価格データを結合.</span></span>
+<span id="cb48-12"><a href="マクロデータの取得.html#cb48-12" aria-hidden="true" tabindex="-1"></a>map_housing <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_0,housing2015, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>) </span>
+<span id="cb48-13"><a href="マクロデータの取得.html#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="マクロデータの取得.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  ヨーロッパの地図上に住宅価格を表示.</span></span>
+<span id="cb48-15"><a href="マクロデータの取得.html#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> map_housing) <span class="sc">+</span></span>
+<span id="cb48-16"><a href="マクロデータの取得.html#cb48-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb48-17"><a href="マクロデータの取得.html#cb48-17" aria-hidden="true" tabindex="-1"></a>     <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb48-18"><a href="マクロデータの取得.html#cb48-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>,<span class="dv">70</span>))<span class="sc">+</span></span>
+<span id="cb48-19"><a href="マクロデータの取得.html#cb48-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb48-20"><a href="マクロデータの取得.html#cb48-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Housing price (Annual average rate of change), 2015&quot;</span>,</span>
+<span id="cb48-21"><a href="マクロデータの取得.html#cb48-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;% Annual average</span><span class="sc">\n</span><span class="st">rate of change&quot;</span>) <span class="sc">+</span></span>
+<span id="cb48-22"><a href="マクロデータの取得.html#cb48-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>このようにRパッケージeurostatを利用することで,わずか10数行のスクリプトを書くだけで上のグラフを描くことができます.</p>
+</div>
+</div>
+<div id="応用例-地理空間情報の利用" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> 応用例 ― 地理空間情報の利用</h3>
+<p>北欧諸国はミステリー小説の多くの傑作を生み出しています.そうした背景には社会経済的要因はもちろんのこと犯罪を身近なものと受け止める社会不安があるのかもしれません.そこで欧州連合統計局Eurostatが提供する犯罪や暴力に対する不安度を示す指標によって,そうした社会的不安を代理させ観察することにします.そして同指標を視覚的に示すためにEurostatの提供する地理空間情報と結合し,ヨーロッパ地図上に表示します.主な手順は次のようになります,</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>地理空間情報(シェイプ・ファイル)をダウンロードし,ヨーロッパ地図を描く.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>犯罪・暴力・破壊行為に対する不安度を示す指標をダンロードする.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>1と2のファイルを結合し,不安度指標を表示した北欧地図を描く.</li>
+</ol></li>
+</ul>
+<p><strong>(1) 地理空間情報のダウンロードとggplot2による描画―sfパッケージ</strong></p>
+<p>地理空間データの分析用のRパッケージとしてsfパッケージがあります.sfパッケージは,simple featuresというGIS(geographic information system)データ規格をRで扱うためのパッケージです.Eurostatの提供する地理空間情報データを扱うために,最初に,このパッケージをインストールしておきます.　コンソール画面に次のように入力し,エンターキーを押してください.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="マクロデータの取得.html#cb49-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>)</span></code></pre></div>
+<p>インストールを終えたら,スクリプト画面に次のように入力し,実行[Run]します.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="マクロデータの取得.html#cb50-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(sf)</span></code></pre></div>
+<p>このパッケージを利用することによって地理空間データのさまざまな処理が可能となります.</p>
+<p>すでに幾度も登場しているggplot2も,バージョン3.0.0以後sfクラスのデータを扱えるようになりました.sfクラスのオブジェクトのプロットには,<strong>geom_sf()</strong>という関数を使います.</p>
+<p>Eurostatの地理空間情報は,国レベルにとどまらず,そしてそれ以上に詳細な行政単位レベルの情報も提供しています.1970年代初頭,Eurostatは,欧州連合（EU）の地域統計を作成するために,EUの領土を分割するための統一された,一貫したシステムとしてNUTS (Nomenclature of territorial units)分類 を設定しました.イタリアを例にとれば,NUTSレベル0はイタリアという国そのものの,NUTSレベル１はNord-Ovest（北西部）, Sud（南部）といった地域,さらにNUTSレベル２はPiemonte（ピエモンテ）, Liguria（リグーリア）, Lombardia（ロンバルディア）といった州, もっとも細かいレベルのNUTSレベル３はTorino（トリノ）, Genova（ジェノバ）, Milano（ミラノ）等の都市空間を示します.これにより,たとえば,個人世帯の可処分所得の地理的分布を調べたいとき,NUTSレベル2すなわち各国の州レベルまで調べること（グラフ表示）も可能です.</p>
+<p>それでは最初に,NUTSレベル１と２のヨーロッパ地図を描いてみましょう.地図を描くためにはシェイプファイルshapefileという図形情報と属性情報を入れたファイルをダウンロードする必要があります.RパッケージeurostatはGISGOからヨーロッパの地理情報を取得する関数get_eurostat_geospatial()を用意しています.この関数の基本的な用法は次のようになります.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="マクロデータの取得.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_eurostat_geospatial</span>(</span>
+<span id="cb51-2"><a href="マクロデータの取得.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">output_class =</span> <span class="st">&quot;sf&quot;</span>,</span>
+<span id="cb51-3"><a href="マクロデータの取得.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">resolution =</span> ,</span>
+<span id="cb51-4"><a href="マクロデータの取得.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">nuts_level =</span> ,</span>
+<span id="cb51-5"><a href="マクロデータの取得.html#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2016</span></span>
+<span id="cb51-6"><a href="マクロデータの取得.html#cb51-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>以下はこの関数がとる引数の概要です.</p>
+<ul>
+<li>output_class　= "“:”“に sf, df,もしくはspdfのいずれかの文字列を指定することで返されるオブジェクトのクラスを選択します.sfはsimple features,dfは data_frame, spdfはSpatialPolygonDataFrameを表現します.デフォルトは”sf"です.</li>
+<li>resolution = : 地理空間データの解像度を指定します.利用可能な解像度は60（1:6,000万）,20（1:2,000万）,10（1:1,000万）,03（1:3,000万）,01（1:1,000万）のいずれかです.</li>
+<li>nuts_level = : NUTS分類のレベルをしていします.0,1, 2, 3, allのいずれかをとります.</li>
+<li>year = : NUTSのリリース年を指定します.具体的には,2003, 2006, 2010, 2013, 2016 のいずれかを入力します.</li>
+</ul>
+<p>それでは地理空間情報をダウンロードしてみましょう.ここではNUTSレベルの異なる２つのオブジェクトを作成します.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="マクロデータの取得.html#cb52-1" aria-hidden="true" tabindex="-1"></a>shp0 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">output_class =</span> <span class="st">&quot;sf&quot;</span>, <span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">0</span>, <span class="at">year =</span> <span class="dv">2016</span>)</span>
+<span id="cb52-2"><a href="マクロデータの取得.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NUTS分類のレベル0で地図情報を取得し,オブジェクトshp0に容れる</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="マクロデータの取得.html#cb53-1" aria-hidden="true" tabindex="-1"></a>shp2 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">output_class =</span> <span class="st">&quot;sf&quot;</span>, <span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">2</span>, <span class="at">year =</span> <span class="dv">2016</span>)</span>
+<span id="cb53-2"><a href="マクロデータの取得.html#cb53-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># NUTS分類のレベル2で地図情報を取得し,オブジェクトshp2に容れる</span></span></code></pre></div>
+<p>オブジェクト―shp0, shp2―は,引数output_class=“sf”で指定していますのでsfクラスです. geom_sf()はsfクラスのオブジェクトを扱いますから, この指定が必要となります（ただし,デフォルトでもsfクラスですから,指定しなくとも結果はsfクラスのオブジェクトとなります）.</p>
+<p>NUTSレベル0は国単位を意味します.NUTSレベル２は,上述のように,イタリアで言えばロンバルディアといった州レベルの行政単位まで描かれます.
+ヨーロッパの地図情報が取得できましたので,ggplot2を利用しヨーロッパ地図を描いてみましょう.ggplot2にはsfクラスのオブジェクトを描くためにgeom_sf()が開発されています.グラフの作成はこれまで紹介したggplot2の利用方法に同じです.基本は<strong>ggplot(オブジェクト名)+geom_sf()</strong>です.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="マクロデータの取得.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shp0)<span class="sc">+</span>       <span class="co"># オブジェクト名を入力</span></span>
+<span id="cb54-2"><a href="マクロデータの取得.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()         <span class="co"># sfクラスのオブジェクトを指定</span></span></code></pre></div>
+<p>これだけでヨーロッパ地図がプロット画面に出力されます.しかし,かなり広いヨーロッパ地域が表示されてしまいます.そこでx軸,y軸の範囲を限定し,わたしたちが通常目にするヨーロッパを描くとしましょう.そのためにはxlim()を利用し,x軸の範囲を決定します.xlim（c（西に-10度, 東に37度））のように東西の経度を入力します.y軸の範囲も同様に,ylim(c(,))を利用し,緯度を入力します.あるいはggplot2のcoord_map()という関数を使っても良いでしょう.引数xlim=()で経度,ylim=()で緯度の範囲を指定できます.たとえば,coord_map(xlim = c(-30, 45), ylim = c(30, 75))と入力することによってヨーロッパ地域を指定することができます.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="マクロデータの取得.html#cb55-1" aria-hidden="true" tabindex="-1"></a>nuts0 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(shp0) <span class="sc">+</span></span>
+<span id="cb55-2"><a href="マクロデータの取得.html#cb55-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">geom_sf</span>()<span class="sc">+</span></span>
+<span id="cb55-3"><a href="マクロデータの取得.html#cb55-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb55-4"><a href="マクロデータの取得.html#cb55-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">65</span>))</span></code></pre></div>
+<p>わずか数行の入力で図3-8のようなヨーロッパ地図を描くことができます.あわせてNUTレベル2の地図も描いてみましょう.上述のグラフ作成との違いはggplot()にsfオブジェクト名shp2を指定するだけです.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="マクロデータの取得.html#cb56-1" aria-hidden="true" tabindex="-1"></a>nuts2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(shp2) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="マクロデータの取得.html#cb56-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">geom_sf</span>()<span class="sc">+</span></span>
+<span id="cb56-3"><a href="マクロデータの取得.html#cb56-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">37</span>))<span class="sc">+</span></span>
+<span id="cb56-4"><a href="マクロデータの取得.html#cb56-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">65</span>))</span></code></pre></div>
+<p><img src="figures/fig3_8.png" alt="eurostat地理空間情報を利用したヨーロッパ地図の作成" />
+次に,北欧地域だけを描くには,x軸範囲とy軸の範囲を以下のように限定すれば,北欧地域だけの地図を描くことができます.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="マクロデータの取得.html#cb57-1" aria-hidden="true" tabindex="-1"></a>n_euro <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(shp0)<span class="sc">+</span></span>
+<span id="cb57-2"><a href="マクロデータの取得.html#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>()<span class="sc">+</span></span>
+<span id="cb57-3"><a href="マクロデータの取得.html#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">32</span>))<span class="sc">+</span>      <span class="co">#　北欧地域の範囲を経度で指定</span></span>
+<span id="cb57-4"><a href="マクロデータの取得.html#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">54</span>,<span class="dv">70</span>))<span class="sc">+</span>     <span class="co">#　北欧地域の範囲を緯度で指定</span></span></code></pre></div>
+<p><strong>(2) 犯罪・暴力・破壊行為に対する不安度データのダウンロード</strong></p>
+<p>次に,犯罪や暴力に対する不安度データを地図上に表示するために,犯罪に関連するデータを探します.これはすでに紹介したsearch_eurostat()関数を利用します. “crime（犯罪）”をキーワードにデータを探してみましょう.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="マクロデータの取得.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">search_eurostat</span>(<span class="st">&quot;cime&quot;</span>,<span class="at">type=</span><span class="st">&quot;table&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="マクロデータの取得.html#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">View</span>()</span></code></pre></div>
+<p>上のスクリプトを実行すると,search_eurostat()の結果をView()関数に渡しているため,crimeに関連した検索結果が表示されます.関連するデータテーブルは１つだけで##sdg_16_20##というファイルです.このデータは地域における犯罪・暴力・破壊行為を報告した人の比率を示しています.そうした点では人々の犯罪や暴力に対する不安度を代理する指標として良いでしょう.</p>
+<p>次に,データ・テーブルsdg_16_20をダウンロードし,結果をcrimeというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="マクロデータの取得.html#cb59-1" aria-hidden="true" tabindex="-1"></a>   crime<span class="ot">&lt;-</span><span class="fu">get_eurostat</span>(<span class="at">id=</span><span class="st">&quot;sdg_16_20&quot;</span>,<span class="at">time_format =</span> <span class="st">&quot;num&quot;</span>)</span></code></pre></div>
+<p>これによりヨーロッパ諸国の犯罪・暴力・破壊行為の報告者比率データを取得できます.ここから第１に,北欧４カ国とバルト３国の７ヵ国だけを抽出します.このために変数のgeoの値が“DK,”“SE,”“NO,”“FI,”“LV,”“EE,”“LT”のどれかをとる行を抽出します.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="マクロデータの取得.html#cb60-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(geo <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;DK&quot;</span>,<span class="st">&quot;SE&quot;</span>,<span class="st">&quot;NO&quot;</span>,<span class="st">&quot;FI&quot;</span>,<span class="st">&quot;LV&quot;</span>,<span class="st">&quot;EE&quot;</span>,<span class="st">&quot;LT&quot;</span>))</span></code></pre></div>
+<p>ここで“geo %in% c()”は「geo変数がc（国コード）の中のいずれかに等しい国コードをとる行を選択しなさい」を意味しています.また,このデータは,incgrpという変数を持っていますが,これはincome group（所得グループ）を示し,所得階層別情報を提供しています.しかし,ここでは所得階層別情報は使いませんのでincgrp変数のうち値がTOTALの行だけを抽出します.そこで上の抽出条件にくわえて,次の抽出条件も入力します.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="マクロデータの取得.html#cb61-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(incgrp <span class="sc">==</span> <span class="st">&quot;TOTAL&quot;</span>)</span></code></pre></div>
+<p>２つの抽出条件をあわせると,次のようになります.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="マクロデータの取得.html#cb62-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(geo <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;DK&quot;</span>,<span class="st">&quot;SE&quot;</span>,<span class="st">&quot;NO&quot;</span>,<span class="st">&quot;FI&quot;</span>,<span class="st">&quot;LV&quot;</span>,<span class="st">&quot;EE&quot;</span>,<span class="st">&quot;LT&quot;</span>), incgrp <span class="sc">==</span> <span class="st">&quot;TOTAL”)</span></span></code></pre></div>
+<p>さらに,時間も2017年に指定し ― time == 2017 ―,最終的に次のように入力します.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="マクロデータの取得.html#cb63-1" aria-hidden="true" tabindex="-1"></a>  ne_crime <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="マクロデータの取得.html#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(time <span class="sc">==</span> <span class="dv">2017</span>, geo <span class="sc">%in%</span>  <span class="fu">c</span>(<span class="st">&quot;DK&quot;</span>,<span class="st">&quot;SE&quot;</span>,<span class="st">&quot;NO&quot;</span>,<span class="st">&quot;FI&quot;</span>,<span class="st">&quot;LV&quot;</span>,<span class="st">&quot;EE&quot;</span>,<span class="st">&quot;LT&quot;</span>), incgrp <span class="sc">==</span> <span class="st">&quot;TOTAL&quot;</span>)</span></code></pre></div>
+<p>filter()の基本コードはfilter(データフレーム名,抽出条件)ですが,ここではパイプ(%&gt;%)を利用し,データフレームcrimeを関数filter()に渡していますのでデータフレーム名が省略されています.</p>
+<p>以上で,北欧地域の犯罪や暴力に対する不安度を示す指標が取得できました.これを地図上に表示させるために,地図情報の入ったshp0と結合します.</p>
+<p><strong>(3) シェイプファイルshp0と犯罪データファイルne_crimeの結合</strong></p>
+<p>ここではヨーロッパの地図情報の入った“shp0”ファイルと,北欧地域の犯罪不安度情報の入った“ne_crime”ファイルを結合します.データフレームの結合にあたってはinner_join()関数を使います.ジョイン_join()は２つのデータテーブルの変数を結合します.inner_join()はby= “キー変数”にしたがって,キーの値が等しい観察値が結合されます.したがってキー変数にマッチしない観察値は除外されます.</p>
+<p>inner_join()のもっとも簡単な書き方は次のようになります.２つのデータフレームa,bがある場合,</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="マクロデータの取得.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(データフレームa,データフレームb, <span class="at">by =</span> <span class="st">&quot;キー変数&quot;</span>)</span></code></pre></div>
+<p>それではinner_join()を利用し,shp0とne_crimeを,両データフレームに共通のgeo変数を基準に結合します.その上でshp_neというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="マクロデータの取得.html#cb65-1" aria-hidden="true" tabindex="-1"></a>  shp_ne <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_0, ne_crime, <span class="at">by =</span> <span class="st">&quot;geo&quot;</span>) </span></code></pre></div>
+<p>これで不安度指標と地理空間情報の入った,74行×17列のデータフレームが作成されました.残りの作業はggplot2を使って,図3-9のような不安度指標を色の濃淡で示した北欧地図を描くだけです.</p>
+<p>shp_neはsfクラスのオブジェクトです.このため描画にあたってはgeom_sf()関数に渡すだけです.この場合,何よって色分けするかをaes() で指定します.この例では,犯罪・暴力・破壊行為の報告者比率を示すvalues変数の値の大きさで色分けします.このために fill = valuesとします.</p>
+<p>具体的には,まず最初に,ggplot()にデータフレーム名を指定します.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="マクロデータの取得.html#cb66-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(shp_ne) <span class="sc">+</span></span></code></pre></div>
+<p>次に,geom_sf()関数を使ってデータを地図に描きますが,変数valuesを地図上の色の濃淡で表現するために,aes(fiill = )で指定します.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="マクロデータの取得.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_sf</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span></code></pre></div>
+<p>value変数は犯罪・暴力・破壊行為の報告者比率です.さらに,color = “”でボーダー（国境）をwhite(白)で描き,その線の太さをsize = で指定しています.これで基本的な作業は終わりです.実行すると,犯罪・暴力・破壊行為の報告者比率がデフォルト（既定値）の色の濃淡によって描かれた北欧地図が出力されます.
+この例ではさらに,scale_fill_continuous_tableau()を使って犯罪・暴力・破壊行為の報告者比率を描く色の濃淡をグレイに変更します.この関数によって連続したカラースケールを指定することができます.引数palett = “”部分に “Blue,” “Red”のように入力します.ここでは白黒印刷にあわせ,グレイの色を採用しています.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="マクロデータの取得.html#cb68-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span></code></pre></div>
+<p>次に,labs()を使ってタイトルをつけます.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="マクロデータの取得.html#cb69-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;The share of the population who reported </span><span class="sc">\n</span><span class="st">that they face the problem of crime, violence or vandalism, 2017&quot;</span>,　<span class="at">fill =</span> <span class="st">&quot;% the respondent </span><span class="sc">\n</span><span class="st">feels crime&quot;</span>) <span class="sc">+</span></span></code></pre></div>
+<p>英文タイトルの中のthatの前に“"と”n“が挿入されていることに気づいたと思います.これはその部分で文書の改行を命令する記号です.また,fill = “”によって色の濃淡の表示するバーのタイトルを指定しています.
+最後に,背景のテーマを設定します.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="マクロデータの取得.html#cb70-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>以上のスクリプトをまとめると,つぎのようになります,</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="マクロデータの取得.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shp_ne) <span class="sc">+</span></span>
+<span id="cb71-2"><a href="マクロデータの取得.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb71-3"><a href="マクロデータの取得.html#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb71-4"><a href="マクロデータの取得.html#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;The share of the population who reported </span><span class="sc">\n</span><span class="st">that they face the problem of crime, violence or vandalism, 2017&quot;</span>,　<span class="at">fill =</span> <span class="st">&quot;% the respondent </span><span class="sc">\n</span><span class="st">feels crime&quot;</span>) <span class="sc">+</span></span>
+<span id="cb71-5"><a href="マクロデータの取得.html#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
+<p>これを実行すると,次のようなグラフが描かれます.</p>
+<div class="figure">
+<img src="figures/fig3_9.png" alt="" />
+<p class="caption">犯罪や暴力,破壊行為の問題に直面していると回答した人の割合（％）</p>
+</div>
+<p>見られるように,サンプル経済の中では編集者ミカエル の活躍するスウエーデンがもっとも高く,これにリガの犬 が蠢くラトビア等のバルト３国が続きます.バルト海を挟む諸国において犯罪や暴力,破壊行為の問題に直面している人々が多そうです.こうした社会的不安が犯罪小説の創造に寄与しているのかもしれません.</p>
+<p><strong>(4) 地理空間情報― NUTSレベル3の利用</strong></p>
+<p>さらに,スウェーデンに注目し,こうした犯罪の背景―犯罪や暴力,破壊行為―を地域レベルでみてみましょう.これまで地理空間をNUTSレベル０としてきました.つまり,国単位で情報を扱っていました.次に,北欧社会の中でも,犯罪や暴力,破壊行為の問題にもっとも強く直面しているスウェーデンに注目し,NUTSレベルを3までブレークダウンし,より詳細な犯罪情報を地図上に描いてみます.</p>
+<p>上で利用したデータはNUTSレベル２の情報を提供していませんが,犯罪に関連したNUTSレベル２,3のデータとしては「犯罪記録件数」(Crimes recorded by the police by NUTS 3 regions)があります.このデータをget_eurostat()を利用し,ダウンロードします.これをcrimeという名前をつけたオブジェクトに容れます.本データのidはcrim_gen_regです.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="マクロデータの取得.html#cb72-1" aria-hidden="true" tabindex="-1"></a>  crime <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="at">id =</span> <span class="st">&quot;crim_gen_reg&quot;</span>)</span></code></pre></div>
+<p>最初に,スウェーデンをピックアップします.このためgeo変数にfilter()をかけますが,抽出条件をgeo == “SE”とすると,スウェーデンの国内の行政単位のデータ―たとえば,SE1,SE2という記号で表示―は抽出条件に合致しないため,削除されてしまいます.そこで最初に,str.detect()関数を使って“SE”という文字列を持つgeo変数の行を探します.そしてそれと一致したgeo変数の行を抽出します.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="マクロデータの取得.html#cb73-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str.detect</span>(geo,<span class="st">&quot;SE&quot;</span>))</span></code></pre></div>
+<p>str.detect(geo, “SE”)はgeo変数が “SE”という文字列を含む場合,真TRUEを返します.これにfilter()を適用することによって,str.detect()関数がTRUE返す行を抽出します.
+データは2009年と2010年のみですが,ここでは2010年を採用します.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="マクロデータの取得.html#cb74-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">&quot;2010-01-01&quot;</span>)</span></code></pre></div>
+<p>以上,必要な行の抽出が終わりです.これまでのスクリプトをまとめると,以下のようになります.抽出結果をcrime_sweという名前をつけたオブジェクトに容れてあります.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="マクロデータの取得.html#cb75-1" aria-hidden="true" tabindex="-1"></a>crime_swe <span class="ot">&lt;-</span> crime <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="マクロデータの取得.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(geo, <span class="st">&quot;SE&quot;</span>), time <span class="sc">==</span> <span class="st">&quot;2009-01-01&quot;</span>) </span></code></pre></div>
+<p>次に,NUTSレベル３のデータをダウンロードし,shp3という名前のオブジェクトに容れます</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="マクロデータの取得.html#cb76-1" aria-hidden="true" tabindex="-1"></a>shp3 <span class="ot">&lt;-</span> <span class="fu">get_eurostat_geospatial</span>(<span class="at">resolution =</span> <span class="dv">10</span>, <span class="at">nuts_level =</span> <span class="dv">3</span>, <span class="at">year =</span> <span class="dv">2016</span>) </span>
+<span id="cb76-2"><a href="マクロデータの取得.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NUTS分類のレベル3で地図情報を取得し,オブジェクトshp3に容れる</span></span></code></pre></div>
+<p>それでは,crime_sweとNUTSレベル3のシェイプファイルをinner_join()関数を使って結合します.そして結合したファイルをshp2_crimeという名前のオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="マクロデータの取得.html#cb77-1" aria-hidden="true" tabindex="-1"></a>shp3_crime_swe <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(shp_2,crime_swe, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;NUTS_ID&quot;</span><span class="ot">=</span><span class="st">&quot;geo&quot;</span>)) </span></code></pre></div>
+<p>by = “キー変数”の部分がこれまでと異なります.２つのファイルを結合するさいに,異なる変数を利用する場合,上述のようにby = c(“NUTS_ID”=“geo”)とします.NUTS_IDはshp_2の中の変数,geoはcrime_sweの中の変数です.</p>
+<p>これで地図を作成するデータが出来上がりました.あとは図3-9を作成した場合と同じようにggplot２を利用します.スクリプトは次のようになります.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="マクロデータの取得.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shp3_crime_swe) <span class="sc">+</span></span>
+<span id="cb78-2"><a href="マクロデータの取得.html#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill=</span>values),<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,<span class="at">size =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb78-3"><a href="マクロデータの取得.html#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb78-4"><a href="マクロデータの取得.html#cb78-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_continuous_tableau</span>(<span class="at">palette =</span> <span class="st">&quot;Classic Gray&quot;</span>)<span class="sc">+</span></span>
+<span id="cb78-5"><a href="マクロデータの取得.html#cb78-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Crimes recorded by the police,2010&quot;</span>,</span>
+<span id="cb78-6"><a href="マクロデータの取得.html#cb78-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;% the number of </span><span class="sc">\n</span><span class="st">crimes recorded by the police&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb78-7"><a href="マクロデータの取得.html#cb78-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div>
+<div class="figure">
+<img src="figures/fig3_10.png" alt="" />
+<p class="caption">スウェーデンにおける犯罪記録件数, 2010</p>
+</div>
+<p>ここでは単純に犯罪件数を表示させているだけですから,スウェーデンの中でも大都市圏―Stockholms県,Västra Götalands県やSkåne県等―で犯罪件数が多いことが理解されます.また図3-10から理解されるように,犯罪件数には地理的な関連があるかもしれません.犯罪が多発する県の隣接する県でも多そうです.これは空間的なデータが相関していることを示唆しており,空間情報を分析するさいに注意を要する点です.</p>
+</div>
+</div>
+<div id="経済協力開発機構oecd" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> 経済協力開発機構OECD</h2>
+<p>OECDが提供するデータは、もちろん、OECDのサイト<a href="https://stats.oecd.org">OECD.Stat</a> からも取得できます。同サイトに入ると、左側のウィンドウにテーマ別データ一覧が表示されており、ここから目的のデータを探すことができます。ウィンドウ上部にある検索ウィンドウからキーワード検索も可能です.</p>
+<p>しかし、この方法ではRから離れブラウザでデータを検索し、データをダウンロードすることになります。これは煩わしい作業であることは言うまでもなく、データ分析のための再現性も難しくなるかもしれません。こうした問題に対処するために、RパッケージOECDを利用することが推奨されます。このパッケージによってOECDのAPIから動的で再現性の高い方法でデータをダウンロードすることができます.</p>
+<div id="rパッケージoecdの利用方法" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> RパッケージOECDの利用方法</h3>
+<p>それでは同パッケージをインストールしましょう。コンソール画面に次のように入力し、エンターキーを押してください。</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="マクロデータの取得.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RパッケージOECDのインストール</span></span>
+<span id="cb79-2"><a href="マクロデータの取得.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;OECD&quot;</span>)</span></code></pre></div>
+<p>パッケージを利用するにはlibrary()で呼び出しておく必要があります。スクリプト画面に次のように入力し、実行[Run]しておきます。</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="マクロデータの取得.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RパッケージOECDの呼び出し</span></span>
+<span id="cb80-2"><a href="マクロデータの取得.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(OECD)</span></code></pre></div>
+<p><strong>(1)データを探す</strong></p>
+<p>OECDのデータをダウンロードするにはデータ系列のidコードが必要となります。しかし、ほとんどの場合、正確なidコード情報を事前に保有していることは少ないと思います。そこで最初に、利用可能なデータセットとその説明を含むデータフレームをダウンロードし、その上で検索を始めるのがベストの方法です。これは<strong>get_datasets()</strong>関数で実行できます。</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="マクロデータの取得.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OECDのデータフレームのリストを取得</span></span>
+<span id="cb81-2"><a href="マクロデータの取得.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_datasets</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb81-3"><a href="マクロデータの取得.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co"># head()関数でデータフレームの冒頭部分を表示</span></span>
+<span id="cb81-4"><a href="マクロデータの取得.html#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<p>head()関数によって最初の６行を表示させています。全体で1,392行×2列のデータフレームが取得されます。１列目はデータセットのid、２列目titleはデータセットのタイトル名です。これによってOECDにおいて、どのようなデータセットが利用可能かが分かります。</p>
+<p>データセットの検索方法としてはsearch_dataset()関数を使ってキーワードで検索する方法もあります。たとえば、失業“unemployment”をキーワードに検索してみましょう。これを実行すると、コンソール画面に“unemployment”を含んだデータ等の一覧が表示されます.デフォルトでは大文字小文字を区別しません。</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="マクロデータの取得.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">search_dataset</span>(<span class="st">&quot;unemployment&quot;</span>)</span></code></pre></div>
+<p><strong>(2) データセットのダウンロード</strong></p>
+<p>それでは最初のデータセットDUR_I―Incidence of unemployment by duration (期間別の失業者発生比率％)―をダウンロードしてみましょう.データのダウンロードにはget_dataset()関数を使います.基本的な使い方は次のようになります,</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="マクロデータの取得.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dataset</span>(<span class="st">&quot;dataset&quot;</span>, <span class="at">filter =</span> <span class="cn">NULL</span>, <span class="at">start_time =</span> <span class="cn">NULL</span>, <span class="at">end_time =</span> <span class="cn">NULL</span>,</span>
+<span id="cb83-2"><a href="マクロデータの取得.html#cb83-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">pre_formatted =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>この関数がとる主要な引数は以下のとおりです.</p>
+<ul>
+<li>dataset : ダウンロードするデータセットのidを入力します.</li>
+<li>filter= : NULLの場合、すべてダウンロードします.</li>
+<li>start_time = : データの開始時点.</li>
+<li>end_time = : データの終了時点.</li>
+</ul>
+<p>この関数を使ってDUR_Iデータを取得し、それをunempというオブジェクトに容れるとします.もっとも簡単なコードは次のとおりです.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="マクロデータの取得.html#cb84-1" aria-hidden="true" tabindex="-1"></a>unemp<span class="ot">&lt;-</span> <span class="fu">get_dataset</span>(<span class="st">&quot;DUR_I&quot;</span>)</span></code></pre></div>
+<p>str(unemp)でデータフレームの中をみると、8変数、155,924の観察値のデータセットがダウンロードされたことが分かります（図14）.str()関数はデータフレームの変数（列）や観測値（行）についての情報を出力させる関数です.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="マクロデータの取得.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(unemp)</span></code></pre></div>
+<pre><code>## tibble [160,111 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ COUNTRY    : chr [1:160111] &quot;AUS&quot; &quot;AUS&quot; &quot;AUS&quot; &quot;AUS&quot; ...
+##  $ SEX        : chr [1:160111] &quot;MW&quot; &quot;MW&quot; &quot;MW&quot; &quot;MW&quot; ...
+##  $ AGE        : chr [1:160111] &quot;1519&quot; &quot;1519&quot; &quot;1519&quot; &quot;1519&quot; ...
+##  $ DURATION   : chr [1:160111] &quot;UN1&quot; &quot;UN1&quot; &quot;UN1&quot; &quot;UN1&quot; ...
+##  $ FREQUENCY  : chr [1:160111] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; ...
+##  $ TIME_FORMAT: chr [1:160111] &quot;P1Y&quot; &quot;P1Y&quot; &quot;P1Y&quot; &quot;P1Y&quot; ...
+##  $ obsTime    : chr [1:160111] &quot;1978&quot; &quot;1979&quot; &quot;1980&quot; &quot;1981&quot; ...
+##  $ obsValue   : num [1:160111] 20 19.3 21 22.8 21.4 ...</code></pre>
+<p>引数を指定した形でデータをダウンロードしてみましょう.引数filterを使って日本とドイツのデータ、引数start_tim,end_timeで期間を1990年から2019年のデータをダウンロードするとします.このためにはスクリプトに次のように入力するだけです.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="マクロデータの取得.html#cb87-1" aria-hidden="true" tabindex="-1"></a>unemp <span class="ot">&lt;-</span> <span class="fu">get_dataset</span>(<span class="st">&quot;DUR_I&quot;</span>,<span class="at">filter=</span><span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;JPN&quot;</span>,<span class="st">&quot;DEU&quot;</span>)),</span>
+<span id="cb87-2"><a href="マクロデータの取得.html#cb87-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">start_time =</span> <span class="dv">1990</span>,<span class="at">end_time =</span> <span class="dv">2019</span>)</span></code></pre></div>
+<p>また、たとえば、filter = “age”のように、変数についてもfilterを適用できます.</p>
+<p><strong>(3)データ構造を調べる</strong></p>
+<p>ダウンロードしたデータの内容は、上述のように、str()関数やView()関数を利用して確認することができます.しかし、これだけではそれぞれの変数が何を意味するのか分からない場合があります.たとえば、DURATION変数が「（失業）期間」を表現していることは分かりますが、しかし、その変数がとる “UN1,” “UN3”といった値が何を意味しているかは分かりません.このためデータ構造をチェックする必要があります.</p>
+<p>データ構造のチェックにはget_data_structure（）関数を利用します.同関数は指定したデータシリーズの変数名とその説明を返します.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="マクロデータの取得.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># DUR_Iのデータ構造の説明を取得、data_strに容れます.</span></span>
+<span id="cb88-2"><a href="マクロデータの取得.html#cb88-2" aria-hidden="true" tabindex="-1"></a>data_str<span class="ot">&lt;-</span><span class="fu">get_data_structure</span>(<span class="st">&quot;DUR_I&quot;</span>)</span>
+<span id="cb88-3"><a href="マクロデータの取得.html#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="マクロデータの取得.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="co"># str()関数でdata_strの中を見ます.</span></span>
+<span id="cb88-5"><a href="マクロデータの取得.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_str,<span class="at">max.level =</span> <span class="dv">1</span>)  </span></code></pre></div>
+<pre><code>## List of 12
+##  $ VAR_DESC       :&#39;data.frame&#39;: 12 obs. of  2 variables:
+##  $ COUNTRY        :&#39;data.frame&#39;: 53 obs. of  2 variables:
+##  $ TIME           :&#39;data.frame&#39;: 53 obs. of  2 variables:
+##  $ SEX            :&#39;data.frame&#39;: 3 obs. of  2 variables:
+##  $ AGE            :&#39;data.frame&#39;: 7 obs. of  2 variables:
+##  $ DURATION       :&#39;data.frame&#39;: 5 obs. of  2 variables:
+##  $ FREQUENCY      :&#39;data.frame&#39;: 1 obs. of  2 variables:
+##  $ OBS_STATUS     :&#39;data.frame&#39;: 16 obs. of  2 variables:
+##  $ UNIT           :&#39;data.frame&#39;: 319 obs. of  2 variables:
+##  $ POWERCODE      :&#39;data.frame&#39;: 32 obs. of  2 variables:
+##  $ REFERENCEPERIOD:&#39;data.frame&#39;: 100 obs. of  2 variables:
+##  $ TIME_FORMAT    :&#39;data.frame&#39;: 5 obs. of  2 variables:</code></pre>
+<p>このさい、表示レベルをmax.level = 1を使い、１に指定しています.max.level=を利用せずに、str(data_str)と入力しても、類似した情報が得られますが、出力画面が煩雑になるので、この例ではmax.level=1に抑えています.</p>
+<p>コンソール画面に上のように入力し、エンターキーを押すと、図？？？のような出力結果が得られます.DUR_Iの説明を見ると、VAR_DESCを初めとし、あわせて12の変数があることが分かります.ここでDURATION変数の詳細を確認してみましょう.コンソール画面にdata_str<span class="math inline">\(DURATIONと入力し、エンターキーを押してみてください. “\)</span>”記号はデータフレームの中の変数を指定する方法です.つまり、data_str$DURATIONは「データフレームdata_strの中の変数DURATIONを指定」を意味します.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="マクロデータの取得.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#データフレームdata_strの中の変数DURATIONを指定.</span></span>
+<span id="cb90-2"><a href="マクロデータの取得.html#cb90-2" aria-hidden="true" tabindex="-1"></a>data_str<span class="sc">$</span>DURATION       </span></code></pre></div>
+<pre><code>##    id                    label
+## 1 UN1                &lt; 1 month
+## 2 UN2 &gt; 1 month and &lt; 3 months
+## 3 UN3 &gt; 3 month and &lt; 6 months
+## 4 UN4   &gt; 6 month and &lt; 1 year
+## 5 UN5          1 year and over</code></pre>
+<p>これにより変数DURATIONのとる値が何を意味しているかを示した一覧が出力されます.これをみると、変数DURATIONの値“UN1”は１月未満,“UN2”は１月以上３ヶ月未満の失業期間を示すことが分かります.</p>
+<p>続けて変数AGEのデータ構造も確認しておきましょう.コンソール画面にdata_str$AGEと入力し、エンターキーを押します.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="マクロデータの取得.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#データフレームdata_strの中の変数AGEを指定.</span></span>
+<span id="cb92-2"><a href="マクロデータの取得.html#cb92-2" aria-hidden="true" tabindex="-1"></a>data_str<span class="sc">$</span>AGE     </span></code></pre></div>
+<pre><code>##       id    label
+## 1   1519 15 to 19
+## 2   1524 15 to 24
+## 3   2024 20 to 24
+## 4   2554 25 to 54
+## 5   5564 55 to 64
+## 6   6599      65+
+## 7 900000    Total</code></pre>
+<p>このように、AGE変数はid列に記載されているように1519や1524など７つの値をとります.そしてlabelに示されているように、それぞれ年齢階層に対応しています.たとえば、6599という値は65+と表示されていますので、65歳以上ということが分かります.つまり、65歳以上の失業者数です.年齢に関係ない総数は900000という数値で表現されています.</p>
+<p>さらに、失業者の性別を表現する変数SEXをチェックしておきましょう.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="マクロデータの取得.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データフレームdata_strの中の変数SEXを指定</span></span>
+<span id="cb94-2"><a href="マクロデータの取得.html#cb94-2" aria-hidden="true" tabindex="-1"></a>data_str<span class="sc">$</span>SEX            </span></code></pre></div>
+<pre><code>##      id       label
+## 1   MEN         Men
+## 2 WOMEN       Women
+## 3    MW All persons</code></pre>
+<p>変数SEXは３つの値をとることが分かります.MEN(男性)、WOMAN(女性)およびMW(両者の合計)です.</p>
+</div>
+<div id="応用例長期失業者の推移を可視化する" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> 応用例―長期失業者の推移を可視化する</h3>
+<p>上でチェックしたデータ構造を利用し、失業問題でとりわけ問題となる長期失業者の推移を調べてみましょう.この例では最初にドイツ、フランス、日本およびアメリカの長期失業者の推移を比較します.その上で日本経済の長期失業に焦点を当てて考察します.</p>
+<p><strong>(1)長期失業者の抽出 ― filter(), select()</strong>
+最初に、フランス、ドイツ、日本およびアメリカのデータをダウンロードします.そしてそれをunempというオブジェクトに格納します.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="マクロデータの取得.html#cb96-1" aria-hidden="true" tabindex="-1"></a>unemp <span class="ot">&lt;-</span> <span class="fu">get_dataset</span>(<span class="st">&quot;DUR_I&quot;</span>, <span class="at">filter =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;DEU&quot;</span>,<span class="st">&quot;FRA&quot;</span>,<span class="st">&quot;JPN&quot;</span>,<span class="st">&quot;USA&quot;</span>)),</span>
+<span id="cb96-2"><a href="マクロデータの取得.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="at">start_time =</span> <span class="dv">1990</span>,<span class="at">end_time =</span> <span class="dv">2019</span>)</span></code></pre></div>
+<p>次に、変数DURATIONを使って失業者に占める長期失業者のシェア（%)だけを抽出します.前掲の図16のように長期失業者（１年以上）は“UN5”の値をとります.また、ここでは年齢別は無視します.図18から理解されるように、年齢階層を無視した場合、変数AGEは“900000”の値をとります.さらに、男女合計の失業者を利用しますので変数SEXは“MW”の値をとるものを選択します.結果をlong_unempと名付けたオブジェクトに容れます.なお、DURATION, AGE,SEX変数の値は文字列ですので,“”を付けて指定する必要があります.条件にあった行（観察値）の抽出にはdplyrのfilter()関数を利用します. この関数の書き方はfilter(データフレーム名,抽出条件)です.ここではパイプ(%&gt;%)でデータフレーム名をfilter()関数に渡しますので、filter()関数の引数は抽出条件だけを入力します.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="マクロデータの取得.html#cb97-1" aria-hidden="true" tabindex="-1"></a>long_unemp <span class="ot">&lt;-</span> unemp <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="マクロデータの取得.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filter()関数を使ってDURATIONの値がUN5（失業期間１年以上）, AGEの値が900000（総数）、SEXの値がMW（男女計）を指定</span></span>
+<span id="cb97-3"><a href="マクロデータの取得.html#cb97-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>, AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>, SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>)　</span></code></pre></div>
+<p>これで長期失業者数データを取得できます.View(long_unemp)でデータフレームlong_unempを表示できます.</p>
+<p>ここでは長期失業者の推移を検討するだけですので、必要な変数は国名変数CONTRY, 観察時点変数obsTIME,および観察値変数ovsValueの３つだけです.select()関数を使って３つの変数だけを取り出します.上述のコードにさらにselect()関数をパイプ(%&gt;%)でつなげて３つの変数だけを選択します.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="マクロデータの取得.html#cb98-1" aria-hidden="true" tabindex="-1"></a>long_unemp <span class="ot">&lt;-</span> unemp <span class="sc">%&gt;%</span> </span>
+<span id="cb98-2"><a href="マクロデータの取得.html#cb98-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>, AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>, SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-3"><a href="マクロデータの取得.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(COUNTRY, obsTime, obsValue)</span></code></pre></div>
+<p>select()関数では変数名の変更も可能です.obsTimeをyear、obsValueをvalueという変数名に変更しておきます.これを加えて上のコードを書き直すと次のようになります.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="マクロデータの取得.html#cb99-1" aria-hidden="true" tabindex="-1"></a>long_unemp <span class="ot">&lt;-</span> unemp <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="マクロデータの取得.html#cb99-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>, AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>, SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-3"><a href="マクロデータの取得.html#cb99-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">select</span>(COUNTRY, <span class="at">year =</span> obsTime, <span class="at">value =</span> obsValue)</span></code></pre></div>
+<p>なお、変数名の変更はrename()関数を使ってもできます.rename（）関数の使い方は</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="マクロデータの取得.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(新しい変数名 <span class="ot">=</span> 古い変数名)</span></code></pre></div>
+<p>上のコードにパイプ（%&gt;%）でつなげてrename()関数を使うと、次のように書くことができます.</p>
+<p><strong>(2) 文字列型から整数型へのデータの型の変更 ― as.integer()</strong></p>
+<p>これで３つの変数―COUNTRY, year, value―を持つ、データフレームlong_unempが出来上がりました.このデータフレームをstr(long_unemp)でみると（図9）、国を表現するCOUNTRY変数と暦年を表現するyearが文字列データであることが分かります.「$ COUNTRY: chr」, 「$year: chr」となっていることに気づくと思います.「chr」はcharacterの略で文字列データであることを示しています.つまり、yearは1990, 1991といった数値ですが、Rはこれを文字として理解しています.また、文字列型のデータは“”で囲まれた形で表記されます.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="マクロデータの取得.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(long_unemp)</span></code></pre></div>
+<pre><code>## tibble [120 × 3] (S3: tbl_df/tbl/data.frame)
+##  $ COUNTRY: chr [1:120] &quot;FRA&quot; &quot;FRA&quot; &quot;FRA&quot; &quot;FRA&quot; ...
+##  $ year   : chr [1:120] &quot;1990&quot; &quot;1991&quot; &quot;1992&quot; &quot;1993&quot; ...
+##  $ value  : num [1:120] 38.1 37.3 36.2 34.2 38.5 ...</code></pre>
+<p>文字列データのままでは以下の処理が難しくなりますので、これを数値データ―整数データ―に変換します.データの型を整数に変換するにはas.integer()関数を利用します.この関数の引数に、データフレームlong_unempの中のyearを指定します.データフレームの中の特定の変数列を指定するには「データフレーム名$変数列名」です.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="マクロデータの取得.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># year変数のデータの型を文字列型から整数型に変換.</span></span>
+<span id="cb103-2"><a href="マクロデータの取得.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.integer</span>(long_unemp<span class="sc">$</span>year)  </span></code></pre></div>
+<p>さらに、この型を変換したデータyearをもとのデータフレームに容れます.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="マクロデータの取得.html#cb104-1" aria-hidden="true" tabindex="-1"></a>long_unemp<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(long_unemp<span class="sc">$</span>year)</span></code></pre></div>
+<p>これは次のような処理を行っています.as.interger（）関数を使ってデータフレームlong_unempの中のyear変数を整数型に変換し、その結果を割当演算子（←）を使ってデータフレームlong_unempの中のyear変数に割り当てます（置き換えます）.コンソール画面でstr(long_unemp)と入力し、エンターキーを押してみてください.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="マクロデータの取得.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(long_unemp)</span></code></pre></div>
+<pre><code>## tibble [120 × 3] (S3: tbl_df/tbl/data.frame)
+##  $ COUNTRY: chr [1:120] &quot;FRA&quot; &quot;FRA&quot; &quot;FRA&quot; &quot;FRA&quot; ...
+##  $ year   : int [1:120] 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 ...
+##  $ value  : num [1:120] 38.1 37.3 36.2 34.2 38.5 ...</code></pre>
+<p>図10の“$year : int”において理解されるように、変数yearは文字列型chrから整数型intに変わっています.intはintenger（整数）の略です.また文字列型の変数だったときには年数はすべて“”で囲まれていましたが、変数の型を変更した結果,""も消えています.</p>
+<p><strong>(3) 長期失業者のプロット―ggplot2による可視化</strong></p>
+<p>それでは４カ国の長期失業者のシェアの推移のグラフを描き、比較してみましょう.グラフの作成にあたってはRパッケージggplot2を利用します.</p>
+<p>ggplot2でのグラフの作成方法は,レイヤーをプラス記号（＋）で重ねて行くということがポイントです.最初のレイヤーはもっとも基本的なもので、グラフを描画するための座標平面を作成します.ここでは引数に、利用するデータフレーム名、aes()の中にx軸、y軸に採用するデータを指定します.長期失業者の推移を描くことが目的ですので、x軸の変数にはyear,y軸の変数には長期失業者のシェアvalueを指定します.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="マクロデータの取得.html#cb107-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="at">data =</span> long_unemp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y =</span> value))</span></code></pre></div>
+<p>これにデータを線で描画するために、geom_line()のレイヤーを重ねます.そのさい国ごとに異なった線種を使うためにlty =を利用し、lty = COUNTRYと指定します.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="マクロデータの取得.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">lty =</span> COUNTRY))</span></code></pre></div>
+<p>さらに、横軸、縦軸ラベルやタイトルを指定するためにlabs()レイヤーを重ねます.この例ではlabs()によってy軸のタイトル(y=)、サブタイトル（subtitle=）を指定しています.そして最後に、背景の種類を指定し、重ねています.背景はシンプルな白黒背景利用するためにtheme_bw()を使っています.すべてのコードをまとめると、以下のようになります. これを実行すると,グラフが描かれます.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="マクロデータの取得.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(long_unemp,<span class="fu">aes</span>(year,value))<span class="sc">+</span></span>
+<span id="cb109-2"><a href="マクロデータの取得.html#cb109-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">lty =</span> COUNTRY))<span class="sc">+</span></span>
+<span id="cb109-3"><a href="マクロデータの取得.html#cb109-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(</span>
+<span id="cb109-4"><a href="マクロデータの取得.html#cb109-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y=</span><span class="st">&quot;long-term unemployment (%)&quot;</span>,</span>
+<span id="cb109-5"><a href="マクロデータの取得.html#cb109-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">&quot;Share of long-term unemployment ( % of total ) &quot;</span></span>
+<span id="cb109-6"><a href="マクロデータの取得.html#cb109-6" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb109-7"><a href="マクロデータの取得.html#cb109-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="EconData_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p>このグラフから理解されるように、2000以前にはヨーロッパでは長期失業が高水準にあり、対照的に、日本とアメリカでは長期失業の水準は低い水準にあったことが分かります.しかし、この構図は1990年後半以降、変化しています.日本経済では長期失業者の割合が急速に高まり、ヨーロッパ水準に近づきつつあります.リーマンショックの影響でアメリカでも一時的に長期失業者が急増しますが、その後は急速に減少して行きます.しかし、日本では高止まりしていることが見て分かります.</p>
+<p>現在では、日本でもフランスやドイツのように、職を探し続けても１年以上仕事が見つからない人が３割～４割に達しています.そこで日本経済だけに注目し、さらに詳しくみて行くことにしましょう.長期失業者がどの年齢階層で増加しているのか、また男女別で相違はあるのか、という２つの問題を考えてみます.この問題に答えるために、以下のような３つのグラフを作成します.</p>
+<p>グラフのパネル(b)を見ると、長期失業者比率の動きには男女別でそれほど大きな違いは見られないようです.男女ともに長期失業者が1990年台中頃から上昇していきますが、男性正失業者は40パーセント台、女性失業者は20パーセント台で止まりつつあるようです.したがってこうした長期的な動向は男女に共通の要因―たとえば、政策の変化―が影響していると想像されます.しかし、両者の水準は大きく異なり,失業者に占める長期失業者の比率は男性労働者が女性労働者を大きく上回ります.これには男女間の求職意欲の相違、雇用形態の違い、産業別の男女別就業比率等、さまざまな性差に特有の要因が影響としていると思われます.</p>
+<p>パネル(c)は年齢別の推移を描いています.特徴的なのは65歳以上の高齢者層（6599）が他の年齢層に比べ一貫して高い水準にあったにもかかわらず、2020年に近づくにつれて減少してきたという点です.これと対照的に、1990年代から中核的な労働力層―25<sub>54歳（2554）,55</sub>64歳（5564）―の長期失業者比率が上昇してきています.失業の長期化は労働者の技能を引き下げると言われています.今後、この中核労働者層の失業が長期化すれば、労働者の技能の陳腐化ひいては生産性の停滞のいっそうの悪化へといたるかもしれません.</p>
+<p>パネル(a)(b)(c)のグラフの作成スクリプトを紹介しておきましょう.</p>
+<p><strong>パネル(a)</strong></p>
+<p>最初に、get_data()関数を利用し、日本経済の期間別失業者比率をダウンロードします.ここでは日本一カ国ですので、filter = list()の中に日本の国別コードJPNを指定するだけです.また、結果をunemp_jpというオブジェクトに格納します.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="マクロデータの取得.html#cb110-1" aria-hidden="true" tabindex="-1"></a>unemp_jp <span class="ot">&lt;-</span> <span class="fu">get_dataset</span>(<span class="st">&quot;DUR_I&quot;</span>, <span class="at">filter =</span> <span class="fu">list</span>(<span class="st">&quot;JPN&quot;</span>),<span class="at">start_time =</span> <span class="dv">1990</span>,<span class="at">end_time =</span> <span class="dv">2019</span>)</span></code></pre></div>
+<p>unemp_jpが基本のデータセットになります.最初に、性別、年齢別に関係のなく全体の長期失業者を抽出します.このため、filter()関数により長期失業者を指定します.これはDURATION変数の値が“UN5”と一致するものを選択します.次に、性別は全体ですので、SEX変数において両性の合計を示す“MW”を指定します.最後に、同じく年齢階層に関係なく全体を指定します.このためにAGE変数において値が“900000”のものを選択します.</p>
+<p>次に、select()関数によって必要な変数を取り出します.必要な変数はAGE, SEX, obsTime, obsValueの４つです.この４変数の名前をselect()関数の中に入力します.このさい、obsTime, obsValueの名前を、それぞれyear, valueという短い名前に変更しています.これはselect()関数の中で“新しい変数名 = 古い変数名”で変更できます.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="マクロデータの取得.html#cb111-1" aria-hidden="true" tabindex="-1"></a>long_unemp_jp_totl <span class="ot">&lt;-</span> unemp_jp <span class="sc">%&gt;%</span> </span>
+<span id="cb111-2"><a href="マクロデータの取得.html#cb111-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>,SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>,AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb111-3"><a href="マクロデータの取得.html#cb111-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(AGE,SEX,<span class="at">year =</span> obsTime, <span class="at">value =</span> obsValue) </span></code></pre></div>
+<p>最後に、以上の結果をlong_unemp_jp_totlというオブジェクトに格納します.しかし、１つだけ困ったことがあります.str(long_unemp_jp_totl)で確認できるように、year変数は数値データではなく、文字列データとなっています.そこでas.integer()関数を利用し、整数型に変更し、もとのyearに容れます.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="マクロデータの取得.html#cb112-1" aria-hidden="true" tabindex="-1"></a>    long_unemp_jp_totl<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(long_unemp_jp_totl<span class="sc">$</span>year)</span></code></pre></div>
+<p>long_unemp_jp_totl<span class="math inline">\(yearはデータフレームlong_unemp_jp_totlの中のyearを指定しています.“\)</span>”はデータフレームの中の特定の変数を指定するさいに利用する記号です.</p>
+<p>これでパネル(a)のグラフを描くためのデータセットが出来上がりました.グラフを描くためにはRパッケージggplot2を利用します.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="マクロデータの取得.html#cb113-1" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(long_unemp_jp_totl,<span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y=</span> value))<span class="sc">+</span></span>
+<span id="cb113-2"><a href="マクロデータの取得.html#cb113-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb113-3"><a href="マクロデータの取得.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="co">#　データの描画を線に指定  </span></span>
+<span id="cb113-4"><a href="マクロデータの取得.html#cb113-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>()<span class="sc">+</span>     </span>
+<span id="cb113-5"><a href="マクロデータの取得.html#cb113-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-6"><a href="マクロデータの取得.html#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  データの点の形をshape=によって描画する点の形を指定(2は三角形を意味する).</span></span>
+<span id="cb113-7"><a href="マクロデータの取得.html#cb113-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">2</span>)<span class="sc">+</span>     </span>
+<span id="cb113-8"><a href="マクロデータの取得.html#cb113-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-9"><a href="マクロデータの取得.html#cb113-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(</span>
+<span id="cb113-10"><a href="マクロデータの取得.html#cb113-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">y=</span><span class="st">&quot;long-term unemployment (%)&quot;</span>,</span>
+<span id="cb113-11"><a href="マクロデータの取得.html#cb113-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">subtitle =</span> <span class="st">&quot;(a) Total &quot;</span></span>
+<span id="cb113-12"><a href="マクロデータの取得.html#cb113-12" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">+</span></span>
+<span id="cb113-13"><a href="マクロデータの取得.html#cb113-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p>ここではggplot2を利用して描いたグラフを“total &lt;-”によって、totalという名前をつけたオブジェクトに格納しています.グラフをtotalというオブジェクトに入れましたのですぐにはグラフは出力されません.グラフを表示させるにはコンソール画面にグラフのオブジェクト名totalと入力し、エンターキーを押すか、スクリプト画面に同じようにtotalと入力し、実行[Run]する必要があります.</p>
+<p><strong>パネル(b)</strong>
+パネル(b)は性別の長期失業者比率を描きます.このためfilter()関数によって長期失業者を抽出し、両性の合計を除外し、また年齢別も無関係ですので総数の値（行）だけを抽出します.</p>
+<p>長期失業者の抽出にはDURATION変数で“UN5”の値を指定します.次に性別が重要ですので、両方の性の合計を示す“MW”をSEX変数から除外します.このためには「SEX == “MW”」の前に「!」（論理演算子の否定）をつけておきます.これによってSEX変数から両性の合計を示すの値（行）が除外されます.最後に、AGE変数のうち総数を示す値“900000”を指定します.この結果filter()関数の引数は以下のようになります.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="マクロデータの取得.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>,<span class="sc">!</span>SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>,AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>)</span></code></pre></div>
+<p>次に、select()関数によってグラフ作成に必要な変数だけを選択します.そのさいあわせて変数の名前も変更しておきます.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="マクロデータの取得.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(AGE,SEX,<span class="at">year =</span> obsTime, <span class="at">value =</span> obsValue）</span></code></pre></div>
+<p>以上をパイプ(%)でつなげて全体を書くと次のようになります.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="マクロデータの取得.html#cb116-1" aria-hidden="true" tabindex="-1"></a>long_unemp_jp_sex <span class="ot">&lt;-</span> unemp_jp <span class="sc">%&gt;%</span> </span>
+<span id="cb116-2"><a href="マクロデータの取得.html#cb116-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>,<span class="sc">!</span>SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>,AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb116-3"><a href="マクロデータの取得.html#cb116-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(AGE,SEX,<span class="at">year =</span> obsTime,<span class="at">value =</span> obsValue) </span></code></pre></div>
+<p>ここでもyear変数の型は文字列となっています.そこでas.integer()関数を利用し、整数型に変更し、もとのyearに容れます.</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="マクロデータの取得.html#cb117-1" aria-hidden="true" tabindex="-1"></a>    long_unemp_jp_sex<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(long_unemp_jp_sex<span class="sc">$</span>year)</span></code></pre></div>
+<p>これでパネル（b）のグラフ作成に必要なデータフレームlong_unemp_jp_sexが出来上がりました.残りの作業はパネル(a)の作成と同じように、ggplot2を利用し作成します.ここでは出来上がったグラフをsexというオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="マクロデータの取得.html#cb118-1" aria-hidden="true" tabindex="-1"></a>sex<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(long_unemp_jp_sex,<span class="fu">aes</span>(<span class="at">x =</span> year,<span class="at">y=</span> value))<span class="sc">+</span></span>
+<span id="cb118-2"><a href="マクロデータの取得.html#cb118-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">lty =</span> SEX))<span class="sc">+</span></span>
+<span id="cb118-3"><a href="マクロデータの取得.html#cb118-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb118-4"><a href="マクロデータの取得.html#cb118-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">y=</span><span class="st">&quot;long-term unemployment (%)&quot;</span>,</span>
+<span id="cb118-5"><a href="マクロデータの取得.html#cb118-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">subtitle =</span> <span class="st">&quot;(b) by Sex &quot;</span></span>
+<span id="cb118-6"><a href="マクロデータの取得.html#cb118-6" aria-hidden="true" tabindex="-1"></a>                         )<span class="sc">+</span></span>
+<span id="cb118-7"><a href="マクロデータの取得.html#cb118-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><strong>パネル(c)</strong></p>
+<p>パネル(c)は年齢階層別の長期失業者比率を描きます.このためfilter()関数によってDURATION変数のうち長期失業者の値・行（“UN5”）、両性の合計を示す値・行（“MW”）を抽出します.ここで年齢階層が重要ですので、AGE変数のうち総数を示す値・行（“900000”）を除外します.これを実行するfilter（）関数は次のようになります.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="マクロデータの取得.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>,SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>,<span class="sc">!</span>AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>)</span></code></pre></div>
+<p>残りのスクリプトはパネル(a)(b)と同じです.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="マクロデータの取得.html#cb120-1" aria-hidden="true" tabindex="-1"></a>long_unemp_jp_age <span class="ot">&lt;-</span> unemp_jp <span class="sc">%&gt;%</span> </span>
+<span id="cb120-2"><a href="マクロデータの取得.html#cb120-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(DURATION <span class="sc">==</span> <span class="st">&quot;UN5&quot;</span>,SEX <span class="sc">==</span> <span class="st">&quot;MW&quot;</span>,<span class="sc">!</span>AGE <span class="sc">==</span> <span class="st">&quot;900000&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-3"><a href="マクロデータの取得.html#cb120-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(AGE,SEX,<span class="at">year =</span> obsTime, <span class="at">value =</span> obsValue) </span>
+<span id="cb120-4"><a href="マクロデータの取得.html#cb120-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb120-5"><a href="マクロデータの取得.html#cb120-5" aria-hidden="true" tabindex="-1"></a>long_unemp_jp_age<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(long_unemp_jp_age<span class="sc">$</span>year)</span></code></pre></div>
+<p>グラフ作成のためのスクリプトも同じです.ここではggplot2作成されたグラフはageというオブジェクトに格納されています.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="マクロデータの取得.html#cb121-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(long_unemp_jp_age,<span class="fu">aes</span>(year,value))<span class="sc">+</span></span>
+<span id="cb121-2"><a href="マクロデータの取得.html#cb121-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">lty =</span> AGE))<span class="sc">+</span></span>
+<span id="cb121-3"><a href="マクロデータの取得.html#cb121-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> AGE))<span class="sc">+</span></span>
+<span id="cb121-4"><a href="マクロデータの取得.html#cb121-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(</span>
+<span id="cb121-5"><a href="マクロデータの取得.html#cb121-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">y=</span><span class="st">&quot;long-term unemployment (%)&quot;</span>,</span>
+<span id="cb121-6"><a href="マクロデータの取得.html#cb121-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">subtitle =</span> <span class="st">&quot;(c) by Age &quot;</span></span>
+<span id="cb121-7"><a href="マクロデータの取得.html#cb121-7" aria-hidden="true" tabindex="-1"></a>                             )<span class="sc">+</span></span>
+<span id="cb121-8"><a href="マクロデータの取得.html#cb121-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><strong>３つのグラフのレイアウト- patchwork</strong></p>
+<p>３つのグラフはそれぞれtotal, sex, ageというオブジェクトに入っています.コンソール画面もしくはスクリプト画面にグラフを格納したオブジェクト名を入力し、エンターキーを押すか、実行[Run]すれば、plotウインドウにグラフが出力されます.</p>
+<p>３つのグラフのレイアウトを整えるために、ここではRパッケージpatchwork を利用しています.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="マクロデータの取得.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># patchworkのインストール</span></span>
+<span id="cb122-2"><a href="マクロデータの取得.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;patchwork&quot;</span>) </span>
+<span id="cb122-3"><a href="マクロデータの取得.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># patchworkの呼び出し</span></span>
+<span id="cb122-4"><a href="マクロデータの取得.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)            </span></code></pre></div>
+<p>使い方はとても簡単です.グラフを２つ横に並べて描きたい場合にはグラフのオブジェクト名をプラス記号（＋）でつなげるだけです.たとえば、sex+ageと入力し、実行[Run]します.積み重ねたい場合は割り算記号（/）を使います.また、横に配置したい場合はパイプライン記号（｜）を使います.次のように入力することでレイアウトを決定しています.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="マクロデータの取得.html#cb123-1" aria-hidden="true" tabindex="-1"></a>total<span class="sc">|</span>sex<span class="sc">/</span>age</span></code></pre></div>
+<p><img src="EconData_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+</div>
+<div id="応用例時系列データの分析" class="section level3" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> 応用例―時系列データの分析</h3>
+<p>次に日本経済の為替レートデータを使って簡単な時系列分析を行ってみましょう.</p>
+<p><strong>(1)為替レートデータの取得</strong></p>
+<p>最初に、get_dataset()関数を使って日本円の為替レート（1ドルの円表記）データをダウンロードします.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="マクロデータの取得.html#cb124-1" aria-hidden="true" tabindex="-1"></a>exchangeRate <span class="ot">&lt;-</span>  <span class="fu">get_dataset</span>(<span class="st">&quot;REFSERIES_MSIT&quot;</span>,<span class="at">filter =</span> <span class="fu">list</span>(<span class="st">&quot;JPN&quot;</span>), </span>
+<span id="cb124-2"><a href="マクロデータの取得.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="at">start_time =</span> <span class="dv">1990</span>, <span class="at">end_time =</span> <span class="dv">2018</span>)</span></code></pre></div>
+<p>head()関数でデータフレームexchangeRateの内容を表示させると、４つの変数の存在が分かりますが、ここで必要なのは観察時点と観察値だけです.そこでselect()関数を使って２つの変数だけを選択します.また、観察時点は、年次、４半期および月次が混在しているようです.そこでfilter()関数を使って月次データだけを取り出すことにします.filter()関数を適用するさいに、注意しないといけないのはobsTime変数が文字列型だということです.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="マクロデータの取得.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exchangeRate)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   COU   TIME_FORMAT obsTime obsValue
+##   &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;dbl&gt;
+## 1 JPN   P1Y         1990        145.
+## 2 JPN   P1Y         1990-Q1     148.
+## 3 JPN   P1Y         1990-01     145.
+## 4 JPN   P1Y         1990-02     146.
+## 5 JPN   P1Y         1990-03     153.
+## 6 JPN   P1Y         1990-Q2     155.</code></pre>
+<p>以下のスクリプトではselect()関数で２つの変数列―obsTimeとobsValue―選択し、さらにfilter()関数で月次データの行だけを取り出しています.この結果はhead(exchangeRate_jpn)で確認できます.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="マクロデータの取得.html#cb127-1" aria-hidden="true" tabindex="-1"></a>exchangeRate_jpn <span class="ot">&lt;-</span> exchangeRate <span class="sc">%&gt;%</span> </span>
+<span id="cb127-2"><a href="マクロデータの取得.html#cb127-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(obsTime, obsValue) <span class="sc">%&gt;%</span> </span>
+<span id="cb127-3"><a href="マクロデータの取得.html#cb127-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span>(<span class="fu">str_detect</span>(obsTime,<span class="st">&quot;-&quot;</span>),<span class="sc">!</span><span class="fu">str_detect</span>(obsTime,<span class="st">&quot;Q&quot;</span>)) </span></code></pre></div>
+<p>このコードでは、最初にselect(obsTime,obsValue)を使って２つの変数列―obsTime, obsValue―を抽出しています.次に、filter()関数によって月次データの行だけを抽出しています.</p>
+<p>filter()関数では2つの抽出条件を入力しています.月次データは“1990-01”のようにハイフンをもったデータです.最初の条件はそこに注目し、obsTime変数のうちハイフン記号（“-”）を持つ値（行）だけを抽出しています.ここで特定の文字列を探すstr_detect()関数を利用しています.関数の書式はstr_detect(対象となる変数名,“探す文字列”)ですので、str_detect(obsTime, “-”)としています.しかし、この抽出条件だけでは“-Q3”といったようなハイフン記号つき四半期データも抽出されてしまいます.そこで第２の抽出条件str_detect(obsTime,”Q”)によってobsTime変数の値（行）のうち“Q”を有するデータを抽出し、その前に否定を意味する“!”を付けることによって四半期データを示すデータ―Q1,Q2,Q3,Q4つきデータ―の値（行）を除外しています.</p>
+<p>一連の処理はパイプ（%&gt;%）でつなげてあり、最終的に、結果をexchangeRate_jpnというオブジェクトに格納しています.str()でこの結果を表示してみましょう.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="マクロデータの取得.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(exchangeRate_jpn)</span></code></pre></div>
+<pre><code>## tibble [288 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ obsTime : chr [1:288] &quot;1990-01&quot; &quot;1990-02&quot; &quot;1990-03&quot; &quot;1990-04&quot; ...
+##  $ obsValue: num [1:288] 145 146 153 158 154 ...</code></pre>
+<p>データセットは288行×2列からなることが分かります.</p>
+<p><strong>(２)　クラスの変更―data.frameクラスからtsクラスへ</strong></p>
+<p>コンソール画面にclass(exchangeRate_jpn)と入力し、エンターキーを押してみてください.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="マクロデータの取得.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(exchangeRate_jpn)</span></code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<p>class()関数はオブジェクトexchangeRate_jpnがどのクラスに属するかを表示します.出力結果―[1] “tbl_df,” “tbl,” “data.frame”― はこのexchangeRate_jpnがデータフレームのクラスに属することを示しています.</p>
+<p>オブジェクトはクラスという属性を持ちます.Rの統計関数の多くはジェネリック型generictと呼ばれる関数です.クラスはこのジェネリック関数を使うさいに利用されます.summary()やplot()といった頻繁に利用される関数もジェネリック関数です.ジェネリック関数summary()は要約作成関数ですが、たとえば、hist()の出力に対してsummary()関数を使うと、それに合わせた要約を作成し、回帰関数lm()の出力に対してsummary()を呼び出すと、lm()に適した要約を作成します.つまり、Rはオブジェクトのクラスを基礎に、そのクラスに適した形でジェネリック関数をオブジェクトに適用します.plot()関数もジェネリック関数ですので、ほぼすべてのRオブジェクトに使うことができます.Rはオブジェクトのクラスを基礎に適切なプロット関数を見つけ出します.Rがオブジェクト指向言語と呼ばれる所以です.</p>
+<p>この例でのオブジェクトexchangeRate_jpnは、上の出力結果が示すように、データフレームに属するクラスです.時系列データを扱うにはデータフレームクラスよりもts(もしくはxts)というクラスが便利です.そこでexchangeRate_jpnのクラスを変更することにします.時系列オブジェクトを作成するには関数ts() を用います. この関数の基本的な用法は次のようになります.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="マクロデータの取得.html#cb132-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ts</span>(<span class="at">data =</span> , <span class="at">start =</span> , <span class="at">end =</span> , <span class="at">frequency =</span> )</span></code></pre></div>
+<p>基本的な引数は次の３つです.</p>
+<ul>
+<li>data = 観測された時系列値のベクトルまたは行列を指定．</li>
+<li>start = 最初の観測の時刻を指定します.</li>
+<li>end = startと同じ方法で指定された最後の観測時刻.</li>
+<li>frequency = 単位時間あたりの観察値の数</li>
+</ul>
+<p>為替レートの値(exchagneRate_jpnの中のobsValue)をtsクラスに変換し,その結果をyen_exchangeRateに容れます.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="マクロデータの取得.html#cb133-1" aria-hidden="true" tabindex="-1"></a>yen_exchangeRate <span class="ot">&lt;-</span> <span class="fu">ts</span>(<span class="at">data =</span> exchangeRate_jpn<span class="sc">$</span>obsValue, <span class="at">start =</span> <span class="dv">1990</span>, <span class="at">end =</span> <span class="dv">2019</span>, <span class="at">frequency =</span><span class="dv">12</span>)</span></code></pre></div>
+<p>これで時系列データが作成されました.class(yen_exchangeRate)で確認すると、オブジェクトyen_exchangeRateがtsクラスに属することが分かります.</p>
+<p><strong>(3)RパッケージTSstudioを利用した時系列データ分析</strong></p>
+<p>それでは日本経済の為替レートの時系列データyen_exchangeRateを分析してみましょう.そのために時系列データ分析用RパッケージTSstudioを利用することにします.最初に、このパッケージをインストールします.コンソール画面に次のように入力し、エンターキーを押してください.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="マクロデータの取得.html#cb134-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;TSstudio&quot;</span>)  </span></code></pre></div>
+<p>さらに、library()関数を使い呼び出します.スクリプト画面に次のように入力し、実行[Run]します.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="マクロデータの取得.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TSstudio)</span></code></pre></div>
+<p>これでTSstudioに用意されているさまざまな時系列データ分析ツールが利用できるようになりました.最初に、為替レートの時系列データyen_exchangeRateの情報を取得してみましょう.このためにはts_info()関数を用い、引数に時系列データ名を入力するだけです.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="マクロデータの取得.html#cb136-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ts_info</span>(yen_exchangeRate)</span></code></pre></div>
+<pre><code>##  The yen_exchangeRate series is a ts object with 1 variable and 349 observations
+##  Frequency: 12 
+##  Start time: 1990 1 
+##  End time: 2019 1</code></pre>
+<p>この結果、時系列データに関する情報がコンソール画面に出力されます.</p>
+<p>次に、為替レートをプロットしてみましょう.この処理はts_plot()関数を利用するだけです.用法は通常のplot()関数と同じです.このコードを実行[Run]することにより、プロット画面に以下の図が出力されます.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="マクロデータの取得.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_plot</span>(yen_exchangeRate)</span></code></pre></div>
+<p>為替レートの推移をみると、2010年台後半より急激にドルに対して円が低下してきていることが分かります.時期的には、第2次安倍政権の誕生(2012年12月)の時期に一致しています.同内閣が採用した異次元の金融緩和政策が功を奏した結果と思われます.</p>
+<p>時系列データの分析の目的には、たとえば、季節パタンがあるか、トレンドはどのようになっているか、構造変化は発生しているか、といった問題に答えることがあげられます.こうした問題に答えるために、時系列データを分解してみましょう.このためにts_decompose()関数を利用します.この関数は時系列データを、トレンド成分、季節成分、およびランダム成分に分解し、各成分を可視化します.基本的なコードは以下のとおりです.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="マクロデータの取得.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_decompose</span>(ts.obj, <span class="at">type =</span> “”, <span class="at">showline =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>この関数は３つの引数を取ります.</p>
+<ul>
+<li>ts.objの箇所には時系列データ名を入力します.ただし、ここにはtsクラスに属するオブジェクトでなければなりません.オブジェクトのクラスを変更したのはこのためです.</li>
+<li>typ = “”は季節成分のタイプを設定します.“additive（加法）,”“multiplicative（乗法）,” “both（両者）”のいずれかを選択できます.デフォルト（既定値）はadditive（加法）です.</li>
+<li>showline = は論理値をとり、プロット間に分離線を追加します（デフォルト（既定値）はTRUEです）.</li>
+</ul>
+<p>ここでは引数は時系列データの指定以外、既定値を利用し、次のように入力します.すると、以下の図29を得ることができます.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="マクロデータの取得.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_decompose</span>(yen_exchangeRate)</span></code></pre></div>
+<p>為替レートの変動はトレンドを見ると、1990年台前半には低下傾向を示し、その後2000年台半ばまで上昇し、安定しているようです.しかし、2000年台半ばから低下傾向に入り、2010年台初頭に急激に上昇していることが理解されます.為替レートの変動はトレンドによって説明されるようです.また、当然ですが、季節に特有のパタンを見出すことも難しいようです.つまり、年を超えて、同一の季節変動パタンは存在しないようです.この点を確認するために、時系列の季節パタンと時系列推移のグラフを描いてみましょう.</p>
+<p>以下の図はts_surface()関数を利用して描いたグラフです.この図はx軸に年、y軸に月、z軸に為替レートを描いた図です.ここにおいて理解されるように、1990年から2019年をつうじて類似した季節変動パタンは存在しないようです.</p>
+<p>ts_surface()関数の利用法は次のようになります.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="マクロデータの取得.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_surface</span>(ts.obj)</span></code></pre></div>
+<p>関数の引数ts.objに時系列データ名を入力するだけです.ただし、この場合も時系列データはtsクラスのオブジェクトでなければなりません.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="マクロデータの取得.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_surface</span>(yen_exchangeRate)</span></code></pre></div>
+<p>通常のデータの基本的な特徴を表す統計量として分散や相関があります.これと同じように時系列データの特徴を捉える自己相関と自己共分散と呼ばれる統計量があります.</p>
+<p>自己相関(autocorrelation)とは、異なる時点での同一変数（時系列データ）の相関係数です.たとえば、今月の為替レートは１月前の為替レートと関連しているかどうか、ということを自己相関は示します.したがって今月の為替レートと先月のそれとの間に大きな正の自己相関が観察されれば、１月前の為替レートが高いとき、今月の為替レートも高くなることが理解できます.</p>
+<p>TSstudioには自己相関係数をグラフ化するçが用意されています.ts_cor()関数を実行すると、縦軸に自己相関係数、横軸にラグ―１ヶ月前、２ヶ月前、３ヶ月前…― をとったいわゆるコレログラムCorrelogramと呼ばれるグラフが出力されます.ts_cor()関数の基本的な書き方は次のようになります.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="マクロデータの取得.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_cor</span>(ts.obj, <span class="at">type =</span> <span class="st">&quot;both&quot;</span>, <span class="at">seasonal =</span> <span class="cn">TRUE</span>, <span class="at">ci =</span> <span class="fl">0.95</span>,</span>
+<span id="cb143-2"><a href="マクロデータの取得.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">lag.max =</span> <span class="cn">NULL</span>, <span class="at">seasonal_lags =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<ul>
+<li>ts.ob この引数にはtsクラスの時系列データを指定します.</li>
+<li>type = "“:”"にacf,pacf,あるいはbothの文字列を入力します.これによって出力させるグラフを指定します</li>
+<li>acfはACF（自己相関係数）,　pacfはPACF（偏自己相関係数）をプロットします.両者をプロットさせたい場合はboth（デフォルト既定値）を指定します.</li>
+<li>seasonal = : =にブール値を入力します.TRUE（デフォルト既定値）の場合、季節ラグを色付けします.</li>
+<li>ci =: 推定値の有意水準(0から1の間の数値)を指定します.　デフォルト（既定値）は0.95に設定されています</li>
+<li>lag.max = : acfを計算するための最大ラグを指定. デフォルト（既定値）は 10*log10(N/m). ここで N は観察値の数であり，m は系列の数です．系列内の観察値数よりも1つ少ない値に自動的に制限されます.</li>
+<li>seasonal_lags =: 整数のベクトルをとり、（系列の主要な季節的ラグの他に）特定の周期的なラグを強調します．たとえば、月次系列（頻度12）の場合、引数を3に設定すると、四半期のラグが強調されます.</li>
+</ul>
+<p>それではts_cor()関数を利用し、日本経済の為替レートのコレログラムを描いてみましょう.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="マクロデータの取得.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_cor</span>(yen_exchangeRate,<span class="at">type =</span> <span class="st">&quot;acf&quot;</span>)</span></code></pre></div>
+<p>ここではtype引数にacfを指定している以外、既定値を利用しています.これを実行すると、図31のグラフが出力されます.</p>
+<p>ラグがゼロのときは今月の為替レートと今月の為替レートの相関をとることになりますので、言うまでもなく、１になります.コレログラムからわかるように、ある月 の値が大きければ、その１ヶ月後の値も大きくなっています.そのために、連続する ２ヶ月間の自己相関が高いことが分かります.しかし、タイムラグを長くなるにつれて、自己相関は徐々に低下して行きます.</p>
+<p>ts_cor()関数の出力結果で観察されるように、為替レート系列は直近の為替レート系列と強い線形関係を持っていることが分かります.系列とそのラグの関係は,系列とそのラグの間の相関関係をグラフ化するts_lags()関数を使うことでより直感的に確認できます.ts_lags()関数の基本的なコードは以下のようになります.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="マクロデータの取得.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_lags</span>(ts.obj, <span class="at">lags =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>,<span class="at">n_plots =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>ts.obj にはtsクラスの時系列データを指定します.
+lags = ラグの範囲を指定する整数値を入力します.デフォルト（既定値）は12です. n_plots = 1行あたりのプロット数を指定する整数値を入力します.</p>
+<p>それではラグの値を３ヶ月、６ヶ月、12ヶ月、そして24ヶ月に指定し、グラフを描いてみましょう.１から12のラグを連続的に指定するには“1:12”を使うことでできますが、４つのラグを指定する場合にはc（）を使います.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="マクロデータの取得.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_lags</span>(yen_exchangeRate,<span class="at">lags =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">12</span>,<span class="dv">24</span>))</span></code></pre></div>
+<p>これを実行すると、図32の為替レートデータ系列とそのラグ―４つのラグ―との相関が出力されます.図から理解されるように、lag 3でもlag 6でもかなり強い相関があることが視覚的に理解できます.しかし、lag 12でも相関の存在を見ることができるものの、両者の相関はかなり弱くなっています.lag 24になると、ほとんど相関は観察されません.</p>
+<p>本項では時系列データの簡単な分析方法―基本的に記述的分析―を紹介してきました.あわせてR言語におけるクラスという概念も紹介しました.オブジェクトはすべてクラスという属性を持ち、それがジェネリック関数の利用にあたって重要な役割を果たすことも理解できたと思います.</p>
+</div>
+</div>
+<div id="金融データを取得する-imf-bis" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> 金融データを取得する ― IMF &amp; BIS</h2>
+</div>
+<div id="dbnomics" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> DBnomics</h2>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>詳細については，<a href="http://www.ggdc.net/pwt/" class="uri">http://www.ggdc.net/pwt/</a> で提供されている Feenstra, Inklaar, and Timmer (2016, 2015) を参照してください．<a href="マクロデータの取得.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Rにはdiff()という差分をとる関数がありますが，diff()は差分計算できない最初の値を除いた値を返すため，mutate()で変数を追加しようとすると，エラーになります．<a href="マクロデータの取得.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ミクロデータ.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

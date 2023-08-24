@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 6 SNSデータ &amp; テキスト分析 - tidytext | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content=" 6 SNSデータ &amp; テキスト分析 - tidytext | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 6 SNSデータ &amp; テキスト分析 - tidytext | 資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 6 SNSデータ &amp; テキスト分析 - tidytext | 資料 Rで社会経済データの取得　(work in progress)" />
+  
+  
+  
+
+<meta name="author" content="Socio-Econ" />
+
+
+<meta name="date" content="2021-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="covid-19と政策対応.html"/>
+
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#本資料の目的"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#社会経済データベース"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#groningen-growth-and-development-centre"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="マクロデータ.html"><a href="マクロデータ.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt9</a></li>
+<li class="chapter" data-level="2.1.2" data-path="マクロデータ.html"><a href="マクロデータ.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#WD"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#EC"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#OECD"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#事前準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 事前準備-ESSの認証とインストール</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数とデータのダウンロード方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">資料 Rで社会経済データの取得　(work in progress)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="snsデータ-テキスト分析---tidytext" class="section level1" number="6">
+<h1><span class="header-section-number"> 6</span> SNSデータ &amp; テキスト分析 - tidytext</h1>
+<p>ときには暴力的にもなり,悲惨な結果をもたらすこともありますが,ソーシャルメディア（以下,SNS）は今では１人ひとりが自分の「声」を社会に発信するための人気のメディアとなっています.SNSは,良い意味でも悪い意味でも,マスメディアのフィルターを通さないため,よりストレートに人々の声を伝えることができます.</p>
+<p>SNSのデータは一般的に,個々のユーザーが作成し,公開プラットフォームを使用して収集されます.これらの公開プラットフォームには,Twitter,Google,Facebook,InstagramなどのSNSが含まれます.こうして収集されたSNSのデータは,経済,政治などの社会の出来事や自然災害などについて,ほぼリアルタイムで発信される人々の考え,言いかえれば今現在の「社会」の声を知る上で有益な情報ソースとなっています.</p>
+<p>SNSを通して新型コロナウィルスに対する「社会」の声を聞く方法をとりあげます.人々がどの程度新型コロナウィルスに関心を持っているのか,また新型コロナウィルスはどのように受け止められているのか等,こうした点を知るために,SNSで発せられたテキストをRを使って分析します.これにより,新型コロナウィルスに関する「社会」の声の一端を理解できると思います.</p>
+<div id="社会の関心を知る---gtrendsr" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> 「社会」の関心を知る - gtrendsR</h2>
+<p>人々は新型コロナウィルスにどれほど関心を寄せているのでしょうか.これを知るために,さまざまな機関が行うアンケート調査からマスメディが実施する大規模な世論調査にまで及ぶ,さまざまな調査が利用可能です.こうした調査は有益な情報を提供し,自治体・政府の政策立案の基礎となることもあります.しかし,こうした調査は信頼性が高いものの,リアルタイムで人々の関心を知るにはどうしても遅れますし,「生」の声 - 調査機関,マス・メディアのフィルターを通さない声-を知るには限界があります.</p>
+<p>わたしたちは常日頃,何かに対する情報を知りたいとき,インターネット検索を行っています.その意味では検索はわたしたちの関心を示していると言っても良いでしょう.インターネット検索の巨人は,言うまでもなく,Googleです.Googleは膨大な検索データを蓄積していますが,これをもとに<a href="https://trends.google.com/trends/?geo=JP">Googleトレンド</a>と呼ばれるサービスを提供しています.Googleトレンドは人々の関心を知る上で強力なツール です.トレンドの計算にあたっては検索のピーク時を100としたときの相対指数です.したがって数値の大きさは検索条件を変更すると変わってしまうことに留意する必要があります.</p>
+<p>Googleトレンドでは,地域,期間を指定し,任意の検索キーワードの相対的な人気の程度の推移を調べることができます.Rには,こうしたGoogleトレンドのデータを取得するパッケージgtrendsRやtrendyが開発されています.
+本資料ではgtrendsRを利用します.それではこのパッケージをインストールし,新型コロナウィルスに対する人々の関心を見ることにしましょう.インストールするためにはコンソール画面に次のように入力し,エンターキーを押してください.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="snsデータ-テキスト分析-tidytext.html#cb319-1" aria-hidden="true" tabindex="-1"></a>    install. <span class="fu">packages</span>(<span class="st">&quot;gtrendsR&quot;</span>)</span></code></pre></div>
+<p>次にこのパッケージを利用するために,スクリプト画面に</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="snsデータ-テキスト分析-tidytext.html#cb320-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">library</span>(gtrendsR)</span></code></pre></div>
+<p>と入力し,[Run]をクリックします.これでgtrendsRを利用できます.最初に,Googleトレンドページでも調べることができますが,特定のキーワードを検索し,その推移を見てみましょう.このためのgtrendsRの基本的なコードは次のようになります.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="snsデータ-テキスト分析-tidytext.html#cb321-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gtrends</span>(<span class="at">keyword=</span><span class="st">&quot;&quot;</span>, <span class="at">geo =</span><span class="st">&quot;&quot;</span>, <span class="at">time =</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<ul>
+<li>keyword=“ ”には検索キーワードを入力します.複数のキーワードを入力したい場合はc( )を使い,たとえば,keywords = c(“新型コロナウィルス”,”抗原検査”)と入力します.</li>
+<li>geo= “ ”ではiso２コードを使って検索地域を指定します.デフォルトではall,つまり全世界です.複数の地域を指定したい場合は,同じくc( )を使います.たとえば,日本,アメリカ,中国を指定したい場合,geo=c(“JP”,”US”,”CN”)と入力します.</li>
+<li>time=“ ”によって検索期間を指定できます.たとえば,
+<ul>
+<li>過去４時間の場合はtime =“now 4-H”</li>
+<li>過去7日間の場合はtime = “now 7-d”</li>
+<li>過去３ヶ月の場合はtime = “today 3-m”</li>
+<li>過去5年間の場合はtime = “today + 5-y”</li>
+<li>任意の期間指定の場合, “Y-m-d Y-m-d”を使います.たとえば,2019年6月27日から2020年1月21日までを指定したい場合,time = “2019-06-27 2020-01-21”と入力します.</li>
+</ul></li>
+</ul>
+<p>それではgtrendsRを使って,キーワードを「COVID-19」,「PCR」,「AKB」,地域を「日本」,期間を「2020年1月21日から2021年8月13日」とし,検索トレンドをみてみましょう.「AKB」は比較のために入れていますが,国民的アイドルを凌ぐ「COVID-19」と「PCR」の「相対的な人気」が分かります.スクリプト画面に次のように入力し,実行[Run]してください.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="snsデータ-テキスト分析-tidytext.html#cb322-1" aria-hidden="true" tabindex="-1"></a>    trend <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="at">keyword=</span><span class="fu">c</span>(<span class="st">&quot;COVID-19&quot;</span>,<span class="st">&quot;PCR&quot;</span>,<span class="st">&quot;AKB&quot;</span>), <span class="at">geo=</span><span class="st">&quot;JP&quot;</span>, <span class="at">time =</span> <span class="st">&quot;2020-01-21 2021-08-18&quot;</span>)</span></code></pre></div>
+<p>この例では結果をtrendという名前をつけたオブジェクトに容れています.</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="snsデータ-テキスト分析-tidytext.html#cb323-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(trend)</span></code></pre></div>
+<pre><code>##                     Length Class      Mode
+## interest_over_time  7      data.frame list
+## interest_by_country 0      -none-     NULL
+## interest_by_region  5      data.frame list
+## interest_by_dma     0      -none-     NULL
+## interest_by_city    5      data.frame list
+## related_topics      0      -none-     NULL
+## related_queries     6      data.frame list</code></pre>
+<p>を実行すると,オブジェクトリストが表示されます.</p>
+<p>summary()で確認されたtrendの中には上記のようなデータフレームが含まれています.</p>
+<ul>
+<li>interest_over_timeは時間を通じた関心であり,検索キーワードの期間のヒット数を示すデータフレームです.</li>
+<li>interest_by_regionは地域ごとの関心を示すデータフレームです.</li>
+<li>interest_by_cityは同様に都市ごとの関心を示すデータフレームです.</li>
+<li>related_queriesは関連した検索語が入ったデータフレームです.</li>
+</ul>
+<p>この他,国ごとのデータ,DMAごとのデータ,関連したトピックごとのデータもありますが,ここでの例では国をJP,複数の検索ワードを指定したために,いずれもNULL（データなし）となっています.オブジェクトtrendの中のinterest_over_time（時間を通じた関心）はgtrendsRの中のplot.gtrends関数によって簡単にグラフ化できます.次のように入力してみてください.以下のようなグラフが表示されます.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="snsデータ-テキスト分析-tidytext.html#cb325-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(trend)</span></code></pre></div>
+<p><img src="EconData_files/figure-html/g5-1.png" width="672" /></p>
+<p>新型コロナウィルスの拡大以前には人々の関心は,新型コロナウィルスよりも,国民的人気アイドルAKBにあったことが分かります.しかし,3月末から4月初頭にCOVID-19に対する関心は急上昇します.PCR検査はいったん2月末に大きな関心を呼びます.これはおそらくダイヤモンドプリンセス号の新型コロナウィルスの集団発生に起因すると思われます.</p>
+<p>その後,PCRに対するヒット数も低下しますが,しかし感染者数が拡大するにつれて,4月にふたたび大きく注目されています.興味深いことにPCR検査の「人気」はパンデミックの波と一致しているようです.それに対してCOVID-19の「人気」は2020年代半ばに低下し、以後、一貫して低い水準にとどまります.これは人々がCOVID-19に慣れ、関心を失って来ていることを物語っているのかもしれません.AKBの人気が大幅に伸びていくことを期待したいものです.</p>
+</div>
+<div id="社会の声を集める---rtweet" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> 「社会」の声を集める - rtweet</h2>
+<p>ツイッターをつうじて,新型コロナウィルスに関する社会の声を集めることにします.Rにはツイッターからデータを収集する便利なパッケージrtweetが開発されています.他にもtwitteRというパッケージもありますが,今ではrtweetがツイッター・データにアクセするための標準的ツールとなりつつあります.</p>
+<p>ツイッター情報を取得するためには,API(Application Programming Interface)認証という面倒な事前準備が必要でしたが,rtweetを利用することで,必要なのはTwitterアカウント(ユーザー名とパスワード)だけとなりました.認証を受けるには,Rの対話型セッション中にTwitterのAPIにリクエストを送るだけです.つまり,<strong>search_tweets()</strong>,<strong>get_timeline()</strong>などのrtweetパッケージの関数を使用するだけです.自分のTwitterアカウントに代わってWebブラウザのポップアップから認証を行うことができます.これによりトークン（パスワード生成）が作成され,今後の利用のために保存されます.</p>
+<p>ツイッターデータ収集のために,rtweetは多くの関数を提供しています.たとえば,現在の日本のトレンドを知りたい場合は次のように入力します.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="snsデータ-テキスト分析-tidytext.html#cb326-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_trends</span>(<span class="st">&quot;japan&quot;</span>)</span></code></pre></div>
+<p>収集されたトレンドワードをみてみましょう.</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="snsデータ-テキスト分析-tidytext.html#cb327-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">get_trends</span>(<span class="st">&quot;japan&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb327-2"><a href="snsデータ-テキスト分析-tidytext.html#cb327-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(trend) <span class="sc">%&gt;%</span> </span>
+<span id="cb327-3"><a href="snsデータ-テキスト分析-tidytext.html#cb327-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 1
+##   trend                
+##   &lt;chr&gt;                
+## 1 親子3人全員          
+## 2 #おやつがどっさり届く
+## 3 ゲリラ豪雨           
+## 4 在任期間             
+## 5 #総理大臣やってみた  
+## 6 東京都内</code></pre>
+<p>これは2021-09-01時点のトレンドワードです.View() を利用すれば、すべてを見ることができます.</p>
+<p>rtweetパッケージの中でもっとも有益な関数は<strong>search_tweets()</strong>です.search_tweets()は検索語queryによって指定されたツイートデータを得ることができます.基本的なコードは以下のようになります,</p>
+<p>rtweetパッケージの中でもっとも有益な関数は<strong>search_tweets()</strong>です.search_tweets()は検索語queryによって指定されたツイートデータを得ることができます.基本的なコードは以下のようになります.</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="snsデータ-テキスト分析-tidytext.html#cb329-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">seach_tweets</span>(<span class="at">q=</span><span class="st">&quot;検索語&quot;</span>,<span class="at">n =</span> 取得するツイッターの数)</span></code></pre></div>
+<ul>
+<li><p>q= “corona virus”と入力すると,“corona”と“virus”の両方の検索語と含んだツイートを探します.つまり検索語の間にスペースを容れると,and検索になります.OR検索を利用する場合は,q=“corona OR virus”とします.</p></li>
+<li><p>取得できるツィート数にはAPIの制限があります.ツィーターの場合は,6～9日分の過去のツイート,1回のAPIコールで18,000ツイート,1時間に100回のリクエストに制限されています.このため特定のイベント（例えば自然災害や選挙やなど）についてデータを集めるさいには,先を考えてデータ収集を行う必要があります.</p></li>
+</ul>
+<p>それでは新型コロナウィルスに関するツイートを集めてみましょう.新型コロナウィルスに関連した検索後としては“covid-19”, “coronavirus”が考えられます.両方のいずれかを含む（つまりOR検索）ツイートを探してみましょう.上限を18,000ツイートとしておきます.さらに,リツイートは除外するために,include_rts=FALSE（リツイートを含める場合はTRUEです）を入れ,言語を英語に指定するために,引数lang=“en”と指定します.そして結果をオブジェクトtweet_covidに容れます.</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="snsデータ-テキスト分析-tidytext.html#cb330-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="at">q=</span><span class="st">&quot;covid-19 OR coronavirus&quot;</span>, <span class="at">n =</span> <span class="dv">18000</span>,<span class="at">include_rts =</span> <span class="cn">FALSE</span>,<span class="at">lang =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
+<p>これによってtweet_covidというデータフレームが出来上がります.コンソール画面に次のように入力すれば内容が表示されます.</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="snsデータ-テキスト分析-tidytext.html#cb331-1" aria-hidden="true" tabindex="-1"></a>  tweet_covid</span></code></pre></div>
+<pre><code>## # A tibble: 18,000 × 90
+##    user_id status_id created_at          screen_name     text       source
+##      &lt;dbl&gt;     &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt; 
+##  1 1.05e18   1.43e18 2021-08-26 23:24:41 LINA05564177    &quot;@CDCofBC… Twitt…
+##  2 4.92e 8   1.43e18 2021-08-26 23:24:40 LeroyWesterling &quot;Let’s b…  Twitt…
+##  3 7.24e17   1.43e18 2021-08-26 23:24:39 demsdestroyUS11 &quot;The enti… Twitt…
+##  4 7.24e17   1.43e18 2021-08-26 23:23:39 demsdestroyUS11 &quot;The enti… Twitt…
+##  5 4.12e 7   1.43e18 2021-08-26 20:56:48 scottawanga     &quot;She coul… Twitt…
+##  6 4.12e 7   1.43e18 2021-08-26 23:24:37 scottawanga     &quot;You gott… Twitt…
+##  7 1.75e 8   1.43e18 2021-08-26 23:24:37 cgilmart        &quot;Where’s…  Twitt…
+##  8 1.22e18   1.43e18 2021-08-26 23:24:35 ComishWeinroth  &quot;Only 7 I… Twitt…
+##  9 4.06e 7   1.43e18 2021-08-26 23:24:33 dankatzradio    &quot;Judge Ka… Twitt…
+## 10 1.90e 9   1.43e18 2021-08-26 23:24:32 pressprogress   &quot;The US F… Twitt…
+## # … with 17,990 more rows, and 84 more variables:
+## #   display_text_width &lt;dbl&gt;, reply_to_status_id &lt;dbl&gt;,
+## #   reply_to_user_id &lt;dbl&gt;, reply_to_screen_name &lt;chr&gt;, is_quote &lt;lgl&gt;,
+## #   is_retweet &lt;lgl&gt;, favorite_count &lt;dbl&gt;, retweet_count &lt;dbl&gt;,
+## #   quote_count &lt;lgl&gt;, reply_count &lt;lgl&gt;, hashtags &lt;lgl&gt;, symbols &lt;lgl&gt;,
+## #   urls_url &lt;lgl&gt;, urls_t.co &lt;lgl&gt;, urls_expanded_url &lt;lgl&gt;,
+## #   media_url &lt;lgl&gt;, media_t.co &lt;lgl&gt;, media_expanded_url &lt;lgl&gt;, …</code></pre>
+<p><code>A tibble: 18,000×90</code>から理解されるように、このデータフレームtweet_covidは18,000の行と90の列（変数）持ちます。しかし、hashtagsが含まれているため、変数の数が多くなっています.
+そのそれぞれの行（観察値）は異なったツイートです.過去９日間（実際には,数時間のうちに18,000のツィートに達してしまいます）に,このキーワードを含むツィートがどれだけつぶやかれたのかをグラフにしてみましょう
+rtweetパッケージの中のts_plot()関数によってその頻度を簡単にみることができます.次のように入力すると次のグラフが描かれます.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="snsデータ-テキスト分析-tidytext.html#cb333-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">ts_plot</span>(tweet_covid,<span class="at">by =</span> <span class="st">&quot;mins&quot;</span>)</span></code></pre></div>
+<p><img src="EconData_files/figure-html/tw8-1.png" width="672" /></p>
+<p>ts_plot()関数のもっともシンプルな用法は２つの引数を指定するだけです.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="snsデータ-テキスト分析-tidytext.html#cb334-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ts_plot</span>(データフレーム名,<span class="at">by=</span><span class="st">&quot;時間間隔の指定&quot;</span>)</span></code></pre></div>
+<p>データフレーム名はこの例ではtweet_covidです.by=によって時間の間隔“mins”, “hours”, “days”, “weeks”を指定できます.たとえば3日刻みを指定する場合は,by = “3 days”とします.この例ではby = “mins”によって１分の間隔を指定しています.</p>
+</div>
+<div id="ツィッターテキストの分析---tidytext" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> ツィッターテキストの分析 - tidytext</h2>
+<p>それでは「社会」の声を聞いてみましょう.ツイッターのテキストデータの分析には,Silge,Robinsonの両氏によって開発された<a href="https://www.tidytextmining.com">tidytextパッケージ</a>を活用することになります.
+最初に,rtweetで集めたテキストデータを抜き出し,テキスト分析に利用しやすいようにデータを編集します.その上で,テキストデータを視覚的に表現することにします.おもな手順は次のとおりです.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>文書の分割 ― トークン化</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>nグラムへのトークン化</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>可視化 ― ワードクラウドとネットワーク</li>
+</ol></li>
+<li><ol start="4" style="list-style-type: decimal">
+<li>センチメント分析</li>
+</ol></li>
+</ul>
+<p>ここで言うトークンとは,テキストの単位として意味のあるもの ―たとえば,単語―であり,テキスト分析の対象となるものです.したがってトークン化とはテキストをトークンに分割することです.</p>
+<div id="文書の分割とトークン化" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> 文書の分割とトークン化</h3>
+<p>それでは具体的な作業に入ることにしましょう.おもな作業と利用関数は次のとおりです.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>文書を単語に分割 unnest_tokens()</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>ストップワーズの除去 anti_join(stop_words)</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>頻出語の可視化 wordcloud</li>
+</ol></li>
+</ul>
+<p><strong>(1) 文書を単語に分割 - unnest_tokens()</strong></p>
+<p>分析の対象はツイッターによってつぶやかれたテキスト部分です.そこで最初に,データフレームtweet_covidからつぶやかれた時間<strong>created_at</strong>とテキスト<strong>text</strong>の２つの変数を取り出しておきましょう.そしてその結果をオブジェクトtext_twに容れます.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="snsデータ-テキスト分析-tidytext.html#cb335-1" aria-hidden="true" tabindex="-1"></a>text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
+<span id="cb335-2"><a href="snsデータ-テキスト分析-tidytext.html#cb335-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">select</span>(created_at,text)        <span class="co"># select()を使って特定の変数列を抽出</span></span></code></pre></div>
+<p>View(text_tw)によってテキスト部分―text変数―をみると,たとえば,3行目に</p>
+<blockquote>
+<p>“Teachers continue to throng vaccination centres in the five divisions of Kampala to receive their Covid-19 #Sinovac jab in adherence to condition pre-set by <span class="citation">@GovUganda</span> for reopening of schools_SportsUg ”</p>
+</blockquote>
+<p>のように長い文書（複数の単語を連結したもの）があります.これではテキスト分析には適しません.テキスト分析のためには,さらに,それぞれのツィート文書を単語wordに分割する必要があります.テキスト文書を,整理された形式（tidy形式）で単語に分割するために,Rパッケージ<strong>tidytext</strong>の<strong>unnest_tokens()</strong>関数を使います.
+この関数を利用するために,パッケージtidytextをインストールし,library()で呼び出しておきましょう.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="snsデータ-テキスト分析-tidytext.html#cb336-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;tidytext&quot;</span>)</span>
+<span id="cb336-2"><a href="snsデータ-テキスト分析-tidytext.html#cb336-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(tidytext)</span></code></pre></div>
+<p>それぞれ実行しておいてください.<strong>unnest_tokens()</strong>関数の書き方は次のようになります.</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="snsデータ-テキスト分析-tidytext.html#cb337-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest_tokens</span>(データフレーム名, 作成される変数列名,単語に分割する変数列名)</span></code></pre></div>
+<p>上述のスクリプトにパイプでunnest_tokens()の命令を付け加えることにします.この例ではパイプ（％＞％）でつなげていますので,unnest_tokens()関数の中にデータフレーム名を書く必要はありません.</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="snsデータ-テキスト分析-tidytext.html#cb338-1" aria-hidden="true" tabindex="-1"></a>  text_tw <span class="ot">&lt;-</span> tweet_covid <span class="sc">%&gt;%</span> </span>
+<span id="cb338-2"><a href="snsデータ-テキスト分析-tidytext.html#cb338-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(created_at,text) <span class="sc">%&gt;%</span> </span>
+<span id="cb338-3"><a href="snsデータ-テキスト分析-tidytext.html#cb338-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unnest_tokens</span>(word,text)   <span class="co"># unnest_tokens()を使ってtextをwordに分割</span></span></code></pre></div>
+<p>この結果をView()やstr()でデータフレームの中をみると,以下の図のように,textが単語に分割され,word変数が作成されたことが分かります.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="snsデータ-テキスト分析-tidytext.html#cb339-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str</span>(text_tw)</span></code></pre></div>
+<pre><code>## tibble [498,588 × 2] (S3: tbl_df/tbl/data.frame)
+##  $ created_at: POSIXct[1:498588], format: &quot;2021-08-26 23:24:41&quot; &quot;2021-08-26 23:24:41&quot; ...
+##  $ word      : chr [1:498588] &quot;cdcofbc&quot; &quot;can&#39;t&quot; &quot;imagine&quot; &quot;k&quot; ...</code></pre>
+<p><strong>(2)ストップワーズの除去 ― anti_join(stop_words)</strong></p>
+<p>これによって整理されたデータフレーム（tidy形式）ができあがります.しかし,この図の変数wordの列をみると,at,the,for, ofなどの– よく使われますが,重要ではない–単語も抽出されています.こうした単語はストップワーズ<strong>stop words</strong>と呼ばれます.テキスト分析にはストップワーズは不要ですので取り除くとします.</p>
+<p>tidytextの中にはストップワーズを集めたデータセット<strong>stop_words</strong>が事前に用意されています.これと<strong>anti_join()</strong>関数を使ってstop wordsを取り除きます.anti_join()関数は基本的に２つのデータフレームを結合する関数ですが,anti_から想像されるようにマッチしなかった行からなるデータフレームを作成します.書式は以下のとおりです.</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="snsデータ-テキスト分析-tidytext.html#cb341-1" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(x,y)</span></code></pre></div>
+<p>このスクリプトは,データフレームxの行が,データフレームyの行とマッチしなかったすべての行を返します.それでは次にストップワーズの入ったデータフレームを読み込みます.</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="snsデータ-テキスト分析-tidytext.html#cb342-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data</span>(<span class="st">&quot;stop_words&quot;</span>)      <span class="co"># ストップワーズのデータセットを読み込みます</span></span></code></pre></div>
+<p>データフレームstop_wordsとtext_twを結合します.結合した結果をtext_tw01というオブジェクトに容れます.</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="snsデータ-テキスト分析-tidytext.html#cb343-1" aria-hidden="true" tabindex="-1"></a>  text_tw01 <span class="ot">&lt;-</span> text_tw <span class="sc">%&gt;%</span></span>
+<span id="cb343-2"><a href="snsデータ-テキスト分析-tidytext.html#cb343-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">anti_join</span>(stop_words)  <span class="co"># anti_join()を使ってstop_wordsとマッチしない行を取得</span></span></code></pre></div>
+<p>この例でもパイプを使用していますので,最初のデータフレーム名は省略されます.anti_join()によってデータフレームstop_wordsの中に入っている行と一致しない,データフレームtext_twの行を返すことになります.つまり,text_twの中にあったat,of,toといったデータを持つ行がすべて取り除かれます.</p>
+<p>しかし,text_twの中をみると,さらに,不要なword―おもにサイト名等を表現する単語―が抽出されているようです.これはfilter()関数を使って除去しておきます.最初に,不要なwordをピックアップし,まとめて<strong>no_words</strong>というベクトルに容れます.</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="snsデータ-テキスト分析-tidytext.html#cb344-1" aria-hidden="true" tabindex="-1"></a> no_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;t.co&quot;</span>,<span class="st">&quot;https&quot;</span>, <span class="st">&quot;it&#39;s&quot;</span>, <span class="st">&quot;1&quot;</span>,<span class="st">&quot;2&quot;</span>, <span class="st">&quot;20yearshuaweieurope&quot;</span>, </span>
+<span id="cb344-2"><a href="snsデータ-テキスト分析-tidytext.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;tech4all&quot;</span>,<span class="st">&quot;ixqblwihjg&quot;</span>,<span class="st">&quot;sir&quot;</span>,<span class="st">&quot;protocol&quot;</span>,<span class="st">&quot;  </span></span>
+<span id="cb344-3"><a href="snsデータ-テキスト分析-tidytext.html#cb344-3" aria-hidden="true" tabindex="-1"></a><span class="st">cdcofbc&quot;</span>,<span class="st">&quot;let’s&quot;</span>,<span class="st">&quot;nx7a11n3ib&quot;</span>,<span class="st">&quot;j23qrgxpfw&quot;</span>,<span class="st">&quot;z6ogdektio&quot;</span>,<span class="st">&quot;   </span></span>
+<span id="cb344-4"><a href="snsデータ-テキスト分析-tidytext.html#cb344-4" aria-hidden="true" tabindex="-1"></a><span class="st">3ivitcxnh0&quot;</span>,<span class="st">&quot;dkvvsuzqqh&quot;</span>,<span class="st">&quot;g8qp6ejsap&quot;</span>,<span class="st">&quot;where’s’the&quot;</span>,<span class="st">&quot;data.https&quot;</span>,<span class="st">&quot;fgtgaeiyer&quot;</span>,<span class="st">&quot;ge24cvhuxe&quot;</span>,<span class="st">&quot;pvj0riwana&quot;</span>,<span class="st">&quot;ymdnwkxgwk&quot;</span>,<span class="st">&quot;s8qkrgo8vr&quot;</span>,<span class="st">&quot;vqjzb1pc2h&quot;</span>,<span class="st">&quot;    </span></span>
+<span id="cb344-5"><a href="snsデータ-テキスト分析-tidytext.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="st">r45kkjqpbx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="snsデータ-テキスト分析-tidytext.html#cb345-1" aria-hidden="true" tabindex="-1"></a>   text_tw02 <span class="ot">&lt;-</span> text_tw01 <span class="sc">%&gt;%</span></span>
+<span id="cb345-2"><a href="snsデータ-テキスト分析-tidytext.html#cb345-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> no_words)  　　<span class="co"># filter()関数を使って除去.</span></span></code></pre></div>
+<p>filter(条件)は条件にあった行を返しますが,ここでは条件の前に<strong>“!”</strong>をつけていますので,条件にあった行以外の行を返します.つまり,不要なword以外のwordを持つ行を返します.また,“x %in% y”は論理和を表現し,「xがyの中のどれかに一致する」場合を意味します.この例ではtextの中のwordが,no_wordsの中のどれかのwordに一致する,ということを意味します.</p>
+<p>これで分析に利用可能な,259758行×2列のデータフレームtext_tw02が作成されました.次に,新型コロナウィルスに関わるツィッターにおいて「何」が—正確にはどのような単語が注目されているのかをみるかをために,wordcloudという手法を適用します.</p>
+<p><strong>(3)頻出語の可視化― wordcloud</strong>
+wordcloudとは,文章中で出現頻度の多い単語を選び出し,頻出語をその頻度に応じた大きさで雲のように描く手法です.この例で言えば,取得したツイッター文書からもっとも多く見られる単語を可視化することになります.wordcloud を使ってツイッター文書text_twの中の頻出語を可視化した結果が次の図です.
+<strong>wordcloud()</strong>関数を使って頻出語を出力するためには,<strong>tm</strong>というRパッケージも必要となります.そこで事前準備としてインストールし,呼び出しておきます.それぞれ次のように入力し,実行してください.</p>
+<p>wordcloud()関数の基本コードは次のようになります.</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="snsデータ-テキスト分析-tidytext.html#cb346-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wordcloud</span>(出力させる単語の列, 出現頻度数,<span class="at">max.words=</span>図示する最大単語数)</span></code></pre></div>
+<p>それではこの書式にしたがってツイッター文書text_tw02にwordcloud()を適用してみましょう.</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="snsデータ-テキスト分析-tidytext.html#cb347-1" aria-hidden="true" tabindex="-1"></a>    text_tw02 <span class="sc">%&gt;%</span> </span>
+<span id="cb347-2"><a href="snsデータ-テキスト分析-tidytext.html#cb347-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">count</span>(word) <span class="sc">%&gt;%</span> </span>
+<span id="cb347-3"><a href="snsデータ-テキスト分析-tidytext.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">wordcloud</span>(word,n, <span class="at">max.words =</span> <span class="dv">100</span>))</span></code></pre></div>
+<p>ここではデータフレーム名を明示する必要があります.つまりどのデータフレームの中のどの列を利用するかをRに教える必要があります.データフレーム名を明示するために,text_tw$を使っています.また,表示する単語数はmax.words=によって100単語としています.これを実行すると,以下の図が得られます.</p>
+<p><img src="figures/wordcloud.png" alt="Wordcloud, twitter" />
+人々がツイッターを使って新型コロナウィルス について発信するとき,おもにどのような単語が利用されているか.このwordcloudによって視覚的に捉えることができます.covidと19がもっとも多く使われています.この２つの単語もさほど意味がありませんので除外した方がよいかもしれません.次いで,vcaccine, vaccinated といった単語の出現頻度が高いということが理解されます.人々が新型コロナウィルスに対するワクチンに強い関心を寄せていることが分かります.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="covid-19と政策対応.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

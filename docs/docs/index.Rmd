@@ -1,0 +1,83 @@
+--- 
+title: "資料 Rで社会経済データの取得　(work in progress)"
+author: "Socio-Econ"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: 
+ bookdown:gitbook:default
+documentclass: book
+---
+
+
+```{r setup, eval=FALSE,include=FALSE}
+library(tidyverse)
+library(patchwork)
+library(OECD)
+library(eurostat)
+```
+
+ 
+# はじめに{-}
+
+現在では多くの政府組織,研究機関,国際機関が社会経済データを収集し、データをWeb上に公開、提供しています.他方,統計解析向けプログラミング言語として人気の高いRにはそうした機関から社会経済データを取得し、分析するための便利なツール(Rパッケージ)が数多く開発されています.こうした２つの変化によってデータ分析のハードルがずい分と低くなってきました.本資料はそうした「共有財産」にアプローチする第１ステップです.
+
+
+
+## 本資料の目的
+
+本資料[^01]は**R（統計解析向けプログラミング言語）[^02]**を使って、政府組織,研究機関,国際機関から社会経済データの取得方法を説明することを目的としています.
+
+
+[^01]:本資料の作成にあたっては**Rmarkdown**と**bookdown**を利用しています. R markdownについてはとくに[Xie, Yihui, Dervieux, Christope, and Riederer, Emily(2021) R Markdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)([翻訳版](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/))を参照しました. Bookdownについては[Xie, Yihui(2021) bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)を参照しました.
+
+[^02]:Aguirre・Danielssonは[「経済学研究にとってどのプログラミング言語がベストか―Julia, Matlab, PythonそれともRか？」](https://voxeu.org/article/which-programming-language-best-economic-research)において４つのプログラミング言語の比較をおこなっています.R言語の比較優位については本エッセイを参照してください.
+
+
+実証研究においてデータの収集と編集はとても重要です．データは個人もしくは組織で一次データを収集することが望ましいことは言うまでもありません．しかし，これには時間も費用もかかりますし，マンパワーも必要となります．また，収集したデータが，かならずしも意図する分析に適したものとは言えないかもしれません．むしろ，そうしたケースが多いと言えるでしょう．データの収集と編集はじっさいの分析よりも，骨の折れる作業かもしれません．
+
+
+**R**には，国際機関，政府機関、研究組織の提供するデータベースからデータを取得するパッケージが多く開発されています．そうしたパッケージを利用すれば，骨の折れる作業がかなり軽減されますし，シームレスかつ再現可能な形でのデータの読み込みが可能となります．そこで本資料では，Rパッケージを使った，経済分析において頻繁に利用される国際機関のデータの取得方法と簡単な利用方法を紹介します．
+
+本資料のほとんどがデータの取得法の説明と取得したデータの可視化にあてられています.したがって**R**や**RStudio（Rプログラミングの統合開発環境）**の使い方にかんしてはそれほど多くのスペースが割かれていません.RとRStudioについては次の文献で補ってください.
+
+ - **1. Hadley Wickham『Rではじめるデータサイエンス』([Web翻訳版](https://sugiaki1989.gitbook.io/r-for-data-science-answers/))**
+ - **2. 松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』**
+
+Rを利用したデータ処理には、現在では、[tidyverse](https://www.tidyverse.org)が欠かせません。1はtidyverseに関するもっとも基本的な、必読文献です。2は1の日本バージョンと言えるものです。両方の著書によってR,RStudioを利用したデータ処理の基礎が身に付くことと思います
+
+本資料のいたるところでRパッケージ[ggplot2]((https://ggplot2.tidyverse.org/index.html))を利用して、取得したデータを可視化しています.Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます.
+
+ - **3. Winston Chang『Rグラフィックスクックブック 第2版―ggplot2によるグラフ作成のレシピ集』**
+ - **4. キーラン・ヒーリー[『実践Data Scienceシリーズ データ分析のためのデータ可視化入門』](https://socviz.co/index.html#preface)**
+
+3は**ggplot2**を利用した可視化の方法を学ぶ上で必読文献です。4ももちろんggplot2の説明に多く割かれていますが、同時に可視化についての基本的な考え方を学ぶこともできます.
+
+
+データをダウンロードするさい，テキストファイル，CSVファイル，Excel，SQLデータベース，独自のデータフォーマット(dta,spss)など，多くの異なるフォーマットから大規模なデータを読み込んだり，書き込んだりしなければならないことがよくあります．そうした異なるデータ形式を扱うにはRが最も適しています．つまり，Rがあれば，ほぼすべてのデータ形式を読み込むことができます．今では多くの国際機関や研究組織によってデータベースが提供されていますが，Rを利用すれば，データの分析までシームレスに―つまりRを離れることなしに―そうしたデータを読み込むことができます[^03]．
+
+
+
+[^03]: マット・タディ(2020)も，Rの強みを豊富なパッケージを提供するそのエコシステムと，多くのデータ形式が読み込み可能であることを評価しています.
+
+## 社会経済データベース
+
+本資料で紹介されるデータベースとRパッケージは以下のとおりです.
+
+|データ提供組織・個人|データベース|Rパッケージ|Rパッケージ出典|
+|:---|:---|:---|:---|
+|Groningen Growth and Development Centre|penn world table|pwt10|Feenstra RC, Inklaar R, Timmer MP (2015). “The Next Generation of the Penn World Table.” _American Economic Review_, 105(10), 3150-3182.<URL: http://www.ggdc.net/pwt/> |
+|Groningen Growth and Development Centre|The Maddison Project Database|maddison|Eric Persson (2015). maddison: Maddison Project Database. R package version 0.1. https://CRAN.R-project.org/package=maddison|
+|世界銀行|Wordl Development Indicator|WDI|Vincent Arel-Bundock (2021). WDI: World Development Indicators and Other World Bank Data. R package version 2.7.4.https://CRAN.R-project.org/package=WDI|
+|EU統計局|Eurostat|eurostat|(C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.Retrieval and analysis of Eurostat open data with the eurostat package. R Journal 9(1):385-392, 2017. Version 3.7.5 Package URL:http://ropengov.github.io/eurostat Manuscript. URL:https://journal.r-project.org/archive/2017/RJ-2017-019/index.html|
+|経済協力開発機構|OECD.Stat|OECD|Eric Persson (2019). OECD: Search and Extract Data from the OECD. Rpackage version 0.2.4.https://CRAN.R-project.org/package=OECD|
+|国際通貨基金|IMF Data|imfr|Christopher Gandrud (2020). imfr: Download Data from the International Monetary Fund's Data API. R package version 0.1.9.1. https://CRAN.R-project.org/package=imfr|
+|国際決済銀行|BIS statistics |BIS|Eric Persson (2018). BIS: Programmatic Access to Bank for International Settlements Data. R package version 0.2.1. https://CRAN.R-project.org/package=BIS|
+|フランス数理経済計画予測研究所|DBnomics|rdbnomics|Thomas Brand (2020). rdbnomics: Download DBnomics Data. R package version 0.6.4. https://CRAN.R-project.org/package=rdbnomics|
+|イェーテボリ大学政治学科V-Dem研究所|Varieties of Democracy(V-Dem)|vdemdata|Seraphine Maerz, Amanda Edgell, Sebastian Hellmeier, Nina Ilchenko.'Vdemdata - an R package to load, explore and work with the most recent V-Dem (Varieties of Democracy) and V-Party datasets'.Varieties of Democracy (V-Dem) Project. 2020.https://www.v-dem.net/en/ and https://github.com/vdeminstitute/vdemdata|
+|Gothenburg大学QoG研究所|QoG Data|rqog|Markus Kainu (2021). rqog: Download data from the Quality of Government Institute data. R package version 0.4.2021.|
+|Gossen, J.|Covid 19 related data|tidycovid19|Joachim Gassen (2021). tidycovid19: Download, Tidy and Visualize Covid-19 Related Data. R package version 0.0.0.9000.|
+|Center for Systemic Peace|Polity V|democracyData|Marshall, Monty G., Ted Robert Gurr. 2020. "Polity5: Political Regime Characteristics and Transitions, 1800-2018". Dataset Users' Manual. Center for Systemic Peace. Available at http://www.systemicpeace.org/inscr/p5manualv2018.pdf|
+|Thierry Warin|Global Innovation Through Company Level Data|iriR|https://github.com/warint/iriR/|
+
+
+

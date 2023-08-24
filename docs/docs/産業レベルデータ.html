@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 7 産業レベルデータ | chap7</title>
+  <meta name="description" content=" 7 産業レベルデータ | chap7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 7 産業レベルデータ | chap7" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 7 産業レベルデータ | chap7" />
+  
+  
+  
+
+<meta name="author" content="econ" />
+
+
+<meta name="date" content="2023-08-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="snsデータ-テキスト分析---tidytext.html"/>
+<link rel="next" href="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R & 社会経済データ</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#本資料の目的"><i class="fa fa-check"></i><b>0.1</b> 本資料の目的</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#社会経済データベース"><i class="fa fa-check"></i><b>0.2</b> 社会経済データベース</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><i class="fa fa-check"></i><b>1</b> RStudioのProject管理とさまざまなデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#rstudioのprojectの利用"><i class="fa fa-check"></i><b>1.1</b> RStudioのProjectの利用</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#多様なデータ形式の読み込み方法"><i class="fa fa-check"></i><b>1.2</b> 多様なデータ形式の読み込み方法</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#import-datasetを利用する"><i class="fa fa-check"></i><b>1.2.1</b> Import Datasetを利用する</a></li>
+<li class="chapter" data-level="1.2.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#関数を利用する"><i class="fa fa-check"></i><b>1.2.2</b> 関数を利用する</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#tidyverse1-1"><i class="fa fa-check"></i><b>1.3</b> tidyverse[^1-1]</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の行を抽出する---filter関数"><i class="fa fa-check"></i><b>1.3.1</b> 特定の行を抽出する - filter()関数</a></li>
+<li class="chapter" data-level="1.3.2" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#特定の列を抽出する---select関数"><i class="fa fa-check"></i><b>1.3.2</b> 特定の列を抽出する - select()関数</a></li>
+<li class="chapter" data-level="1.3.3" data-path="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"><a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html#処理をつなげる---パイプ演算子"><i class="fa fa-check"></i><b>1.3.3</b> 処理をつなげる - パイプ演算子 %&gt;%</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="マクロデータ.html"><a href="マクロデータ.html"><i class="fa fa-check"></i><b>2</b> マクロデータ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#groningen-growth-and-development-centre"><i class="fa fa-check"></i><b>2.1</b> Groningen Growth and Development Centre</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="マクロデータ.html"><a href="マクロデータ.html#pwt"><i class="fa fa-check"></i><b>2.1.1</b> Penn World Table ― pwt10</a></li>
+<li class="chapter" data-level="2.1.2" data-path="マクロデータ.html"><a href="マクロデータ.html#mpd"><i class="fa fa-check"></i><b>2.1.2</b> The Maddison Project Database ― maddison</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#WD"><i class="fa fa-check"></i><b>2.2</b> 世界銀行World Bank ― WDI</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="マクロデータ.html"><a href="マクロデータ.html#インストール方法"><i class="fa fa-check"></i><b>2.2.1</b> インストール方法</a></li>
+<li class="chapter" data-level="2.2.2" data-path="マクロデータ.html"><a href="マクロデータ.html#データを探す--wdisearch"><i class="fa fa-check"></i><b>2.2.2</b> データを探す- WDISearch()</a></li>
+<li class="chapter" data-level="2.2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#データをダウンロードする--wdi"><i class="fa fa-check"></i><b>2.2.3</b> データをダウンロードする- WDI()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="マクロデータ.html"><a href="マクロデータ.html#EC"><i class="fa fa-check"></i><b>2.3</b> EU統計局Eurostat - eurostat</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージeurostatの利用法"><i class="fa fa-check"></i><b>2.3.1</b> Rパッケージeurostatの利用法</a></li>
+<li class="chapter" data-level="2.3.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例-地理空間情報の利用"><i class="fa fa-check"></i><b>2.3.2</b> 応用例 ― 地理空間情報の利用</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="マクロデータ.html"><a href="マクロデータ.html#OECD"><i class="fa fa-check"></i><b>2.4</b> 経済協力開発機構 - OECD</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージoecdの利用方法"><i class="fa fa-check"></i><b>2.4.1</b> RパッケージOECDの利用方法</a></li>
+<li class="chapter" data-level="2.4.2" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例長期失業者推移の可視化"><i class="fa fa-check"></i><b>2.4.2</b> 応用例―長期失業者推移の可視化</a></li>
+<li class="chapter" data-level="2.4.3" data-path="マクロデータ.html"><a href="マクロデータ.html#応用例時系列データの分析"><i class="fa fa-check"></i><b>2.4.3</b> 応用例―時系列データの分析</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="マクロデータ.html"><a href="マクロデータ.html#金融データを取得する-imf-bis"><i class="fa fa-check"></i><b>2.5</b> 金融データを取得する ― IMF &amp; BIS</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
+<li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="マクロデータ.html"><a href="マクロデータ.html#rパッケージ---rdbnomics"><i class="fa fa-check"></i><b>2.6.1</b> Rパッケージ - rdbnomics</a></li>
+<li class="chapter" data-level="2.6.2" data-path="マクロデータ.html"><a href="マクロデータ.html#rdbnomicsの利用方法"><i class="fa fa-check"></i><b>2.6.2</b> rdbnomicsの利用方法</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html"><i class="fa fa-check"></i><b>3</b> 民主主義・国家データ</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#民主主義を測る--vdemdata"><i class="fa fa-check"></i><b>3.1</b> 「民主主義」を測る- vdemdata</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージのインストール"><i class="fa fa-check"></i><b>3.1.1</b> vdemdataパッケージのインストール</a></li>
+<li class="chapter" data-level="3.1.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#vdemdataパッケージの利用法"><i class="fa fa-check"></i><b>3.1.2</b> vdemdataパッケージの利用法</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政府の質を測る---rgog"><i class="fa fa-check"></i><b>3.2</b> 「政府の質」を測る - rgog</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データをダウンロードする---read_qog"><i class="fa fa-check"></i><b>3.2.1</b> データをダウンロードする - read_qog()</a></li>
+<li class="chapter" data-level="3.2.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#データを探す"><i class="fa fa-check"></i><b>3.2.2</b> データを探す</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#政治体制を測る---democracydata"><i class="fa fa-check"></i><b>3.3</b> 「政治体制」を測る - democracyData</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#democracydataのインストール"><i class="fa fa-check"></i><b>3.3.1</b> democracyDataのインストール</a></li>
+<li class="chapter" data-level="3.3.2" data-path="民主主義国家データ.html"><a href="民主主義国家データ.html#polity-vのダウンロード"><i class="fa fa-check"></i><b>3.3.2</b> Polity Vのダウンロード</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#事前準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 事前準備-ESSの認証とインストール</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="ミクロデータ.html"><a href="ミクロデータ.html#pew-research-center-pewmethods"><i class="fa fa-check"></i><b>4.3</b> Pew Research Center: pewmethods</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数とデータのダウンロード方法</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の関心を知る---gtrendsr"><i class="fa fa-check"></i><b>6.1</b> 「社会」の関心を知る - gtrendsR</a></li>
+<li class="chapter" data-level="6.2" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#社会の声を集める---rtweet"><i class="fa fa-check"></i><b>6.2</b> 「社会」の声を集める - rtweet</a></li>
+<li class="chapter" data-level="6.3" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#ツィッターテキストの分析---tidytext"><i class="fa fa-check"></i><b>6.3</b> ツィッターテキストの分析 - tidytext</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="snsデータ-テキスト分析---tidytext.html"><a href="snsデータ-テキスト分析---tidytext.html#文書の分割とトークン化"><i class="fa fa-check"></i><b>6.3.1</b> 文書の分割とトークン化</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html"><i class="fa fa-check"></i><b>7</b> 産業レベルデータ</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#欧州委員会の産業rd投資iriスコアボードirir"><i class="fa fa-check"></i><b>7.1</b> 欧州委員会の産業R&amp;D投資(IRI)スコアボード－iriR</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#国コードを取得する"><i class="fa fa-check"></i><b>7.1.1</b> 国コードを取得する</a></li>
+<li class="chapter" data-level="7.1.2" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#指標コードを取得する"><i class="fa fa-check"></i><b>7.1.2</b> 指標コードを取得する</a></li>
+<li class="chapter" data-level="7.1.3" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#企業名を取得する"><i class="fa fa-check"></i><b>7.1.3</b> 企業名を取得する</a></li>
+<li class="chapter" data-level="7.1.4" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#産業名を取得する"><i class="fa fa-check"></i><b>7.1.4</b> 産業名を取得する</a></li>
+<li class="chapter" data-level="7.1.5" data-path="産業レベルデータ.html"><a href="産業レベルデータ.html#データを取得する"><i class="fa fa-check"></i><b>7.1.5</b> データを取得する</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"><a href="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"><i class="fa fa-check"></i><b>8</b> AMECO(annual macro-economic database of the European Commission’s Directorate General for Economic and Financial Affairs)</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html"><a href="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html#including-plots"><i class="fa fa-check"></i><b>8.1</b> Including Plots</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">chap7</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="産業レベルデータ" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number"> 7</span> 産業レベルデータ<a href="産業レベルデータ.html#産業レベルデータ" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="欧州委員会の産業rd投資iriスコアボードirir" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> 欧州委員会の産業R&amp;D投資(IRI)スコアボード－iriR<a href="産業レベルデータ.html#欧州委員会の産業rd投資iriスコアボードirir" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<a href="https://iri.jrc.ec.europa.eu/home/">IRIスコアボード</a>は、イノベーションに関する企業レベルのデータをまとめたものです。毎年、世界の上位1,000社の投資家が行った研究開発投資が掲載されています。この科学プロジェクトは、欧州委員会の共同研究センター（JRC）の7つの科学機関のうちの1つである「成長とイノベーションの部門B」で実施されています。
+<p>
+Rパッケージ<strong>iriR</strong>は、IRIスコアボードのデータへのアクセスを容易にするものです。また、毎年のスコアボードを時系列でまとめ、クロスセクション・時系列データセットが作成されています。これによってトップ1,000の革新的企業の一部、もしくは過去に革新的企業であった世界中の7,500以上の革新的企業のデータにアクセスすることができます。
+<p>
+Rパッケージ<strong>iriR</strong>を通じて、グローバルIRIスコアボードの研究開発に関するデータを構成する6つのパラメータ（国、年、企業名、産業、指標、企業のランク）にアクセスすることができます。指標の定義についてはIRIの<a href="https://iri.jrc.ec.europa.eu/sites/default/files/contentype/scoreboard/2022-12/EU%20RD%20Scoreboard%202022%20FINAL%20online_0.pdf">報告書</a>を参照してください。
+<p>
+<p>最初に，Rパッケージ<strong>iriR</strong>をインストールします。現時点ではGitHubサイトに公開されている開発版だけが利用可能です。次のように入力し，インストールしてください。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="産業レベルデータ.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-2"><a href="産業レベルデータ.html#cb1-2" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;warint/iriR&quot;</span>)</span></code></pre></div>
+<p>インストールし終えたら，<strong>library(iriR)</strong>でロードしておきます。それでは本パッケージを利用し，データを取得してみましょう。このためには5つのステップ
+が必要となります。</p>
+<div id="国コードを取得する" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> 国コードを取得する<a href="産業レベルデータ.html#国コードを取得する" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>irir_country()</strong>によってすべての国コードが取得されます。これによってcountry_nameとcountry_codeの２列のデータフレームが表示されます。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="産業レベルデータ.html#cb2-1" tabindex="-1"></a><span class="fu">irir_country</span>()</span></code></pre></div>
+<p>国コードはiso３桁の国コードです。国コードが不明な場合は，<strong>irir_country()</strong>に，たとえば，<strong>irir_country(“Japan”)</strong>と入力すれば，日本の３桁の国コード<strong>JPN</strong>を取得できます。</p>
+</div>
+<div id="指標コードを取得する" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> 指標コードを取得する<a href="産業レベルデータ.html#指標コードを取得する" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>利用可能な指標コードについては<strong>irir_indicator()</strong>によって取得することができます。この例では取得した指標コードを<strong>View()</strong>に渡し，結果を表示させています。し</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="産業レベルデータ.html#cb3-1" tabindex="-1"></a><span class="fu">irir_indicator</span>() <span class="sc">%&gt;%</span> <span class="fu">View</span>()</span></code></pre></div>
+<p>これによって<strong>indicator_name</strong>,<strong>indicator_code</strong>,および<strong>indicator_definition</strong>の３列からなるデータフレームが得られます。
+<img src="figures/irir_indicator.png" alt="指標名，指標コード，指標の定義" /></p>
+<p>また，特定のキーワード－この例では”profit”－に関連した指標を得る場合は次のように入力します。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="産業レベルデータ.html#cb4-1" tabindex="-1"></a><span class="fu">irir_indicator</span>(<span class="at">indicators =</span> <span class="st">&quot;profit&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">View</span>() </span></code></pre></div>
+<p>この場合，引数を指定する<strong>“indicators =”</strong>を省略し，<strong>irir_indicators(“profit”)</strong>と入力しても同じ結果が得られます。</p>
+</div>
+<div id="企業名を取得する" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> 企業名を取得する<a href="産業レベルデータ.html#企業名を取得する" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>企業名を取得するには<strong>irir_company()</strong>関数を利用します。すべての企業名を取得したい場合は次のように入力します。ここでも結果を<strong>Viw()</strong>に渡しています。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="産業レベルデータ.html#cb5-1" tabindex="-1"></a><span class="fu">irir_company</span>()  </span></code></pre></div>
+<p>ALPHABET社にはじまり，6千社以上が表示されます。</p>
+<p>たとば，台湾の<strong>TSMC</strong>の情報を得たいとしましょう。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="産業レベルデータ.html#cb6-1" tabindex="-1"></a><span class="fu">irir_company</span>(<span class="at">indicators =</span> <span class="st">&quot;Taiwan&quot;</span>) </span></code></pre></div>
+<p>これよって４つの台湾の企業名が出力されます。４行目の<strong>“TAIWAN SEMICONDUCTOR MANUFACTURING”</strong>がTSMCです。</p>
+</div>
+<div id="産業名を取得する" class="section level3 hasAnchor" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> 産業名を取得する<a href="産業レベルデータ.html#産業名を取得する" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>産業を取得するには<strong>irir_industry()</strong>関数を利用します。これによって取得可能な産業名の一覧が表示されます。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="産業レベルデータ.html#cb7-1" tabindex="-1"></a><span class="fu">irir_industry</span>()  </span></code></pre></div>
+<p>Software &amp; Computer Services産業にはじまり，81の産業名が表示されます。さらに，特定の産業にかかわる産業リストを取得したい場合は引数”industry = “に検索ワードを入力します。たとえば，コンピュータ関連産業を知りたい場合は次のように入力します。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="産業レベルデータ.html#cb8-1" tabindex="-1"></a><span class="fu">irir_industry</span>(<span class="at">industry =</span> <span class="st">&quot;Computer&quot;</span>)  </span></code></pre></div>
+</div>
+<div id="データを取得する" class="section level3 hasAnchor" number="7.1.5">
+<h3><span class="header-section-number">7.1.5</span> データを取得する<a href="産業レベルデータ.html#データを取得する" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>データを取得するためには<strong>irir_data()</strong>関数を利用します。この関数は6つの引数をとります。</p>
+<ul>
+<li><p>country = “”</p></li>
+<li><p>years = “”</p></li>
+<li><p>indicators = “”</p></li>
+<li><p>company = “”</p></li>
+<li><p>industry = “”</p></li>
+<li><p>ranks = “”</p></li>
+<li><p>引数<strong>country = ““<strong>の</strong>”“<strong>には３桁のiso国コードを入力します。たとえば</strong>country =”JPN”</strong>,また複数の国を指定したい場合は<strong>country = c(“JPN”,“USA”) </strong>と指定します。</p>
+<p></li>
+<li><p>引数<strong>years = ““<strong>の</strong>”“<strong>には取得したい年を入力します。たとえば</strong>years =”2018”</strong>と指定します。</p></li>
+<li><p>データの取得にあたっては引数<strong>indicators = ““<strong>がもっとも重要な引数です。この引数には</strong>irir_indicator()<strong>で取得した</strong>indicator_code<strong>を入力します。たとえば</strong>RD.intensity<strong>データを取得したい場合は，</strong>indicator =”RD.intensity”</strong>とします。</p></li>
+<li><p>引数<strong>company = ““<strong>にはデータ取得したい企業名を指定します。たとえば</strong>company =”MANDO CORPORATION”</strong>と指定します。ここでも<strong>irir_company()</strong>で得た企業名でもって入力します。</p></li>
+<li><p>引数<strong>company = ““<strong>同様に，引数</strong>industry =”“<strong>には,</strong>irir_industry()<strong>で取得した産業名を指定します。たとえば</strong>industry =”Insurance”</strong>と指定します.</p></li>
+<li><p>引数<strong>ranks = ““<strong>には,企業のランクを指定します。たとえば</strong>rank = 1<strong>と指定します. </strong>irir_data(ranks = 1,industry =”Pharmaceuticals”)</strong>と指定すると，製薬産業の中の研究開発投資額１位の企業のデータが取得されます。</p></li>
+</ul>
+<p>上記のように，引数を指定することによって特定のデータを得ることができますが，次のように入力することによってすべてのデータを取得できます。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="産業レベルデータ.html#cb9-1" tabindex="-1"></a><span class="fu">irir_data</span>() </span></code></pre></div>
+<p>また特定の企業－たとえばキーエンスKEYENCE－の時系列データを必要とする場合，次のように入力します。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="産業レベルデータ.html#cb10-1" tabindex="-1"></a><span class="fu">irir_data</span>(<span class="at">company =</span> <span class="st">&quot;KEYENCE&quot;</span>) </span></code></pre></div>
+<p>これによってキーエンスの2006年から2019年までの研究開発投資額データを取得できます。</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="snsデータ-テキスト分析---tidytext.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="amecoannual-macro-economic-database-of-the-european-commissions-directorate-general-for-economic-and-financial-affairs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["EconData.pdf", "EconData.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

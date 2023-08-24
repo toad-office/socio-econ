@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>資料 Rで社会経済データの取得　(work in progress)</title>
-  <meta name="description" content="資料 Rで社会経済データの取得　(work in progress)" />
+  <title> 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)</title>
+  <meta name="description" content=" 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="資料 Rで社会経済データの取得　(work in progress)" />
+  <meta property="og:title" content=" 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="資料 Rで社会経済データの取得　(work in progress)" />
+  <meta name="twitter:title" content=" 4 ミクロデータ | 資料 Rで社会経済データの取得　(work in progress)" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Socio-Econ" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html"/>
+<link rel="prev" href="民主主義国家データ.html"/>
+<link rel="next" href="covid-19.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -60,8 +60,6 @@
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -194,7 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="マクロデータ.html"><a href="マクロデータ.html#IMF"><i class="fa fa-check"></i><b>2.5.1</b> 国際通貨基金(IMF) - imfr</a></li>
 <li class="chapter" data-level="2.5.2" data-path="マクロデータ.html"><a href="マクロデータ.html#BIS"><i class="fa fa-check"></i><b>2.5.2</b> 国際決済銀行(BIS) - BIS</a></li>
-<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - GetQuandlData</a></li>
+<li class="chapter" data-level="2.5.3" data-path="マクロデータ.html"><a href="マクロデータ.html#Quandl"><i class="fa fa-check"></i><b>2.5.3</b> Quandl - Quandl</a></li>
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="マクロデータ.html"><a href="マクロデータ.html#DB"><i class="fa fa-check"></i><b>2.6</b> オープンデータポータル - DBnomics</a>
 <ul>
@@ -222,23 +220,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="ミクロデータ.html"><a href="ミクロデータ.html"><i class="fa fa-check"></i><b>4</b> ミクロデータ</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#データの読み込み"><i class="fa fa-check"></i><b>4.1.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="4.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#general-social-survey-gssr"><i class="fa fa-check"></i><b>4.1</b> General Social Survey – gssr</a></li>
+<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="ミクロデータ.html"><a href="ミクロデータ.html#european-social-survey-essurvey"><i class="fa fa-check"></i><b>4.2</b> European Social Survey – essurvey</a>
+<li class="chapter" data-level="5" data-path="covid-19.html"><a href="covid-19.html"><i class="fa fa-check"></i><b>5</b> COVID-19</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="ミクロデータ.html"><a href="ミクロデータ.html#事前準備-essの認証とインストール"><i class="fa fa-check"></i><b>4.2.1</b> 事前準備-ESSの認証とインストール</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html"><i class="fa fa-check"></i><b>5</b> COVID-19と政策対応</a>
+<li class="chapter" data-level="5.1" data-path="covid-19.html"><a href="covid-19.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidを利用する"><i class="fa fa-check"></i><b>5.1</b> tidycovidを利用する</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
-<li class="chapter" data-level="5.1.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#tidycovidの関数とデータのダウンロード方法"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数とデータのダウンロード方法</a></li>
+<li class="chapter" data-level="5.1.1" data-path="covid-19.html"><a href="covid-19.html#tidycovidのインストール"><i class="fa fa-check"></i><b>5.1.1</b> tidycovidのインストール</a></li>
+<li class="chapter" data-level="5.1.2" data-path="covid-19.html"><a href="covid-19.html#tidycovidの関数概要"><i class="fa fa-check"></i><b>5.1.2</b> tidycovidの関数概要</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="covid-19と政策対応.html"><a href="covid-19と政策対応.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
+<li class="chapter" data-level="5.2" data-path="covid-19.html"><a href="covid-19.html#imf-covid-19-recovery-index"><i class="fa fa-check"></i><b>5.2</b> IMF COVID-19 Recovery Index</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="snsデータ-テキスト分析-tidytext.html"><a href="snsデータ-テキスト分析-tidytext.html"><i class="fa fa-check"></i><b>6</b> SNSデータ &amp; テキスト分析 - tidytext</a>
 <ul>
@@ -269,144 +261,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">資料 Rで社会経済データの取得　(work in progress)</h1>
-<p class="author"><em>Socio-Econ</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-08-30</em></p>
-</div>
-<div id="はじめに" class="section level1 unnumbered">
-<h1>はじめに</h1>
-<p>現在では多くの政府組織,研究機関,国際機関が社会経済データを収集し、データをWeb上に公開、提供しています.他方,統計解析向けプログラミング言語として人気の高いRにはそうした機関から社会経済データを取得し、分析するための便利なツール(Rパッケージ)が数多く開発されています.こうした２つの変化によってデータ分析のハードルがずい分と低くなってきました.本資料はそうした「共有財産」にアプローチする第１ステップです.</p>
-<div id="本資料の目的" class="section level2" number="0.1">
-<h2><span class="header-section-number">0.1</span> 本資料の目的</h2>
-<p>本資料<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>は<strong>R（統計解析向けプログラミング言語）<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></strong>を使って、政府組織,研究機関,国際機関から社会経済データの取得方法を説明することを目的としています.</p>
-<p>実証研究においてデータの収集と編集はとても重要です．データは個人もしくは組織で一次データを収集することが望ましいことは言うまでもありません．しかし，これには時間も費用もかかりますし，マンパワーも必要となります．また，収集したデータが，かならずしも意図する分析に適したものとは言えないかもしれません．むしろ，そうしたケースが多いと言えるでしょう．データの収集と編集はじっさいの分析よりも，骨の折れる作業かもしれません．</p>
-<p><strong>R</strong>には，国際機関，政府機関、研究組織の提供するデータベースからデータを取得するパッケージが多く開発されています．そうしたパッケージを利用すれば，骨の折れる作業がかなり軽減されますし，シームレスかつ再現可能な形でのデータの読み込みが可能となります．そこで本資料では，Rパッケージを使った，経済分析において頻繁に利用される国際機関のデータの取得方法と簡単な利用方法を紹介します．</p>
-<p>本資料のほとんどがデータの取得法の説明と取得したデータの可視化にあてられています.したがって<strong>R</strong>や<strong>RStudio（Rプログラミングの統合開発環境）</strong>の使い方にかんしてはそれほど多くのスペースが割かれていません.RとRStudioについては次の文献で補ってください.</p>
+<div id="ミクロデータ" class="section level1" number="4">
+<h1><span class="header-section-number"> 4</span> ミクロデータ</h1>
+<p>ミクロレベルのデータベースとしてはサーベイ調査が中心になります.</p>
 <ul>
-<li><strong>1. Hadley Wickham『Rではじめるデータサイエンス』(<a href="https://sugiaki1989.gitbook.io/r-for-data-science-answers/">Web翻訳版</a>)</strong></li>
-<li><strong>2. 松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』</strong></li>
+<li><ol style="list-style-type: decimal">
+<li>European Social Survey: essurvey</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>General Social Survey: gasser</li>
+</ol></li>
 </ul>
-<p>Rを利用したデータ処理には、現在では、<a href="https://www.tidyverse.org">tidyverse</a>が欠かせません。1はtidyverseに関するもっとも基本的な、必読文献です。2は1の日本バージョンと言えるものです。両方の著書によってR,RStudioを利用したデータ処理の基礎が身に付くことと思います</p>
-<p>本資料のいたるところでRパッケージ<a href="(https://ggplot2.tidyverse.org/index.html)">ggplot2</a>を利用して、取得したデータを可視化しています.Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます.</p>
-<ul>
-<li><strong>3. Winston Chang『Rグラフィックスクックブック 第2版―ggplot2によるグラフ作成のレシピ集』</strong></li>
-<li><strong>4. キーラン・ヒーリー<a href="https://socviz.co/index.html#preface">『実践Data Scienceシリーズ データ分析のためのデータ可視化入門』</a></strong></li>
-</ul>
-<p>3は<strong>ggplot2</strong>を利用した可視化の方法を学ぶ上で必読文献です。4ももちろんggplot2の説明に多く割かれていますが、同時に可視化についての基本的な考え方を学ぶこともできます.</p>
-<p>データをダウンロードするさい，テキストファイル，CSVファイル，Excel，SQLデータベース，独自のデータフォーマット(dta,spss)など，多くの異なるフォーマットから大規模なデータを読み込んだり，書き込んだりしなければならないことがよくあります．そうした異なるデータ形式を扱うにはRが最も適しています．つまり，Rがあれば，ほぼすべてのデータ形式を読み込むことができます．今では多くの国際機関や研究組織によってデータベースが提供されていますが，Rを利用すれば，データの分析までシームレスに―つまりRを離れることなしに―そうしたデータを読み込むことができます<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>．</p>
+<div id="general-social-survey-gssr" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> General Social Survey – gssr</h2>
+<p>General Social Survey（GSS）は、現在、アメリカで実施されている全般的な社会調査です。現代のアメリカ社会に関するデータを収集し、これによりアメリカの人々の態度、行動、属性の傾向をモニターできます。GSSは最大80年間のトレンドを追跡することができます。</p>
+<p><a href="http://gss.norc.org/About-The-GSS">GSSのウェブサイト</a>ではデータはstataおよびspssのフォーマットで提供されています。Rで利用するためにgssrが開発されています。これは、General Social Surveyの累積データ（1972-2018)と３つのWaveのパネルデータをまとめたデータパッケージです。</p>
 </div>
-<div id="社会経済データベース" class="section level2" number="0.2">
-<h2><span class="header-section-number">0.2</span> 社会経済データベース</h2>
-<p>本資料で紹介されるデータベースとRパッケージは以下のとおりです.</p>
-<table>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">データ提供組織・個人</th>
-<th align="left">データベース</th>
-<th align="left">Rパッケージ</th>
-<th align="left">Rパッケージ出典</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Groningen Growth and Development Centre</td>
-<td align="left">penn world table</td>
-<td align="left">pwt9</td>
-<td align="left">Feenstra RC, Inklaar R, Timmer MP (2015). “The Next Generation of the Penn World Table.” <em>American Economic Review</em>, 105(10), 3150-3182.&lt;URL: <a href="http://www.ggdc.net/pwt/" class="uri">http://www.ggdc.net/pwt/</a>&gt;</td>
-</tr>
-<tr class="even">
-<td align="left">Groningen Growth and Development Centre</td>
-<td align="left">The Maddison Project Database</td>
-<td align="left">maddison</td>
-<td align="left">Eric Persson (2015). maddison: Maddison Project Database. R package version 0.1. <a href="https://CRAN.R-project.org/package=maddison" class="uri">https://CRAN.R-project.org/package=maddison</a></td>
-</tr>
-<tr class="odd">
-<td align="left">世界銀行</td>
-<td align="left">Wordl Development Indicator</td>
-<td align="left">WDI</td>
-<td align="left">Vincent Arel-Bundock (2021). WDI: World Development Indicators and Other World Bank Data. R package version 2.7.4.https://CRAN.R-project.org/package=WDI</td>
-</tr>
-<tr class="even">
-<td align="left">EU統計局</td>
-<td align="left">Eurostat</td>
-<td align="left">eurostat</td>
-<td align="left">(C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.Retrieval and analysis of Eurostat open data with the eurostat package. R Journal 9(1):385-392, 2017. Version 3.7.5 Package URL:<a href="http://ropengov.github.io/eurostat" class="uri">http://ropengov.github.io/eurostat</a> Manuscript. URL:<a href="https://journal.r-project.org/archive/2017/RJ-2017-019/index.html" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-019/index.html</a></td>
-</tr>
-<tr class="odd">
-<td align="left">経済協力開発機構</td>
-<td align="left">OECD.Stat</td>
-<td align="left">OECD</td>
-<td align="left">Eric Persson (2019). OECD: Search and Extract Data from the OECD. Rpackage version 0.2.4.https://CRAN.R-project.org/package=OECD</td>
-</tr>
-<tr class="even">
-<td align="left">国際通貨基金</td>
-<td align="left">IMF Data</td>
-<td align="left">imfr</td>
-<td align="left">Christopher Gandrud (2020). imfr: Download Data from the International Monetary Fund’s Data API. R package version 0.1.9.1. <a href="https://CRAN.R-project.org/package=imfr" class="uri">https://CRAN.R-project.org/package=imfr</a></td>
-</tr>
-<tr class="odd">
-<td align="left">国際決済銀行</td>
-<td align="left">BIS statistics</td>
-<td align="left">BIS</td>
-<td align="left">Eric Persson (2018). BIS: Programmatic Access to Bank for International Settlements Data. R package version 0.2.1. <a href="https://CRAN.R-project.org/package=BIS" class="uri">https://CRAN.R-project.org/package=BIS</a></td>
-</tr>
-<tr class="even">
-<td align="left">フランス数理経済計画予測研究所</td>
-<td align="left">DBnomics</td>
-<td align="left">rdbnomics</td>
-<td align="left">Thomas Brand (2020). rdbnomics: Download DBnomics Data. R package version 0.6.4. <a href="https://CRAN.R-project.org/package=rdbnomics" class="uri">https://CRAN.R-project.org/package=rdbnomics</a></td>
-</tr>
-<tr class="odd">
-<td align="left">イェーテボリ大学政治学科V-Dem研究所</td>
-<td align="left">Varieties of Democracy(V-Dem)</td>
-<td align="left">vdemdata</td>
-<td align="left">Seraphine Maerz, Amanda Edgell, Sebastian Hellmeier, Nina Ilchenko.’Vdemdata - an R package to load, explore and work with the most recent V-Dem (Varieties of Democracy) and V-Party datasets’.Varieties of Democracy (V-Dem) Project. 2020.https://www.v-dem.net/en/ and <a href="https://github.com/vdeminstitute/vdemdata" class="uri">https://github.com/vdeminstitute/vdemdata</a></td>
-</tr>
-<tr class="even">
-<td align="left">Gothenburg大学QoG研究所</td>
-<td align="left">QoG Data</td>
-<td align="left">rqog</td>
-<td align="left">Markus Kainu (2021). rqog: Download data from the Quality of Government Institute data. R package version 0.4.2021.</td>
-</tr>
-<tr class="odd">
-<td align="left">Gossen, J.</td>
-<td align="left">Covid 19 related data</td>
-<td align="left">tidycovid19</td>
-<td align="left">Joachim Gassen (2021). tidycovid19: Download, Tidy and Visualize Covid-19 Related Data. R package version 0.0.0.9000.</td>
-</tr>
-<tr class="even">
-<td align="left">Center for Systemic Peace</td>
-<td align="left">Polity V</td>
-<td align="left">democracyData</td>
-<td align="left">Marshall, Monty G., Ted Robert Gurr. 2020. “Polity5: Political Regime Characteristics and Transitions, 1800-2018”. Dataset Users’ Manual. Center for Systemic Peace. Available at <a href="http://www.systemicpeace.org/inscr/p5manualv2018.pdf" class="uri">http://www.systemicpeace.org/inscr/p5manualv2018.pdf</a></td>
-</tr>
-</tbody>
-</table>
+<div id="european-social-survey-essurvey" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> European Social Survey – essurvey</h2>
+<p>essurveyパッケージは、European Social Survey(ESS)データをできるだけ簡単にダウンロードできるように改発されたRパッケージです。ラウンド（異なる時点での同じ調査を表すための波）、選択された国のラウンド、どのラウンド/国が利用可能かを表示するためのいくつかのヘルパー関数を持っています。essurveyパッケージの詳細な例については、パッケージのウェブサイトにあるヴィネットやその他のドキュメントをチェックしてください。</p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>本資料の作成にあたっては<strong>Rmarkdown</strong>と<strong>bookdown</strong>を利用しています. R markdownについてはとくに<a href="https://bookdown.org/yihui/rmarkdown-cookbook/">Xie, Yihui, Dervieux, Christope, and Riederer, Emily(2021) R Markdown cookbook</a>(<a href="https://gedevan-aleksizde.github.io/rmarkdown-cookbook/">翻訳版</a>)を参照しました. Bookdownについては<a href="https://bookdown.org/yihui/bookdown/">Xie, Yihui(2021) bookdown: Authoring Books and Technical Documents with R Markdown</a>を参照しました.<a href="index.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Aguirre・Danielssonは<a href="https://voxeu.org/article/which-programming-language-best-economic-research">「経済学研究にとってどのプログラミング言語がベストか―Julia, Matlab, PythonそれともRか？」</a>において４つのプログラミング言語の比較をおこなっています.R言語の比較優位については本エッセイを参照してください.<a href="index.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>マット・タディ(2020)も，Rの強みを豊富なパッケージを提供するそのエコシステムと，多くのデータ形式が読み込み可能であることを評価しています.<a href="index.html#fnref3" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="rstudioのproject管理とさまざまなデータ形式の読み込み方法.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="民主主義国家データ.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="covid-19.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
