@@ -89,8 +89,8 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Rで社会経済データの取得 (Work in progress)</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Rで社会経済データの取得[^index-1] (Work in progress)</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./introduction.html"> 
@@ -109,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">4 民主主義・国家データ</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./industry.html"> 
+    <a class="nav-link active" href="./industry.html" aria-current="page"> 
 <span class="menu-text">5 産業データ</span></a>
   </li>  
 </ul>
@@ -128,11 +128,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rで社会経済データの取得index-1-work-in-progress" id="toc-rで社会経済データの取得index-1-work-in-progress" class="nav-link active" data-scroll-target="#rで社会経済データの取得index-1-work-in-progress">Rで社会経済データの取得 (Work in progress)</a>
-  <ul class="collapse">
-  <li><a href="#本資料の目的" id="toc-本資料の目的" class="nav-link" data-scroll-target="#本資料の目的">0.1 本資料の目的</a></li>
-  <li><a href="#社会経済データベース一覧" id="toc-社会経済データベース一覧" class="nav-link" data-scroll-target="#社会経済データベース一覧">0.2 社会経済データベース一覧</a></li>
-  </ul></li>
+  <li><a href="#産業データ" id="toc-産業データ" class="nav-link active" data-scroll-target="#産業データ">5 産業データ</a></li>
   </ul>
 </nav>
     </div>
@@ -163,134 +159,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="rで社会経済データの取得index-1-work-in-progress" class="level2">
-<h2 class="anchored" data-anchor-id="rで社会経済データの取得index-1-work-in-progress">Rで社会経済データの取得<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (Work in progress)</h2>
-<p>現在では多くの国際機関，研究機関, 政府組織が社会経済データを収集し、データをWeb上に公開、提供しています。 一方，統計解析向けプログラミング言語として人気の高いRコミュニティにおいては，そうした機関から社会経済データを取得し，分析するための便利なツール(Rパッケージ)が数多く開発されています。こうした２つの変化によってデータ分析のハードルがずい分と低くなってきました。本資料はそうした「共有財産」にアプローチする方法を書き留めたものです。</p>
-<section id="本資料の目的" class="level3">
-<h3 class="anchored" data-anchor-id="本資料の目的">0.1 本資料の目的</h3>
-<p>本資料は<strong>R（統計解析向けプログラミング言語）</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>を使って，政府組織，研究機関および国際機関から社会経済データの取得方法を説明することを目的としています。</p>
-<p>言うまでもなく，実証研究においてデータの収集と編集はとても重要です。データは個人もしくは組織で一次データを収集することが望ましいことは言うまでもありません。しかし，これには時間も費用もかかります，またマンパワーも必要となります。収集したデータが，分析にまったく適さないということもあるかもしれません。むしろ，そうしたケースが多いかもしれません。データの収集と編集はじっさいの分析よりも，骨の折れる作業かもしれません．</p>
-<p><strong>R</strong>には，国際機関，政府機関および研究組織の提供するデータベースからデータを取得するパッケージが多く開発されています。そうしたパッケージを利用すれば，骨の折れる作業がかなり軽減されますし，シームレスかつ再現可能な形でのデータの読み込みが可能となります。そこで本資料では，Rパッケージを使った，経済分析において頻繁に利用される国際機関のデータの取得方法と簡単な利用方法を紹介しています。</p>
-<p>本資料のほとんどがデータの取得法の説明と取得したデータの可視化にあてられています。したがって<strong>R</strong>や<strong>RStudio（Rプログラミングの統合開発環境）</strong>の使い方にかんしてはそれほど多くのスペースが割かれていません。RとRStudioについては次の文献で補ってください.</p>
-<ol type="1">
-<li><p><strong>Hadley Wickham, et al.『<a href="https://r4ds.hadley.nz">Rではじめるデータサイエンス</a>』(<a href="https://sugiaki1989.gitbook.io/r-for-data-science-answers/">Web翻訳版</a>)</strong></p></li>
-<li><p><strong>松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』</strong></p></li>
-</ol>
-<p>Rを利用したデータ処理には、現在では、<a href="https://www.tidyverse.org">tidyverse</a>が欠かせません。1はtidyverseに関するもっとも基本的な文献であり，Rを利用するさいには欠かせないテキストの１つです。2は1の日本バージョンと言えるものです。両方の著書によってR,RStudioを利用したデータ処理の基礎が身に付くことと思います</p>
-<p>本資料のいたるところでRパッケージggplot2を利用して，取得したデータを可視化しています。Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます。</p>
-<ol start="3" type="1">
-<li><p><strong>Winston Chang<a href="https://r-graphics.org">『Rグラフィックスクックブック 第2版―ggplot2によるグラフ作成のレシピ集』</a></strong></p></li>
-<li><p><strong>キーラン・ヒーリー<a href="https://socviz.co/index.html#preface">『実践Data Scienceシリーズ データ分析のためのデータ可視化入門』</a></strong></p></li>
-</ol>
-<p>3は<strong>ggplot2</strong>を利用した可視化の方法を学ぶ上で必読文献です。4ももちろんggplot2の説明に多く割かれていますが，同時に可視化についての基本的な考え方を学ぶこともできます。</p>
-<p>データをダウンロードするさい，テキストファイル，CSVファイル，Excel，SQLデータベース，独自のデータフォーマット(dta,spss)など，多くの異なるフォーマットから大規模なデータを読み込んだり，書き込んだりしなければならないことがよくあります。そうした異なるデータ形式を扱うにはRが最も適しています。つまり，Rがあれば，ほぼすべてのデータ形式を読み込むことができます。今では多くの国際機関や研究組織によってデータベースが提供されていますが，Rを利用すれば，データの分析までシームレスに―つまりRを離れることなしに―そうしたデータを読み込むことができます。</p>
-</section>
-<section id="社会経済データベース一覧" class="level3">
-<h3 class="anchored" data-anchor-id="社会経済データベース一覧">0.2 社会経済データベース一覧</h3>
-<p>本資料で紹介される（紹介予定の）データベースと対応するRパッケージは以下の通りです。</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>データ提供組織</th>
-<th>データベース</th>
-<th>Rパッケージ</th>
-<th>Rパッケージ出典</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Groningen Growth and Development Centre</td>
-<td>penn world table</td>
-<td>pwt10</td>
-<td>Feenstra RC, Inklaar R, Timmer MP (2015). “The Next Generation of the Penn World Table.” <em>American Economic Review</em>, 105(10), 3150-3182.<a href="http://www.ggdc.net/pwt/" class="uri">http://www.ggdc.net/pwt/</a></td>
-</tr>
-<tr class="even">
-<td>Groningen Growth and Development Centre</td>
-<td>The Maddison Project Database</td>
-<td>maddison</td>
-<td>Eric Persson (2015). maddison: Maddison Project Database. R package version 0.1. <a href="https://CRAN.R-project.org/package=maddison" class="uri">https://CRAN.R-project.org/package=maddison</a></td>
-</tr>
-<tr class="odd">
-<td>世界銀行</td>
-<td>World Development Indicator</td>
-<td>WDI</td>
-<td>Vincent Arel-Bundock (2021). WDI: World Development Indicators and Other World Bank Data. R package version 2.7.4. <a href="https://CRAN.R-project.org/package=WDI" class="uri">https://CRAN.R-project.org/package=WDI</a></td>
-</tr>
-<tr class="even">
-<td>EU統計局</td>
-<td>Eurostat</td>
-<td>eurostat</td>
-<td>(C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.Retrieval and analysis of Eurostat open data with the eurostat package. R Journal 9(1):385-392, 2017. Version 3.7.5 Package URL:<a href="http://ropengov.github.io/eurostat" class="uri">http://ropengov.github.io/eurostat</a> Manuscript. URL:<a href="https://journal.r-project.org/archive/2017/RJ-2017-019/index.html" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-019/index.html</a></td>
-</tr>
-<tr class="odd">
-<td>EU</td>
-<td>AMECO</td>
-<td>ameco</td>
-<td>Persson E (2019). <em>ameco: European Commission Annual Macro-Economic (AMECO) Database</em>. R package version 0.2.10, <a href="http://github.com/expersso/ameco" class="uri">http://github.com/expersso/ameco</a>.</td>
-</tr>
-<tr class="even">
-<td>経済協力開発機構</td>
-<td>OEDCD.Stat</td>
-<td>OECD</td>
-<td>Eric Persson (2019). OECD: Search and Extract Data from the OECD. Rpackage version 0.2.4.<a href="https://CRAN.R-project.org/package=OECD" class="uri">https://CRAN.R-project.org/package=OECD</a></td>
-</tr>
-<tr class="odd">
-<td>国際通貨基金</td>
-<td>IMF Data</td>
-<td>imfr</td>
-<td>Christopher Gandrud (2020). imfr: Download Data from the International Monetary Fund’s Data API. R package version 0.1.9.1. <a href="https://CRAN.R-project.org/package=imfr" class="uri">https://CRAN.R-project.org/package=imfr</a></td>
-</tr>
-<tr class="even">
-<td>フランス数理経済計画予測研究所</td>
-<td>DBnomics</td>
-<td>rdbnomics</td>
-<td>Thomas Brand (2020). rdbnomics: Download DBnomics Data. R package version 0.6.4. <a href="https://CRAN.R-project.org/package=rdbnomics" class="uri">https://CRAN.R-project.org/package=rdbnomics</a></td>
-</tr>
-<tr class="odd">
-<td>イェーテボリ大学政治学科V-Dem研究所</td>
-<td>Varieties of Democracy(V-Dem)</td>
-<td>vdemdata</td>
-<td>Seraphine Maerz, Amanda Edgell, Sebastian Hellmeier, Nina Ilchenko.’Vdemdata - an R package to load, explore and work with the most recent V-Dem (Varieties of Democracy) and V-Party datasets’.Varieties of Democracy (V-Dem) Project. 2020.https://www.v-dem.net/en/ and <a href="https://github.com/vdeminstitute/vdemdata" class="uri">https://github.com/vdeminstitute/vdemdata</a></td>
-</tr>
-<tr class="even">
-<td>Gothenburg大学QoG研究所</td>
-<td>QoG (Quality ofo Government) Data</td>
-<td>rqog</td>
-<td>Markus Kainu (2021). rqog: Download data from the Quality of Government Institute data. R package version 0.4.2021.</td>
-</tr>
-<tr class="odd">
-<td>Center for Systemic Peace</td>
-<td>Polity V</td>
-<td>democracyData</td>
-<td>Marshall, Monty G., Ted Robert Gurr. 2020. “Polity5: Political Regime Characteristics and Transitions, 1800-2018”. Dataset Users’ Manual. Center for Systemic Peace. Available at <a href="http://www.systemicpeace.org/inscr/p5manualv2018.pdf" class="uri">http://www.systemicpeace.org/inscr/p5manualv2018.pdf</a></td>
-</tr>
-<tr class="even">
-<td>EU</td>
-<td>Global Innovation Through Company Level Data</td>
-<td>iriR</td>
-<td>Warin T (2023). <em>iriR: Global Innovation Through Company Level Data</em>. R package version 0.2.2, <a href="https://github.com/warint/iriR/" class="uri">https://github.com/warint/iriR/</a>.</td>
-</tr>
-<tr class="odd">
-<td>ILO</td>
-<td>ILO STAT</td>
-<td>Rilostat</td>
-<td>David Bescond (2024). <em>Rilostat: ILO Open Data via Ilostat Bulk Download Facility</em>. R package version 2.1.0, <a href="https://CRAN.R-project.org/package=Rilostat" class="uri">https://CRAN.R-project.org/package=Rilostat</a>.</td>
-</tr>
-</tbody>
-</table>
+<section id="産業データ" class="level2">
+<h2 class="anchored" data-anchor-id="産業データ">5 産業データ</h2>
+<p>本項では産業間の投入・産出関係を捉える、産業連関表データを提供する，また同時に簡単な分析を可能にするRパッケージを紹介します。Rは行列計算に優れており、もともと投入・産出分析と親和的です。</p>
 
 
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>本資料の作成にあたっては<a href="https://quarto.org">Quarto</a>を利用しています.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Aguirre・Danielssonは<a href="https://voxeu.org/article/which-programming-language-best-economic-research">「経済学研究にとってどのプログラミング言語がベストか―Julia, Matlab, PythonそれともRか？」</a>において４つのプログラミング言語の比較をおこなっています. R言語の比較優位については本エッセイを参照してください.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

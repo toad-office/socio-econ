@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -89,11 +123,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Rで社会経済データの取得 (Work in progress)</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Rで社会経済データの取得[^index-1] (Work in progress)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./introduction.html"> 
+    <a class="nav-link active" href="./introduction.html" aria-current="page"> 
 <span class="menu-text">1. RStudioを使う</span></a>
   </li>  
   <li class="nav-item">
@@ -128,10 +162,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rで社会経済データの取得index-1-work-in-progress" id="toc-rで社会経済データの取得index-1-work-in-progress" class="nav-link active" data-scroll-target="#rで社会経済データの取得index-1-work-in-progress">Rで社会経済データの取得 (Work in progress)</a>
+  <li><a href="#rstudioを使う" id="toc-rstudioを使う" class="nav-link active" data-scroll-target="#rstudioを使う">1. RStudioを使う</a></li>
+  <li><a href="#rstudioのプロジェクト管理機能" id="toc-rstudioのプロジェクト管理機能" class="nav-link" data-scroll-target="#rstudioのプロジェクト管理機能">1.1. RStudioのプロジェクト管理機能</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">1.2. tidyverse</a>
   <ul class="collapse">
-  <li><a href="#本資料の目的" id="toc-本資料の目的" class="nav-link" data-scroll-target="#本資料の目的">0.1 本資料の目的</a></li>
-  <li><a href="#社会経済データベース一覧" id="toc-社会経済データベース一覧" class="nav-link" data-scroll-target="#社会経済データベース一覧">0.2 社会経済データベース一覧</a></li>
+  <li><a href="#特定の行を抽出する---filter-関数" id="toc-特定の行を抽出する---filter-関数" class="nav-link" data-scroll-target="#特定の行を抽出する---filter-関数">1.2.1 特定の行を抽出する - filter( )関数</a></li>
+  <li><a href="#特定の列を抽出する---select-関数" id="toc-特定の列を抽出する---select-関数" class="nav-link" data-scroll-target="#特定の列を抽出する---select-関数">1.2.2 特定の列を抽出する - select( )関数</a></li>
+  <li><a href="#処理をつなげる---パイプ演算子" id="toc-処理をつなげる---パイプ演算子" class="nav-link" data-scroll-target="#処理をつなげる---パイプ演算子">1.2.2 処理をつなげる - パイプ演算子 |&gt;</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -163,121 +200,103 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="rで社会経済データの取得index-1-work-in-progress" class="level2">
-<h2 class="anchored" data-anchor-id="rで社会経済データの取得index-1-work-in-progress">Rで社会経済データの取得<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> (Work in progress)</h2>
-<p>現在では多くの国際機関，研究機関, 政府組織が社会経済データを収集し、データをWeb上に公開、提供しています。 一方，統計解析向けプログラミング言語として人気の高いRコミュニティにおいては，そうした機関から社会経済データを取得し，分析するための便利なツール(Rパッケージ)が数多く開発されています。こうした２つの変化によってデータ分析のハードルがずい分と低くなってきました。本資料はそうした「共有財産」にアプローチする方法を書き留めたものです。</p>
-<section id="本資料の目的" class="level3">
-<h3 class="anchored" data-anchor-id="本資料の目的">0.1 本資料の目的</h3>
-<p>本資料は<strong>R（統計解析向けプログラミング言語）</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>を使って，政府組織，研究機関および国際機関から社会経済データの取得方法を説明することを目的としています。</p>
-<p>言うまでもなく，実証研究においてデータの収集と編集はとても重要です。データは個人もしくは組織で一次データを収集することが望ましいことは言うまでもありません。しかし，これには時間も費用もかかります，またマンパワーも必要となります。収集したデータが，分析にまったく適さないということもあるかもしれません。むしろ，そうしたケースが多いかもしれません。データの収集と編集はじっさいの分析よりも，骨の折れる作業かもしれません．</p>
-<p><strong>R</strong>には，国際機関，政府機関および研究組織の提供するデータベースからデータを取得するパッケージが多く開発されています。そうしたパッケージを利用すれば，骨の折れる作業がかなり軽減されますし，シームレスかつ再現可能な形でのデータの読み込みが可能となります。そこで本資料では，Rパッケージを使った，経済分析において頻繁に利用される国際機関のデータの取得方法と簡単な利用方法を紹介しています。</p>
-<p>本資料のほとんどがデータの取得法の説明と取得したデータの可視化にあてられています。したがって<strong>R</strong>や<strong>RStudio（Rプログラミングの統合開発環境）</strong>の使い方にかんしてはそれほど多くのスペースが割かれていません。RとRStudioについては次の文献で補ってください.</p>
-<ol type="1">
-<li><p><strong>Hadley Wickham, et al.『<a href="https://r4ds.hadley.nz">Rではじめるデータサイエンス</a>』(<a href="https://sugiaki1989.gitbook.io/r-for-data-science-answers/">Web翻訳版</a>)</strong></p></li>
-<li><p><strong>松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』</strong></p></li>
-</ol>
-<p>Rを利用したデータ処理には、現在では、<a href="https://www.tidyverse.org">tidyverse</a>が欠かせません。1はtidyverseに関するもっとも基本的な文献であり，Rを利用するさいには欠かせないテキストの１つです。2は1の日本バージョンと言えるものです。両方の著書によってR,RStudioを利用したデータ処理の基礎が身に付くことと思います</p>
-<p>本資料のいたるところでRパッケージggplot2を利用して，取得したデータを可視化しています。Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます。</p>
-<ol start="3" type="1">
-<li><p><strong>Winston Chang<a href="https://r-graphics.org">『Rグラフィックスクックブック 第2版―ggplot2によるグラフ作成のレシピ集』</a></strong></p></li>
-<li><p><strong>キーラン・ヒーリー<a href="https://socviz.co/index.html#preface">『実践Data Scienceシリーズ データ分析のためのデータ可視化入門』</a></strong></p></li>
-</ol>
-<p>3は<strong>ggplot2</strong>を利用した可視化の方法を学ぶ上で必読文献です。4ももちろんggplot2の説明に多く割かれていますが，同時に可視化についての基本的な考え方を学ぶこともできます。</p>
-<p>データをダウンロードするさい，テキストファイル，CSVファイル，Excel，SQLデータベース，独自のデータフォーマット(dta,spss)など，多くの異なるフォーマットから大規模なデータを読み込んだり，書き込んだりしなければならないことがよくあります。そうした異なるデータ形式を扱うにはRが最も適しています。つまり，Rがあれば，ほぼすべてのデータ形式を読み込むことができます。今では多くの国際機関や研究組織によってデータベースが提供されていますが，Rを利用すれば，データの分析までシームレスに―つまりRを離れることなしに―そうしたデータを読み込むことができます。</p>
+<section id="rstudioを使う" class="level2">
+<h2 class="anchored" data-anchor-id="rstudioを使う">1. RStudioを使う</h2>
+<p>Rのデータ処理には，統合開発環境のデファクト・スタンダードとも言うべきRStudioが欠かせません。以下の図はスクリプト・エジターを開いたときのRStudioの画面です。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/RStudio.png" class="img-fluid figure-img" width="729"></p>
+<figcaption>source: Wickham, et al.&nbsp;(2023) p.86</figcaption>
+</figure>
+</div>
+<p>左側の[Editor]画面と[Console]画面が作業場となります。Rになれると，ほとんど作業が[Editor]画面でのスクリプトの記述に費やされることと思います。</p>
 </section>
-<section id="社会経済データベース一覧" class="level3">
-<h3 class="anchored" data-anchor-id="社会経済データベース一覧">0.2 社会経済データベース一覧</h3>
-<p>本資料で紹介される（紹介予定の）データベースと対応するRパッケージは以下の通りです。</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>データ提供組織</th>
-<th>データベース</th>
-<th>Rパッケージ</th>
-<th>Rパッケージ出典</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Groningen Growth and Development Centre</td>
-<td>penn world table</td>
-<td>pwt10</td>
-<td>Feenstra RC, Inklaar R, Timmer MP (2015). “The Next Generation of the Penn World Table.” <em>American Economic Review</em>, 105(10), 3150-3182.<a href="http://www.ggdc.net/pwt/" class="uri">http://www.ggdc.net/pwt/</a></td>
-</tr>
-<tr class="even">
-<td>Groningen Growth and Development Centre</td>
-<td>The Maddison Project Database</td>
-<td>maddison</td>
-<td>Eric Persson (2015). maddison: Maddison Project Database. R package version 0.1. <a href="https://CRAN.R-project.org/package=maddison" class="uri">https://CRAN.R-project.org/package=maddison</a></td>
-</tr>
-<tr class="odd">
-<td>世界銀行</td>
-<td>World Development Indicator</td>
-<td>WDI</td>
-<td>Vincent Arel-Bundock (2021). WDI: World Development Indicators and Other World Bank Data. R package version 2.7.4. <a href="https://CRAN.R-project.org/package=WDI" class="uri">https://CRAN.R-project.org/package=WDI</a></td>
-</tr>
-<tr class="even">
-<td>EU統計局</td>
-<td>Eurostat</td>
-<td>eurostat</td>
-<td>(C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.Retrieval and analysis of Eurostat open data with the eurostat package. R Journal 9(1):385-392, 2017. Version 3.7.5 Package URL:<a href="http://ropengov.github.io/eurostat" class="uri">http://ropengov.github.io/eurostat</a> Manuscript. URL:<a href="https://journal.r-project.org/archive/2017/RJ-2017-019/index.html" class="uri">https://journal.r-project.org/archive/2017/RJ-2017-019/index.html</a></td>
-</tr>
-<tr class="odd">
-<td>EU</td>
-<td>AMECO</td>
-<td>ameco</td>
-<td>Persson E (2019). <em>ameco: European Commission Annual Macro-Economic (AMECO) Database</em>. R package version 0.2.10, <a href="http://github.com/expersso/ameco" class="uri">http://github.com/expersso/ameco</a>.</td>
-</tr>
-<tr class="even">
-<td>経済協力開発機構</td>
-<td>OEDCD.Stat</td>
-<td>OECD</td>
-<td>Eric Persson (2019). OECD: Search and Extract Data from the OECD. Rpackage version 0.2.4.<a href="https://CRAN.R-project.org/package=OECD" class="uri">https://CRAN.R-project.org/package=OECD</a></td>
-</tr>
-<tr class="odd">
-<td>国際通貨基金</td>
-<td>IMF Data</td>
-<td>imfr</td>
-<td>Christopher Gandrud (2020). imfr: Download Data from the International Monetary Fund’s Data API. R package version 0.1.9.1. <a href="https://CRAN.R-project.org/package=imfr" class="uri">https://CRAN.R-project.org/package=imfr</a></td>
-</tr>
-<tr class="even">
-<td>フランス数理経済計画予測研究所</td>
-<td>DBnomics</td>
-<td>rdbnomics</td>
-<td>Thomas Brand (2020). rdbnomics: Download DBnomics Data. R package version 0.6.4. <a href="https://CRAN.R-project.org/package=rdbnomics" class="uri">https://CRAN.R-project.org/package=rdbnomics</a></td>
-</tr>
-<tr class="odd">
-<td>イェーテボリ大学政治学科V-Dem研究所</td>
-<td>Varieties of Democracy(V-Dem)</td>
-<td>vdemdata</td>
-<td>Seraphine Maerz, Amanda Edgell, Sebastian Hellmeier, Nina Ilchenko.’Vdemdata - an R package to load, explore and work with the most recent V-Dem (Varieties of Democracy) and V-Party datasets’.Varieties of Democracy (V-Dem) Project. 2020.https://www.v-dem.net/en/ and <a href="https://github.com/vdeminstitute/vdemdata" class="uri">https://github.com/vdeminstitute/vdemdata</a></td>
-</tr>
-<tr class="even">
-<td>Gothenburg大学QoG研究所</td>
-<td>QoG (Quality ofo Government) Data</td>
-<td>rqog</td>
-<td>Markus Kainu (2021). rqog: Download data from the Quality of Government Institute data. R package version 0.4.2021.</td>
-</tr>
-<tr class="odd">
-<td>Center for Systemic Peace</td>
-<td>Polity V</td>
-<td>democracyData</td>
-<td>Marshall, Monty G., Ted Robert Gurr. 2020. “Polity5: Political Regime Characteristics and Transitions, 1800-2018”. Dataset Users’ Manual. Center for Systemic Peace. Available at <a href="http://www.systemicpeace.org/inscr/p5manualv2018.pdf" class="uri">http://www.systemicpeace.org/inscr/p5manualv2018.pdf</a></td>
-</tr>
-<tr class="even">
-<td>EU</td>
-<td>Global Innovation Through Company Level Data</td>
-<td>iriR</td>
-<td>Warin T (2023). <em>iriR: Global Innovation Through Company Level Data</em>. R package version 0.2.2, <a href="https://github.com/warint/iriR/" class="uri">https://github.com/warint/iriR/</a>.</td>
-</tr>
-<tr class="odd">
-<td>ILO</td>
-<td>ILO STAT</td>
-<td>Rilostat</td>
-<td>David Bescond (2024). <em>Rilostat: ILO Open Data via Ilostat Bulk Download Facility</em>. R package version 2.1.0, <a href="https://CRAN.R-project.org/package=Rilostat" class="uri">https://CRAN.R-project.org/package=Rilostat</a>.</td>
-</tr>
-</tbody>
-</table>
+<section id="rstudioのプロジェクト管理機能" class="level2">
+<h2 class="anchored" data-anchor-id="rstudioのプロジェクト管理機能">1.1. RStudioのプロジェクト管理機能</h2>
+<p>Rを利用し，レポートを作成するとき，データ，スクリプト，グラフなどが増えて行きます．そうしたデータ等が増えていくと，ファイルを整理し，まとめていくのが大変になって行きます．RStudioにはデータ管理はもちろんのことプロジェクト全体を管理するのに便利なProjectと呼ばれる機能が用意されています．そこで最初に，データを扱う上で有益なRStudioのProject機能を紹介します．</p>
+<p>Project機能を利用すると，プロジェクトごとに，作業ディレクトリの場所，実行の履歴やオブジェクト（変数や関数），スクリプトなどが記憶されます．作業の再開時に，プロジェクトを開くとすぐにプロジェクトごとの以前の環境が利用でき便利です．</p>
+<p>それではRStudioでProjectを作成してみましょう．Projectの作成は，メニューから，<strong>File &gt; New Project…</strong>をクリックします．新しいプロジェクトNew Projectのためのディレクトリ名を尋ねるダイアログが開きます．</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/Project.png" class="img-fluid figure-img" width="709"></p>
+<figcaption>source: Wickham, et al.&nbsp;(2023) p.&nbsp;92</figcaption>
+</figure>
+</div>
+<p><strong>[Directory name]</strong>の空欄のボックスに，新規プロジェクトを作成するディレクトリ名を入力します．この例ではとりあえず<strong>r４ds</strong>という名前がつけられています。<strong>[Browse…]</strong>ボタンをクリックして，プロジェクトを置きたいディレクトリの場所を指定します．すると，新たに作ったプロジェクト用のディレクトリの下に，ディレクトリと同じ名前のプロジェクトができます．この例では<strong>“~/r４ds/”</strong>下に<strong>“r４ds.Rproj”</strong>ができます．次回の作業からは，RStudioのメニューから<strong>File &gt; Open Project…</strong>または，直接，ディレクトリを開いて，プロジェクト<strong>[r4ds.Rproj]</strong>をダブルクリックすれば，r4dsの環境が再現されます．</p>
+<p>ちなみに，r4ds.Rprojをクリックし，RStuidoを起動させた後，コンソール画面に<strong>getwd()</strong>―get working directory（現在の作業ディレクトリを取得する）を意味します―と入力し，現在の作業ディレクトリを確認してみてください．<strong>“~/r4ds/”</strong>と表示されるはずです．</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">getwd</span> ()  <span class="co">#現在の作業ディレクトリの場所を確認</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse">1.2. tidyverse</h2>
+<p>Rでデータを処理を行うさい，頻繁に利用することになる<strong>tidyverse</strong>についてここで簡単に触れておきます. tidyverseおよび基本的なデータ処理についてはHadley Wickham, et al.&nbsp;(2023) <a href="https://r4ds.hadley.nz"><em>R for Data Sciense: Import, Tidy, Trsnform, Visualize, and Model Data</em>, second edition</a>を読むことを強くお勧めします。また宋・矢内氏による<a href="https://www.jaysong.net/RBook/">「わたしたちのR: ベストプラクティスの探求」</a>はWeb上で読めるとても優れたテキストです。</p>
+<p>最初に，tidyverseをインストールし，利用できるようにしておきます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co">#tidyverseのインストール</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)     <span class="co">#tidyverseの読み込み</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>tidyverseの中に収められているデータ操作・処理のための基本的な関数は次の３つです。</p>
+<ol type="1">
+<li><p>特定の行（観察値）を抽出する - <strong>filter( )</strong></p></li>
+<li><p>特定の列（変数）を抽出する - <strong>select( )</strong></p></li>
+<li><p>処理をつなげる - パイプ演算子 <strong>|&gt;</strong></p></li>
+</ol>
+<section id="特定の行を抽出する---filter-関数" class="level3">
+<h3 class="anchored" data-anchor-id="特定の行を抽出する---filter-関数">1.2.1 特定の行を抽出する - filter( )関数</h3>
+<p>tidyverseの中には練習用のデータ<em>flights</em>が用意されています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)       <span class="co">#データflightsを利用可能にする</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>コンソール画面に<em>flights</em>とタイプすると以下の図が表示されます。</p>
+<p><img src="figs/flights.png" class="img-fluid"></p>
+<p>このデータフレームdataframe（正確にはtibble）の中には2013年にニューヨーク市から飛び立った336,776のフライトデータが収められています。左上の<strong># A tibble: 336,776×19</strong>という表示は「このデータセットtibbleが336,776の行（フライトの観察値）と19の列（変数）を持っている」ことを示しています。すべての列（変数）を表示させるにはglimpse()を使うことができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="figs/glimpse(flights).png" class="img-fluid"></p>
+<p>図にはすべて表示されて言いませんが，<em>Rows: 336,776</em>と<em>Columns: 19</em>という左上の表示から列（変数）が<em>year, month, day, dep_time</em>など19変数があることが理解されます。</p>
+<p>filter()は行（観察値）にもとづいて特定の行を抽出します。たとえば，2時間以上の遅れで出発したフライトを抽出してみましょう。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(flights, dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="figs/filter(flight,dep_delay).png" class="img-fluid"></p>
+<p>フライトの遅れはdep_delay変数が示しています。その中の2時間以上の遅れですから，抽出条件はdep_delay &gt; 120です。この結果，抽出されたフライトは9,723に減少しています。このようにfilter( )関数は第1の引数にデータフレー名（tibble名），第2の引数に抽出条件をとります。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(dataframe名, 抽出条件)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="特定の列を抽出する---select-関数" class="level3">
+<h3 class="anchored" data-anchor-id="特定の列を抽出する---select-関数">1.2.2 特定の列を抽出する - select( )関数</h3>
+<p>次に特定の列，すなわち変数を抽出します。このためにはselect( )関数を利用します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(dataframe名, 抽出する変数名)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>たとえば，データflightsからyear, month, dayの３つの列（変数）だけ取り出すとしましょう。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(flights, year,month, day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これを実行すると，列（変数）が3つだけのデータtibbleが作成されます。</p>
+</section>
+<section id="処理をつなげる---パイプ演算子" class="level3">
+<h3 class="anchored" data-anchor-id="処理をつなげる---パイプ演算子">1.2.2 処理をつなげる - パイプ演算子 |&gt;</h3>
+<p>データflightsに対して次のような一連のデータ処理を行うことを考えてみます.</p>
+<ol type="1">
+<li><p>dep_delay変数のうち2時間遅れのフライト行だけを取り出す.</p></li>
+<li><p>さらにその結果から変数day, dest（行先の空港名）およびdep_dalayだけを取り出す.</p></li>
+</ol>
+<p>1の処理はデータフflightsに対してfilter()関数を適用すること, 言いかえると、データflightsをfilter()関数に渡す、ということになります.この一連の処理を<strong>パイプ(|&gt;)</strong>というものを使うと次のように表現できます.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>注意して欲しいのですが，ここでは一連の操作が|&gt;で結合されていますので，filter( )関数の中にdataframe（tibble）名を入力する必要がなくなります。2の処理はこの結果をさらに，select( )関数に渡すことになります。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>flights <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">filter</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">120</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(day,dest, dep_delay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>このスクリプトの<strong>|&gt;</strong>はパイプと呼ばれ，操作を連結するものです.日本語で言えば「そして」ということになるでしょうか<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.パイプは頻繁に利用しますので，ショートカットを覚えておくことをお勧めします。<code>Ctr/Cmd + Shift + M</code>です。</p>
 
 
 </section>
@@ -287,8 +306,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>本資料の作成にあたっては<a href="https://quarto.org">Quarto</a>を利用しています.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Aguirre・Danielssonは<a href="https://voxeu.org/article/which-programming-language-best-economic-research">「経済学研究にとってどのプログラミング言語がベストか―Julia, Matlab, PythonそれともRか？」</a>において４つのプログラミング言語の比較をおこなっています. R言語の比較優位については本エッセイを参照してください.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>パイプ演算子のとても分かり安いイメージが宋財泫 (Jaehyun Song)・矢内勇生 (Yuki Yanai)氏の<a href="https://www.jaysong.net/RBook/datahandling1.html">「私たちのR: ベストプラクティスの探究」</a>において与えられています.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
