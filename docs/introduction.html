@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-24">
+<meta name="dcterms.date" content="2024-05-25">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -75,11 +75,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -105,57 +105,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">R &amp; Socio Econ</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Rで社会経済データの取得[^index-1] (Work in progress)</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./introduction.html" aria-current="page"> 
-<span class="menu-text">1. RStudioを使う</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./MacroData.html"> 
-<span class="menu-text">2. マクロ・データ</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./micro.html"> 
-<span class="menu-text">3 ミクロ・データ</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./DemState.html"> 
-<span class="menu-text">4 民主主義・国家データ</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./industry.html"> 
-<span class="menu-text">5 産業データ</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction.html">1. RStudioを使う</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">R &amp; Soc Econ</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rで社会経済データの取得 (Work in progress)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. RStudioを使う</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MacroData.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. マクロ・データ</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./micro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 ミクロ・データ</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DemState.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 民主主義・国家データ</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./industry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 産業データ</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -188,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 24, 2024</p>
+      <p class="date">May 25, 2024</p>
     </div>
   </div>
   
@@ -205,11 +228,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Rのデータ処理には，統合開発環境のデファクト・スタンダードとも言うべきRStudioが欠かせません。以下の図はスクリプト・エジターを開いたときのRStudioの画面です。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figs/RStudio.png" class="img-fluid figure-img" width="729"></p>
+<p><img src="figs/RStudio.png" class="img-fluid figure-img" width="552"></p>
 <figcaption>source: Wickham, et al.&nbsp;(2023) p.86</figcaption>
 </figure>
 </div>
-<p>左側の[Editor]画面と[Console]画面が作業場となります。Rになれると，ほとんど作業が[Editor]画面でのスクリプトの記述に費やされることと思います。</p>
+<p>左側の[Editor]画面と[Console]画面が作業場となります。Rになれると，ほとんどの作業が[Editor]画面でのスクリプトの記述に費やされることと思います。</p>
 </section>
 <section id="rstudioのプロジェクト管理機能" class="level2">
 <h2 class="anchored" data-anchor-id="rstudioのプロジェクト管理機能">1.1. RStudioのプロジェクト管理機能</h2>
@@ -230,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="tidyverse" class="level2">
 <h2 class="anchored" data-anchor-id="tidyverse">1.2. tidyverse</h2>
-<p>Rでデータを処理を行うさい，頻繁に利用することになる<strong>tidyverse</strong>についてここで簡単に触れておきます. tidyverseおよび基本的なデータ処理についてはHadley Wickham, et al.&nbsp;(2023) <a href="https://r4ds.hadley.nz"><em>R for Data Sciense: Import, Tidy, Trsnform, Visualize, and Model Data</em>, second edition</a>を読むことを強くお勧めします。また宋・矢内氏による<a href="https://www.jaysong.net/RBook/">「わたしたちのR: ベストプラクティスの探求」</a>はWeb上で読めるとても優れたテキストです。</p>
+<p>Rでデータを処理を行うさい，頻繁に利用することになる<strong>tidyverse</strong>についてここで簡単に触れておきます. tidyverseおよび基本的なデータ処理についてはHadley Wickham, et al.&nbsp;(2023) <a href="https://r4ds.hadley.nz"><em>R for Data Sciense: Import, Tidy, Trsnform, Visualize, and Model Data</em>, second edition</a>を読むことを強くお勧めします。また宋・矢内氏による<a href="https://www.jaysong.net/RBook/">「わたしたちのR: ベストプラクティスの探求」</a>もお勧めのテキストです。</p>
 <p>最初に，tidyverseをインストールし，利用できるようにしておきます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co">#tidyverseのインストール</span></span>
