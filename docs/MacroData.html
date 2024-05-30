@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-25">
+<meta name="dcterms.date" content="2024-05-30">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. RStudioを使う</span></a>
+ <span class="menu-text">1. RStudio, tidyverseを使う</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#rパッケージeurostatの利用法" id="toc-rパッケージeurostatの利用法" class="nav-link" data-scroll-target="#rパッケージeurostatの利用法">2.3.1 Rパッケージeurostatの利用法</a></li>
   <li><a href="#eurostatの応用例-地理空間情報の利用" id="toc-eurostatの応用例-地理空間情報の利用" class="nav-link" data-scroll-target="#eurostatの応用例-地理空間情報の利用">2.3.2 Eurostatの応用例 ― 地理空間情報の利用</a></li>
   </ul></li>
-  <li><a href="#european-commision-annual-macro-eocnomicデータベースameco---ameco" id="toc-european-commision-annual-macro-eocnomicデータベースameco---ameco" class="nav-link" data-scroll-target="#european-commision-annual-macro-eocnomicデータベースameco---ameco"><strong>2.4 European Commision Annual macro-eocnomicデータベース(AMECO) - ameco</strong></a>
+  <li><a href="#ec-annual-macro-eocnomicデータベースameco---ameco" id="toc-ec-annual-macro-eocnomicデータベースameco---ameco" class="nav-link" data-scroll-target="#ec-annual-macro-eocnomicデータベースameco---ameco">2.4 EC Annual macro-eocnomicデータベース(AMECO) - ameco</a>
   <ul class="collapse">
   <li><a href="#amecoのインストールと読み込み" id="toc-amecoのインストールと読み込み" class="nav-link" data-scroll-target="#amecoのインストールと読み込み">2.4.1 amecoのインストールと読み込み</a></li>
   </ul></li>
@@ -215,10 +215,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#国際通貨基金imf---imfr" id="toc-国際通貨基金imf---imfr" class="nav-link" data-scroll-target="#国際通貨基金imf---imfr">2.6.1 国際通貨基金(IMF) - imfr</a></li>
   <li><a href="#imfrの利用方法" id="toc-imfrの利用方法" class="nav-link" data-scroll-target="#imfrの利用方法">2.6.2 imfrの利用方法</a></li>
   </ul></li>
-  <li><a href="#iloデータベース---riolstat" id="toc-iloデータベース---riolstat" class="nav-link" data-scroll-target="#iloデータベース---riolstat">2.7 ILOデータベース - Riolstat</a>
+  <li><a href="#労働市場関連データを取得する---riolstat" id="toc-労働市場関連データを取得する---riolstat" class="nav-link" data-scroll-target="#労働市場関連データを取得する---riolstat">2.7 労働市場関連データを取得する - Riolstat</a>
   <ul class="collapse">
   <li><a href="#データを探す" id="toc-データを探す" class="nav-link" data-scroll-target="#データを探す">2.7.1　データを探す</a></li>
   <li><a href="#データをダウンロードする" id="toc-データをダウンロードする" class="nav-link" data-scroll-target="#データをダウンロードする">2.7.2 データをダウンロードする</a></li>
+  <li><a href="#データを可視化する" id="toc-データを可視化する" class="nav-link" data-scroll-target="#データを可視化する">2.7.3 データを可視化する</a></li>
   </ul></li>
   <li><a href="#オープンデータポータル---dbnomics" id="toc-オープンデータポータル---dbnomics" class="nav-link" data-scroll-target="#オープンデータポータル---dbnomics">2.8 オープンデータポータル - DBnomics</a>
   <ul class="collapse">
@@ -243,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 25, 2024</p>
+      <p class="date">May 30, 2024</p>
     </div>
   </div>
   
@@ -260,9 +261,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>今では国際機関，政府,研究組織によって多くのデータが提供されています。そ うしたデータを取得するには，その機関・組織のサイトにアクセスし，csv,EXCEL等のファイルを直接ダウンロードすることによっても，もちろん可能です。し かし，すでに述べたように，Rには，国際機関，研究組織等の提供するデータベースからデータを取得するパッケージが多く開発されています。そうしたパッケージを利用すれば，シームレスかつ再現可能な形でのデータの読み込みが可能となります。本資料では最初に，以下のマクロ経済統計データベースをとりあげます．</p>
 <table class="table">
 <colgroup>
-<col style="width: 38%">
-<col style="width: 36%">
-<col style="width: 25%">
+<col style="width: 47%">
+<col style="width: 26%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -320,9 +321,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>1992年にフローニンゲン大学の経済学部内に設立された<a href="https://www.rug.nl/ggdc/?lang=en">Groningen Growth and Development Centre（GGDC）</a>は,現在ではグローバリゼーション、テクノロジー、制度的変化の相互作用と、それが長期的な経済成長、構造変化、生産性、不平等に与える影響を研究する研究センターとなっています。同センターは次のようなデータベースを公開しています。</p>
 <table class="table">
 <colgroup>
-<col style="width: 37%">
-<col style="width: 37%">
-<col style="width: 25%">
+<col style="width: 36%">
+<col style="width: 36%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1030,8 +1031,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="european-commision-annual-macro-eocnomicデータベースameco---ameco" class="level2">
-<h2 class="anchored" data-anchor-id="european-commision-annual-macro-eocnomicデータベースameco---ameco"><strong>2.4 European Commision Annual macro-eocnomicデータベース(AMECO) - ameco</strong></h2>
+<section id="ec-annual-macro-eocnomicデータベースameco---ameco" class="level2">
+<h2 class="anchored" data-anchor-id="ec-annual-macro-eocnomicデータベースameco---ameco">2.4 EC Annual macro-eocnomicデータベース(AMECO) - ameco</h2>
 <p><a href="https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en">AMECO</a>はEUの年次マクロ経済データ集です。EU地域のマクロデータが主ですが，それ以外のOECD諸国も含まれており，40カ国を超える国のマクロデータが提供されています。AMECOサイトからはcsv,xlsx形式等でデータをダンロードすることもできます。</p>
 <section id="amecoのインストールと読み込み" class="level3">
 <h3 class="anchored" data-anchor-id="amecoのインストールと読み込み">2.4.1 amecoのインストールと読み込み</h3>
@@ -1258,8 +1259,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>2011年に東日本大震災が発生し、日本経済はリーマンショックを超える大幅な落ち込みを見せ、不況に突入しました.2012年末に発足した第2次安倍政権は、デフレ経済からの脱却を目指し、大胆な金融緩和を実行しましたが、その結果が実効為替レートの低下に反映されたと考えられます.「日本株」はお買い得となり、海外からの投資が増加し、日経平均株が上昇します.同時に、円安は輸出を刺激し、輸出に牽引され日本経済は回復に向かいます.</p>
 </section>
 </section>
-<section id="iloデータベース---riolstat" class="level2">
-<h2 class="anchored" data-anchor-id="iloデータベース---riolstat">2.7 ILOデータベース - Riolstat</h2>
+<section id="労働市場関連データを取得する---riolstat" class="level2">
+<h2 class="anchored" data-anchor-id="労働市場関連データを取得する---riolstat">2.7 労働市場関連データを取得する - Riolstat</h2>
 <p>このRパッケージは、ILO統計局のオンラインデータベースである<a href="https://ilostat.ilo.org/">ILOSTAT</a>に含まれるデータにアクセスし、ダウンロードし、操作するためのツールを提供します。ILOSTATのデータと関連するメタデータは、ILOSTATのウェブサイトからも直接入手できます。</p>
 <p>ILOのILOSTATは労働市場統計の世界最大のリポジトリです。このデータベースには雇用、失業、賃金、労働時間、労働生産性など、すべての国と地域と幅広い労働関連のトピックをカバーしています。これには、1938年までさかのぼる時系列、年次、四半期、毎月の労働統計、国レベル、地域、世界の推定値等が含まれます。</p>
 <p>ILOstat Rパッケージ(<code>'Rilostat'</code>)を利用することで、ILOSTATデータベースにアクセスし、データを検索し、ダウンロードすることができます。さらにはそうしたデータの可視化をすることも可能です。</p>
@@ -1277,68 +1278,203 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ILOSTATで利用可能な全指標を表示</span></span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilosta_toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>この結果次のような16列×1,670行のデータセットの一覧が表示されます。id 列がデータをダウンロードするさいに利用する指標コードとなります。1,670の指標が提供されていることが理解できます。</p>
+<p>この結果次のような16列×1,670行のデータセットの一覧が表示されます。id 列がデータをダウンロードするさいに利用する指標コードとなります。1,670の指標が提供されていることが分かります。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figs/get_iolstat_toc() View().png" class="img-fluid figure-img"></p>
 <figcaption>get_ilostat_toc()の出力結果</figcaption>
 </figure>
 </div>
+<p>３列目の<code>indicator.label</code>が指標の簡単な説明，4列目の<code>freq</code> が年次データであること，5列目の<code>freq.label</code>がそのことを示しています。7列目の<code>data.start</code>が開始年を示しています。</p>
+<p>ILOの中に特定の検索語にマッチする指標があるかどうかを調べることもできます。たとえば，労働組合を含む指標を探すとしましょう。検索語に”union”を入力します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"union"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>より絞り込んでデータセットを探すにはget_ilostat_toc()のとる引数を指定します。この関数は5つの引数をとります。</p>
 <ul>
-<li><p>segment = ” “: 指標を探す場合，”indicator”（デフォルト）を入力，国・地域のデータを探す場合は”ref_area”を指定します。searchでindicatorを探す場合，indicatorがデフォルトですの指定は不要となります。</p></li>
-<li><p>lang = ” “: 英語の場合en（デフォルト）, フランス語の場合fr，スペイン語の場合esを入力します。デフォルトで利用すると思いますので，指定しなくとも問題はありません。</p></li>
-<li><p>search = ” “:”none”がデフォルトになります。“検索語が入力された場合，その文字列と一致するデータセットが抽出されます。</p></li>
-<li><p>filters = ” “: リスト; none(デフォルト)でtoc全体を取得し、フィルタの名前付きリストでテーブルの一部だけを取得します。リストオブジェクトの名前は ilostat toc( ) の変数コード、値は観測コードのベクトル</p></li>
-<li><p>fixed = ” “: 真の場合（デフォルト）, より複雑な正規表現のマッチングが必要な場合は FALSE に変更します。</p></li>
+<li>segment = ” “: 指標を探す場合，”indicator”（デフォルト）を入力，国・地域のデータを探す場合は”ref_area”を指定します。’search=’でindicatorを探す場合，indicatorがデフォルトですの指定は不要となります。</li>
+<li>lang = ” “: 英語の場合en（デフォルト）, フランス語の場合fr，スペイン語の場合esを入力します。デフォルトで利用すると思いますので，指定しなくとも問題はありません。</li>
+<li>search = ” “:”none”がデフォルトになります。“検索語が入力された場合，その文字列と一致するデータセットが抽出されます。</li>
+<li>filters = ” “: リスト; none(デフォルト)でtoc全体を取得し、フィルタの名前付きリストでテーブルの一部だけを取得します。リストオブジェクトの名前は ilostat toc( ) の変数コード、値は観測コードのベクトル</li>
+<li>fixed = ” “: 真の場合（デフォルト）, より複雑な正規表現のマッチングが必要な場合は FALSE に変更します。</li>
 </ul>
 <p>いくつかの例を示しましょう</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "education"を含むデータセットを探す</span></span>
-<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"education"</span>)</span>
-<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co"># アルバニアのデータセットを探す</span></span>
-<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">segment =</span> <span class="st">"ref_area"</span>, <span class="at">search =</span> <span class="st">"Albania"</span>)</span>
-<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="co"># searchに"youth"と""adult"を含むデータセットを探す</span></span>
-<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"youth | adult"</span>, <span class="at">fixed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 失業または若者のデータセットを探す</span></span>
-<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"unemployment | youth"</span>, <span class="at">fixed =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "education"を含むデータセットを探す</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"education"</span>)</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co"># アルバニアのデータセットを探す</span></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">segment =</span> <span class="st">"ref_area"</span>, <span class="at">search =</span> <span class="st">"Albania"</span>)</span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="co"># "youth"と""adult"を含むデータセットを探す</span></span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"youth | adult"</span>, <span class="at">fixed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 失業または若者のデータセットを探す</span></span>
+<span id="cb110-11"><a href="#cb110-11" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"unemployment | youth"</span>, <span class="at">fixed =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>2番目のアルバニアのデータを探す例では対象が国ですので，<code>segment = "ref_area"</code> に指定してあります。3番目の例では<code>|</code>が利用されていますが，これは<code>or</code>になります。すなわち<code>youth</code>と<code>adult</code>のいずれかを含んだデータを探します。また，複雑なマッチングが必要となりますので<code>fixed = FALSE</code>としています。</p>
 </section>
 <section id="データをダウンロードする" class="level3">
 <h3 class="anchored" data-anchor-id="データをダウンロードする">2.7.2 データをダウンロードする</h3>
-<p>データをダウンロードするためにはget_ilostat( )関数を使います。この関数の主要な引数は次のようになります。</p>
-<ul>
-<li><p>id = ” “: データセットのid名を入力します。たとえば id =”LUU_XLU2_SEX_EDU_RT_A”</p></li>
-<li><p>segment = ” ” : “indicator”（デフォルト）もしくは”ref_area”を入力します。</p></li>
-<li><p>filters = : データセット全体を取得する場合は none (デフォルト)，データテーブルの一部だけを取得する場合はフィルタの名前付きリスト. リストオブジェクトの名前はilostatの変数コードであり、値は観測コードのベクトル. フィルターは変数を検出するので、部分的である可能性がある。追加オプション：</p>
-<p>timefrom : データセットの開始年.</p>
-<p>timeto : データセットの終了年.</p></li>
-</ul>
-<p>filtersについては以下の例を参考にしてください。それではこの関数を利用してILOSTATのデータをダウンロードしてみましょう。</p>
-<p><strong>１つのデータセットを取得する</strong></p>
+<p>データをダウンロードするためには<code>get_ilostat( )</code>関数を使います。使用法は次のようになります。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="st">"UNE_2UNE_SEX_AGE_NB_A"</span>), segment <span class="ot">=</span> <span class="st">"indicator"</span><span class="er">)</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># segmentのindicatorはデフォルトですので省略可能 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="at">id =</span> ,</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="at">segement =</span> ,</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="at">type =</span> ,</span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="at">time_format =</span> ,</span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="at">filters =</span> ,</span>
+<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="at">fixed =</span> ,</span>
+<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>この関数の主要な引数を説明しておきましょう。</p>
+<ul>
+<li><p>id = ” “: データセットの<code>id名</code>を入力します。たとえば <code>id = "LUU_XLU2_SEX_EDU_RT_A"</code></p></li>
+<li><p>segment = ” ” : “indicator”（デフォルト）もしくは<code>"ref_area"</code>を入力します。</p></li>
+<li><p>filters = : データセット全体を取得する場合は none (デフォルト)，データテーブルの一部だけを取得する場合はフィルタの名前付きリスト. リストオブジェクトの名前はilostatの変数コードであり、値は観測コードのベクトル.</p>
+<p>timefrom : データセットの開始年. timeto : データセットの終了年.</p></li>
+</ul>
+<p><code>filters=</code>については以下の例を参考にしてください。それではこの関数を利用してILOSTATのデータをダウンロードしてみましょう。</p>
+<p><strong>１つのデータセットを取得する</strong></p>
+<p>ここでは日本と韓国の失業データをダウンロードしたいとします。まず，<code>get_ilostat_toc()</code>で失業データを探します。また結果をunempと名付けたオブジェクトに格納するとします。そして結果を<code>View( )</code>で表示させます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>unemp_toc <span class="ot">&lt;-</span> <span class="fu">get_ilostat_toc</span>(<span class="at">search =</span> <span class="st">"unemployment"</span>) </span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(unemp_toc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>結果を容れた<code>unemp_toc</code>は70行×16列のデータテーブルです。すなわち70のデータ指標があります。ここでは試しに１行目の”GED_XLU1_SEX_HHT_CHL_RT_A”をダウンロードしてみましょう。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-05-26 11.01.41.png" class="img-fluid figure-img"></p>
+<figcaption>unemp_tocの結果をView()で表示</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="st">"GED_XLU1_SEX_HHT_CHL_RT_A"</span>, <span class="at">segment =</span> <span class="st">"indicator"</span>)</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># segmentのindicatorはデフォルトですので省略可</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>各国の失業データが取得されます。データテーブルは141,672行の観察値と11の変数から構築されています。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-05-26 11.14.10.png" class="img-fluid figure-img"></p>
+<figcaption>get_ilostat()の結果</figcaption>
+</figure>
 </div>
 <p><strong>複数のデータセットを取得する</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ２つのデータをダウンロードする</span></span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="fu">c</span>(<span class="st">"CPI_ACPI_COI_RT_M"</span>, <span class="st">'CPI_ACPI_COI_RT_Q'</span>), <span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ２つの地域－アフガニスタンとトリニダード・トバゴ－の年次データをダウンロードする</span></span>
-<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">"AFG_A"</span>,<span class="st">"TTO_A"</span>), <span class="at">segment =</span> <span class="st">"ref_area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ２つのデータをダウンロードする</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="fu">c</span>(<span class="st">"CPI_ACPI_COI_RT_M"</span>, <span class="st">'CPI_ACPI_COI_RT_Q'</span>), <span class="at">cache =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ２つの地域－アフガニスタンとトリニダード・トバゴ－の年次データをダウンロードする</span></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">"AFG_A"</span>,<span class="st">"TTO_A"</span>), <span class="at">segment =</span> <span class="st">"ref_area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>filtersを使ってデータセットを取得する</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">"UNE_2UNE_SEX_AGE_NB_A"</span>,<span class="st">'EMP_2EMP_SEX_AGE_NB_A'</span>), </span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">filters =</span> <span class="fu">list</span>( <span class="at">ref_area =</span> <span class="st">"FRA"</span>, </span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">classif1 =</span> <span class="st">"AGE_YTHADULT_YGE15"</span>, </span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">time =</span> <span class="st">"2016"</span>,</span>
-<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">"T"</span>, <span class="st">'SEX_F'</span>)), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ilostat</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">"UNE_2UNE_SEX_AGE_NB_A"</span>,<span class="st">'EMP_2EMP_SEX_AGE_NB_A'</span>), </span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">filters =</span> <span class="fu">list</span>( <span class="at">ref_area =</span> <span class="st">"FRA"</span>, </span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">classif1 =</span> <span class="st">"AGE_YTHADULT_YGE15"</span>, </span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">time =</span> <span class="st">"2016"</span>,</span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">"T"</span>, <span class="st">'SEX_F'</span>)), <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="データを可視化する" class="level3">
+<h3 class="anchored" data-anchor-id="データを可視化する">2.7.3 データを可視化する</h3>
+<p>Rilostatの開発者D.Bescond氏によって，三角図<code>ternary diagram</code>の中にデータを表現することによって国別の不完全就業labor underutilizationの特徴を描く，面白い可視化が紹介されています。最後に，これを紹介しておきましょう。ただし，ここでの例はBescond氏と異なり，<code>protrix</code>パッケージではなく，<code>ggtern</code>パッケージ<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>を使って作図しています。</p>
+<p>不完全就業labor underutilizationは失業者，時間関連不完全就業者，および就業意欲喪失者から構成されます。</p>
+<ul>
+<li>失業者 Unemployment</li>
+<li>時間関連不完全就業者 Time-related underemployment</li>
+<li>就業意欲喪失者 Discouraged job-seekers</li>
+</ul>
+<p>こうした３つの不完全就業者グループは相互に排他的であり，不完全就業者を構成します。これらの不完全就業者が，サンプル国においてどのように相互に関連しているかを示すために，三角図を利用できます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rパッケージggternをインストール</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'ggtern'</span>)</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggternの読みこみ</span></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtern)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>この例では香港，日本，韓国，シンガポールおよびアメリカ合衆国の不完全就業状態を比較します。</p>
+<p><strong>ステップ1: 5カ国のデータのダウンロード</strong></p>
+<p>そこで最初に，ILOSTATから2013年のデータをダウンロードし，labor3と名前をつけたオブジェクトに容れます。そのさい，get_ilostat()の引数<code>filters =</code> を使って細かな指定をしていますが，もちろん，<code>filters</code>を使わずに，3カ国のデータをダウンロードした後でもdplyrを使って同じ処理をすることできます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5カ国のデータをダウンロード</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>labor3 <span class="ot">&lt;-</span> <span class="fu">get_ilostat</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="st">'EIP_WDIS_SEX_AGE_NB_A'</span>,</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'UNE_TUNE_SEX_AGE_NB_A'</span>,</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>                               <span class="st">'TRU_TTRU_SEX_AGE_NB_A'</span>), </span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="at">filters =</span> <span class="fu">list</span>(</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">ref_area =</span> <span class="fu">c</span>(<span class="st">'HKG'</span>,<span class="st">'JPN'</span>,<span class="st">'KOR'</span>,<span class="st">'SGP'</span>,<span class="st">'USA'</span>), <span class="co">#国指定</span></span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">source =</span> <span class="st">'BA'</span>, <span class="co"># ソースをBAに指定</span></span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">sex =</span> <span class="st">'SEX_T'</span>, <span class="co"># 性別を男女計</span></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">classif1 =</span> <span class="st">'YGE15'</span>, <span class="co"># </span></span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">time =</span> <span class="st">'2013'</span>)  <span class="co"># 2013年に限定</span></span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>  )    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これでデータをダウンロードできました。</p>
+<p><strong>ステップ2: データの編集-変数の選択，指標コードをラベルに変更，wide形式への変換</strong></p>
+<p>最初に, <code>select()</code>関数を使って必要な変数－国を表現するref_area, 指標変数indicator, および観察値obs_value－だけピックアップし ておきます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>labor3 <span class="ot">&lt;-</span> labor3 <span class="sc">|&gt;</span> </span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(ref_area, indicator,obs_value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>次に，オリジナルなindicator変数名ではそれが何を表現しているのか分かりませんので，<code>label_ilostat()</code>関数を使ってコードを，ラベルに変更します。<code>label_ilostat()</code>はコードとラベルを切り替える関数です。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># label_ilostat()の書式</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="fu">label_ilostat</span>(</span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a> x,</span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a> <span class="at">dic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a> <span class="at">code =</span> <span class="cn">NULL</span></span>
+<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>x : ラベルをつける文字・ファクターベクトルあるいはデータフレーム</li>
+<li>dic: NULL（デフォルト）の場合，辞書名はデータフレームの列名から取得される</li>
+<li>code: どのコード列が保持されるかを示す列名のベクトル. “all”とした場合，すべてのコードが保持される</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>labor3 <span class="ot">&lt;-</span>labor3 <span class="sc">|&gt;</span> </span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">label_ilostat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>この結果，次のようにindicator変数がラベルに変わります。なお，変数名も<code>indicator.label</code>, ref_areaも<code>ref_area.label</code>に変わっていることが分かります。</p>
+<p><img src="images/スクリーンショット 2024-05-30 11.24.49.png" class="img-fluid"></p>
+<p>これで基本的にデータの準備はできましたが，三角図を描く際に以下の表[wide形式の不完全就業者データセット]で示したような形式に変換しておく必要があります。なお，この場合，<code>indicator.label</code>の変数名も変更しています。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-05-30 11.27.20.png" class="img-fluid figure-img"></p>
+<figcaption>wide形式の不完全就業者データセット</figcaption>
+</figure>
+</div>
+<p>不完全就業者データをwide形式に変換するために，dplyrの<code>pivot_wider()</code><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>を関数を使います。この関数は列を増やし，行を減らすことによってデータセットを<code>wider</code>にします。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># データセットlabor3をwide形式に変換し，オブジェクトwide_labor3に容れる.</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>wide_labor3 <span class="ot">&lt;-</span> labor3 <span class="sc">|&gt;</span> </span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> indicator.label,</span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> obs_value</span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rename()関数を使って変数名を変更</span></span>
+<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">D =</span> <span class="st">`</span><span class="at">Discouraged job-seekers by sex and age (thousands)</span><span class="st">`</span>,</span>
+<span id="cb121-10"><a href="#cb121-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">U =</span> <span class="st">`</span><span class="at">Unemployment by sex and age (thousands)</span><span class="st">`</span>,</span>
+<span id="cb121-11"><a href="#cb121-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">T =</span> <span class="st">`</span><span class="at">Time-related underemployment by sex and age (thousands)</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>ステップ3: データの可視化- 三角図の作成</strong></p>
+<p><code>ggtern</code>はggplot2ファミリーであり，ggplotと同じ書式で作図ができます。それでは<code>ggtern</code>で不完全就業者の三角図を描いてみましょう。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtern</span>(<span class="at">data =</span> wide_labor3, <span class="fu">aes</span>(D,U,T, <span class="at">colour =</span> ref_area.label))<span class="sc">+</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_rgbw</span>()<span class="sc">+</span></span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Dis-</span><span class="sc">\n</span><span class="st">couraged"</span>,</span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">xarrow =</span><span class="st">"Dicouraged</span><span class="sc">\n</span><span class="st">job-seekers"</span>,</span>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Unemployment"</span>,</span>
+<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">z=</span><span class="st">"Time-</span><span class="sc">\n</span><span class="st">related-"</span>,</span>
+<span id="cb122-8"><a href="#cb122-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">zarrow =</span> <span class="st">"Time-related</span><span class="sc">\n</span><span class="st">underemployment"</span>,</span>
+<span id="cb122-9"><a href="#cb122-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Labor underutilization (%) ,2013"</span>,</span>
+<span id="cb122-10"><a href="#cb122-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">""</span>)<span class="sc">+</span></span>
+<span id="cb122-11"><a href="#cb122-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_rgbw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>この結果，わずか数行のスクリプトで以下のような三角図が描かれます。</p>
+<p><img src="LaborUnderUtilization.png" class="img-fluid"></p>
+<p>このグラフによって不完全就業者に占める３つの不完全就業者カテゴリーの比率を，視覚的に理解できます。たとえば，日本はシンガポールと似た特徴をもち，不完全就業者に占める失業者の割合は低く，時間関連不完全就業者の占める比率が高い，ということが理解されます。他方，韓国とアメリカは就業意欲失業者の比率，失業者の比率が他の国よりいくぶん高く，時間関連不完全就業者の比率が低いという特徴を持っているようです。</p>
 </section>
 </section>
 <section id="オープンデータポータル---dbnomics" class="level2">
@@ -1347,11 +1483,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>DBnomicsは世界の経済データを一箇所に集め、しかも無料で一般に公開することを目的としたオープンソースプロジェクトです.具体的には、国内機関や国際機関 ― Eurostat, World Bank, IMF, ECB等、87のデータ提供組織・機関 ― から収集された何百万ものデータ系列が提供されています.すでにこれまでに紹介したEurostat, OECD, IMF, BISおよびPenn World Tableも提供されています.</p>
 <p>たとえば、2-5でダウンロードしたデータはDBnomicsにおいても取得できます.imfrを使って得た実行為替レートは次のように入力することで得ることできます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>exch_rate_3c <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"IMF/IFS/A.CN.ENEER_IX"</span>,<span class="st">"IMF/IFS/A.JP.ENEER_IX"</span>,<span class="st">"IMF/IFS/A.US.ENEER_IX"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>exch_rate_3c <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"IMF/IFS/A.CN.ENEER_IX"</span>,<span class="st">"IMF/IFS/A.JP.ENEER_IX"</span>,<span class="st">"IMF/IFS/A.US.ENEER_IX"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>BISによって取得した長期政策利子率を取得するためには次のように入力します.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>policyrate3c <span class="ot">&lt;-</span><span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"BIS/cbpol/M.JP"</span>, <span class="st">"BIS/cbpol/M.SE"</span>,<span class="st">"BIS/cbpol/M.US"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>policyrate3c <span class="ot">&lt;-</span><span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"BIS/cbpol/M.JP"</span>, <span class="st">"BIS/cbpol/M.SE"</span>,<span class="st">"BIS/cbpol/M.US"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="rパッケージ---rdbnomics" class="level3">
 <h3 class="anchored" data-anchor-id="rパッケージ---rdbnomics">2.6.1 Rパッケージ - rdbnomics</h3>
@@ -1360,8 +1496,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="rdbnomicsのインストール">2.6.1.1 rdbnomicsのインストール</h4>
 <p>RパッケージDBnomicsをインストールするには他のRパッケージと同様に次のように入力します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">"rdbnomics"</span>)</span>
-<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(rdbnomics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">install.packages</span>(<span class="st">"rdbnomics"</span>)</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(rdbnomics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1377,15 +1513,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>この３つの情報を<code>rdb()</code>関数の引数<code>ids =</code> において指定します.ids引数の書き方は次のようになります.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>ids <span class="ot">=</span> 提供機関コード<span class="sc">/</span>データセット・コード<span class="sc">/</span>データ系列コード</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>ids <span class="ot">=</span> 提供機関コード<span class="sc">/</span>データセット・コード<span class="sc">/</span>データ系列コード</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>実際に世界保健機構WHOが提供するドイツの「病床数（人口１万人あたり）」データを取得してみましょう.このためには上の３つの情報が必要となります.データ提供機関コードはWHO, データセット・コードはWHS6, データ系列コードはWHS6_102.DEU.Aです.取得したドイツ病床数データをbeds_deuというオブジェクトに容れるとすると、次のようなスクリプトでダウンロードすることができます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>beds_deu <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="st">"WHO/WHS6/WHS6_102.DEU.A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>beds_deu <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="st">"WHO/WHS6/WHS6_102.DEU.A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>結果を<code>str()</code>関数を使い、beds_deuの変数を確認してみましょう。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(beds_deu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(beds_deu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>21の変数（列）がbeds_deuに格納されていることが分かります.<code>ids()</code>関数を利用し、データを取得すると、少なくとも次の10の変数を得ることができます.</p>
 <ul>
@@ -1402,11 +1538,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>データベースごとに異なりますが、上記以外に単位unit、地理情報geo、年次、四半期別等の情報freqを取得することもできます.</p>
 <p>以下のグラフはデータフレームbeds_deuのデータををもとggplotを利用し、ドイツの病床の時系列変化のグラフを描いたものです.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> beds_deu, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> period,<span class="at">y =</span> value))<span class="sc">+</span></span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"year"</span>,</span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a> <span class="at">y =</span> <span class="st">"per 10000 pupulation"</span>, <span class="at">subtitle =</span> <span class="st">"Hospital beds (per 10 000 population) in German"</span>)<span class="sc">+</span></span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> beds_deu, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> period,<span class="at">y =</span> value))<span class="sc">+</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"year"</span>,</span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a> <span class="at">y =</span> <span class="st">"per 10000 pupulation"</span>, <span class="at">subtitle =</span> <span class="st">"Hospital beds (per 10 000 population) in German"</span>)<span class="sc">+</span></span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src=".png" class="img-fluid"></p>
 <div class="quarto-figure quarto-figure-center">
@@ -1424,19 +1560,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>1. 機関のコード名の取得</strong></p>
 <p>機関コード名はrdb_providers()関数を利用することで取得できます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rdb_providers</span>(<span class="at">code =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rdb_providers</span>(<span class="at">code =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>code =</code> 引数はTRUEかFALSEの論理値をとり、既定値はFALSEです.上のように、<code>code = TRUE</code>とした場合、提供機関のコード名が表示されます.既定値FALSEにした場合、機関コード名の他に機関名nama、カバー地域region、ホームページアドレスweb site等が表示されます.</p>
 <p><strong>2. データセットコードの取得</strong></p>
 <p>このコードの取得のためには<code>rdb_datasets()</code>関数を使います.この関数では特定の機関を指定せずに、すべてのデータセットのリストをダウンロードすることもできますが、<code>rdb_providers()</code>で取得した機関コード指定した方が効率的です.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rdb_datasets</span>(<span class="at">provider_code =</span> <span class="st">"IMF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rdb_datasets</span>(<span class="at">provider_code =</span> <span class="st">"IMF"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>これでIMFの提供するデータセット一覧を取得できます.</p>
 <p><strong>3. データ系列リストの取得</strong></p>
 <p>次に、提供機関IMFのデータセットIFSに、どのようなデータ系列が保存されているかをみます.このためには<code>rdb_series()</code>関数を利用します.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rdb_series</span>(<span class="at">provider_code =</span> <span class="st">"IMF"</span>, <span class="at">dataset_code =</span> <span class="st">"IFS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rdb_series</span>(<span class="at">provider_code =</span> <span class="st">"IMF"</span>, <span class="at">dataset_code =</span> <span class="st">"IFS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>以上の手順1 ~3は<a href="https://db.nomics.world">DBnomicsのホームページ</a>においても行うことができます.ホームページにおいて下の方にスクロールすると、[DBnomics providers]一覧が掲載されています.[IMF]International Monetary Fund選択すると、データセットの一覧を見ることができます.さらに、ここでデータセットInternational Financial statistics (IFS) [IMF/IFS]を選択すると、IFSが有するデータ系列を選択し、ダウンロードすることができるようになっています.</p>
 <p>以上でDBnomicsの基本的な利用法の説明は終了です.続けていくつかの利用パタンを紹介しましょう。</p>
@@ -1445,7 +1581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="同一のデータセットから複数のデータ系列を取得する">2.6.2.2 同一のデータセットから複数のデータ系列を取得する</h4>
 <p>次に、複数のデータ系列をダウンロードする方法を紹介しましょう.これは<code>c( )</code>を使い、その中にデータ系列名を並べて書くことで簡単にダウンロードできます.以下のスクリプトがその例です.ダウンロードした結果は、beds3cというオブジェクトに格納されています.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>beds3c <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"WHO/WHS6/WHS6_102.DEU.A"</span>, <span class="st">"WHO/WHS6/WHS6_102.JPN.A"</span>, <span class="st">"WHO/WHS6/WHS6_102.USA.A"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>beds3c <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"WHO/WHS6/WHS6_102.DEU.A"</span>, <span class="st">"WHO/WHS6/WHS6_102.JPN.A"</span>, <span class="st">"WHO/WHS6/WHS6_102.USA.A"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>ここでは、WHOのWorld Health Statistics[WHS6]からドイツ、日本およびアメリカの病床データ -―WHS6_102.DEU.A、WHS6_102.JPN.A、WHS6_102.USA.A ―-をダウンロードし、オブジェクトbeds3cに容れています.</p>
 <p>beds3cのデータをもとに３カ国のプロットを描くと、ドイツの病床の水準は日本とアメリカの中間にあるようです.一般的に言われているように、日本の病床数は多く、アメリカの病床数は低い水準にあることが分かります.また、いずれの国も傾向的には病床数は減少しているようです.</p>
@@ -1457,15 +1593,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>このグラフは次のスクリプトによって描くことができます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> beds3c, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> value))<span class="sc">+</span></span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>Country)<span class="sc">+</span></span>
-<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">9</span>)<span class="sc">+</span></span>
-<span id="cb124-5"><a href="#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> beds3c, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> period, <span class="at">y =</span> value))<span class="sc">+</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="sc">~</span>Country)<span class="sc">+</span></span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">9</span>)<span class="sc">+</span></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>このスクリプトでも、facet_wrap()関数を利用し、国別の複数のグラフを作成しています.facet_wrap()は使い方は次のようになります.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(分類する基準となる変数))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(<span class="fu">vars</span>(分類する基準となる変数))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>また、テーマはtheme_minimal()を利用し、シンプルなテーマを選択しています.表示文字のサイズはbase_size = を利用し、９ポイントに指定しています.</p>
 <p>この例ではWHOのWorld Health Statistics[WHS6]というデータセットを利用しました.この他にWHOからは次の４つのデータセットが提供されています.International Health Regulations (2005) monitoring network, Sustainable development goals, Health workforceおよびRoad Safetyです。</p>
@@ -1474,60 +1610,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="異なったデータセットから異なったデータ系列の取得">2.6.2.3 異なったデータセットから異なったデータ系列の取得</h4>
 <p>次に異なったデータセットから異なったデータ系列をダンロードしてみましょう.同じWHOの中にHealth workforce[WHO/HWV]というデータセットがあり、その中に「医師数（人口１万人あたり）」のデータが提供されています.病床数と一緒に、このデータも取得してみましょう.いずれも日本のデータです.この例では結果をbed_mdというオブジェクトに容れます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>beds_md <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"WHO/WHS6/WHS6_102.JPN.A"</span>,<span class="st">"WHO/HWF/HWF_0001.JPN.A"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>beds_md <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"WHO/WHS6/WHS6_102.JPN.A"</span>,<span class="st">"WHO/HWF/HWF_0001.JPN.A"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>names()関数を利用し、beds_mdが持つ変数一覧を表示させてみましょう.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(beds_md)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(beds_md)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>データフレームbeds_mdが25変数（列）を持っていることが分かります.変数（列）はDBnomicsでは統一されています、つまり病床数データと医師数データは同一の変数の中にあります（異なる場合、変数列が追加されます）.このため病床数データの行が終了すると、医師数データの行が追加されてます.</p>
 <p>このためデータを処理するさい、INDICATORもしくはseries_code変数によって識別する必要があります.</p>
 <p><strong>データフレーム名$変数名</strong>を使ってデータフレームの変数を指定し、INDICATORを表示させると、19行めまではWHS6_102ですが、20行めからはHWF_0001であることが分かります.つまり19行めまではベッド数データ、20行めからは医師数のデータであることが分かります.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a> beds_md<span class="sc">$</span>INDICATOR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a> beds_md<span class="sc">$</span>INDICATOR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>次に、このデータを使って医師数とベッド数の推移のグラフを描いていみましょう.</p>
 <p>最初に、このINDICATORをもとにベッド数と医師数データをそれぞれ別のデータフレーム―beds_jpn, doctor_jpn―に容れます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a> beds_jpn <span class="ot">&lt;-</span> beds_md <span class="sc">|&gt;</span> <span class="fu">filter</span>(INDICATOR <span class="sc">==</span> <span class="st">"WHS6_102"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a> beds_jpn <span class="ot">&lt;-</span> beds_md <span class="sc">|&gt;</span> <span class="fu">filter</span>(INDICATOR <span class="sc">==</span> <span class="st">"WHS6_102"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>doctor_jpn <span class="ot">&lt;-</span> beds_md <span class="sc">|&gt;</span>  <span class="fu">filter</span>(INDICATOR <span class="sc">==</span> <span class="st">"HWF_0001"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>doctor_jpn <span class="ot">&lt;-</span> beds_md <span class="sc">|&gt;</span>  <span class="fu">filter</span>(INDICATOR <span class="sc">==</span> <span class="st">"HWF_0001"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>いずれもfilter()関数を使ってベッド数のデータの入っている行（もしくは医師数のデータの入っている行）を抽出しています.なお、filter()関数の書き方は</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(データフレーム名、抽出条件)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(データフレーム名、抽出条件)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>です.ただし、この例ではパイプ(|&gt;)で連結していますので、データフレーム名は省略しています。抽 出条件は<code>INDICATOR == "WHS6_102"</code>です。こ れはINDICATOR変数が文字列”WHS6_102”に等しい行だけを抽出しなさいということを意味します。</p>
 <p>最後に、抽出した結果つまりデータフレームを<code>ggplot()</code>に渡します。そ してggplot2を使って描いたグラフをオブジェクトbeds_figに容れます。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>beds_fig <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> beds_jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value, <span class="at">group =</span> INDICATOR)) <span class="sc">+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>beds_fig <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> beds_jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value, <span class="at">group =</span> INDICATOR)) <span class="sc">+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Hospital beds (per 10 000 population)"</span>,</span>
-<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2019</span>,<span class="dv">5</span>))<span class="sc">+</span></span>
-<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Hospital beds (per 10 000 population)"</span>,</span>
+<span id="cb143-3"><a href="#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb143-4"><a href="#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2019</span>,<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb143-5"><a href="#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>beds_figの作成にあたっては<strong>scale_x_discrete()</strong>を利用し、x軸のラベルを変更しています.x軸の変数’orignal_period’は見た目では連続変数ですが、じっさいには文字列変数です.データフレームbeds_jpnの中のoriginal_period変数にclass()を適用すると、</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(beds_jpn<span class="sc">$</span>original_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(beds_jpn<span class="sc">$</span>original_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>’orignal_period’変数が文字列であることが分かります。変 数の型を変換しても良いのですが、ここではそのまま文字列として扱い、x軸のラベルを変更します。こ のためにscale_x_discrete()を利用します. discreteは離散変数を意味し、x軸を離散変数として扱うことを示しています. 引数<strong>breaks =</strong>によってラベルの表示範囲を指定します. <strong>seq(2000, 2019, 5)</strong>は開始年を2000年とし、最後の年を2019とし、5年おきにラベルをつけるということを指示しています.</p>
 <p>さらに、<strong>annotate()</strong>関数を使い、注釈をグラフに入れてあります.annotate(“text”, x = 12, y = 145, label = ““)が示しているように、annotate()関数を使ってテキスト注釈を挿入する場合は、”text”,そしてテキストの位置をx軸とy軸の座標で指定します。そ の上で挿入する注釈を<code>label = ""</code>に記入します。</p>
 <p>同様に、医師数データを表示するスクリプトは次のようになります</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>doctor_fig <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> doctor_jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value, <span class="at">group =</span> INDICATOR))<span class="sc">+</span></span>
-<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Medical doctors (per 10,000)"</span>,</span>
-<span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb135-5"><a href="#cb135-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2019</span>, <span class="dv">5</span>))<span class="sc">+</span></span>
-<span id="cb135-6"><a href="#cb135-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>doctor_fig <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> doctor_jpn, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value, <span class="at">group =</span> INDICATOR))<span class="sc">+</span></span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">16</span>, <span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Medical doctors (per 10,000)"</span>,</span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2019</span>, <span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>以上の2つのグラフ – beds_figとdoctor_fig – を表示させますが、そのさい、グラフのレイアウトを調整するRパッケージ’patchwork’を使い、2つのグラフを縦に並べています.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>beds_fig<span class="sc">/</span>doctor_fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>beds_fig<span class="sc">/</span>doctor_fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1543,26 +1679,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>WDIの提供するアメリカの自殺率データのDBnomics形式の指標名は次のとおりです.ここでは性別の２種類のデータが指定されています.<strong>“WB/WDI/SH.STA.SUIC.MA.P5-US”</strong>と<strong>“WB/WDI/SH.STA.SUIC.FE.P5-US”</strong>です.</p>
 <p>ダウンロードには上述のように<code>rdb(ids = "")</code>を利用します.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>suicide <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"WB/WDI/SH.STA.SUIC.MA.P5-US"</span>,<span class="st">"WB/WDI/SH.STA.SUIC.FE.P5-US"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>suicide <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span> <span class="fu">c</span>(<span class="st">"WB/WDI/SH.STA.SUIC.MA.P5-US"</span>,<span class="st">"WB/WDI/SH.STA.SUIC.FE.P5-US"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> suicide, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(original_period), <span class="at">y =</span> value,<span class="at">group =</span> series_name ))<span class="sc">+</span></span>
-<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> series_name))<span class="sc">+</span></span>
-<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
-<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"Suicide mortality rate (per 100,000 female population)"</span>,</span>
-<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a> <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
-<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_hue</span>(<span class="at">name =</span> <span class="st">""</span>,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))<span class="sc">+</span></span>
-<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a><span class="fu">xlim</span> (<span class="dv">2000</span>,<span class="dv">2020</span>)<span class="sc">+</span></span>
-<span id="cb138-9"><a href="#cb138-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> suicide, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(original_period), <span class="at">y =</span> value,<span class="at">group =</span> series_name ))<span class="sc">+</span></span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> series_name))<span class="sc">+</span></span>
+<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"Suicide mortality rate (per 100,000 female population)"</span>,</span>
+<span id="cb148-5"><a href="#cb148-5" aria-hidden="true" tabindex="-1"></a> <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb148-6"><a href="#cb148-6" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="cb148-7"><a href="#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_hue</span>(<span class="at">name =</span> <span class="st">""</span>,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))<span class="sc">+</span></span>
+<span id="cb148-8"><a href="#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="fu">xlim</span> (<span class="dv">2000</span>,<span class="dv">2020</span>)<span class="sc">+</span></span>
+<span id="cb148-9"><a href="#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>このグラフは自殺率データをもとに描いたグラフです.グラフのx軸にはoriginal_period変数が利用されています.この変数original_periodは文字列型です.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(suicide<span class="sc">$</span>original_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(suicide<span class="sc">$</span>original_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>グラフのx軸にするにはこのデータ型は扱いづらいのでグラフ作成にあたっては<em>as.integer()</em>関数によって整数型に変化しています.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">class</span>(<span class="fu">as.integer</span>(suicide<span class="sc">$</span>original_period))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">class</span>(<span class="fu">as.integer</span>(suicide<span class="sc">$</span>original_period))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>ケース・ディートン著<a href="https://www.msz.co.jp/book/detail/08963/">『絶望死のアメリカ―資本主義がめざすべきもの』</a></strong>は、おもにアメリカ疾病予防管理センター（CDC）のデータをもとに1990年台から低学歴白人アメリカ人中年男性の自殺率だけが急増している事実を報告しています.グラフは学歴別ではありませんが、男性の自殺率が、女性に比べ、高い水準にあり、とりわけリーマンショック後に急増していることが伺えます.</p>
 <p>また、失業率データは45-54歳年齢の男性データを利用します.これは学歴別の失業率データです.</p>
@@ -1571,18 +1707,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>“ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_6.SEX_M.A”</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>unemp <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span><span class="fu">c</span>( <span class="st">"ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_3.SEX_M.A"</span>,<span class="st">"ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_6.SEX_M.A"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>unemp <span class="ot">&lt;-</span> <span class="fu">rdb</span>(<span class="at">ids =</span><span class="fu">c</span>( <span class="st">"ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_3.SEX_M.A"</span>,<span class="st">"ILO/UNE_DEAP_SEX_AGE_EDU_RT/USA.BA_453.AGE_10YRBANDS_Y45-54.EDU_ISCED11_6.SEX_M.A"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>学歴別の中年(45-54歳)男性の失業率の推移を見てみましょう.期待どおりですが、低学歴グループが高い失業率を示しています.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> unemp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value,<span class="at">group =</span> classif2))<span class="sc">+</span></span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> classif2))<span class="sc">+</span></span>
-<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
-<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"Male unemployment rate, by education level"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
-<span id="cb142-5"><a href="#cb142-5" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<span id="cb142-6"><a href="#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_hue</span>(<span class="at">name =</span> <span class="st">""</span>,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Upper secondary </span><span class="sc">\n</span><span class="st">education"</span>, <span class="st">"Bachelor's </span><span class="sc">\n</span><span class="st">or equivalent level"</span>))<span class="sc">+</span></span>
-<span id="cb142-7"><a href="#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2019</span>,<span class="dv">5</span>))<span class="sc">+</span></span>
-<span id="cb142-8"><a href="#cb142-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> unemp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> original_period, <span class="at">y =</span> value,<span class="at">group =</span> classif2))<span class="sc">+</span></span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> classif2))<span class="sc">+</span></span>
+<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> <span class="st">"Male unemployment rate, by education level"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb152-5"><a href="#cb152-5" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="cb152-6"><a href="#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_hue</span>(<span class="at">name =</span> <span class="st">""</span>,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Upper secondary </span><span class="sc">\n</span><span class="st">education"</span>, <span class="st">"Bachelor's </span><span class="sc">\n</span><span class="st">or equivalent level"</span>))<span class="sc">+</span></span>
+<span id="cb152-7"><a href="#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1990</span>, <span class="dv">2019</span>,<span class="dv">5</span>))<span class="sc">+</span></span>
+<span id="cb152-8"><a href="#cb152-8" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1602,43 +1738,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>1. 自殺率データから男性の自殺率だけを抽出する</strong></p>
 <p>データフレームsuicideにfilter()関数を適用し、series_code が “WB/WDI/SH.STA.SUIC.MA.P5-US” に一致する行を取り出します.そしてその結果をsuicide_maleという名前のオブジェクトに容れます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>suicide_male <span class="ot">&lt;-</span> suicide <span class="sc">|&gt;</span> </span>
-<span id="cb143-2"><a href="#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(series_code <span class="sc">==</span> <span class="st">"WB/WDI/SH.STA.SUIC.MA.P5-US"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>suicide_male <span class="ot">&lt;-</span> suicide <span class="sc">|&gt;</span> </span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(series_code <span class="sc">==</span> <span class="st">"WB/WDI/SH.STA.SUIC.MA.P5-US"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>2. 失業率のデータから低学歴男性の失業率を抽出する</strong></p>
 <p>　　同様に、filter()関数を使い、データフレームsuicideから低学歴中年男性の失業率を抽出します.具体的には、classif2が”EDU_ISCED11_3”に一致する行を取り出します.ここでは抽出された結果はunemp_low_edというオブジェクトに容れます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>unemp_low_ed <span class="ot">&lt;-</span> unemp <span class="sc">|&gt;</span> </span>
-<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>( classif2 <span class="sc">==</span> <span class="st">"EDU_ISCED11_3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>unemp_low_ed <span class="ot">&lt;-</span> unemp <span class="sc">|&gt;</span> </span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>( classif2 <span class="sc">==</span> <span class="st">"EDU_ISCED11_3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>3. 上の２つのデータを結合する</strong></p>
 <p>　上で抽出した２つのデータフレームを結合します.このためにはinner_join()関数を利用します.たとえば、A,Bという２つのデータフレームを結合するとします.この場合、inner_join()は次のように書きます. 　</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(データフレームA、データフレームB, <span class="at">by =</span> <span class="st">"結合の基準となる変数名"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(データフレームA、データフレームB, <span class="at">by =</span> <span class="st">"結合の基準となる変数名"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>それではこの関数を使い、２つのデータフレーム — suicide_maleとunemp_low_ed — を結合します.結合にあたっての共通の変数は<strong>original_period</strong>になります.結合されたデータフレームは<strong>suicide_unemployment</strong>というオブジェクトに容れます.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>suicide_unemployment <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(suicide_male,unemp_low_ed,<span class="at">by =</span> <span class="st">"original_period"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>suicide_unemployment <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(suicide_male,unemp_low_ed,<span class="at">by =</span> <span class="st">"original_period"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>4　必要な変数のみ取り出し、ggplot2によって散布図を描く</strong></p>
 <p>次に、select()関数を利用し、必要な変数を取り出します.その際、変数名も変更しておきます.select()関数は引数に抽出する変数名を入力するだけですが、変数名を変更する場合は<code>新しい変数名 = 古い変数名</code>と入力します.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>su <span class="ot">&lt;-</span> suicide_unemployment <span class="sc">|&gt;</span> </span>
-<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(original_period,<span class="at">suicide_rate =</span> value.x, <span class="at">unemp_rate =</span> value.y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>su <span class="ot">&lt;-</span> suicide_unemployment <span class="sc">|&gt;</span> </span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(original_period,<span class="at">suicide_rate =</span> value.x, <span class="at">unemp_rate =</span> value.y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>この例では結果を<code>su</code>というオブジェクトに格納しています.このデータフレームを利用し、最後に、ggplot2で自殺率と失業率の散布図を描くとします.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> su, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> unemp_rate, <span class="at">y =</span> suicide_rate))<span class="sc">+</span></span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>,<span class="at">size =</span> <span class="dv">1</span>,<span class="at">color =</span> <span class="st">"gray"</span>)<span class="sc">+</span></span>
-<span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb148-5"><a href="#cb148-5" aria-hidden="true" tabindex="-1"></a> <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>))<span class="sc">+</span></span>
-<span id="cb148-6"><a href="#cb148-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb148-7"><a href="#cb148-7" aria-hidden="true" tabindex="-1"></a> <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>))<span class="sc">+</span></span>
-<span id="cb148-8"><a href="#cb148-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(</span>
-<span id="cb148-9"><a href="#cb148-9" aria-hidden="true" tabindex="-1"></a> <span class="at">x =</span> <span class="st">"Male unemployment rate (45-54), </span><span class="sc">\n</span><span class="st">upper secondary education "</span>, <span class="at">y =</span> <span class="st">"Male suicide mortality rate </span><span class="sc">\n</span><span class="st">(per 100,000)"</span></span>
-<span id="cb148-10"><a href="#cb148-10" aria-hidden="true" tabindex="-1"></a> )<span class="sc">+</span></span>
-<span id="cb148-11"><a href="#cb148-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_minimal</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> su, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> unemp_rate, <span class="at">y =</span> suicide_rate))<span class="sc">+</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>,<span class="at">size =</span> <span class="dv">1</span>,<span class="at">color =</span> <span class="st">"gray"</span>)<span class="sc">+</span></span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb158-5"><a href="#cb158-5" aria-hidden="true" tabindex="-1"></a> <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>))<span class="sc">+</span></span>
+<span id="cb158-6"><a href="#cb158-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb158-7"><a href="#cb158-7" aria-hidden="true" tabindex="-1"></a> <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">number_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>))<span class="sc">+</span></span>
+<span id="cb158-8"><a href="#cb158-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(</span>
+<span id="cb158-9"><a href="#cb158-9" aria-hidden="true" tabindex="-1"></a> <span class="at">x =</span> <span class="st">"Male unemployment rate (45-54), </span><span class="sc">\n</span><span class="st">upper secondary education "</span>, <span class="at">y =</span> <span class="st">"Male suicide mortality rate </span><span class="sc">\n</span><span class="st">(per 100,000)"</span></span>
+<span id="cb158-10"><a href="#cb158-10" aria-hidden="true" tabindex="-1"></a> )<span class="sc">+</span></span>
+<span id="cb158-11"><a href="#cb158-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_minimal</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1661,6 +1797,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li id="fn2"><p>Chris Brunsdon, Lex Comber著(湯谷啓明・工藤和奏・市川太祐訳)『Rによる地理空間データ解析入門』共立出版, 2018年.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>スティーグ・ラーソン著『ミレニアム』（早川文庫）シリーズの主人公.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>ヴァルランダーシリーズ,ヘニング・マンケル著『リガの犬たち』（創元社）.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Hamilton NE and Ferry M (2018). “ggtern: Ternary Diagrams Using ggplot2.” Journal of Statistical Software, Code Snippets, 87(3), pp.&nbsp;1-17. doi: 10.18637/jss.v087.c03 (URL:<a href="http://doi.org/10.18637/jss.v087.c03" class="uri">http://doi.org/10.18637/jss.v087.c03</a>)<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><code>pivot_wider()</code>, <code>pivot_longer()</code>を利用したデータセットの変形についてはWickham et al.&nbsp;“R for Data Science”, 2nd edの<a href="https://r4ds.hadley.nz/data-tidy#sec-pivoting">第５章</a>および宋・矢内氏のWeb書籍「わたしたちのR」の<a href="https://www.jaysong.net/RBook/tidydata.html#sec-tidydata-gather">17 整然データ構造</a>を参照してください。また，vignette(“pivot”, package = “tidyr”)とコンソールに入力することによって詳細な説明を得ることができます。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
