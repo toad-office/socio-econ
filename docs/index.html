@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-30">
+<meta name="dcterms.date" content="2024-05-31">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. RStudioを使う</span></a>
+ <span class="menu-text">1. RStudio, tidyverseを使う</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -174,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 30, 2024</p>
+      <p class="date">May 31, 2024</p>
     </div>
   </div>
   
@@ -188,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="rで社会経済データの取得-work-in-progress" class="level2">
 <h2 class="anchored" data-anchor-id="rで社会経済データの取得-work-in-progress">Rで社会経済データの取得 (Work in progress)</h2>
-<p>現在では多くの国際機関，研究機関, 政府組織が社会経済データを収集し、データをWeb上に公開、提供しています。 一方，統計解析向けプログラミング言語として人気の高いRコミュニティにおいては，そうした機関から社会経済データを取得し，分析するための便利なツール(Rパッケージ)が数多く開発されています。こうした２つの変化によってデータ分析のハードルがずい分と低くなってきました。本資料はそうした「共有財産」にアプローチする方法を紹介したたものです。</p>
+<p>現在では多くの国際機関，研究機関, 政府組織が社会経済データを収集し、データをWeb上に公開、提供しています。 一方，統計解析向けプログラミング言語として人気の高いRのコミュニティにおいては，そうした機関から社会経済データを取得し，分析するための便利なツール(Rパッケージ)が数多く開発されています。こうした２つの変化によってデータ分析のハードルがずい分と低くなってきました。本資料はそうした「共有財産」にアプローチする方法を紹介したたものです。</p>
 <section id="本資料の目的" class="level3">
 <h3 class="anchored" data-anchor-id="本資料の目的">0.1 本資料の目的</h3>
 <p>本資料<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>は<strong>R（統計解析向けプログラミング言語）</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>を使って，政府組織，研究機関および国際機関から社会経済データの取得方法を説明することを目的としています。</p>
@@ -200,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>松村優哉他『改訂2版 RユーザのためのRStudio[実践]入門〜tidyverseによるモダンな分析フローの世界』</strong></p></li>
 </ol>
 <p>Rを利用したデータ処理には、現在では、<a href="https://www.tidyverse.org">tidyverse</a>が欠かせません。1はtidyverseに関するもっとも基本的な文献であり，Rを利用するさいには欠かせないテキストの１つです。2は1の日本バージョンと言えるものです。両方の著書によってR,RStudioを利用したデータ処理の基礎が身に付くことと思います</p>
-<p>本資料のいたるところでRパッケージggplot2を利用して，取得したデータを可視化しています。Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます。</p>
+<p>本資料のいたるところでRパッケージ<code>ggplot2</code>を利用して，取得したデータを可視化しています。Rとggplot2を利用した可視化については以下の２つの著書が役に立ちます。</p>
 <ol start="3" type="1">
 <li><p><strong>Winston Chang<a href="https://r-graphics.org">『Rグラフィックスクックブック 第2版―ggplot2によるグラフ作成のレシピ集』</a></strong></p></li>
 <li><p><strong>キーラン・ヒーリー<a href="https://socviz.co/index.html#preface">『実践Data Scienceシリーズ データ分析のためのデータ可視化入門』</a></strong></p></li>

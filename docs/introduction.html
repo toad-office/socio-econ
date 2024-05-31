@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-30">
+<meta name="dcterms.date" content="2024-05-31">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -114,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction.html">1. RStudioを使う</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction.html">1. RStudio, tidyverseを使う</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">1. RStudioを使う</span></a>
+ <span class="menu-text">1. RStudio, tidyverseを使う</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rstudioを使う" id="toc-rstudioを使う" class="nav-link active" data-scroll-target="#rstudioを使う">1. RStudioを使う</a></li>
+  <li><a href="#rstudio-tidyverseを使う" id="toc-rstudio-tidyverseを使う" class="nav-link active" data-scroll-target="#rstudio-tidyverseを使う">1. RStudio, tidyverseを使う</a></li>
   <li><a href="#rstudioのプロジェクト管理機能" id="toc-rstudioのプロジェクト管理機能" class="nav-link" data-scroll-target="#rstudioのプロジェクト管理機能">1.1. RStudioのプロジェクト管理機能</a></li>
   <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">1.2. tidyverse</a>
   <ul class="collapse">
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 30, 2024</p>
+      <p class="date">May 31, 2024</p>
     </div>
   </div>
   
@@ -223,8 +223,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="rstudioを使う" class="level2">
-<h2 class="anchored" data-anchor-id="rstudioを使う">1. RStudioを使う</h2>
+<section id="rstudio-tidyverseを使う" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-tidyverseを使う">1. RStudio, tidyverseを使う</h2>
 <p>Rのデータ処理には，統合開発環境のデファクト・スタンダードとも言うべきRStudioが欠かせません。以下の図はスクリプト・エジターを開いたときのRStudioの画面です。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>source: Wickham, et al.&nbsp;(2023) p.86</figcaption>
 </figure>
 </div>
-<p>左側の[Editor]画面と[Console]画面が作業場となります。Rになれると，ほとんどの作業が[Editor]画面でのスクリプトの記述に費やされることと思います。</p>
+<p>左側の<code>[Editor]</code>画面と<code>[Console]</code>画面が作業場となります。Rになれると，ほとんどの作業が<code>[Editor]</code>画面でのスクリプトの記述に費やされることと思います。</p>
 </section>
 <section id="rstudioのプロジェクト管理機能" class="level2">
 <h2 class="anchored" data-anchor-id="rstudioのプロジェクト管理機能">1.1. RStudioのプロジェクト管理機能</h2>
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="tidyverse" class="level2">
 <h2 class="anchored" data-anchor-id="tidyverse">1.2. tidyverse</h2>
-<p>Rでデータを処理を行うさい，頻繁に利用することになる<strong>tidyverse</strong>についてここで簡単に触れておきます. tidyverseおよび基本的なデータ処理についてはHadley Wickham, et al.&nbsp;(2023) <a href="https://r4ds.hadley.nz"><em>R for Data Sciense: Import, Tidy, Trsnform, Visualize, and Model Data</em>, second edition</a>を読むことを強くお勧めします。また宋・矢内氏による<a href="https://www.jaysong.net/RBook/">「わたしたちのR: ベストプラクティスの探求」</a>もお勧めのテキストです。</p>
+<p>Rでデータを処理を行うさい，頻繁に利用することになる<strong>tidyverse</strong>についてここで簡単に触れておきます. tidyverseおよび基本的なデータ処理についてはHadley Wickham, et al.&nbsp;(2023) <a href="https://r4ds.hadley.nz"><em>R for Data Sciense: Import, Tidy, Trsnform, Visualize, and Model Data</em>, second edition</a>を読むことをお勧めします。また宋・矢内氏による<a href="https://www.jaysong.net/RBook/">「わたしたちのR: ベストプラクティスの探求」</a>もお勧めのWebテキストです。</p>
 <p>最初に，tidyverseをインストールし，利用できるようにしておきます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>) <span class="co">#tidyverseのインストール</span></span>
