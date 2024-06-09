@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-31">
+<meta name="dcterms.date" content="2024-06-09">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -68,6 +102,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -153,8 +216,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#産業データ" id="toc-産業データ" class="nav-link active" data-scroll-target="#産業データ">5 産業データ</a>
   <ul class="collapse">
-  <li><a href="#国内の産業連関表---iotables" id="toc-国内の産業連関表---iotables" class="nav-link" data-scroll-target="#国内の産業連関表---iotables">5.1 国内の産業連関表 - iotables</a></li>
-  <li><a href="#国際産業連関表---evatools" id="toc-国際産業連関表---evatools" class="nav-link" data-scroll-target="#国際産業連関表---evatools">5.2 国際産業連関表 - evatools</a></li>
+  <li><a href="#国際産業連関表---exvatoolsindustry-1" id="toc-国際産業連関表---exvatoolsindustry-1" class="nav-link" data-scroll-target="#国際産業連関表---exvatoolsindustry-1">5.1 国際産業連関表 - exvatools</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -174,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 31, 2024</p>
+      <p class="date">June 9, 2024</p>
     </div>
   </div>
   
@@ -188,23 +250,295 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="産業データ" class="level2">
 <h2 class="anchored" data-anchor-id="産業データ">5 産業データ</h2>
-<p>本項では、産業間の投入・産出関係を捉える、産業連関表データを提供する，また同時に簡単な分析を可能にするRパッケージを紹介します。Rは行列計算に優れており、もともと投入・産出分析と親和的です。</p>
-<p>産業連関表データ</p>
-<p>OECD</p>
-<p>UNCTAD</p>
-<section id="国内の産業連関表---iotables" class="level3">
-<h3 class="anchored" data-anchor-id="国内の産業連関表---iotables">5.1 国内の産業連関表 - iotables</h3>
-<p>iotables</p>
+<p>本項では、産業間の投入・産出関係を捉える投入産出データを読み込み，簡単な分析を可能にするRパッケージを紹介します。Rは行列計算に優れており、もともと投入・産出分析と親和的です。</p>
+<section id="国際産業連関表---exvatoolsindustry-1" class="level3">
+<h3 class="anchored" data-anchor-id="国際産業連関表---exvatoolsindustry-1">5.1 国際産業連関表 - exvatools<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
+<p>今日の国際貿易においては生産工程のグローバル化にともない中間財の輸出入が完成品の輸出入以上に盛んに行われています。従来の貿易統計ではそうしたグローバリゼーション現象を十分に捉えることはできませんでした。貿易統計では輸入品の最終出荷地をその原産地として記録します。有名なiPhoneの例では中国が最終出荷地（原産地）ですが，iPhoneという完成品がすべて中国で製造されたかのように扱うことは，生産工程がグローバル化した現代では妥当な取り扱いとは言えません。異なる国の異なるセクターが互いにどのように相互作用しているかを捉えるためには国際産業連関表を利用した付加価値貿易の分析が不可欠です<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+<p>簡単な数値例で考えてみましょう。中国が日本から90ドル分の中間財タッチパネルを輸入し、アメリカに最終完成製品iPadを100ドルで輸出したとします。これまでのグロスベースの貿易統計では日本の貿易統計には中国への輸出によって生み出された90ドルの価値が計上されます。同時に、中国の貿易統計にはアメリカに完成品iPadを輸出したことによって100ドルの価値が計上されます。この場合、日本が生み出した90の付加価値が、中国の輸出にも含まれて計算され、二重に計上されてしまいます。付加価値貿易では日本の90、中国の（二重計算を避けた）10の付加価値が別個に計上され、各々がアメリカへの輸出となります。</p>
+<p>本項で紹介するRパッケージ<code>exvatools</code>はこれまで紹介してきたようなデータへのアクセス・取得のツールではではありませんが，付加価値貿易の分析を容易にする数多くの機能を備えた非常に優れたパッケージです<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
+<p><code>exvatools</code>は以下の投入産出表を扱うことができます：</p>
+<ul>
+<li>OECDの付加価値取引データベース(TiVA)が基づいているOECD諸国間の投入産出表(OECD Inter-Country Input-Output: <a href="https://www.oecd.org/sti/ind/inter-country-input-output-tables.htm">ICIO</a>)</li>
+<li>世界投入産出表(<a href="https://www.rug.nl/ggdc/valuechain/wiod/">WIOD</a>)</li>
+<li>FIGARO EU投入産出表(<a href="https://ec.europa.eu/eurostat/web/esa-supply-use-input-tables/database">EU IC-SUIOT</a>)</li>
+<li>ADBマルチリージョン投入産出表(<a href="https://kidb.adb.org/mrio">ADB MRIO</a>)</li>
+</ul>
+<section id="exvatoolsのインストールと投入産出行列の作成" class="level4">
+<h4 class="anchored" data-anchor-id="exvatoolsのインストールと投入産出行列の作成">5.1.1 exvatoolsのインストールと投入産出行列の作成</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exvatoolsのインストール</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"evatools"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># exvatoolsのロード</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(evatools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>exvatools</code>は，(1)標準的な国際的な投入産出表の原データ, (2) exvatoolsパッケージに含まれるテストデータ, (3)カスタムデータの３種類のデータから基本的な投入産出行列のリストを作成します。</p>
+<p>もちろん学習目的にはパッケージ付属の(2)の投入産出データも有益ですが，じっさいに分析に利用するのは(1)標準的な国際的な投入産出表の原データだと思われます。以下の説明では(1)の取り扱いを紹介して行きます。上述のように，<code>exvatools</code>では現在４つのソース－OED ICIO, WOID, EU IC-SUIOT, およびADB MRIO－がサポートされています。データはそれぞれの機関から直接ダウンロードできます。データはカンマ区切りファイル(<code>.csv</code>)、Excelファイル(<code>.xlsx</code>)、またはRデータファイル(<code>.rData</code>)を含む圧縮ファイルとしてサポート機関のWebページに公開されています。</p>
+<section id="oecd-icio" class="level5">
+<h5 class="anchored" data-anchor-id="oecd-icio"><strong>1) OECD ICIO</strong></h5>
+<p>OECD ICIOテーブルを使用する場合は、<a href="https://www.google.com/search?q=OECD+ICIO+tables">ICIO Webページ</a>からソースファイル<code>2016-2020.zip</code>をコンピュータにダウンロードします。ここで注意を要するのは，<code>make_wio()</code>関数を利用したwioクラスのオブジェクトの作成にあたってはダウンロードしたファイルが<code>zip形式</code>でなければならないということです。そこでzipを解凍せずに，フォルダに保存します。</p>
+<p>それでは<code>evatools</code>の<code>make_wio()</code>コマンドを使用し，ソースファイルすなわちダウンロードした<code>zip</code>ファイルから標準的な<strong>投入産出行列</strong>を作成します。<code>make_wio()</code>の基本的な文法は次のようになります：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_wio</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">wiotype =</span> <span class="st">" "</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">src_dir =</span> <span class="cn">NULL</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">quiet =</span> <span class="cn">FALSE</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>make_wio( )</code>は上述のように，５つの引数をとりますが，とくに<code>wiotype</code>が重要です。<code>wiotype</code>の引数は具体的には以下のようになります,</p>
+<ul>
+<li><p><code>wiotype = " "</code>には利用する投入産出表の名称と版editionを指定する，以下のような文字列を入力します：</p>
+<ul>
+<li><p>OECD ICIO表の2023年版（1995-2020年）については <code>"icio2023"</code>，同一エジションの小型版については <code>"icio2023s"</code></p></li>
+<li><p>2016年版WIOD表（2000-2014）については <code>"wiod2016"</code> . 長期WIOD表（1965-2000年）の2022年版については <code>"lrwiod2022"</code>. 後者は歴史分析に有益.</p></li>
+<li><p>FIGARO EU投入産出表（EU IC-SUI）の2023年版, industry-by-industry(2010-2021)については<code>"figaro2023i"</code>, また同データベースのproduct-by-productバージョンについては<code>"figaro2023p"</code>.</p></li>
+<li><p>2023年版の62カ国ADB MRIO表の2023版については<code>"mrio2023"</code>, 不変価格の同一エジションについては<code>"mrio2023k"</code>, 72カ国版（2022年まで）については<code>"mrio2023x"</code>.</p></li>
+</ul></li>
+<li><p>year = : 参照年を指定する整数を入力. NULL(デフォルト)の場合，利用可能な最新年が指定される.</p></li>
+<li><p>src_dir = : 国際投入産出表のソースファイルが保存されているユーザーのディレクトリ（フォルダ）を指定する文字列を入力. ソースファイルは通常<code>zip</code>ファイルもしくはcsv, xlsxファイル. <code>make_wio()</code>を利用するさいにはファイルの名称を変更しないこと. また<code>scr_dir</code>が指定されない場合，make_wio()は作業ディレクトリ内を探します.</p></li>
+</ul>
+<p>以下の例では，wiotypeに”icio2023”, yearに”2020”, src_dirに”C:/Users/data”（ソースzipファイルが保存されている架空のフォルダ）を指定しています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wio <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"icio2023"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> <span class="dv">2020</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">src_dir =</span> <span class="st">"C:/Users/data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これによって<code>exvatools</code>が，<code>zip</code>ファイルから<code>.csv</code>ファイルを取り出し，基本的な投入産出行列を作成します。そしてデータを<code>wio</code>と名付けたオブジェクトに格納しています。これによって基本的な投入産出テーブルのリストからなる<code>wioクラス</code>オブジェクトが作成されます。。</p>
+<p>作成された<code>wio</code>オブジェクトの内容は<code>summary()</code>関数でチェックできます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>summary(wio)</code>の実行によって以下のリストがコンソール画面に表示されます.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-06-04 14.17.16.png" class="img-fluid figure-img"></p>
+<figcaption>一部のみ表示.</figcaption>
+</figure>
+</div>
+<p>3645x3645次元の中間財投入行列Zをはじめとし，投入産出分析で利用される行列が作成されます。たとえば，以下の例で利用するグローバル・レオンチェフ逆行列はBという名前になっています。コンソール画面を下にスクロールすると，81カ国，45のセクターが利用可能であることが分かります。また，需要項目として6つが提供されていることも分かります。</p>
 </section>
-<section id="国際産業連関表---evatools" class="level3">
-<h3 class="anchored" data-anchor-id="国際産業連関表---evatools">5.2 国際産業連関表 - evatools</h3>
-<p>evatools</p>
+<section id="世界投入産出表wiod" class="level5">
+<h5 class="anchored" data-anchor-id="世界投入産出表wiod"><strong>2) 世界投入産出表WIOD</strong></h5>
+<p>WIODについては”wiod2016”（バージョン2016、2000年から2014年）、“wiod2013”、“lrwiod2022”（ロングランWIOD表、バージョン2022、1965年から2000年）が含まれています。これらはすべて、フローニンゲン大学のGrowth and Development Centreの<a href="https://www.rug.nl/ggdc/valuechain/">Webページ</a>から入手可能です。</p>
+<p>OECD ICIOの場合と同様に，ダウンロードしたzipファイルを自分のPCのワーキングディレックトリに保存しておきます。以下のケースでは<code>make_wio()</code>関数の引数<code>src_dir() = NULL</code>です，つまり指定していません。指定しない場合，<code>make_wio()</code>は現在のワーキングディレクトリをチェックします。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wiod <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"wiod2016"</span>, <span class="at">year =</span> <span class="dv">2014</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これによりwioクラスのリスト（基本的な投入産出行列のリスト）を容れたオブジェクト<code>wiod</code>が作成されます。<code>summary()</code>で確認してみましょう。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wiod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-06-07 15.10.39.png" class="img-fluid figure-img"></p>
+<figcaption>一部のみ表示.</figcaption>
+</figure>
+</div>
+</section>
+<section id="figaro-eu投入産出表" class="level5">
+<h5 class="anchored" data-anchor-id="figaro-eu投入産出表"><strong>3) FIGARO EU投入産出表</strong></h5>
+<p>FIGARO EU投入産出テーブルでは製品×製品product by productと産業×産業industry by industryの２つが利用可能です。ここでの例ではproduct by productを利用します。最初に，Webページ<code>Figaro tables: EU inter-country supply, use and input-output tables</code>→ <code>CSV matrix format (FIGARO 2023 edition)</code>→ <code>Annual EU inter-country input-output tables product by producto</code> の<code>2021</code>をダウンロードし，作業ディレクトリに保存しておきます。ファイル名は<code>matrix_eu-ic-io_prod-by-prod_23ed_2021.csv</code>です。</p>
+<p>2つのFIGARO EU投入産出テーブルに対応して引数<code>wiotype</code>には次のいずれかを指定します。</p>
+<ul>
+<li><p>product by productの場合　wiotype = “figaro2023p”</p></li>
+<li><p>industry by industryの場合　wiotype = “figaro2023i”</p></li>
+</ul>
+<p>ここでは<code>product by product</code>を利用しますから，引数<code>wiotype = "figaro2023p"</code>を入力します。これによってcsvファイルから<code>make_wio()</code>関数が投入産出分析のために必要な基本的な行列を作成します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>figaro <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"figaro2023p"</span>, <span class="at">year =</span> <span class="dv">2021</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>figaroと名前をつけたオブジェクトの中に基本的な行列が保管されます。結果を<code>summary(figaro)</code>でみると，次のような行列の一覧が表示されます。</p>
+<p><img src="images/スクリーンショット 2024-06-08 10.53.46.png" class="img-fluid"></p>
+</section>
+<section id="adb-mrio投入産出表" class="level5">
+<h5 class="anchored" data-anchor-id="adb-mrio投入産出表"><strong>4) ADB MRIO投入産出表</strong></h5>
+<p>最初に，<a href="https://kidb.adb.org/mrio">ADB Multiregional Input-Output Database</a>からデータをダウンロードします。ADBでは<code>xlsx</code>形式でデータが提供されています。ここでの例ではADB, MRIO, 62economicesバージョンの<code>"ADB MRIO(2014)(Updated on June 2022)"xlsx</code>ファイルをダウンロードします。その上で，<code>make_wio()</code>関数を使って行列を作成し，mrioと名前をつけたオブジェクトに容れます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mrio <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"mrio2023"</span>, <span class="at">year =</span> <span class="dv">2014</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>summary(mrio)</code>を使って行列のリストを表示させると，以下のようになります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-06-07 17.10.17.png" class="img-fluid figure-img"></p>
+<figcaption>一部のみ表示.</figcaption>
+</figure>
+</div>
+<p>最後に他の投入産出データを読み込む際にも利用する<code>make_wio()</code>関数の引数<code>wiotype</code>に指定するzipファイル（もしくはcsv, Excelファイル名）とエジション名の対応をまとめておきます。</p>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 62%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>機関名</th>
+<th>zip名（csv, xlsxファイル名）</th>
+<th>エジション名</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OECD ICIO</td>
+<td>xxxx-xxxx.zip</td>
+<td>“icio2023”</td>
+</tr>
+<tr class="even">
+<td>OECD ICIO</td>
+<td>ICIO_XXXX-XXXX.zip</td>
+<td>“icio2021”</td>
+</tr>
+<tr class="odd">
+<td>OECD ICIO</td>
+<td>ICIO2018_XXXX.zip</td>
+<td>“icio2018”</td>
+</tr>
+<tr class="even">
+<td>OECD ICIO</td>
+<td>ICIO2016_XXXX.zip</td>
+<td>“icio2016”</td>
+</tr>
+<tr class="odd">
+<td>WIOT</td>
+<td>WIOTS_in_R.zip</td>
+<td>“wiod2016”</td>
+</tr>
+<tr class="even">
+<td>EU</td>
+<td>matrix_eu-ic-io_prod-by-prod_23ed_2021.csv</td>
+<td>“figaro2023p”</td>
+</tr>
+<tr class="odd">
+<td>EU</td>
+<td>matrix_eu-ic-io_ind-by-ind_23ed_2021.csv</td>
+<td>“figaro2023i”</td>
+</tr>
+<tr class="even">
+<td>ADB</td>
+<td>ADB-MRIO-2014_Mar2022.xlsx(62カ国版)</td>
+<td>“mrio2023”</td>
+</tr>
+<tr class="odd">
+<td>ADB</td>
+<td>ADB-MRIO-2014_(72カ国版)</td>
+<td>“mrio2023x”</td>
+</tr>
+<tr class="even">
+<td>ADB</td>
+<td>ADB-</td>
+<td>“mrio2023k”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="section" class="level5">
+<h5 class="anchored" data-anchor-id="section"></h5>
+<p>ここまで４つの投入産出テーブルをダウンロードし，make_wio()関数を使ってダウンロードしたデータから投入産出分析に必要な行列の作成方法を示してきました。次に，そうした行列を使ったいくつかの操作の例を示して行きます。</p>
+</section>
+</section>
+<section id="投入産出行列を操作する" class="level4">
+<h4 class="anchored" data-anchor-id="投入産出行列を操作する">5.1.2 投入産出行列を操作する</h4>
+<p><strong>exvatools</strong>は、国際投入産出表を取り扱う操作を非常に簡単にする複数のコマンドを提供しています<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。一例を示すと次のような関数があります：</p>
+<ul>
+<li><code>dmult()</code>：対角行列を行列によって乗数倍する.</li>
+<li><code>multd()</code>：行列を対角行列によって乗数倍する.</li>
+<li><code>hmult()</code>：行列のアダマール積</li>
+<li><code>bkd()</code>：ブロック対角行列－対角ブロックがゼロではなく，非対角ブロックがゼロである行列－を作成.</li>
+<li><code>bkoffd()</code>：ブロックオフ対角行列－対角ブロックがゼロであり，対角以外のブロックがゼロでない行列－を作成.</li>
+<li><code>rsums()</code>: 行を合計する</li>
+<li><code>csums()</code>: 列を合計する</li>
+<li><code>sumnrow()</code>: 行列のn番目の行を合計する</li>
+<li><code>sumncol()</code>: 行列のn番目の列を合計する</li>
+</ul>
+<p>以下の例ではOECD ICIOの投入産出テーブルから作成した，オブジェクトwioに格納された行列を利用しています。exvatoolsを使った作業例は以下のとおりです：</p>
+<ul>
+<li>例1 グローバル・レオンチェフの逆行列</li>
+<li>例2 付加価値輸出</li>
+</ul>
+<p><strong>例1　グローバル・レオンチェ逆行列</strong></p>
+<p>需要誘発モデルの基本的な行列は、コマンド<strong>make_wio()</strong>を使用して原データから簡単に取得できます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wio <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"icio2023"</span>, <span class="at">year =</span> <span class="cn">NULL</span>, <span class="at">src_dir =</span> <span class="cn">NULL</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>summary(wio)</code>の表示内容をみると、<code>B</code>がグローバル・レオンチェフ逆行列（Global Leontief inverse)であり、また<code>Y</code>が最終需要です。BもYも<code>make_wio()</code>関数で作成された行列です。<code>class()</code>関数でオブジェクト<code>wio</code>が<code>wioクラス</code>であり，BもYも行列であることを確認できます。なお，<code>wio$B</code>はwioオブジェクトの中の行列Bを指しています。</p>
+<p><img src="images/スクリーンショット 2024-06-09 14.43.45.png" class="img-fluid" width="247"></p>
+<p>レオンチェフ逆行列は，最終需要が1単位増加したときに，直接間接に誘発される生産量を示します。したがってグローバル・レオンチェフ逆行列はある国のあるセクターにおいて最終需要が1単位増加したときに，他セクターの生産量がどれだけ誘発するか－簡単に言えば，他産業の生産に与える影響の大きさ－を示します。</p>
+<p><code>make_wio()</code>関数で作成された行列リストにおいて，<code>A</code>が投入係数行列，<code>X</code>が生産，最終需要が<code>Y</code>です。したがって国際投入産出テーブルは</p>
+<p><span class="math inline">\(AX + Y = X\)</span></p>
+<p>と表現できます。ここから最終需要と生産の関係は</p>
+<p><span class="math inline">\(X = (I-A)^{-1}Y\)</span></p>
+<p>この関係は技術を一定とし，一定水準の最終需要Yのために必要とされる，各国の各セクターの産出高Xがいかにして生み出されるかを示しています。ここで<span class="math inline">\((I-A)^{-1}\)</span>はグローバル・レオンチェフ逆行列であり，作成された行列リストにおいては<code>B</code>で表記されています。したがって生産<code>X</code>はグローバル・レオンチェフ逆行列<code>B</code>と最終需要<code>Y</code>の積と同じになります。</p>
+<p>行列の積の演算子は<code>%*%</code>です。レオンチェフ逆行列と最終需要の積で生産を求めます。そしてその結果を<code>BY</code>に入れます。<code>BY</code>も行列です。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>BY <span class="ot">&lt;-</span> wio<span class="sc">$</span>B <span class="sc">%*%</span> wio<span class="sc">$</span>Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>BYとXが一致することを確認してみてください。</p>
+<p><strong>グローバル・レオンチェフ行列の行和と列和</strong></p>
+<p>次に，グローバル・レオンチェフ行列の行和を求めみます。このためには<code>rsums()</code>関数を利用します。記述法は以下のようになります：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsums</span>(df, <span class="at">col_name =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>・引数dfは行と列を持つ行列です</p>
+<p>・引数col_nameは作成される列につけられる名前・文字列です。</p>
+<p>たとえば，グローバル・レオンチェフ行列の行の合計を求めてみましょう. <code>wio$B</code>はwioの中の行列Bを意味します，またcol_name =で列の名前をFLにしています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># グローバル・レオンチェフ行列の行和</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsums</span>(wio<span class="sc">$</span>B, <span class="at">col_name =</span> <span class="st">"FL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これによってセクターと各行の和を得ることができます。たとえば，ARG_01T02はアルゼンチン（ARG）の’Agriculture, hunting, forestry’産業, ARG_03は同じくアルゼンチンの’Fishing’産業を意味しています。</p>
+<p><img src="images/スクリーンショット 2024-06-09 14.39.58.png" class="img-fluid" width="204"></p>
+<p>この行の和を行和全体の平均値で除した比率は「感応度係数」と呼ばれています。</p>
+<p>列和もcsums()関数を使って同じように求めることができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># グローバル・レオンチェフ行列の列和</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">csums</span>(wio<span class="sc">$</span>B, <span class="at">row_name =</span> <span class="st">"BL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これによって１行×3645列の，各国の各産業に対応する列和が得られます。レオンチェフ逆行列の列和は後方連関指数として知られているものです。ちなみに，この産業別の列和を列和全体の平均値で除した比率を求めると，「影響力係数」が求めることができます。</p>
+<p><strong>例2　付加価値輸出を計算する</strong></p>
+<p>国外に吸収される付加価値輸出(VAX)を計算するには、1)対角化された付加価値係数行列（wioでは<code>W</code>によって表記）をグローバル逆行列<code>B</code>をによって乗数倍し，2)その結果を最終需要行列<code>Y</code>をによって乗数倍します。こうした操作によって最終需要によって誘発される付加価値が計算できます。</p>
+<p>1)の操作には対角行列と行列の積が必要となります。このためには<code>dmult()</code>関数を利用します。使い方は</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dmult</span>(matrix1, matrix2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># matrix1は対角行列</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># matrix2は通常の行列</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>dmult()</code>関数は対角行列matrix1をベクトルに変換します、つまり対角行列matrix1を、matrix2のすべての行によって水平に乗数倍します。</p>
+<p>2) 需要によって誘発されるすべての付加価値を計算するために最終需要Yを掛けます:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>VBY <span class="ot">&lt;-</span> <span class="fu">dmult</span>(wio<span class="sc">$</span>W, wio<span class="sc">$</span>B) <span class="sc">%*%</span> wio<span class="sc">$</span>Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これによって海外に吸収される付加価値の大きさが分かります。3645行（各国の産業部門数）×77列（Rest of Worldを含めた国の数）の大きな行列であるためコンソール画面では見づらいため<code>Viw(VBY)</code>関数によって表示してみます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-06-09 16.55.01.png" class="img-fluid figure-img"></p>
+<figcaption>一部のみ表示.</figcaption>
+</figure>
+</div>
+<p>また海外に吸収される付加価値だけに注目する場合，VBY行列のうちの非対角行列ブロックだけが必要となります。このためには<code>bkoffd()</code>関数を利用します。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bkoffd</span>(VBY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これによって対角行列部分，たとえばアルゼンチンの産業を示す行とアルゼンチンという国を示す列のセルはゼロとなり，非対角部分の値だけが表示されます。</p>
+<section id="section-1" class="level5">
+<h5 class="anchored" data-anchor-id="section-1"></h5>
 
 
 </section>
 </section>
+</section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Feas E (2024). <em>exvatools: Value Added in Exports and Other Input-Output Table Analysis Tools</em>. R package version 0.8.0, <a href="https://CRAN.R-project.org/package=exvatools" class="uri">https://CRAN.R-project.org/package=exvatools</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>付加価値貿易の分析については猪俣哲史著『グローバル・バリューチェーン－新・南北問題へのまなざし』日本経済新聞社，2019を参照してください。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>exvatoolsの利用法については開発者Feas E (2023) exvatools: Value Added in Exports and Other Input-Output Table Analysis Tools, <em>R Journal</em> Vol. 15/4にもとづいています。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>詳細についてはexvatoolsの<a href="https://cran.r-project.org/web/packages/exvatools/index.html">Reference manual</a>を参照してください。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
