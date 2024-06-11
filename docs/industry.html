@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-06-09">
+<meta name="dcterms.date" content="2024-06-11">
 
-<title>R &amp; Socio Econ</title>
+<title>R &amp; Socio Econ – industry</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,13 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,7 +89,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -105,33 +98,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
 </head>
 
 <body class="nav-sidebar docked">
@@ -140,12 +106,12 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./industry.html">5 産業データ</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./industry.html">5 産業データ</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -155,7 +121,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R &amp; Soc Econ</a> 
@@ -207,7 +173,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -216,7 +182,7 @@ window.Quarto = {
   <ul>
   <li><a href="#産業データ" id="toc-産業データ" class="nav-link active" data-scroll-target="#産業データ">5 産業データ</a>
   <ul class="collapse">
-  <li><a href="#国際産業連関表---exvatoolsindustry-1" id="toc-国際産業連関表---exvatoolsindustry-1" class="nav-link" data-scroll-target="#国際産業連関表---exvatoolsindustry-1">5.1 国際産業連関表 - exvatools</a></li>
+  <li><a href="#国際産業連関分析ツール---exvatoolsindustry-1" id="toc-国際産業連関分析ツール---exvatoolsindustry-1" class="nav-link" data-scroll-target="#国際産業連関分析ツール---exvatoolsindustry-1">5.1 国際産業連関分析ツール - exvatools</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -224,36 +190,14 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 9, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <section id="産業データ" class="level2">
 <h2 class="anchored" data-anchor-id="産業データ">5 産業データ</h2>
-<p>本項では、産業間の投入・産出関係を捉える投入産出データを読み込み，簡単な分析を可能にするRパッケージを紹介します。Rは行列計算に優れており、もともと投入・産出分析と親和的です。</p>
-<section id="国際産業連関表---exvatoolsindustry-1" class="level3">
-<h3 class="anchored" data-anchor-id="国際産業連関表---exvatoolsindustry-1">5.1 国際産業連関表 - exvatools<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
-<p>今日の国際貿易においては生産工程のグローバル化にともない中間財の輸出入が完成品の輸出入以上に盛んに行われています。従来の貿易統計ではそうしたグローバリゼーション現象を十分に捉えることはできませんでした。貿易統計では輸入品の最終出荷地をその原産地として記録します。有名なiPhoneの例では中国が最終出荷地（原産地）ですが，iPhoneという完成品がすべて中国で製造されたかのように扱うことは，生産工程がグローバル化した現代では妥当な取り扱いとは言えません。異なる国の異なるセクターが互いにどのように相互作用しているかを捉えるためには国際産業連関表を利用した付加価値貿易の分析が不可欠です<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+<p>本項では、産業間の投入・産出関係を捉える投入産出データを読み込み，分析を容易にするRパッケージを紹介します。Rは行列計算に優れており、もともと投入・産出分析と親和的です。</p>
+<section id="国際産業連関分析ツール---exvatoolsindustry-1" class="level3">
+<h3 class="anchored" data-anchor-id="国際産業連関分析ツール---exvatoolsindustry-1">5.1 国際産業連関分析ツール - exvatools<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
+<p>今日の国際貿易においては生産工程のグローバル化にともない中間財の輸出入が完成品の輸出入以上に盛んに行われています。従来の貿易統計ではそうしたグローバリゼーション現象を十分に捉えることはできませんでした。貿易統計では輸入品の最終出荷地をその原産地として記録します。有名なiPhoneの例では中国が最終出荷地（原産地）ですが，iPhoneという完成品が部品を含めてすべて中国で製造されたかのように扱うことは，生産工程がグローバル化した現代では妥当な取り扱いとは言えません。異なる国の異なるセクターが互いにどのように相互作用しているかを捉えるためには国際産業連関表を利用した付加価値貿易の分析が不可欠です<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
 <p>簡単な数値例で考えてみましょう。中国が日本から90ドル分の中間財タッチパネルを輸入し、アメリカに最終完成製品iPadを100ドルで輸出したとします。これまでのグロスベースの貿易統計では日本の貿易統計には中国への輸出によって生み出された90ドルの価値が計上されます。同時に、中国の貿易統計にはアメリカに完成品iPadを輸出したことによって100ドルの価値が計上されます。この場合、日本が生み出した90の付加価値が、中国の輸出にも含まれて計算され、二重に計上されてしまいます。付加価値貿易では日本の90、中国の（二重計算を避けた）10の付加価値が別個に計上され、各々がアメリカへの輸出となります。</p>
 <p>本項で紹介するRパッケージ<code>exvatools</code>はこれまで紹介してきたようなデータへのアクセス・取得のツールではではありませんが，付加価値貿易の分析を容易にする数多くの機能を備えた非常に優れたパッケージです<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
 <p><code>exvatools</code>は以下の投入産出表を扱うことができます：</p>
@@ -272,10 +216,9 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># exvatoolsのロード</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(evatools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>exvatools</code>は，(1)標準的な国際的な投入産出表の原データ, (2) exvatoolsパッケージに含まれるテストデータ, (3)カスタムデータの３種類のデータから基本的な投入産出行列のリストを作成します。</p>
-<p>もちろん学習目的にはパッケージ付属の(2)の投入産出データも有益ですが，じっさいに分析に利用するのは(1)標準的な国際的な投入産出表の原データだと思われます。以下の説明では(1)の取り扱いを紹介して行きます。上述のように，<code>exvatools</code>では現在４つのソース－OED ICIO, WOID, EU IC-SUIOT, およびADB MRIO－がサポートされています。データはそれぞれの機関から直接ダウンロードできます。データはカンマ区切りファイル(<code>.csv</code>)、Excelファイル(<code>.xlsx</code>)、またはRデータファイル(<code>.rData</code>)を含む圧縮ファイルとしてサポート機関のWebページに公開されています。</p>
-<section id="oecd-icio" class="level5">
-<h5 class="anchored" data-anchor-id="oecd-icio"><strong>1) OECD ICIO</strong></h5>
+<p><code>exvatools</code>は，(1)標準的な国際的な投入産出表の原データ, (2) exvatoolsパッケージに含まれるテストデータ, (3)カスタムデータの３種類のデータから基本的な投入産出行列－投入係数行列やレオンチェフの逆行列など－のリストを作成します。</p>
+<p>もちろん学習目的にはパッケージ付属の(2)の投入産出データも有益ですが，じっさいに分析に利用するのは(1)標準的な国際的な投入産出表の原データだと思われます。以下の説明では(1)の取り扱いを紹介して行きます。上述のように，<code>exvatools</code>では現在４つのソース－OED ICIO, WOID, EU IC-SUIOT, およびADB MRIO－がサポートされています。データはカンマ区切りファイル(<code>.csv</code>)、Excelファイル(<code>.xlsx</code>)、またはRデータファイル(<code>.rData</code>)を含む圧縮ファイルとしてサポート機関のWebページに公開されており，直接ダウンロードできます。</p>
+<p><strong>1) OECD ICIO</strong></p>
 <p>OECD ICIOテーブルを使用する場合は、<a href="https://www.google.com/search?q=OECD+ICIO+tables">ICIO Webページ</a>からソースファイル<code>2016-2020.zip</code>をコンピュータにダウンロードします。ここで注意を要するのは，<code>make_wio()</code>関数を利用したwioクラスのオブジェクトの作成にあたってはダウンロードしたファイルが<code>zip形式</code>でなければならないということです。そこでzipを解凍せずに，フォルダに保存します。</p>
 <p>それでは<code>evatools</code>の<code>make_wio()</code>コマンドを使用し，ソースファイルすなわちダウンロードした<code>zip</code>ファイルから標準的な<strong>投入産出行列</strong>を作成します。<code>make_wio()</code>の基本的な文法は次のようになります：</p>
 <div class="cell">
@@ -304,7 +247,7 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> <span class="dv">2020</span>, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">src_dir =</span> <span class="st">"C:/Users/data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>これによって<code>exvatools</code>が，<code>zip</code>ファイルから<code>.csv</code>ファイルを取り出し，基本的な投入産出行列を作成します。そしてデータを<code>wio</code>と名付けたオブジェクトに格納しています。これによって基本的な投入産出テーブルのリストからなる<code>wioクラス</code>オブジェクトが作成されます。。</p>
+<p>これによって<code>exvatools</code>が，<code>zip</code>ファイルから<code>.csv</code>ファイルを取り出し，基本的な投入産出行列を作成します。そしてデータを割り当て演算子（←）によって<code>wio</code>と名付けたオブジェクトに格納しています。これによって基本的な投入産出テーブルのリストからなる<code>wioクラス</code>オブジェクトが作成されます。。</p>
 <p>作成された<code>wio</code>オブジェクトの内容は<code>summary()</code>関数でチェックできます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -313,13 +256,11 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/スクリーンショット 2024-06-04 14.17.16.png" class="img-fluid figure-img"></p>
-<figcaption>一部のみ表示.</figcaption>
+<figcaption class="figure-caption">一部のみ表示.</figcaption>
 </figure>
 </div>
 <p>3645x3645次元の中間財投入行列Zをはじめとし，投入産出分析で利用される行列が作成されます。たとえば，以下の例で利用するグローバル・レオンチェフ逆行列はBという名前になっています。コンソール画面を下にスクロールすると，81カ国，45のセクターが利用可能であることが分かります。また，需要項目として6つが提供されていることも分かります。</p>
-</section>
-<section id="世界投入産出表wiod" class="level5">
-<h5 class="anchored" data-anchor-id="世界投入産出表wiod"><strong>2) 世界投入産出表WIOD</strong></h5>
+<p><strong>2) 世界投入産出表WIOD</strong></p>
 <p>WIODについては”wiod2016”（バージョン2016、2000年から2014年）、“wiod2013”、“lrwiod2022”（ロングランWIOD表、バージョン2022、1965年から2000年）が含まれています。これらはすべて、フローニンゲン大学のGrowth and Development Centreの<a href="https://www.rug.nl/ggdc/valuechain/">Webページ</a>から入手可能です。</p>
 <p>OECD ICIOの場合と同様に，ダウンロードしたzipファイルを自分のPCのワーキングディレックトリに保存しておきます。以下のケースでは<code>make_wio()</code>関数の引数<code>src_dir() = NULL</code>です，つまり指定していません。指定しない場合，<code>make_wio()</code>は現在のワーキングディレクトリをチェックします。</p>
 <div class="cell">
@@ -332,13 +273,11 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/スクリーンショット 2024-06-07 15.10.39.png" class="img-fluid figure-img"></p>
-<figcaption>一部のみ表示.</figcaption>
+<figcaption class="figure-caption">一部のみ表示.</figcaption>
 </figure>
 </div>
-</section>
-<section id="figaro-eu投入産出表" class="level5">
-<h5 class="anchored" data-anchor-id="figaro-eu投入産出表"><strong>3) FIGARO EU投入産出表</strong></h5>
-<p>FIGARO EU投入産出テーブルでは製品×製品product by productと産業×産業industry by industryの２つが利用可能です。ここでの例ではproduct by productを利用します。最初に，Webページ<code>Figaro tables: EU inter-country supply, use and input-output tables</code>→ <code>CSV matrix format (FIGARO 2023 edition)</code>→ <code>Annual EU inter-country input-output tables product by producto</code> の<code>2021</code>をダウンロードし，作業ディレクトリに保存しておきます。ファイル名は<code>matrix_eu-ic-io_prod-by-prod_23ed_2021.csv</code>です。</p>
+<p><strong>3) FIGARO EU投入産出表</strong></p>
+<p>FIGARO EU投入産出テーブルでは製品×製品product by productと産業×産業industry by industryの２つが利用可能です。ここでの例ではproduct by productを利用します。最初に，<a href="https://ec.europa.eu/eurostat/web/esa-supply-use-input-tables/database">Webページ</a><code>Figaro tables: EU inter-country supply, use and input-output tables</code>→ <code>CSV matrix format (FIGARO 2023 edition)</code>→ <code>Annual EU inter-country input-output tables product by producto</code> の<code>2021</code>をダウンロードし，作業ディレクトリに保存しておきます。ファイル名は<code>matrix_eu-ic-io_prod-by-prod_23ed_2021.csv</code>です。</p>
 <p>2つのFIGARO EU投入産出テーブルに対応して引数<code>wiotype</code>には次のいずれかを指定します。</p>
 <ul>
 <li><p>product by productの場合　wiotype = “figaro2023p”</p></li>
@@ -350,9 +289,7 @@ window.Quarto = {
 </div>
 <p>figaroと名前をつけたオブジェクトの中に基本的な行列が保管されます。結果を<code>summary(figaro)</code>でみると，次のような行列の一覧が表示されます。</p>
 <p><img src="images/スクリーンショット 2024-06-08 10.53.46.png" class="img-fluid"></p>
-</section>
-<section id="adb-mrio投入産出表" class="level5">
-<h5 class="anchored" data-anchor-id="adb-mrio投入産出表"><strong>4) ADB MRIO投入産出表</strong></h5>
+<p><strong>4) ADB MRIO投入産出表</strong></p>
 <p>最初に，<a href="https://kidb.adb.org/mrio">ADB Multiregional Input-Output Database</a>からデータをダウンロードします。ADBでは<code>xlsx</code>形式でデータが提供されています。ここでの例ではADB, MRIO, 62economicesバージョンの<code>"ADB MRIO(2014)(Updated on June 2022)"xlsx</code>ファイルをダウンロードします。その上で，<code>make_wio()</code>関数を使って行列を作成し，mrioと名前をつけたオブジェクトに容れます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mrio <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"mrio2023"</span>, <span class="at">year =</span> <span class="dv">2014</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -361,7 +298,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/スクリーンショット 2024-06-07 17.10.17.png" class="img-fluid figure-img"></p>
-<figcaption>一部のみ表示.</figcaption>
+<figcaption class="figure-caption">一部のみ表示.</figcaption>
 </figure>
 </div>
 <p>最後に他の投入産出データを読み込む際にも利用する<code>make_wio()</code>関数の引数<code>wiotype</code>に指定するzipファイル（もしくはcsv, Excelファイル名）とエジション名の対応をまとめておきます。</p>
@@ -431,11 +368,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</section>
-<section id="section" class="level5">
-<h5 class="anchored" data-anchor-id="section"></h5>
 <p>ここまで４つの投入産出テーブルをダウンロードし，make_wio()関数を使ってダウンロードしたデータから投入産出分析に必要な行列の作成方法を示してきました。次に，そうした行列を使ったいくつかの操作の例を示して行きます。</p>
-</section>
 </section>
 <section id="投入産出行列を操作する" class="level4">
 <h4 class="anchored" data-anchor-id="投入産出行列を操作する">5.1.2 投入産出行列を操作する</h4>
@@ -445,7 +378,7 @@ window.Quarto = {
 <li><code>multd()</code>：行列を対角行列によって乗数倍する.</li>
 <li><code>hmult()</code>：行列のアダマール積</li>
 <li><code>bkd()</code>：ブロック対角行列－対角ブロックがゼロではなく，非対角ブロックがゼロである行列－を作成.</li>
-<li><code>bkoffd()</code>：ブロックオフ対角行列－対角ブロックがゼロであり，対角以外のブロックがゼロでない行列－を作成.</li>
+<li><code>bkoffd()</code>：ブロックオフ対角行列－対角ブロックがゼロであり，非対角ブロックがゼロでない行列－を作成.</li>
 <li><code>rsums()</code>: 行を合計する</li>
 <li><code>csums()</code>: 列を合計する</li>
 <li><code>sumnrow()</code>: 行列のn番目の行を合計する</li>
@@ -456,19 +389,19 @@ window.Quarto = {
 <li>例1 グローバル・レオンチェフの逆行列</li>
 <li>例2 付加価値輸出</li>
 </ul>
-<p><strong>例1　グローバル・レオンチェ逆行列</strong></p>
-<p>需要誘発モデルの基本的な行列は、コマンド<strong>make_wio()</strong>を使用して原データから簡単に取得できます。</p>
+<p><strong>例1　グローバル・レオンチェフ逆行列</strong></p>
+<p>レオンチェフ逆行列を利用した需要誘発モデルの基本的な行列は、コマンド<strong>make_wio()</strong>を使用して原データから簡単に取得できます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wio <span class="ot">&lt;-</span> <span class="fu">make_wio</span>(<span class="at">wiotype =</span> <span class="st">"icio2023"</span>, <span class="at">year =</span> <span class="cn">NULL</span>, <span class="at">src_dir =</span> <span class="cn">NULL</span>, <span class="at">quiet =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>summary(wio)</code>の表示内容をみると、<code>B</code>がグローバル・レオンチェフ逆行列（Global Leontief inverse)であり、また<code>Y</code>が最終需要です。BもYも<code>make_wio()</code>関数で作成された行列です。<code>class()</code>関数でオブジェクト<code>wio</code>が<code>wioクラス</code>であり，BもYも行列であることを確認できます。なお，<code>wio$B</code>はwioオブジェクトの中の行列Bを指しています。</p>
+<p><code>summary(wio)</code>の表示内容をみると、<code>B</code>がグローバル・レオンチェフ逆行列（Global Leontief inverse)であり、また<code>Y</code>が最終需要です。BもYも<code>make_wio()</code>関数で作成された行列です。<code>class()</code>関数でオブジェクト<code>wio</code>が<code>wioクラス</code>であり，<code>B</code>も<code>Y</code>も行列であることを確認できます。なお，<code>wio$B</code>は「wioオブジェクトの中の行列B」を指しています。</p>
 <p><img src="images/スクリーンショット 2024-06-09 14.43.45.png" class="img-fluid" width="247"></p>
-<p>レオンチェフ逆行列は，最終需要が1単位増加したときに，直接間接に誘発される生産量を示します。したがってグローバル・レオンチェフ逆行列はある国のあるセクターにおいて最終需要が1単位増加したときに，他セクターの生産量がどれだけ誘発するか－簡単に言えば，他産業の生産に与える影響の大きさ－を示します。</p>
+<p>レオンチェフ逆行列は，最終需要が1単位増加したときに，直接間接に誘発される生産量を示します。したがってグローバル・レオンチェフ逆行列はある国のあるセクターにおいて最終需要が1単位増加したときに，他セクターの生産量がどれだけ誘発されるか－簡単に言えば，他産業の生産に与える影響の大きさ－を示します。</p>
 <p><code>make_wio()</code>関数で作成された行列リストにおいて，<code>A</code>が投入係数行列，<code>X</code>が生産，最終需要が<code>Y</code>です。したがって国際投入産出テーブルは</p>
 <p><span class="math inline">\(AX + Y = X\)</span></p>
 <p>と表現できます。ここから最終需要と生産の関係は</p>
 <p><span class="math inline">\(X = (I-A)^{-1}Y\)</span></p>
-<p>この関係は技術を一定とし，一定水準の最終需要Yのために必要とされる，各国の各セクターの産出高Xがいかにして生み出されるかを示しています。ここで<span class="math inline">\((I-A)^{-1}\)</span>はグローバル・レオンチェフ逆行列であり，作成された行列リストにおいては<code>B</code>で表記されています。したがって生産<code>X</code>はグローバル・レオンチェフ逆行列<code>B</code>と最終需要<code>Y</code>の積と同じになります。</p>
+<p>この関係は技術を一定とし，一定水準の最終需要<code>Y</code>のために必要とされる，各国の各セクターの産出高<code>X</code>がいかにして生み出されるかを示しています。ここで<span class="math inline">\((I-A)^{-1}\)</span>はグローバル・レオンチェフ逆行列であり，作成された行列リストにおいては<code>B</code>で表記されています。したがって生産<code>X</code>はグローバル・レオンチェフ逆行列<code>B</code>と最終需要<code>Y</code>の積と同じになります。</p>
 <p>行列の積の演算子は<code>%*%</code>です。レオンチェフ逆行列と最終需要の積で生産を求めます。そしてその結果を<code>BY</code>に入れます。<code>BY</code>も行列です。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>BY <span class="ot">&lt;-</span> wio<span class="sc">$</span>B <span class="sc">%*%</span> wio<span class="sc">$</span>Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,7 +445,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/スクリーンショット 2024-06-09 16.55.01.png" class="img-fluid figure-img"></p>
-<figcaption>一部のみ表示.</figcaption>
+<figcaption class="figure-caption">一部のみ表示.</figcaption>
 </figure>
 </div>
 <p>また海外に吸収される付加価値だけに注目する場合，VBY行列のうちの非対角行列ブロックだけが必要となります。このためには<code>bkoffd()</code>関数を利用します。</p>
@@ -520,11 +453,60 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bkoffd</span>(VBY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>これによって対角行列部分，たとえばアルゼンチンの産業を示す行とアルゼンチンという国を示す列のセルはゼロとなり，非対角部分の値だけが表示されます。</p>
-<section id="section-1" class="level5">
-<h5 class="anchored" data-anchor-id="section-1"></h5>
-
-
 </section>
+<section id="輸出における付加価値を分解する---韓国の例" class="level4">
+<h4 class="anchored" data-anchor-id="輸出における付加価値を分解する---韓国の例">5.1.3 輸出における付加価値を分解する - 韓国の例</h4>
+<p>輸出に体化された付加価値の分解にあたっていくつかの方法が提案されていますが，以下のようなステップで分解されます：</p>
+<p>最初に<code>総輸出(Gross Exports: EXGR)</code>を，<code>国内コンテンツ（Domestic Content: DC）</code>と<code>外国コンテンツ（Foreign Content: FC）</code>とに分離し、次に<code>国内付加価値（Domestic Value Added: DVA）</code>と<code>外国付加価値（Foreign Value Added: FVA）</code>を特定し、これらを<code>国内ダブルカウント（Domestic Double Counting: DDC）</code>と<code>外国ダブルカウント（Foreign Double Counting: FDC）</code>から分離します。そして最後に国内付加価値を，<code>輸出された付加価値（Value added exported: VAX）</code>と<code>リフレクション（Reflection: REF）</code>とに分割します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/スクリーンショット 2024-06-11 17.17.27.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Feas E (2024), p.223</figcaption>
+</figure>
+</div>
+<p><code>exvatools</code>を使って韓国の輸出における付加価値の完全な分解を作成してみましょう。このためには関数<code>make_exvadec()</code>を使います。この関数によって異なった分解方法を使ってある１つの国もしくは国グループの輸出における付加価値を分解することができます。記述方法は以下のようになります：</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_exvadec</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a> wio_object,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> <span class="at">exporter =</span> <span class="st">"all"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a> <span class="at">method =</span> <span class="st">"bm_src"</span>, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a> <span class="at">output =</span> <span class="st">"standard"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a> <span class="at">quiet =</span> <span class="cn">FALSE</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>基本的な引数は５つです。</p>
+<ul>
+<li><p>wio_object: <code>make_wio()</code>関数を使って取得したwioクラスのオブジェクト（標準的な世界投入産出表）を指定.</p></li>
+<li><p>exporter: 国または国グループを示す文字列（たとえば，“USA”,“NAFTA”など）. デフォルトは”all”であり，利用できるすべての国に関して輸出における付加価値の分解を生み出す.</p></li>
+<li><p>method: 輸出付加価値export VAの分解方法を指定する文字列.分解法としては以下の方法が利用可能.</p>
+<ul>
+<li><p>“bm_src”: Borin and Mancini(2023)にもとづく分解法. ソースベース. デフォルト</p></li>
+<li><p>“bm_snk”: Borin and Mancini(2023)にもとづく分解法. sinkベース.</p></li>
+<li><p>“wwz”: Wang et al.&nbsp;(2013)にもとづく分解法</p></li>
+<li><p>“kww”: Koopman et al.&nbsp;(2014)にもとづく分解法</p></li>
+<li><p>“my”: Miroundot and Ye (2021)にもとづく分解法</p></li>
+<li><p>“oecd”: OECD</p></li>
+</ul></li>
+<li><p>output: アウトプットタイプを指定する文字列. 7つのアウトプットが用意されているが，“standard”(デフォルト)で十分.output = “standard”によってDC, DVA,DDC, FC,FVA, VAXが出力される.</p></li>
+<li><p>quiet : ブール値であり，TRUEの場合，メッセージは非表示. デフォルトはFALSEである。つまりメッセージが表示される.</p></li>
+</ul>
+<p>それではmake_exvadec()関数を使って韓国の輸出の付加価値の分解をおこなってみます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>kor_exvadec <span class="ot">&lt;-</span> <span class="fu">make_exvadec</span>(wio, <span class="at">exporter =</span> <span class="st">"KOR"</span>, <span class="at">method =</span> <span class="st">"bm_src"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これを実行すると，韓国の付加価値分解の結果が表示されると同時に，kor_exvadecと名付けたオブジェクトの中に格納されます。</p>
+<p><img src="images/スクリーンショット 2024-06-10 17.04.35.png" class="img-fluid"></p>
+<p>結果から総輸出(EXGR)を100パーセントとした場合，付加価値輸出(VAX)が69.4パーセントと高い割合を占めることが理解されます。韓国経済においては最終完成品の輸出よりも，中間財・部品の輸出の価値がきわめて高水準だということが推測されます。。さらに，グローバルバリューチェーンに関連した貿易(GVC)が47.37パーセントを示しており，韓国経済がグローバルサプライチェーンに大きく関わっていることも分かります。</p>
+<p><code>exvatools</code>の優れた点として分解を行なったのち，さらに<code>get_exvadec_bkdown()</code>関数を使ってセクターや仕向け国destinationを指定することもできます。以下の例はセクターとして製造業”NANUF”，仕向け国importerとして中国”CHN”を指定しています。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_exvadec_bkdown</span>(kor_exvadec, <span class="at">exporter =</span> <span class="st">"KOR"</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="at">sector =</span> <span class="st">"MANUF"</span>, <span class="at">importer =</span> <span class="st">"CHN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>これを実行すると，中国向けて製造業輸出の付加価値分解が可能となります。</p>
+<p><img src="images/スクリーンショット 2024-06-10 17.40.44.png" class="img-fluid"></p>
+<p>結果を見ると，中国への韓国製造業の輸出総額のうち66.80が付加価値輸出だということが理解できます。</p>
+
+
 </section>
 </section>
 </section>
@@ -618,27 +600,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -648,17 +613,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -670,130 +626,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -837,7 +670,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -863,32 +695,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -949,7 +755,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
