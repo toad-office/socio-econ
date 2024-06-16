@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-05-30">
+<meta name="dcterms.date" content="2024-06-16">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./industry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5 産業データ</span></a>
+ <span class="menu-text">5 産業連関データ</span></a>
   </div>
 </li>
     </ul>
@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 30, 2024</p>
+      <p class="date">June 16, 2024</p>
     </div>
   </div>
   
@@ -223,7 +223,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="民主主義国家データ" class="level2">
 <h2 class="anchored" data-anchor-id="民主主義国家データ">4 民主主義・国家データ</h2>
-<p>中国をはじめとする新興経済の台頭とともに国家（政府）の役割がふたたび注目されつつあります. 他方で権威主義的な国家の台頭は民主主義の優位性が失われつつある、という論調もみられるようになりました<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.こうした問題を考える上でも「国家」や「民主主義」を測る指標が必要となります.そこで本項ではそうしたデータを提供するデータベースをいくつか紹介します.</p>
+<p>中国をはじめとする新興経済の台頭とともに国家（政府）の役割がふたたび注目されつつあります. 他方で権威主義的な国家の台頭は民主主義の優位性が失われつつある、という論調もみられるようになりました<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.こうした問題を考える上でも「国家」や「民主主義」を測る指標が必要となります.そこで本項ではそうしたデータを提供する以下のデータベースを紹介します.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>DB提供機関</th>
+<th>Rパッケージ名</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>イェーテボリ大学政治学科の<a href="https://www.v-dem.net">V-Dem</a>研究所</td>
+<td>vdemdata</td>
+<td>民主主義に関する指標</td>
+</tr>
+<tr class="even">
+<td><a href="https://www.gu.se/en/quality-government">Quality of Government(QoG)研究所</a></td>
+<td>rgov</td>
+<td>政府の質に関する指標</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <section id="民主主義を測る---vdemdata" class="level3">
 <h3 class="anchored" data-anchor-id="民主主義を測る---vdemdata">4.1 「民主主義」を測る - vdemdata</h3>
 <p>スウェーデンのイェーテボリ大学政治学科の<a href="https://www.v-dem.net">V-Dem</a>研究所の<a href="https://www.v-dem.net/data/the-v-dem-dataset/">Varieties of Democracy(V-Dem)</a>データベースは大規模な社会科学データベースです。データセットの最新バージョンv14は1789年から2019年までの202カ国をカバーしています。本データベースはその名が示すとおり、民主主義をめぐるデータセットを提供しています。アンケート調査にもとづいたミクロデータが基礎となっていますが、それらのデータから作成されたマクロデータが提供されています。</p>
