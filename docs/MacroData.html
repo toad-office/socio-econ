@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-06-16">
+<meta name="dcterms.date" content="2024-06-17">
 
 <title>R &amp; Socio Econ</title>
 <style>
@@ -185,9 +185,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#マクロデータ" id="toc-マクロデータ" class="nav-link active" data-scroll-target="#マクロデータ">2. マクロ・データ</a></li>
-  <li><a href="#groningen-growth-and-development-centre" id="toc-groningen-growth-and-development-centre" class="nav-link" data-scroll-target="#groningen-growth-and-development-centre">2.1 Groningen Growth and Development Centre</a>
+  <li><a href="#マクロデータ" id="toc-マクロデータ" class="nav-link active" data-scroll-target="#マクロデータ">2. マクロ・データ</a>
   <ul class="collapse">
+  <li><a href="#groningen-growth-and-development-centre" id="toc-groningen-growth-and-development-centre" class="nav-link" data-scroll-target="#groningen-growth-and-development-centre">2.1 Groningen Growth and Development Centre</a></li>
   <li><a href="#penn-world-table-pwt10" id="toc-penn-world-table-pwt10" class="nav-link" data-scroll-target="#penn-world-table-pwt10">2.1.1 Penn World Table ― pwt10</a></li>
   <li><a href="#the-maddison-project-database-maddison" id="toc-the-maddison-project-database-maddison" class="nav-link" data-scroll-target="#the-maddison-project-database-maddison">2.1.2 The Maddison Project Database ― maddison</a></li>
   </ul></li>
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 16, 2024</p>
+      <p class="date">June 17, 2024</p>
     </div>
   </div>
   
@@ -261,69 +261,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>今では国際機関，政府,研究組織によって多くのデータが提供されています。そ うしたデータを取得するには，その機関・組織のサイトにアクセスし，csv,EXCEL等のファイルを直接ダウンロードすることによっても，もちろん可能です。し かし，すでに述べたように，Rには，国際機関，研究組織等の提供するデータベースからデータを取得するパッケージが多く開発されています。そうしたパッケージを利用すれば，シームレスかつ再現可能な形でのデータの読み込みが可能となります。本資料では最初に，以下のマクロ経済統計データベースをとりあげます．</p>
 <table class="table">
 <colgroup>
-<col style="width: 47%">
-<col style="width: 26%">
-<col style="width: 26%">
+<col style="width: 50%">
+<col style="width: 24%">
+<col style="width: 24%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>DB提供機関</th>
-<th>マクロデータ概要</th>
-<th>対応する節</th>
+<th style="text-align: left;">DB提供機関</th>
+<th style="text-align: left;">マクロデータ概要</th>
+<th style="text-align: center;">対応する節</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>フローニンゲン大学成長・発展センター</td>
-<td>所得，経済発展データ等</td>
-<td>2.1</td>
+<td style="text-align: left;">フローニンゲン大学成長・発展センター</td>
+<td style="text-align: left;">所得，経済発展データ等</td>
+<td style="text-align: center;">2.1</td>
 </tr>
 <tr class="even">
-<td>世界銀行</td>
-<td>世界開発指標</td>
-<td>2.2</td>
+<td style="text-align: left;">世界銀行</td>
+<td style="text-align: left;">世界開発指標</td>
+<td style="text-align: center;">2.2</td>
 </tr>
 <tr class="odd">
-<td>EU統計局</td>
-<td>EUデータ（人口，経済，インフラ等）</td>
-<td>2.3</td>
+<td style="text-align: left;">EU統計局</td>
+<td style="text-align: left;">EUデータ（人口，経済，インフラ等）</td>
+<td style="text-align: center;">2.3</td>
 </tr>
 <tr class="even">
-<td>European Commission’s Directorate General for Economic and Financial Affairs</td>
-<td>AMECO マクロ経済データ</td>
-<td>2.4</td>
+<td style="text-align: left;">European Commission’s Directorate General for Economic and Financial Affairs</td>
+<td style="text-align: left;">AMECO マクロ経済データ</td>
+<td style="text-align: center;">2.4</td>
 </tr>
 <tr class="odd">
-<td>OECD</td>
-<td>OECDデータ</td>
-<td>2.5</td>
+<td style="text-align: left;">OECD</td>
+<td style="text-align: left;">OECDデータ</td>
+<td style="text-align: center;">2.5</td>
 </tr>
 <tr class="even">
-<td>IMF</td>
-<td>国際金融等のデータ</td>
-<td>2.6</td>
+<td style="text-align: left;">IMF</td>
+<td style="text-align: left;">国際金融等のデータ</td>
+<td style="text-align: center;">2.6</td>
 </tr>
 <tr class="odd">
-<td>ILO</td>
-<td>労働統計</td>
-<td>2.7</td>
+<td style="text-align: left;">ILO</td>
+<td style="text-align: left;">労働統計</td>
+<td style="text-align: center;">2.7</td>
 </tr>
 <tr class="even">
-<td>DBnomics</td>
-<td>データベース集</td>
-<td>2.8</td>
+<td style="text-align: left;">DBnomics</td>
+<td style="text-align: left;">データベース集</td>
+<td style="text-align: center;">2.8</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="groningen-growth-and-development-centre" class="level2">
-<h2 class="anchored" data-anchor-id="groningen-growth-and-development-centre">2.1 Groningen Growth and Development Centre</h2>
+<section id="groningen-growth-and-development-centre" class="level3">
+<h3 class="anchored" data-anchor-id="groningen-growth-and-development-centre">2.1 Groningen Growth and Development Centre</h3>
 <p>1992年にフローニンゲン大学の経済学部内に設立された<a href="https://www.rug.nl/ggdc/?lang=en">Groningen Growth and Development Centre（GGDC）</a>は,現在ではグローバリゼーション、テクノロジー、制度的変化の相互作用と、それが長期的な経済成長、構造変化、生産性、不平等に与える影響を研究する研究センターとなっています。同センターは次のようなデータベースを公開しています。</p>
 <table class="table">
 <colgroup>
-<col style="width: 36%">
-<col style="width: 36%">
-<col style="width: 26%">
+<col style="width: 37%">
+<col style="width: 37%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -356,6 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>このうちRパッケージが開発されている２つのデータベース-Penn World TableとThe Maddison Project Database-を紹介しましょう。</p>
+</section>
 <section id="penn-world-table-pwt10" class="level3">
 <h3 class="anchored" data-anchor-id="penn-world-table-pwt10">2.1.1 Penn World Table ― pwt10</h3>
 <p><a href="https://www.rug.nl/ggdc/productivity/pwt/?lang=en">Penn World Table</a>は経済研究においてもっとも頻繁に利用されているデータベースの１つと言えるでしょう。これは所得，産出高，投入および生産性に関する情報を提供するデータベースです。1950年から2017年の182ヵ国をカバーしています（基準年は2011年）<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。 pwt10.01はデータパッケージです。country（国名），isocode（3桁の国コード）, year（年）, currency（各国の通貨単位）の変数の他に，rgdpe（支出面の実質GDP），rgdpo（生産面の実質GDP）,hc(1人あたり人的資本指数)などを含む48の時系列データが提供されています。それではinstall.packages()を使ってRにインストールしましょう。</p>
